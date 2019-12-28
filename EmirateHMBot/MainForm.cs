@@ -47,6 +47,30 @@ namespace EmirateHMBot
             await Task.Delay(3000);
         }
 
+        public bool SelectNextCell(DataGridView x)
+        {
+            int row = x.CurrentCell.RowIndex;
+            int column = x.CurrentCell.ColumnIndex;
+            DataGridViewCell startingCell = x.CurrentCell;
+
+            do
+            {
+                column++;
+                if (column == x.Columns.Count)
+                {
+                    column = 0;
+                    row++;
+                }
+                if (row == x.Rows.Count)
+                    row = 0;
+            } while (x.Rows[row].Cells[column].ReadOnly == true && x.Rows[row].Cells[column] != startingCell);
+
+            if (x.Rows[row].Cells[column] == startingCell)
+                return false;
+            x.CurrentCell = x.Rows[row].Cells[column];
+            return true;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             ServicePointManager.DefaultConnectionLimit = 65000;
@@ -56,16 +80,8 @@ namespace EmirateHMBot
             Utility.CreateDb();
             Utility.LoadConfig();
             Utility.InitCntrl(this);
-
-            //startB.Visible = false;
-            //FillFormsB.Visible = false;
-            //PermitDGV.Visible = false;
-            //EID2DGV.Visible = false;
-            //MOHAPDGV.Visible = false;
-            //codeLb.Visible = false;
-            //CodeT.Visible = false;
-
-
+            //WindowState = FormWindowState.Minimized;
+            //ShowInTaskbar = false;
             PermitDGV.ColumnCount = 2;
 
             PermitDGV.Columns[0].Width = 250;
@@ -224,7 +240,7 @@ namespace EmirateHMBot
                 col.DefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             }
 
-            metroTabControl2.SelectedTab = metroTabPage3;
+            metroTabControl2.SelectedTab = metroTabPage4;
         }
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
@@ -268,84 +284,6 @@ namespace EmirateHMBot
             Utility.SaveConfig();
         }
 
-        private async void startB_Click(object sender, EventArgs e)
-        {
-            //CodePermit.Text = "84920767";
-            Display("");
-            CleanDataGridViews();
-            var datas = new Dictionary<string, string>();
-            //if (CodeT.Text == "")
-            //{
-            //    Display("Please put the code wich you will scrape data with");
-            //    return;
-            //}
-            //try
-            //{
-            //    int.Parse(CodeT.Text);
-            //}
-            //catch (Exception)
-            //{
-
-            //    Display("the input should be a number");
-
-            //    startB.Enabled = true;
-            //    return;
-            //}
-
-            var res = await HttpCaller.GetDoc($"http://eservices.mohre.gov.ae/NewMolGateway/english/Services/wpStatusMolMoi.aspx?Code={CodeT.Text}");
-            if (res.error != null)
-            {
-                //ErrorLog(res.error);
-                return;
-            }
-            var validityCode = res.doc.DocumentNode?.SelectSingleNode("//span[@id='lblMsg']").InnerText;
-            if (validityCode.Contains("Not available"))
-            {
-                Display("This code is not available");
-                datas = new Dictionary<string, string>();
-                return;
-            }
-            var trs = res.doc.DocumentNode.SelectNodes("//table[@id='tblWp']//table[@id]//tr");
-            if (trs == null)
-                return;
-
-            foreach (var tr in trs)
-            {
-                var tds = tr.SelectNodes("./td");
-                if (tds.Count < 2)
-                    continue;
-                var keyValue = new KeyValue();
-                int index = 1;
-                foreach (var td in tds)
-                {
-                    if (index % 2 != 0)
-                        keyValue.Key = td.InnerText.Trim();
-                    else
-                    {
-                        keyValue.Value = td.InnerText.Trim();
-                        datas.Add(keyValue.Key, keyValue.Value);
-                        keyValue = new KeyValue();
-                    }
-                    index++;
-                }
-            }
-            Console.WriteLine(datas["Passport Issue Date"]);
-            //return;
-            PermitDGV.Rows[1].Cells[1].Value = datas["Current Nationality"];
-            PermitDGV.Rows[2].Cells[1].Value = datas["Gender"];
-            PermitDGV.Rows[3].Cells[1].Value = datas["Person Name (Arabic)"];
-            PermitDGV.Rows[4].Cells[1].Value = datas["Person Name (Eng)"];
-            PermitDGV.Rows[5].Cells[1].Value = datas["Mother Name (Eng)"];
-            PermitDGV.Rows[6].Cells[1].Value = datas["Mother Name (Arabic)"];
-            PermitDGV.Rows[7].Cells[1].Value = datas["Birth Place(Arabic)"];
-            PermitDGV.Rows[9].Cells[1].Value = datas["Date of Birth"];
-            PermitDGV.Rows[10].Cells[1].Value = datas["Passport Number"];
-            PermitDGV.Rows[11].Cells[1].Value = datas["Passport Issue Date"];
-            PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
-            PermitDGV.Rows[17].Cells[1].Value = datas["Sponsor Name (Arabic)"];
-
-            datas = new Dictionary<string, string>();
-        }
 
         private void CleanDataGridViews()
         {
@@ -429,7 +367,56 @@ namespace EmirateHMBot
             return null;//we are cool
         }
 
-        private void FillFormsB_Click(object sender, EventArgs e)
+        private void PermitDGV_KeyUp(object sender, KeyEventArgs e)
+        {
+
+
+        }
+
+        private void PermitDGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.GetHashCode().Equals(589833))
+            {
+                SelectNextCell(PermitDGV);
+            }
+        }
+
+        private void EID2DGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.GetHashCode().Equals(589833))
+            {
+                SelectNextCell(EID2DGV);
+            }
+        }
+        private async void MOHAPDGV_CellEndEditAsync(object sender, DataGridViewCellEventArgs e)
+        {
+            await SetCell(MOHAPDGV);
+        }
+
+        private void MOHAPDGV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.GetHashCode().Equals(589833))
+            {
+                SelectNextCell(MOHAPDGV);
+            }
+        }
+
+        async Task SetCell(DataGridView x)
+        {
+            await Task.Delay(1);
+            x.CurrentCell = x.Rows[x.CurrentCell.RowIndex].Cells[1];
+        }
+        private async void EID2DGV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            await SetCell(EID2DGV);
+        }
+
+        private async void PermitDGV_CellEndEditAsync(object sender, DataGridViewCellEventArgs e)
+        {
+            await SetCell(PermitDGV);
+        }
+
+        private void FillFormsPermitB_Click(object sender, EventArgs e)
         {
             if (PermitDGV?.Rows[18]?.Cells[1]?.Value?.ToString()?.Length > 4)
             {
@@ -477,11 +464,72 @@ namespace EmirateHMBot
             MOHAPDGV.Rows[15].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
             MOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
         }
-
-        private void startB_Click_1(object sender, EventArgs e)
+        private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
         {
+            //CodePermit.Text = "84920767";
+            if (CodeT.Text == "")
+            {
+                Display("Please put the code wich you will scrape data with");
+                return;
+            }
+            Display("");
+            CleanDataGridViews();
+            var datas = new Dictionary<string, string>();
+            var res = await HttpCaller.GetDoc($"http://eservices.mohre.gov.ae/NewMolGateway/english/Services/wpStatusMolMoi.aspx?Code={CodeT.Text}");
+            if (res.error != null)
+            {
+                //ErrorLog(res.error);
+                return;
+            }
+            var validityCode = res.doc.DocumentNode?.SelectSingleNode("//span[@id='lblMsg']").InnerText;
+            if (validityCode.Contains("Not available"))
+            {
+                Display("This code is not available");
+                datas = new Dictionary<string, string>();
+                return;
+            }
+            var trs = res.doc.DocumentNode.SelectNodes("//table[@id='tblWp']//table[@id]//tr");
+            if (trs == null)
+                return;
 
+            foreach (var tr in trs)
+            {
+                var tds = tr.SelectNodes("./td");
+                if (tds.Count < 2)
+                    continue;
+                var keyValue = new KeyValue();
+                int index = 1;
+                foreach (var td in tds)
+                {
+                    if (index % 2 != 0)
+                        keyValue.Key = td.InnerText.Trim();
+                    else
+                    {
+                        keyValue.Value = td.InnerText.Trim();
+                        datas.Add(keyValue.Key, keyValue.Value);
+                        keyValue = new KeyValue();
+                    }
+                    index++;
+                }
+            }
+            Console.WriteLine(datas["Passport Issue Date"]);
+            //return;
+            PermitDGV.Rows[1].Cells[1].Value = datas["Current Nationality"];
+            PermitDGV.Rows[2].Cells[1].Value = datas["Gender"];
+            PermitDGV.Rows[3].Cells[1].Value = datas["Person Name (Arabic)"];
+            PermitDGV.Rows[4].Cells[1].Value = datas["Person Name (Eng)"];
+            PermitDGV.Rows[5].Cells[1].Value = datas["Mother Name (Eng)"];
+            PermitDGV.Rows[6].Cells[1].Value = datas["Mother Name (Arabic)"];
+            PermitDGV.Rows[7].Cells[1].Value = datas["Birth Place(Arabic)"];
+            PermitDGV.Rows[9].Cells[1].Value = datas["Date of Birth"];
+            PermitDGV.Rows[10].Cells[1].Value = datas["Passport Number"];
+            PermitDGV.Rows[11].Cells[1].Value = datas["Passport Issue Date"];
+            PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
+            PermitDGV.Rows[17].Cells[1].Value = datas["Sponsor Name (Arabic)"];
+
+            datas = new Dictionary<string, string>();
         }
+
         public class KeyValue
         {
             public string Key { get; set; }
