@@ -21,7 +21,9 @@ namespace EmirateHMBot
         
         private void CredentialForm_Load(object sender, EventArgs e)
         {
-            
+             DateTime result = DateTime.ParseExact("02/13/2019"+ "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            var dateOfBirth = result.ToString("yyyy/MM/dd");
+            Console.WriteLine(dateOfBirth);
 
         }
 

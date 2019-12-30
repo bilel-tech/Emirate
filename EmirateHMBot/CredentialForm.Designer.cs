@@ -47,17 +47,21 @@
             // 
             // UsernameT
             // 
+            this.UsernameT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameT.Location = new System.Drawing.Point(278, 96);
             this.UsernameT.Name = "UsernameT";
-            this.UsernameT.Size = new System.Drawing.Size(155, 20);
+            this.UsernameT.Size = new System.Drawing.Size(155, 22);
             this.UsernameT.TabIndex = 1;
+            this.UsernameT.Text = "bilel";
             // 
             // PasswordT
             // 
+            this.PasswordT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PasswordT.Location = new System.Drawing.Point(278, 139);
             this.PasswordT.Name = "PasswordT";
-            this.PasswordT.Size = new System.Drawing.Size(155, 20);
+            this.PasswordT.Size = new System.Drawing.Size(155, 22);
             this.PasswordT.TabIndex = 3;
+            this.PasswordT.Text = "2305";
             // 
             // label2
             // 
