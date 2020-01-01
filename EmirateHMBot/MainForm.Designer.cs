@@ -54,6 +54,11 @@
             this.metroTabControl3 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage7 = new MetroFramework.Controls.MetroTabPage();
             this.EChannelP = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.ResidencyviewRadioB = new System.Windows.Forms.RadioButton();
+            this.VisaviewRadioB = new System.Windows.Forms.RadioButton();
+            this.NormalRadioB = new System.Windows.Forms.RadioButton();
+            this.BetaRadioB = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.CodeEChannelT = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,11 +74,7 @@
             this.metroTabPage9 = new MetroFramework.Controls.MetroTabPage();
             this.EchanMohreDgview = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.BetaRadioB = new System.Windows.Forms.RadioButton();
-            this.NormalRadioB = new System.Windows.Forms.RadioButton();
-            this.VisaviewRadioB = new System.Windows.Forms.RadioButton();
-            this.ResidencyviewRadioB = new System.Windows.Forms.RadioButton();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -88,10 +89,12 @@
             this.metroTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MOHAPDGV)).BeginInit();
             this.metroTabPage2.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
             this.metroTabControl3.SuspendLayout();
             this.metroTabPage7.SuspendLayout();
             this.EChannelP.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).BeginInit();
             this.metroTabPage8.SuspendLayout();
             this.metroPanel3.SuspendLayout();
@@ -99,7 +102,6 @@
             this.metroTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohreDgview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel3
@@ -141,7 +143,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1033, 616);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -185,7 +187,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 2;
             this.metroTabControl2.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -400,6 +402,7 @@
             // 
             // metroPanel2
             // 
+            this.metroPanel2.Controls.Add(this.button1);
             this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
@@ -481,6 +484,63 @@
             this.EChannelP.Name = "EChannelP";
             this.EChannelP.Size = new System.Drawing.Size(1017, 526);
             this.EChannelP.TabIndex = 14;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.ResidencyviewRadioB);
+            this.panel4.Controls.Add(this.VisaviewRadioB);
+            this.panel4.Location = new System.Drawing.Point(717, 19);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(144, 74);
+            this.panel4.TabIndex = 35;
+            // 
+            // ResidencyviewRadioB
+            // 
+            this.ResidencyviewRadioB.AutoSize = true;
+            this.ResidencyviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ResidencyviewRadioB.Location = new System.Drawing.Point(22, 21);
+            this.ResidencyviewRadioB.Name = "ResidencyviewRadioB";
+            this.ResidencyviewRadioB.Size = new System.Drawing.Size(119, 19);
+            this.ResidencyviewRadioB.TabIndex = 33;
+            this.ResidencyviewRadioB.TabStop = true;
+            this.ResidencyviewRadioB.Text = "Residencyview";
+            this.ResidencyviewRadioB.UseVisualStyleBackColor = true;
+            // 
+            // VisaviewRadioB
+            // 
+            this.VisaviewRadioB.AutoSize = true;
+            this.VisaviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VisaviewRadioB.Location = new System.Drawing.Point(23, 46);
+            this.VisaviewRadioB.Name = "VisaviewRadioB";
+            this.VisaviewRadioB.Size = new System.Drawing.Size(80, 19);
+            this.VisaviewRadioB.TabIndex = 34;
+            this.VisaviewRadioB.TabStop = true;
+            this.VisaviewRadioB.Text = "Visaview";
+            this.VisaviewRadioB.UseVisualStyleBackColor = true;
+            // 
+            // NormalRadioB
+            // 
+            this.NormalRadioB.AutoSize = true;
+            this.NormalRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NormalRadioB.Location = new System.Drawing.Point(919, 42);
+            this.NormalRadioB.Name = "NormalRadioB";
+            this.NormalRadioB.Size = new System.Drawing.Size(72, 19);
+            this.NormalRadioB.TabIndex = 32;
+            this.NormalRadioB.TabStop = true;
+            this.NormalRadioB.Text = "Normal";
+            this.NormalRadioB.UseVisualStyleBackColor = true;
+            // 
+            // BetaRadioB
+            // 
+            this.BetaRadioB.AutoSize = true;
+            this.BetaRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BetaRadioB.Location = new System.Drawing.Point(919, 65);
+            this.BetaRadioB.Name = "BetaRadioB";
+            this.BetaRadioB.Size = new System.Drawing.Size(53, 19);
+            this.BetaRadioB.TabIndex = 31;
+            this.BetaRadioB.TabStop = true;
+            this.BetaRadioB.Text = "beta";
+            this.BetaRadioB.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -731,62 +791,15 @@
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // BetaRadioB
+            // button1
             // 
-            this.BetaRadioB.AutoSize = true;
-            this.BetaRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BetaRadioB.Location = new System.Drawing.Point(919, 65);
-            this.BetaRadioB.Name = "BetaRadioB";
-            this.BetaRadioB.Size = new System.Drawing.Size(53, 19);
-            this.BetaRadioB.TabIndex = 31;
-            this.BetaRadioB.TabStop = true;
-            this.BetaRadioB.Text = "beta";
-            this.BetaRadioB.UseVisualStyleBackColor = true;
-            // 
-            // NormalRadioB
-            // 
-            this.NormalRadioB.AutoSize = true;
-            this.NormalRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NormalRadioB.Location = new System.Drawing.Point(919, 42);
-            this.NormalRadioB.Name = "NormalRadioB";
-            this.NormalRadioB.Size = new System.Drawing.Size(72, 19);
-            this.NormalRadioB.TabIndex = 32;
-            this.NormalRadioB.TabStop = true;
-            this.NormalRadioB.Text = "Normal";
-            this.NormalRadioB.UseVisualStyleBackColor = true;
-            // 
-            // VisaviewRadioB
-            // 
-            this.VisaviewRadioB.AutoSize = true;
-            this.VisaviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VisaviewRadioB.Location = new System.Drawing.Point(23, 46);
-            this.VisaviewRadioB.Name = "VisaviewRadioB";
-            this.VisaviewRadioB.Size = new System.Drawing.Size(80, 19);
-            this.VisaviewRadioB.TabIndex = 34;
-            this.VisaviewRadioB.TabStop = true;
-            this.VisaviewRadioB.Text = "Visaview";
-            this.VisaviewRadioB.UseVisualStyleBackColor = true;
-            // 
-            // ResidencyviewRadioB
-            // 
-            this.ResidencyviewRadioB.AutoSize = true;
-            this.ResidencyviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResidencyviewRadioB.Location = new System.Drawing.Point(22, 21);
-            this.ResidencyviewRadioB.Name = "ResidencyviewRadioB";
-            this.ResidencyviewRadioB.Size = new System.Drawing.Size(119, 19);
-            this.ResidencyviewRadioB.TabIndex = 33;
-            this.ResidencyviewRadioB.TabStop = true;
-            this.ResidencyviewRadioB.Text = "Residencyview";
-            this.ResidencyviewRadioB.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.ResidencyviewRadioB);
-            this.panel4.Controls.Add(this.VisaviewRadioB);
-            this.panel4.Location = new System.Drawing.Point(717, 19);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(144, 74);
-            this.panel4.TabIndex = 35;
+            this.button1.Location = new System.Drawing.Point(376, 171);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
@@ -818,11 +831,14 @@
             this.metroTabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MOHAPDGV)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
+            this.metroPanel2.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
             this.metroTabControl3.ResumeLayout(false);
             this.metroTabPage7.ResumeLayout(false);
             this.EChannelP.ResumeLayout(false);
             this.EChannelP.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
             this.metroTabPage8.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
@@ -830,8 +846,6 @@
             this.metroTabPage9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohreDgview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -883,6 +897,7 @@
         private System.Windows.Forms.RadioButton NormalRadioB;
         private System.Windows.Forms.RadioButton BetaRadioB;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -19,6 +19,8 @@ using Newtonsoft.Json.Linq;
 using EmirateHMBot.Models;
 using OfficeOpenXml;
 using Newtonsoft.Json;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 
 namespace EmirateHMBot
 {
@@ -35,6 +37,8 @@ namespace EmirateHMBot
         private int _total;
         private int _maxConcurrency;
         public HttpCaller HttpCaller = new HttpCaller();
+        public ChromeDriver Driver;
+        public bool LoggedInToMohre=false;
         public MainForm()
         {
             InitializeComponent();
@@ -72,7 +76,7 @@ namespace EmirateHMBot
             return true;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             ServicePointManager.DefaultConnectionLimit = 65000;
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -82,6 +86,11 @@ namespace EmirateHMBot
             Utility.CreateDb();
             Utility.LoadConfig();
             Utility.InitCntrl(this);
+            //allow other threads to modify UI as long as its one thread only
+            CheckForIllegalCrossThreadCalls = false;
+            //start the navigator on a separate task to gain some time
+            _=Task.Run(LoginToMohre);
+           
             PermitDGV.ColumnCount = 2;
 
             PermitDGV.Columns[0].Width = 250;
@@ -358,6 +367,7 @@ namespace EmirateHMBot
             Utility.Config = new Dictionary<string, string>();
             Utility.SaveCntrl(this);
             Utility.SaveConfig();
+            Driver?.Quit();
             Application.Exit();
         }
 
@@ -597,6 +607,122 @@ namespace EmirateHMBot
             MOHAPDGV.Rows[13].Cells[1].Value = PermitDGV.Rows[2].Cells[1].Value;
             MOHAPDGV.Rows[15].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
             MOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
+        }
+
+        async Task LoginToMohre()
+        {
+            LoggedInToMohre=false;
+            var chromeOptions = new ChromeOptions();
+            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+            chromeOptions.AddArguments("headless");
+            Driver = new ChromeDriver(chromeDriverService,chromeOptions);
+            Driver.Navigate().GoToUrl(" https://eservices.mohre.gov.ae/SmartTasheel/home/index?lang=en-gb#");
+            Driver.ExecuteScript("CloseMessagePopUp();");
+            Driver.ExecuteScript("OpenLogin('');");
+            Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            //todo Make the user/pass on config file/db 
+            Driver.FindElementById("txtLoginUserName").SendKeys("traininguser1");
+            Driver.FindElementById("txtLoginPassword").SendKeys("test@12345");
+            Driver.FindElementById("AcceptTerms").Click();
+            Driver.ExecuteScript("GetSecurityQuestions();");
+            await Task.Delay(3000);
+            var question = "0";
+
+            #region Wait for question id
+
+            var tries = 0;
+            do
+            {
+                try
+                {
+                    question = Driver.FindElementById("txtQuestion").GetAttribute("data-question");
+                    break;
+                }
+                catch (Exception)
+                {
+                    tries++;
+                    await Task.Delay(500);
+                }
+            } while (tries < 10);
+
+            #endregion
+
+            Driver.FindElementById("txtAnswer").SendKeys(question.Equals("1")
+                ? "dubai"
+                : "green");
+            Driver.ExecuteScript("Login();");
+            if (Driver.FindElementByXPath("//a[text()='Logout ']") != null)
+               LoggedInToMohre=true;
+        }
+
+        async Task ScrapeMohre()
+        {
+            if (!LoggedInToMohre)
+            {
+                //this when the user start to scrape Mohre , while the task to login we lunched on form load didn't finish yet
+                MessageBox.Show("Not logged to Mohre site yet");
+                return;
+            }
+            try
+            {
+                Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/services.aspx?groupid=12");
+                try
+                {
+                    Driver.ExecuteScript("popUp('companyEntryLC.aspx?fCode=72','72')");
+                }
+                catch (Exception e)
+                {
+                    //it mean we need to login again
+                    Console.WriteLine(e);
+                    await LoginToMohre();
+                    Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/services.aspx?groupid=12");
+                    Driver.ExecuteScript("popUp('companyEntryLC.aspx?fCode=72','72')");
+                }
+                var mainWindowHandler = Driver.CurrentWindowHandle;
+                var popup = Driver.WindowHandles[1];
+                Driver.SwitchTo().Window(popup);
+                Driver.FindElementById("ctrlNationality_txtCode").Click();
+                //todo make the 3 params on UI
+                Driver.FindElementById("ctrlNationality_txtCode").SendKeys("14");
+                Driver.FindElementById("txtCompanyNumber").Click();
+                Driver.FindElementById("txtCompanyNumber").SendKeys("893387");
+                await Task.Delay(2000);
+                Driver.FindElementById("txtCardNo").SendKeys("01428078436189");
+                Driver.FindElementById("btnGo").Click();
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+                var companyName = Driver.FindElementById("ctrlComInfo_lblCompanyNameEnglish").Text;
+                var personalNameArabic = FindElementByXPath("//td[contains(text(),'Person Name(Arabic)')]/following-sibling::td/input")?.GetAttribute("value");
+                var personalNameEnglish = FindElementByXPath("//td[contains(text(),'Person Name(English)')]/following-sibling::td/input")?.GetAttribute("value");
+                var nationality = Driver.FindElementById("ctrlNationality_txtDescription").GetAttribute("value");
+                var gender = FindElementByXPath("//td[contains(text(),'Gender')]/following-sibling::td//option[@selected]")?.Text;
+                var birthDate = FindElementByXPath("//td[contains(text(),'Birth Date')]/following-sibling::td//input")?.GetAttribute("value");
+                var birthPlaceArabic = FindElementByXPath("//td[contains(text(),'Birth Place(Arabic)')]/following-sibling::td/input")?.GetAttribute("value");
+                var birthPlaceEnglish = FindElementByXPath("//td[contains(text(),'Birth Place(English)')]/following-sibling::td/input")?.GetAttribute("value");
+                var passportNumber = FindElementByXPath("//td[contains(text(),'Passport No')]/following-sibling::td/input")?.GetAttribute("value");
+                var passportIssueDate = FindElementByXPath("//td[contains(text(),'Passport Issue Date')]/following-sibling::td//input")?.GetAttribute("value");
+                var passportExpiryDate = FindElementByXPath("//td[contains(text(),'Passport Expiry Date')]/following-sibling::td//input")?.GetAttribute("value");
+                //todo Put the data to the UI
+                Driver.Close();
+                Driver.SwitchTo().Window(mainWindowHandler);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                MessageBox.Show(e.ToString(), "Error");
+            }
+        }
+
+        IWebElement FindElementByXPath(string xpath)
+        {
+            try
+            {
+                return Driver.FindElementByXPath(xpath);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
         private async void ScrapeEChannelB_ClickAsync(object sender, EventArgs e)
@@ -1066,9 +1192,13 @@ namespace EmirateHMBot
             await SetCell(EChannelDGV);
         }
 
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await Task.Run(ScrapeMohre);
+        }
+
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
         {
-            //CodeT.Text = "84920767";
             if (CodeT.Text == "")
             {
                 MessageBox.Show("Please put the code wich you will scrape data with");
