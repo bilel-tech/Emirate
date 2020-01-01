@@ -314,7 +314,9 @@ namespace EmirateHMBot
                 col.DefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             }
 
-            metroTabControl1.SelectedTab = metroTabPage1;
+            //metroTabPage4;
+            metroTabControl1.SelectTab(0);
+            metroTabControl2.SelectTab(0);
         }
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
@@ -620,14 +622,14 @@ namespace EmirateHMBot
             }
             if ((normalOrbetaRB == "" || ResidencyviewOrVisaviewRB == "") || (normalOrbetaRB == "" && ResidencyviewOrVisaviewRB == ""))
             {
-                MessageBox.Show("Please check the needed ");
+                MessageBox.Show("Please tick the necessary parameters");
+                return;
             }
             //Console.WriteLine(normalOrbetaRB);
             //Console.WriteLine(ResidencyviewOrVisaviewRB);
             //Console.WriteLine($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelT.Text}");
             //return;
             var Object = new JObject();
-            HttpCaller._EChannelhttpClient.DefaultRequestHeaders.Clear();
             // CodeEChannelT.Text = "4012019020046239";
             CleanECannelDataGridViews();
             if (EChannelUsernameT.Text == "" || EChannelPasswT.Text == "")
@@ -640,7 +642,6 @@ namespace EmirateHMBot
                 MessageBox.Show("Please put the code wich you will scrape data with");
                 return;
             }
-
             Object = JObject.Parse(File.ReadAllText("ECHannel headers.txt"));
             var refreshToken = (string)Object.SelectToken("RefreshToken");
             var userToken = (string)Object.SelectToken("UserToken");
@@ -681,7 +682,7 @@ namespace EmirateHMBot
                     headers.RefreshToken = (string)Object.SelectToken("refreshToken");
                     var jsonHeaders = JsonConvert.SerializeObject(headers, Formatting.Indented);
                     File.WriteAllText("ECHannel headers.txt", jsonHeaders);
-                    EchannelData = await HttpCaller.GetEchannelHtml($"https://echannels.moi.gov.ae/echannels/api/api/establishment/residency/{CodeEChannelT.Text}", headers.RefreshToken, headers.UserToken);
+                    EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelT.Text}", headers.RefreshToken, headers.UserToken);
                     if (EchannelData.error != null)
                     {
                         MessageBox.Show(EchannelData.error);
@@ -712,23 +713,30 @@ namespace EmirateHMBot
             //motherEnglish Name=motherEnglishName
             var FullNameArb = (string)Object.SelectToken("arabicName");
             //FullNameArb =arabicName
-            var dateOfBirth = ((string)Object.SelectToken("dateOfBirth")).Replace("00:00:00", "").Trim();
+            var dateOfBirth = ((string)Object.SelectToken("dateOfBirth")).Trim();
+            dateOfBirth = dateOfBirth.Substring(0, 10);
             //dateOfBirth=dateOfBirth
             var motherArabicName = (string)Object.SelectToken("motherArabicName");
             //motherArabicName motherArabicName
-            var passportIssueDate = ((string)Object.SelectToken("passportIssueDate")).Replace("00:00:00", "").Trim();
+            var passportIssueDate = ((string)Object.SelectToken("passportIssueDate")).Trim();
+            passportIssueDate = passportIssueDate.Substring(0, 10);
             //passportIssueDate= passportIssueDate
-            var passportExpiryDate = ((string)Object.SelectToken("passportExpiryDate")).Replace("00:00:00", "").Trim();
+            var passportExpiryDate = ((string)Object.SelectToken("passportExpiryDate")).Trim();
+            passportExpiryDate = passportExpiryDate.Substring(0, 10);
             //passportExpiryDate=passportExpiryDate
             var passportNumber = (string)Object.SelectToken("passportNumber");
             //passportNumber= passportNumber
             Console.WriteLine(passportIssueDate);
             if (ResidencyviewRadioB.Checked)
             {
-               var residencyIssueDate = ((string)Object.SelectToken("foreignResidenceIssueDate")).Replace("00:00:00", "").Trim();//foreignResidenceIssueDate
-               var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Replace("00:00:00", "").Trim();//foreignResidenceIssueDate
-                EChannelDGV.Rows[0].Cells[15].Value = residencyIssueDate;
-                EChannelDGV.Rows[0].Cells[16].Value = residencyExpireDate;
+                var residencyIssueDate = ((string)Object.SelectToken("foreignResidenceIssueDate")).Replace("00:00:00", "").Trim();//foreignResidenceIssueDate
+                residencyIssueDate = residencyIssueDate.Substring(0, 10);
+                var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Replace("00:00:00", "").Trim();//foreignResidenceIssueDate
+                residencyExpireDate = residencyExpireDate.Substring(0, 10);
+                EChannelDGV.Rows[15].Cells[1].Value = residencyIssueDate;
+                EChannelDGV.Rows[16].Cells[1].Value = residencyExpireDate;
+                Console.WriteLine(residencyIssueDate);
+                Console.WriteLine(residencyExpireDate);
             }
 
             EChannelDGV.Rows[0].Cells[1].Value = UnifiedNo;

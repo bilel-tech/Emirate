@@ -60,8 +60,7 @@ namespace EmirateHMBot.Models
         }
         public async Task<(string html, string error)> GetEchannelHtml(string url,string refreshToken,string userToken, int maxAttempts = 1)
         {
-            //this. refreshToken = refreshToken;
-            //this.userToken = userToken;
+            _EChannelhttpClient.DefaultRequestHeaders.Clear();
             _EChannelhttpClient.DefaultRequestHeaders.Add("refreshToken", refreshToken);
             _EChannelhttpClient.DefaultRequestHeaders.Add("userToken", userToken);
             //_EChannelhttpClient.DefaultRequestHeaders.Add("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36");

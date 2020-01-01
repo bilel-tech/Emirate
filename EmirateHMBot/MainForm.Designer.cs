@@ -185,7 +185,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 2;
+            this.metroTabControl2.SelectedIndex = 0;
             this.metroTabControl2.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -436,7 +436,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 2;
+            this.metroTabControl3.SelectedIndex = 0;
             this.metroTabControl3.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -546,8 +546,7 @@
             this.EChannelPasswT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.EChannelPasswT.CustomButton.UseSelectable = true;
             this.EChannelPasswT.CustomButton.Visible = false;
-            this.EChannelPasswT.Lines = new string[] {
-        "Samiha@123"};
+            this.EChannelPasswT.Lines = new string[0];
             this.EChannelPasswT.Location = new System.Drawing.Point(790, 182);
             this.EChannelPasswT.MaxLength = 32767;
             this.EChannelPasswT.Name = "EChannelPasswT";
@@ -559,7 +558,6 @@
             this.EChannelPasswT.ShortcutsEnabled = true;
             this.EChannelPasswT.Size = new System.Drawing.Size(199, 23);
             this.EChannelPasswT.TabIndex = 27;
-            this.EChannelPasswT.Text = "Samiha@123";
             this.EChannelPasswT.UseSelectable = true;
             this.EChannelPasswT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.EChannelPasswT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -612,8 +610,7 @@
             this.EChannelUsernameT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.EChannelUsernameT.CustomButton.UseSelectable = true;
             this.EChannelUsernameT.CustomButton.Visible = false;
-            this.EChannelUsernameT.Lines = new string[] {
-        "samihabeauty5@gmail.com"};
+            this.EChannelUsernameT.Lines = new string[0];
             this.EChannelUsernameT.Location = new System.Drawing.Point(790, 139);
             this.EChannelUsernameT.MaxLength = 32767;
             this.EChannelUsernameT.Name = "EChannelUsernameT";
@@ -625,7 +622,6 @@
             this.EChannelUsernameT.ShortcutsEnabled = true;
             this.EChannelUsernameT.Size = new System.Drawing.Size(199, 23);
             this.EChannelUsernameT.TabIndex = 8;
-            this.EChannelUsernameT.Text = "samihabeauty5@gmail.com";
             this.EChannelUsernameT.UseSelectable = true;
             this.EChannelUsernameT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.EChannelUsernameT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
