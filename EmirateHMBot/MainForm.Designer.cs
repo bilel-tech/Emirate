@@ -216,7 +216,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 1;
             this.metroTabControl2.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -409,7 +409,7 @@
             this.MOHAPDGV.Name = "MOHAPDGV";
             this.MOHAPDGV.ReadOnly = true;
             this.MOHAPDGV.RowHeadersVisible = false;
-            this.MOHAPDGV.Size = new System.Drawing.Size(656, 510);
+            this.MOHAPDGV.Size = new System.Drawing.Size(656, 515);
             this.MOHAPDGV.TabIndex = 3;
             this.MOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
             this.MOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
@@ -453,7 +453,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 0;
+            this.metroTabControl4.SelectedIndex = 1;
             this.metroTabControl4.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -782,7 +782,7 @@
             this.MohreEidDGV.Name = "MohreEidDGV";
             this.MohreEidDGV.ReadOnly = true;
             this.MohreEidDGV.RowHeadersVisible = false;
-            this.MohreEidDGV.Size = new System.Drawing.Size(741, 526);
+            this.MohreEidDGV.Size = new System.Drawing.Size(741, 517);
             this.MohreEidDGV.TabIndex = 2;
             // 
             // metroTabPage12
@@ -812,7 +812,7 @@
             this.MohreMohreDGV.Name = "MohreMohreDGV";
             this.MohreMohreDGV.ReadOnly = true;
             this.MohreMohreDGV.RowHeadersVisible = false;
-            this.MohreMohreDGV.Size = new System.Drawing.Size(656, 495);
+            this.MohreMohreDGV.Size = new System.Drawing.Size(656, 511);
             this.MohreMohreDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -839,7 +839,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 0;
+            this.metroTabControl3.SelectedIndex = 1;
             this.metroTabControl3.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -1181,7 +1181,7 @@
             this.EchanMohreDgview.Name = "EchanMohreDgview";
             this.EchanMohreDgview.ReadOnly = true;
             this.EchanMohreDgview.RowHeadersVisible = false;
-            this.EchanMohreDgview.Size = new System.Drawing.Size(656, 510);
+            this.EchanMohreDgview.Size = new System.Drawing.Size(656, 515);
             this.EchanMohreDgview.TabIndex = 3;
             this.EchanMohreDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
             // 
