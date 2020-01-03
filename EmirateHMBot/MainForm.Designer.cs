@@ -172,7 +172,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1033, 616);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -216,7 +216,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 1;
+            this.metroTabControl2.SelectedIndex = 0;
             this.metroTabControl2.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -303,7 +303,8 @@
             this.CodeT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.CodeT.CustomButton.UseSelectable = true;
             this.CodeT.CustomButton.Visible = false;
-            this.CodeT.Lines = new string[0];
+            this.CodeT.Lines = new string[] {
+        "84906512"};
             this.CodeT.Location = new System.Drawing.Point(796, 76);
             this.CodeT.MaxLength = 32767;
             this.CodeT.Name = "CodeT";
@@ -315,6 +316,7 @@
             this.CodeT.ShortcutsEnabled = true;
             this.CodeT.Size = new System.Drawing.Size(199, 23);
             this.CodeT.TabIndex = 8;
+            this.CodeT.Text = "84906512";
             this.CodeT.UseSelectable = true;
             this.CodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.CodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -392,7 +394,7 @@
             this.metroTabPage6.Name = "metroTabPage6";
             this.metroTabPage6.Size = new System.Drawing.Size(1017, 526);
             this.metroTabPage6.TabIndex = 2;
-            this.metroTabPage6.Text = "MOHRE";
+            this.metroTabPage6.Text = "MOHAP";
             this.metroTabPage6.VerticalScrollbarBarColor = true;
             this.metroTabPage6.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage6.VerticalScrollbarSize = 10;
@@ -453,7 +455,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 1;
+            this.metroTabControl4.SelectedIndex = 0;
             this.metroTabControl4.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -524,7 +526,8 @@
             this.PersonCodeT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.PersonCodeT.CustomButton.UseSelectable = true;
             this.PersonCodeT.CustomButton.Visible = false;
-            this.PersonCodeT.Lines = new string[0];
+            this.PersonCodeT.Lines = new string[] {
+        "01428078436189"};
             this.PersonCodeT.Location = new System.Drawing.Point(796, 248);
             this.PersonCodeT.MaxLength = 32767;
             this.PersonCodeT.Name = "PersonCodeT";
@@ -536,6 +539,7 @@
             this.PersonCodeT.ShortcutsEnabled = true;
             this.PersonCodeT.Size = new System.Drawing.Size(199, 23);
             this.PersonCodeT.TabIndex = 33;
+            this.PersonCodeT.Text = "01428078436189";
             this.PersonCodeT.UseSelectable = true;
             this.PersonCodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PersonCodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -564,7 +568,8 @@
             this.CompanieCodeT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.CompanieCodeT.CustomButton.UseSelectable = true;
             this.CompanieCodeT.CustomButton.Visible = false;
-            this.CompanieCodeT.Lines = new string[0];
+            this.CompanieCodeT.Lines = new string[] {
+        "1"};
             this.CompanieCodeT.Location = new System.Drawing.Point(796, 204);
             this.CompanieCodeT.MaxLength = 32767;
             this.CompanieCodeT.Name = "CompanieCodeT";
@@ -576,6 +581,7 @@
             this.CompanieCodeT.ShortcutsEnabled = true;
             this.CompanieCodeT.Size = new System.Drawing.Size(199, 23);
             this.CompanieCodeT.TabIndex = 31;
+            this.CompanieCodeT.Text = "1";
             this.CompanieCodeT.UseSelectable = true;
             this.CompanieCodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.CompanieCodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -604,7 +610,8 @@
             this.NationalityT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.NationalityT.CustomButton.UseSelectable = true;
             this.NationalityT.CustomButton.Visible = false;
-            this.NationalityT.Lines = new string[0];
+            this.NationalityT.Lines = new string[] {
+        "14"};
             this.NationalityT.Location = new System.Drawing.Point(796, 162);
             this.NationalityT.MaxLength = 32767;
             this.NationalityT.Name = "NationalityT";
@@ -616,6 +623,7 @@
             this.NationalityT.ShortcutsEnabled = true;
             this.NationalityT.Size = new System.Drawing.Size(199, 23);
             this.NationalityT.TabIndex = 29;
+            this.NationalityT.Text = "14";
             this.NationalityT.UseSelectable = true;
             this.NationalityT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.NationalityT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -644,7 +652,8 @@
             this.PassWordMohreT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.PassWordMohreT.CustomButton.UseSelectable = true;
             this.PassWordMohreT.CustomButton.Visible = false;
-            this.PassWordMohreT.Lines = new string[0];
+            this.PassWordMohreT.Lines = new string[] {
+        "test@12345"};
             this.PassWordMohreT.Location = new System.Drawing.Point(796, 118);
             this.PassWordMohreT.MaxLength = 32767;
             this.PassWordMohreT.Name = "PassWordMohreT";
@@ -656,6 +665,7 @@
             this.PassWordMohreT.ShortcutsEnabled = true;
             this.PassWordMohreT.Size = new System.Drawing.Size(199, 23);
             this.PassWordMohreT.TabIndex = 27;
+            this.PassWordMohreT.Text = "test@12345";
             this.PassWordMohreT.UseSelectable = true;
             this.PassWordMohreT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PassWordMohreT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -708,7 +718,8 @@
             this.UserNameMohreT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.UserNameMohreT.CustomButton.UseSelectable = true;
             this.UserNameMohreT.CustomButton.Visible = false;
-            this.UserNameMohreT.Lines = new string[0];
+            this.UserNameMohreT.Lines = new string[] {
+        "traininguser1"};
             this.UserNameMohreT.Location = new System.Drawing.Point(796, 76);
             this.UserNameMohreT.MaxLength = 32767;
             this.UserNameMohreT.Name = "UserNameMohreT";
@@ -720,6 +731,7 @@
             this.UserNameMohreT.ShortcutsEnabled = true;
             this.UserNameMohreT.Size = new System.Drawing.Size(199, 23);
             this.UserNameMohreT.TabIndex = 8;
+            this.UserNameMohreT.Text = "traininguser1";
             this.UserNameMohreT.UseSelectable = true;
             this.UserNameMohreT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.UserNameMohreT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -795,7 +807,7 @@
             this.metroTabPage12.Name = "metroTabPage12";
             this.metroTabPage12.Size = new System.Drawing.Size(1017, 526);
             this.metroTabPage12.TabIndex = 2;
-            this.metroTabPage12.Text = "MOHRE";
+            this.metroTabPage12.Text = "MOHAP";
             this.metroTabPage12.VerticalScrollbarBarColor = true;
             this.metroTabPage12.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage12.VerticalScrollbarSize = 10;
@@ -812,7 +824,7 @@
             this.MohreMohreDGV.Name = "MohreMohreDGV";
             this.MohreMohreDGV.ReadOnly = true;
             this.MohreMohreDGV.RowHeadersVisible = false;
-            this.MohreMohreDGV.Size = new System.Drawing.Size(656, 511);
+            this.MohreMohreDGV.Size = new System.Drawing.Size(656, 515);
             this.MohreMohreDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -839,7 +851,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 1;
+            this.metroTabControl3.SelectedIndex = 0;
             this.metroTabControl3.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -1164,7 +1176,7 @@
             this.metroTabPage9.Name = "metroTabPage9";
             this.metroTabPage9.Size = new System.Drawing.Size(1017, 526);
             this.metroTabPage9.TabIndex = 2;
-            this.metroTabPage9.Text = "MOHRE";
+            this.metroTabPage9.Text = "MOHAP";
             this.metroTabPage9.VerticalScrollbarBarColor = true;
             this.metroTabPage9.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage9.VerticalScrollbarSize = 10;
