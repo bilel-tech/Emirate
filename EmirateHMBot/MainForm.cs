@@ -82,7 +82,7 @@ namespace EmirateHMBot
             //allow other threads to modify UI as long as its one thread only
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
-             _=Task.Run(LoginToMohre);
+            _=Task.Run(LoginToMohre);
 
             PermitDGV.ColumnCount = 2;
 
@@ -190,7 +190,7 @@ namespace EmirateHMBot
             MOHAPDGV.Rows[7].Cells[0].Value = "Residence Issue Date";
             MOHAPDGV.Rows[8].Cells[0].Value = "Residence Expiry Date";
             MOHAPDGV.Rows[9].Cells[0].Value = "Passport Number";
-            MOHAPDGV.Rows[10].Cells[0].Value = "Passport Issue place";
+            MOHAPDGV.Rows[10].Cells[0].Value = "Passport Issue Place";
             MOHAPDGV.Rows[11].Cells[0].Value = "Passport Issue Date";
             MOHAPDGV.Rows[12].Cells[0].Value = "Passport Expiry Date";
             MOHAPDGV.Rows[13].Cells[0].Value = "Nationality";
@@ -316,7 +316,7 @@ namespace EmirateHMBot
             EchanMohreDgview.Rows[7].Cells[0].Value = "Residence Issue Date";
             EchanMohreDgview.Rows[8].Cells[0].Value = "Residence Expiry Date";
             EchanMohreDgview.Rows[9].Cells[0].Value = "Passport Number";
-            EchanMohreDgview.Rows[10].Cells[0].Value = "Passport Issue place";
+            EchanMohreDgview.Rows[10].Cells[0].Value = "Passport Issue Place";
             EchanMohreDgview.Rows[11].Cells[0].Value = "Passport Issue Date";
             EchanMohreDgview.Rows[12].Cells[0].Value = "Passport Expiry Date";
             EchanMohreDgview.Rows[13].Cells[0].Value = "Nationality";
@@ -654,8 +654,8 @@ namespace EmirateHMBot
                         MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                         return;
                     }
-                   
-                   
+
+
                 }
             }
             else
@@ -685,7 +685,7 @@ namespace EmirateHMBot
                         MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                         return;
                     }
-                   
+
                 }
             }
             else
@@ -714,7 +714,7 @@ namespace EmirateHMBot
                         MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                         return;
                     }
-                   
+
                 }
             }
             else
@@ -743,7 +743,7 @@ namespace EmirateHMBot
                         MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                         return;
                     }
-                   
+
                 }
             }
             else
@@ -772,7 +772,7 @@ namespace EmirateHMBot
                         MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                         return;
                     }
-                   
+
                 }
             }
             else
@@ -780,7 +780,7 @@ namespace EmirateHMBot
                 MOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
             }
             var worPhone = "";
-            if ( PermitDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
+            if (PermitDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
             {
                 worPhone = PermitDGV.Rows[18].Cells[1].Value + "";
                 worPhone = worPhone.Substring(3);
@@ -801,7 +801,7 @@ namespace EmirateHMBot
             MOHAPDGV.Rows[14].Cells[1].Value = PermitDGV.Rows[2].Cells[1].Value;
             MOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
             MOHAPDGV.Rows[17].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
-            MOHAPDGV.Rows[10].Cells[1].Value= MOHAPDGV.Rows[13].Cells[1].Value;
+            MOHAPDGV.Rows[10].Cells[1].Value = MOHAPDGV.Rows[13].Cells[1].Value;
         }
 
         async Task LoginToMohre()
@@ -887,18 +887,16 @@ namespace EmirateHMBot
                 Driver.FindElementById("txtCardNo").SendKeys(PersonCodeT.Text);
                 Driver.FindElementById("btnGo").Click();
                 Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
-                var companyName = Driver.FindElementById("ctrlComInfo_lblCompanyNameEnglish").Text;
-                var personalNameArabic = FindElementByXPath("//td[contains(text(),'Person Name(Arabic)')]/following-sibling::td/input")?.GetAttribute("value");
-                var personalNameEnglish = FindElementByXPath("//td[contains(text(),'Person Name(English)')]/following-sibling::td/input")?.GetAttribute("value");
-                var nationality = Driver.FindElementById("ctrlNationality_txtDescription").GetAttribute("value");
-                var gender = FindElementByXPath("//td[contains(text(),'Gender')]/following-sibling::td//option[@selected]")?.Text;
-                var birthDate = FindElementByXPath("//td[contains(text(),'Birth Date')]/following-sibling::td//input")?.GetAttribute("value");
-                var birthPlaceArabic = FindElementByXPath("//td[contains(text(),'Birth Place(Arabic)')]/following-sibling::td/input")?.GetAttribute("value");
-                var birthPlaceEnglish = FindElementByXPath("//td[contains(text(),'Birth Place(English)')]/following-sibling::td/input")?.GetAttribute("value");
-                var passportNumber = FindElementByXPath("//td[contains(text(),'Passport No')]/following-sibling::td/input")?.GetAttribute("value");
-                var passportIssueDate = FindElementByXPath("//td[contains(text(),'Passport Issue Date')]/following-sibling::td//input")?.GetAttribute("value");
-                var passportExpiryDate = FindElementByXPath("//td[contains(text(),'Passport Expiry Date')]/following-sibling::td//input")?.GetAttribute("value");
-
+                var personalNameArabic = FindElementByXPath("//input[@id='txtPER_NAME_ARB']")?.GetAttribute("value");
+                var personalNameEnglish = FindElementByXPath("//input[@id='txtPER_NAME_ENG']")?.GetAttribute("value");
+                var nationality = Driver.FindElementById("txtPASSPORT_PLACE_ENG").GetAttribute("value");
+                var gender = FindElementByXPath("//select[@id='drpGENDER']/option[@selected]")?.Text;
+                var birthDate = FindElementByXPath("//input[@id='txtBIRTH_DATE']")?.GetAttribute("value");
+                var birthPlaceArabic = FindElementByXPath("//input[@id='txBIRTH_PLACE_ARB']")?.GetAttribute("value");
+                var birthPlaceEnglish = FindElementByXPath("//input[@id='txtBIRTH_PLACE_ENG']")?.GetAttribute("value");
+                var passportNumber = FindElementByXPath("//input[@id='txtPASSPORT_NO']")?.GetAttribute("value");
+                var passportIssueDate = FindElementByXPath("//input[@id='txtPASSPORT_ISS']")?.GetAttribute("value");
+                var passportExpiryDate = FindElementByXPath("//input[@id='txtPASSPORT_EXP']")?.GetAttribute("value");
                 MohreDGV.Rows[1].Cells[1].Value = nationality;
                 MohreDGV.Rows[2].Cells[1].Value = gender;
                 MohreDGV.Rows[3].Cells[1].Value = personalNameArabic;
@@ -909,8 +907,35 @@ namespace EmirateHMBot
                 MohreDGV.Rows[10].Cells[1].Value = passportNumber;
                 MohreDGV.Rows[11].Cells[1].Value = passportIssueDate;
                 MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
-                MohreDGV.Rows[17].Cells[1].Value = companyName;
-
+                try
+                {
+                    Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/arabic/services.aspx?groupid=12");
+                    try
+                    {
+                        Driver.ExecuteScript("popUp('companyEntryLC.aspx?fCode=72','72')");
+                    }
+                    catch (Exception e)
+                    {
+                        //it mean we need to login again
+                        Console.WriteLine(e);
+                        await LoginToMohre();
+                        Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/arabic/services.aspx?groupid=12");
+                        Driver.ExecuteScript("popUp('companyEntryLC.aspx?fCode=72','72')");
+                    }
+                    Driver.FindElementById("ctrlNationality_txtCode").SendKeys(NationalityT.Text);
+                    Driver.FindElementById("txtCompanyNumber").Click();
+                    Driver.FindElementById("txtCompanyNumber").SendKeys(CompanieCodeT.Text);
+                    Driver.FindElementById("txtCardNo").SendKeys(PersonCodeT.Text);
+                    await Task.Delay(500);
+                    Driver.FindElementById("btnGo").Click();
+                    Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+                    var companyName = Driver.FindElement(By.XPath("//span[@id='ctrlComInfo_lblCompanyNameArabic']")).Text;
+                    MohreDGV.Rows[17].Cells[1].Value = companyName;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
                 //todo Put the data to the UI
                 Driver.Close();
                 Driver.SwitchTo().Window(mainWindowHandler);
@@ -930,7 +955,7 @@ namespace EmirateHMBot
                 try
                 {
                     DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreEidDGV.Rows[15].Cells[1].Value = MohreDGV.Rows[15].Cells[1].Value;
+                    MohreEidDGV.Rows[15].Cells[1].Value = dateOfBirthResult.ToString("dd/MM/yyy");
                 }
                 catch (Exception)
                 {
@@ -938,6 +963,7 @@ namespace EmirateHMBot
                     MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
                     return;
                 }
+
             }
             else
             {
@@ -945,11 +971,12 @@ namespace EmirateHMBot
             }
             if ((MohreDGV.Rows[16].Cells[1].Value + "").ToString().Length > 1)
             {
-
+                Console.WriteLine("hi");
                 try
                 {
-                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreEidDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[16].Cells[1].Value;
+                    DateTime expDateResult = DateTime.ParseExact(MohreDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var expDate = expDateResult.ToString("dd/MM/yyyy");
+                    MohreEidDGV.Rows[16].Cells[1].Value = expDate;
                 }
                 catch (Exception)
                 {
@@ -962,51 +989,14 @@ namespace EmirateHMBot
             {
                 MohreEidDGV.Rows[16].Cells[1].Value = "";
             }
-            if ((MohreDGV.Rows[16].Cells[1].Value + "").ToString().Length > 1)
-            {
-
-                try
-                {
-                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreMohreDGV.Rows[7].Cells[1].Value = MohreDGV.Rows[16].Cells[1].Value;
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
-                    return;
-                }
-            }
-            else
-            {
-                MohreMohreDGV.Rows[7].Cells[1].Value = "";
-            }
             if ((MohreDGV.Rows[15].Cells[1].Value + "").ToString().Length > 1)
             {
 
                 try
                 {
-                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreMohreDGV.Rows[8].Cells[1].Value = MohreDGV.Rows[16].Cells[1].Value;
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
-                    return;
-                }
-            }
-            else
-            {
-                MohreMohreDGV.Rows[8].Cells[1].Value = "";
-            }
-            if ((MohreDGV.Rows[15].Cells[1].Value + "").ToString().Length > 1)
-            {
-
-                try
-                {
-                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreMohreDGV.Rows[7].Cells[1].Value = MohreDGV.Rows[15].Cells[1].Value;
+                    DateTime residenceIssueDate = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var issuDate = residenceIssueDate.ToString("yyyy/MM/dd");//done
+                    MohreMohreDGV.Rows[7].Cells[1].Value = issuDate;//residenceIssuedate
                 }
                 catch (Exception)
                 {
@@ -1024,8 +1014,9 @@ namespace EmirateHMBot
 
                 try
                 {
-                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    MohreMohreDGV.Rows[8].Cells[1].Value = MohreDGV.Rows[16].Cells[1].Value;
+                    DateTime EXPDate = DateTime.ParseExact(MohreDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var expDate = EXPDate.ToString("yyyy/MM/dd");//done
+                    MohreMohreDGV.Rows[8].Cells[1].Value = expDate;//residenceIssueDate
                 }
                 catch (Exception)
                 {
@@ -1037,6 +1028,66 @@ namespace EmirateHMBot
             else
             {
                 MohreMohreDGV.Rows[8].Cells[1].Value = "";
+            }
+            if ((MohreDGV.Rows[9].Cells[1].Value + "").ToString().Length > 1)
+            {
+
+                try
+                {
+                    DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[9].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var dateOfB = dateOfBirthResult.ToString("yyyy/MM/dd");
+                    MohreMohreDGV.Rows[15].Cells[1].Value = dateOfB;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
+                    return;
+                }
+            }
+            else
+            {
+                MohreMohreDGV.Rows[15].Cells[1].Value = "";
+            }
+            if ((MohreDGV.Rows[11].Cells[1].Value + "").ToString().Length > 1)
+            {
+
+                try
+                {
+                    DateTime passportIssueDate = DateTime.ParseExact(MohreDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var passpoetIssueD = passportIssueDate.ToString("yyyy/MM/dd");
+                    MohreMohreDGV.Rows[11].Cells[1].Value = passpoetIssueD;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
+                    return;
+                }
+            }
+            else
+            {
+                MohreMohreDGV.Rows[11].Cells[1].Value = "";
+            }
+            if ((MohreDGV.Rows[12].Cells[1].Value + "").ToString().Length > 1)
+            {
+
+                try
+                {
+                    DateTime passportIssueDate = DateTime.ParseExact(MohreDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    var passpoetIssueD = passportIssueDate.ToString("yyyy/MM/dd");
+                    MohreMohreDGV.Rows[12].Cells[1].Value = passpoetIssueD;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("the input date format is not valid the format should be: \"dd / MM / yyyy\"");
+                    return;
+                }
+            }
+            else
+            {
+                MohreMohreDGV.Rows[12].Cells[1].Value = "";
             }
             #endregion
             MohreEidDGV.Rows[0].Cells[1].Value = MohreDGV.Rows[0].Cells[1].Value;//EID
@@ -1063,14 +1114,14 @@ namespace EmirateHMBot
                 /// add"-"after the third digit in phone number       
             }
             else
-                MohreEidDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;
+                MohreEidDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;
 
 
             var worPhone = "";
-            if (MohreDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length>=10)
+            if (MohreDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
             {
-                 worPhone = MohreDGV.Rows[18].Cells[1].Value + "";
-                worPhone = worPhone.Substring(3); 
+                worPhone = MohreDGV.Rows[18].Cells[1].Value + "";
+                worPhone = worPhone.Substring(3);
             }
             else
                 worPhone = "";
@@ -1083,9 +1134,9 @@ namespace EmirateHMBot
             MohreMohreDGV.Rows[5].Cells[1].Value = MohreDGV.Rows[13].Cells[1].Value;
             MohreMohreDGV.Rows[6].Cells[1].Value = MohreDGV.Rows[14].Cells[1].Value;
             MohreMohreDGV.Rows[9].Cells[1].Value = MohreDGV.Rows[10].Cells[1].Value;
-            MohreMohreDGV.Rows[11].Cells[1].Value = MohreDGV.Rows[11].Cells[1].Value;
-            MohreMohreDGV.Rows[12].Cells[1].Value = MohreDGV.Rows[12].Cells[1].Value;
-            MohreMohreDGV.Rows[15].Cells[1].Value = MohreDGV.Rows[9].Cells[1].Value;
+            //MohreMohreDGV.Rows[11].Cells[1].Value = MohreDGV.Rows[11].Cells[1].Value;
+            //MohreMohreDGV.Rows[12].Cells[1].Value = MohreDGV.Rows[12].Cells[1].Value;
+            //MohreMohreDGV.Rows[15].Cells[1].Value = MohreDGV.Rows[9].Cells[1].Value;
             MohreMohreDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[7].Cells[1].Value;
             MohreMohreDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[8].Cells[1].Value;
             MohreMohreDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[19].Cells[1].Value;
@@ -1251,7 +1302,7 @@ namespace EmirateHMBot
                 residencyIssueDate = residencyIssueDate.Substring(0, 10);
                 DateTime residencyIssueDateResult = DateTime.ParseExact(residencyIssueDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 residencyIssueDate = residencyIssueDateResult.ToString("dd/MM/yyyy");
-              
+
                 var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Trim();
                 residencyExpireDate = residencyExpireDate.Substring(0, 10);
                 DateTime residencyExpireDateResult = DateTime.ParseExact(residencyExpireDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -1542,9 +1593,9 @@ namespace EmirateHMBot
             }
 
             var worPhone = "";
-            if (EChannelDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length>=10)
+            if (EChannelDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
             {
-                 worPhone = EChannelDGV.Rows[18].Cells[1].Value + "";
+                worPhone = EChannelDGV.Rows[18].Cells[1].Value + "";
                 worPhone = worPhone.Substring(3);
             }
             else
@@ -1559,8 +1610,8 @@ namespace EmirateHMBot
             EchanMohreDgview.Rows[9].Cells[1].Value = EChannelDGV.Rows[10].Cells[1].Value;
             EchanMohreDgview.Rows[13].Cells[1].Value = EChannelDGV.Rows[1].Cells[1].Value;
             EchanMohreDgview.Rows[14].Cells[1].Value = EChannelDGV.Rows[2].Cells[1].Value;
-            EchanMohreDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
-            EchanMohreDgview.Rows[17].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
+            EchanMohreDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
+            EchanMohreDgview.Rows[17].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
             EchanMohreDgview.Rows[10].Cells[1].Value = EchanMohreDgview.Rows[13].Cells[1].Value;
         }
 

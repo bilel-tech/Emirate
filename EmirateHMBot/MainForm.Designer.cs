@@ -172,7 +172,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(1033, 616);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -569,7 +569,7 @@
             this.CompanieCodeT.CustomButton.UseSelectable = true;
             this.CompanieCodeT.CustomButton.Visible = false;
             this.CompanieCodeT.Lines = new string[] {
-        "1"};
+        "893387"};
             this.CompanieCodeT.Location = new System.Drawing.Point(796, 204);
             this.CompanieCodeT.MaxLength = 32767;
             this.CompanieCodeT.Name = "CompanieCodeT";
@@ -581,7 +581,7 @@
             this.CompanieCodeT.ShortcutsEnabled = true;
             this.CompanieCodeT.Size = new System.Drawing.Size(199, 23);
             this.CompanieCodeT.TabIndex = 31;
-            this.CompanieCodeT.Text = "1";
+            this.CompanieCodeT.Text = "893387";
             this.CompanieCodeT.UseSelectable = true;
             this.CompanieCodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.CompanieCodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
