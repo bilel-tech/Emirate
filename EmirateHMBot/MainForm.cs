@@ -83,6 +83,14 @@ namespace EmirateHMBot
             //allow other threads to modify UI as long as its one thread only
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
+            foreach (var process in Process.GetProcessesByName("chromedriver"))
+            {
+                process.Kill();
+            }
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.CloseMainWindow();
+            }
             _ = Task.Run(LoginToMohre);
 
             PermitDGV.ColumnCount = 2;
@@ -819,7 +827,7 @@ namespace EmirateHMBot
             var chromeOptions = new ChromeOptions();
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
-            chromeOptions.AddArguments("headless");
+            //chromeOptions.AddArguments("headless");
             Driver = new ChromeDriver(chromeDriverService, chromeOptions);
             Driver.Navigate().GoToUrl(" https://eservices.mohre.gov.ae/SmartTasheel/home/index?lang=en-gb#");
             Driver.ExecuteScript("CloseMessagePopUp();");
@@ -1756,14 +1764,6 @@ namespace EmirateHMBot
                 MessageBox.Show("please add the required image");
                 return;
             }
-            foreach (var process in Process.GetProcessesByName("chromedriver"))
-            {
-                process.Kill();
-            }
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.CloseMainWindow();
-            }
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
@@ -1822,14 +1822,6 @@ namespace EmirateHMBot
                 MessageBox.Show("please add the required image");
                 return;
             }
-            foreach (var process in Process.GetProcessesByName("chromedriver"))
-            {
-                process.Kill();
-            }
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.CloseMainWindow();
-            }
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
@@ -1883,14 +1875,7 @@ namespace EmirateHMBot
                 MessageBox.Show("please add the required image");
                 return;
             }
-            foreach (var process in Process.GetProcessesByName("chromedriver"))
-            {
-                process.Kill();
-            }
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.CloseMainWindow();
-            }
+          
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
@@ -1899,6 +1884,7 @@ namespace EmirateHMBot
             op.AddArguments("--disable-dev-shm-usage");
             op.AddArguments("--disable-setuid-sandbox");
             var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
 
