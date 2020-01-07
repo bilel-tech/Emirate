@@ -47,24 +47,24 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.EID2DGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
-            this.MOHAPDGV = new System.Windows.Forms.DataGridView();
+            this.PermitMOHAPDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl4 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage10 = new MetroFramework.Controls.MetroTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
-            this.PersonCodeT = new MetroFramework.Controls.MetroTextBox();
+            this.PersonCodeTI = new MetroFramework.Controls.MetroTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.CompanieCodeT = new MetroFramework.Controls.MetroTextBox();
+            this.CompanieCodeTI = new MetroFramework.Controls.MetroTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.NationalityT = new MetroFramework.Controls.MetroTextBox();
+            this.NationalityTI = new MetroFramework.Controls.MetroTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.PassWordMohreT = new MetroFramework.Controls.MetroTextBox();
+            this.PassWordMohreTI = new MetroFramework.Controls.MetroTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.FillFormsMohreB = new MetroFramework.Controls.MetroButton();
             this.ScrapeMohreB = new MetroFramework.Controls.MetroButton();
-            this.UserNameMohreT = new MetroFramework.Controls.MetroTextBox();
+            this.UserNameMohreTI = new MetroFramework.Controls.MetroTextBox();
             this.MohreDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage11 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
@@ -81,20 +81,34 @@
             this.NormalRadioB = new System.Windows.Forms.RadioButton();
             this.BetaRadioB = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.CodeEChannelT = new MetroFramework.Controls.MetroTextBox();
+            this.CodeEChannelTI = new MetroFramework.Controls.MetroTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.EChannelPasswT = new MetroFramework.Controls.MetroTextBox();
+            this.EChannelPasswTI = new MetroFramework.Controls.MetroTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.FillFormEChannelB = new MetroFramework.Controls.MetroButton();
             this.ScrapeEChannelB = new MetroFramework.Controls.MetroButton();
-            this.EChannelUsernameT = new MetroFramework.Controls.MetroTextBox();
+            this.EChannelUsernameTI = new MetroFramework.Controls.MetroTextBox();
             this.EChannelDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage8 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.SaveFromEID = new System.Windows.Forms.Button();
+            this.LabelEChannelEID = new System.Windows.Forms.Label();
+            this.ImgPathForEChannelEIDTextBoxI = new MetroFramework.Controls.MetroTextBox();
+            this.UploadImgEChannelEIDB = new System.Windows.Forms.Button();
             this.EChnEIDDgview = new System.Windows.Forms.DataGridView();
             this.metroTabPage9 = new MetroFramework.Controls.MetroTabPage();
+            this.SaveFromEChannelMOHAPB = new System.Windows.Forms.Button();
+            this.LabelEChannelMOHAP = new System.Windows.Forms.Label();
+            this.ImgPathForEChannelMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
+            this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchanMohreDgview = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SaveFromMohrelMOHAPB = new System.Windows.Forms.Button();
+            this.ImgPathForMohreMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
+            this.UploadImgMohreMohapB = new System.Windows.Forms.Button();
+            this.SaveFromPermitMOHAPB = new System.Windows.Forms.Button();
+            this.ImgPathForPermitMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
+            this.UploadImgPermitMohapB = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -107,7 +121,7 @@
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).BeginInit();
             this.metroTabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MOHAPDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroTabControl4.SuspendLayout();
@@ -172,7 +186,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1033, 616);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -216,7 +230,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 2;
             this.metroTabControl2.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -259,7 +273,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(723, 81);
+            this.label1.Location = new System.Drawing.Point(896, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 18);
             this.label1.TabIndex = 26;
@@ -267,9 +281,9 @@
             // 
             // FillFormsPermitB
             // 
-            this.FillFormsPermitB.Location = new System.Drawing.Point(739, 460);
+            this.FillFormsPermitB.Location = new System.Drawing.Point(896, 473);
             this.FillFormsPermitB.Name = "FillFormsPermitB";
-            this.FillFormsPermitB.Size = new System.Drawing.Size(122, 63);
+            this.FillFormsPermitB.Size = new System.Drawing.Size(118, 45);
             this.FillFormsPermitB.Style = MetroFramework.MetroColorStyle.Orange;
             this.FillFormsPermitB.TabIndex = 25;
             this.FillFormsPermitB.Text = "Fill forms";
@@ -279,9 +293,9 @@
             // 
             // ScrapePermitB
             // 
-            this.ScrapePermitB.Location = new System.Drawing.Point(892, 460);
+            this.ScrapePermitB.Location = new System.Drawing.Point(896, 413);
             this.ScrapePermitB.Name = "ScrapePermitB";
-            this.ScrapePermitB.Size = new System.Drawing.Size(122, 63);
+            this.ScrapePermitB.Size = new System.Drawing.Size(118, 45);
             this.ScrapePermitB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapePermitB.TabIndex = 24;
             this.ScrapePermitB.Text = "Scrape";
@@ -295,7 +309,7 @@
             // 
             // 
             this.CodeT.CustomButton.Image = null;
-            this.CodeT.CustomButton.Location = new System.Drawing.Point(177, 1);
+            this.CodeT.CustomButton.Location = new System.Drawing.Point(96, 1);
             this.CodeT.CustomButton.Name = "";
             this.CodeT.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.CodeT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -305,7 +319,7 @@
             this.CodeT.CustomButton.Visible = false;
             this.CodeT.Lines = new string[] {
         "84906512"};
-            this.CodeT.Location = new System.Drawing.Point(796, 76);
+            this.CodeT.Location = new System.Drawing.Point(896, 32);
             this.CodeT.MaxLength = 32767;
             this.CodeT.Name = "CodeT";
             this.CodeT.PasswordChar = '\0';
@@ -314,7 +328,7 @@
             this.CodeT.SelectionLength = 0;
             this.CodeT.SelectionStart = 0;
             this.CodeT.ShortcutsEnabled = true;
-            this.CodeT.Size = new System.Drawing.Size(199, 23);
+            this.CodeT.Size = new System.Drawing.Size(118, 23);
             this.CodeT.TabIndex = 8;
             this.CodeT.Text = "84906512";
             this.CodeT.UseSelectable = true;
@@ -332,7 +346,7 @@
             this.PermitDGV.Location = new System.Drawing.Point(3, 3);
             this.PermitDGV.Name = "PermitDGV";
             this.PermitDGV.RowHeadersVisible = false;
-            this.PermitDGV.Size = new System.Drawing.Size(653, 517);
+            this.PermitDGV.Size = new System.Drawing.Size(887, 515);
             this.PermitDGV.TabIndex = 0;
             this.PermitDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.PermitDGV_CellEndEditAsync);
             this.PermitDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitDGV_KeyPress);
@@ -379,14 +393,17 @@
             this.EID2DGV.Name = "EID2DGV";
             this.EID2DGV.ReadOnly = true;
             this.EID2DGV.RowHeadersVisible = false;
-            this.EID2DGV.Size = new System.Drawing.Size(741, 517);
+            this.EID2DGV.Size = new System.Drawing.Size(902, 517);
             this.EID2DGV.TabIndex = 2;
             this.EID2DGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EID2DGV_CellEndEditAsync);
             this.EID2DGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EID2DGV_KeyPress);
             // 
             // metroTabPage6
             // 
-            this.metroTabPage6.Controls.Add(this.MOHAPDGV);
+            this.metroTabPage6.Controls.Add(this.SaveFromPermitMOHAPB);
+            this.metroTabPage6.Controls.Add(this.ImgPathForPermitMohapTextBoxI);
+            this.metroTabPage6.Controls.Add(this.UploadImgPermitMohapB);
+            this.metroTabPage6.Controls.Add(this.PermitMOHAPDGV);
             this.metroTabPage6.HorizontalScrollbarBarColor = true;
             this.metroTabPage6.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage6.HorizontalScrollbarSize = 10;
@@ -399,22 +416,22 @@
             this.metroTabPage6.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage6.VerticalScrollbarSize = 10;
             // 
-            // MOHAPDGV
+            // PermitMOHAPDGV
             // 
-            this.MOHAPDGV.AllowUserToAddRows = false;
-            this.MOHAPDGV.AllowUserToDeleteRows = false;
-            this.MOHAPDGV.AllowUserToResizeColumns = false;
-            this.MOHAPDGV.AllowUserToResizeRows = false;
-            this.MOHAPDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MOHAPDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MOHAPDGV.Location = new System.Drawing.Point(3, 0);
-            this.MOHAPDGV.Name = "MOHAPDGV";
-            this.MOHAPDGV.ReadOnly = true;
-            this.MOHAPDGV.RowHeadersVisible = false;
-            this.MOHAPDGV.Size = new System.Drawing.Size(656, 515);
-            this.MOHAPDGV.TabIndex = 3;
-            this.MOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
-            this.MOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
+            this.PermitMOHAPDGV.AllowUserToAddRows = false;
+            this.PermitMOHAPDGV.AllowUserToDeleteRows = false;
+            this.PermitMOHAPDGV.AllowUserToResizeColumns = false;
+            this.PermitMOHAPDGV.AllowUserToResizeRows = false;
+            this.PermitMOHAPDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PermitMOHAPDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PermitMOHAPDGV.Location = new System.Drawing.Point(3, 0);
+            this.PermitMOHAPDGV.Name = "PermitMOHAPDGV";
+            this.PermitMOHAPDGV.ReadOnly = true;
+            this.PermitMOHAPDGV.RowHeadersVisible = false;
+            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 515);
+            this.PermitMOHAPDGV.TabIndex = 3;
+            this.PermitMOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
+            this.PermitMOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
             // 
             // metroTabPage2
             // 
@@ -455,7 +472,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 0;
+            this.metroTabControl4.SelectedIndex = 2;
             this.metroTabControl4.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -484,17 +501,17 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.PersonCodeT);
+            this.panel5.Controls.Add(this.PersonCodeTI);
             this.panel5.Controls.Add(this.label7);
-            this.panel5.Controls.Add(this.CompanieCodeT);
+            this.panel5.Controls.Add(this.CompanieCodeTI);
             this.panel5.Controls.Add(this.label8);
-            this.panel5.Controls.Add(this.NationalityT);
+            this.panel5.Controls.Add(this.NationalityTI);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.PassWordMohreT);
+            this.panel5.Controls.Add(this.PassWordMohreTI);
             this.panel5.Controls.Add(this.label6);
             this.panel5.Controls.Add(this.FillFormsMohreB);
             this.panel5.Controls.Add(this.ScrapeMohreB);
-            this.panel5.Controls.Add(this.UserNameMohreT);
+            this.panel5.Controls.Add(this.UserNameMohreTI);
             this.panel5.Controls.Add(this.MohreDGV);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
@@ -506,175 +523,173 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(663, 253);
+            this.label10.Location = new System.Drawing.Point(849, 217);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 18);
             this.label10.TabIndex = 34;
             this.label10.Text = "Person code:";
             // 
-            // PersonCodeT
+            // PersonCodeTI
             // 
             // 
             // 
             // 
-            this.PersonCodeT.CustomButton.Image = null;
-            this.PersonCodeT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.PersonCodeT.CustomButton.Name = "";
-            this.PersonCodeT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.PersonCodeT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PersonCodeT.CustomButton.TabIndex = 1;
-            this.PersonCodeT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PersonCodeT.CustomButton.UseSelectable = true;
-            this.PersonCodeT.CustomButton.Visible = false;
-            this.PersonCodeT.Lines = new string[] {
+            this.PersonCodeTI.CustomButton.Image = null;
+            this.PersonCodeTI.CustomButton.Location = new System.Drawing.Point(134, 1);
+            this.PersonCodeTI.CustomButton.Name = "";
+            this.PersonCodeTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.PersonCodeTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.PersonCodeTI.CustomButton.TabIndex = 1;
+            this.PersonCodeTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.PersonCodeTI.CustomButton.UseSelectable = true;
+            this.PersonCodeTI.CustomButton.Visible = false;
+            this.PersonCodeTI.Lines = new string[] {
         "01428078436189"};
-            this.PersonCodeT.Location = new System.Drawing.Point(796, 248);
-            this.PersonCodeT.MaxLength = 32767;
-            this.PersonCodeT.Name = "PersonCodeT";
-            this.PersonCodeT.PasswordChar = '\0';
-            this.PersonCodeT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.PersonCodeT.SelectedText = "";
-            this.PersonCodeT.SelectionLength = 0;
-            this.PersonCodeT.SelectionStart = 0;
-            this.PersonCodeT.ShortcutsEnabled = true;
-            this.PersonCodeT.Size = new System.Drawing.Size(199, 23);
-            this.PersonCodeT.TabIndex = 33;
-            this.PersonCodeT.Text = "01428078436189";
-            this.PersonCodeT.UseSelectable = true;
-            this.PersonCodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.PersonCodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.PersonCodeTI.Location = new System.Drawing.Point(852, 238);
+            this.PersonCodeTI.MaxLength = 32767;
+            this.PersonCodeTI.Name = "PersonCodeTI";
+            this.PersonCodeTI.PasswordChar = '\0';
+            this.PersonCodeTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.PersonCodeTI.SelectedText = "";
+            this.PersonCodeTI.SelectionLength = 0;
+            this.PersonCodeTI.SelectionStart = 0;
+            this.PersonCodeTI.ShortcutsEnabled = true;
+            this.PersonCodeTI.Size = new System.Drawing.Size(156, 23);
+            this.PersonCodeTI.TabIndex = 33;
+            this.PersonCodeTI.Text = "01428078436189";
+            this.PersonCodeTI.UseSelectable = true;
+            this.PersonCodeTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.PersonCodeTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(662, 209);
+            this.label7.Location = new System.Drawing.Point(851, 164);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(126, 18);
             this.label7.TabIndex = 32;
             this.label7.Text = "Company code:";
             // 
-            // CompanieCodeT
+            // CompanieCodeTI
             // 
             // 
             // 
             // 
-            this.CompanieCodeT.CustomButton.Image = null;
-            this.CompanieCodeT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.CompanieCodeT.CustomButton.Name = "";
-            this.CompanieCodeT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.CompanieCodeT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.CompanieCodeT.CustomButton.TabIndex = 1;
-            this.CompanieCodeT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.CompanieCodeT.CustomButton.UseSelectable = true;
-            this.CompanieCodeT.CustomButton.Visible = false;
-            this.CompanieCodeT.Lines = new string[] {
+            this.CompanieCodeTI.CustomButton.Image = null;
+            this.CompanieCodeTI.CustomButton.Location = new System.Drawing.Point(136, 1);
+            this.CompanieCodeTI.CustomButton.Name = "";
+            this.CompanieCodeTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.CompanieCodeTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.CompanieCodeTI.CustomButton.TabIndex = 1;
+            this.CompanieCodeTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.CompanieCodeTI.CustomButton.UseSelectable = true;
+            this.CompanieCodeTI.CustomButton.Visible = false;
+            this.CompanieCodeTI.Lines = new string[] {
         "893387"};
-            this.CompanieCodeT.Location = new System.Drawing.Point(796, 204);
-            this.CompanieCodeT.MaxLength = 32767;
-            this.CompanieCodeT.Name = "CompanieCodeT";
-            this.CompanieCodeT.PasswordChar = '\0';
-            this.CompanieCodeT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.CompanieCodeT.SelectedText = "";
-            this.CompanieCodeT.SelectionLength = 0;
-            this.CompanieCodeT.SelectionStart = 0;
-            this.CompanieCodeT.ShortcutsEnabled = true;
-            this.CompanieCodeT.Size = new System.Drawing.Size(199, 23);
-            this.CompanieCodeT.TabIndex = 31;
-            this.CompanieCodeT.Text = "893387";
-            this.CompanieCodeT.UseSelectable = true;
-            this.CompanieCodeT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.CompanieCodeT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.CompanieCodeTI.Location = new System.Drawing.Point(854, 185);
+            this.CompanieCodeTI.MaxLength = 32767;
+            this.CompanieCodeTI.Name = "CompanieCodeTI";
+            this.CompanieCodeTI.PasswordChar = '\0';
+            this.CompanieCodeTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.CompanieCodeTI.SelectedText = "";
+            this.CompanieCodeTI.SelectionLength = 0;
+            this.CompanieCodeTI.SelectionStart = 0;
+            this.CompanieCodeTI.ShortcutsEnabled = true;
+            this.CompanieCodeTI.Size = new System.Drawing.Size(158, 23);
+            this.CompanieCodeTI.TabIndex = 31;
+            this.CompanieCodeTI.Text = "893387";
+            this.CompanieCodeTI.UseSelectable = true;
+            this.CompanieCodeTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CompanieCodeTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(663, 167);
+            this.label8.Location = new System.Drawing.Point(849, 110);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 30;
             this.label8.Text = "Nationality:";
             // 
-            // NationalityT
+            // NationalityTI
             // 
             // 
             // 
             // 
-            this.NationalityT.CustomButton.Image = null;
-            this.NationalityT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.NationalityT.CustomButton.Name = "";
-            this.NationalityT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.NationalityT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.NationalityT.CustomButton.TabIndex = 1;
-            this.NationalityT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.NationalityT.CustomButton.UseSelectable = true;
-            this.NationalityT.CustomButton.Visible = false;
-            this.NationalityT.Lines = new string[] {
+            this.NationalityTI.CustomButton.Image = null;
+            this.NationalityTI.CustomButton.Location = new System.Drawing.Point(134, 1);
+            this.NationalityTI.CustomButton.Name = "";
+            this.NationalityTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.NationalityTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.NationalityTI.CustomButton.TabIndex = 1;
+            this.NationalityTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.NationalityTI.CustomButton.UseSelectable = true;
+            this.NationalityTI.CustomButton.Visible = false;
+            this.NationalityTI.Lines = new string[] {
         "14"};
-            this.NationalityT.Location = new System.Drawing.Point(796, 162);
-            this.NationalityT.MaxLength = 32767;
-            this.NationalityT.Name = "NationalityT";
-            this.NationalityT.PasswordChar = '\0';
-            this.NationalityT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.NationalityT.SelectedText = "";
-            this.NationalityT.SelectionLength = 0;
-            this.NationalityT.SelectionStart = 0;
-            this.NationalityT.ShortcutsEnabled = true;
-            this.NationalityT.Size = new System.Drawing.Size(199, 23);
-            this.NationalityT.TabIndex = 29;
-            this.NationalityT.Text = "14";
-            this.NationalityT.UseSelectable = true;
-            this.NationalityT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.NationalityT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.NationalityTI.Location = new System.Drawing.Point(854, 131);
+            this.NationalityTI.MaxLength = 32767;
+            this.NationalityTI.Name = "NationalityTI";
+            this.NationalityTI.PasswordChar = '\0';
+            this.NationalityTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.NationalityTI.SelectedText = "";
+            this.NationalityTI.SelectionLength = 0;
+            this.NationalityTI.SelectionStart = 0;
+            this.NationalityTI.ShortcutsEnabled = true;
+            this.NationalityTI.Size = new System.Drawing.Size(156, 23);
+            this.NationalityTI.TabIndex = 29;
+            this.NationalityTI.Text = "14";
+            this.NationalityTI.UseSelectable = true;
+            this.NationalityTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.NationalityTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(663, 123);
+            this.label5.Location = new System.Drawing.Point(853, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 18);
             this.label5.TabIndex = 28;
             this.label5.Text = "PassWord:";
             // 
-            // PassWordMohreT
+            // PassWordMohreTI
             // 
             // 
             // 
             // 
-            this.PassWordMohreT.CustomButton.Image = null;
-            this.PassWordMohreT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.PassWordMohreT.CustomButton.Name = "";
-            this.PassWordMohreT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.PassWordMohreT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.PassWordMohreT.CustomButton.TabIndex = 1;
-            this.PassWordMohreT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.PassWordMohreT.CustomButton.UseSelectable = true;
-            this.PassWordMohreT.CustomButton.Visible = false;
-            this.PassWordMohreT.Lines = new string[] {
-        "test@12345"};
-            this.PassWordMohreT.Location = new System.Drawing.Point(796, 118);
-            this.PassWordMohreT.MaxLength = 32767;
-            this.PassWordMohreT.Name = "PassWordMohreT";
-            this.PassWordMohreT.PasswordChar = '\0';
-            this.PassWordMohreT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.PassWordMohreT.SelectedText = "";
-            this.PassWordMohreT.SelectionLength = 0;
-            this.PassWordMohreT.SelectionStart = 0;
-            this.PassWordMohreT.ShortcutsEnabled = true;
-            this.PassWordMohreT.Size = new System.Drawing.Size(199, 23);
-            this.PassWordMohreT.TabIndex = 27;
-            this.PassWordMohreT.Text = "test@12345";
-            this.PassWordMohreT.UseSelectable = true;
-            this.PassWordMohreT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.PassWordMohreT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.PassWordMohreTI.CustomButton.Image = null;
+            this.PassWordMohreTI.CustomButton.Location = new System.Drawing.Point(136, 1);
+            this.PassWordMohreTI.CustomButton.Name = "";
+            this.PassWordMohreTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.PassWordMohreTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.PassWordMohreTI.CustomButton.TabIndex = 1;
+            this.PassWordMohreTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.PassWordMohreTI.CustomButton.UseSelectable = true;
+            this.PassWordMohreTI.CustomButton.Visible = false;
+            this.PassWordMohreTI.Lines = new string[0];
+            this.PassWordMohreTI.Location = new System.Drawing.Point(854, 81);
+            this.PassWordMohreTI.MaxLength = 32767;
+            this.PassWordMohreTI.Name = "PassWordMohreTI";
+            this.PassWordMohreTI.PasswordChar = '\0';
+            this.PassWordMohreTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.PassWordMohreTI.SelectedText = "";
+            this.PassWordMohreTI.SelectionLength = 0;
+            this.PassWordMohreTI.SelectionStart = 0;
+            this.PassWordMohreTI.ShortcutsEnabled = true;
+            this.PassWordMohreTI.Size = new System.Drawing.Size(158, 23);
+            this.PassWordMohreTI.TabIndex = 27;
+            this.PassWordMohreTI.UseSelectable = true;
+            this.PassWordMohreTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.PassWordMohreTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(662, 81);
+            this.label6.Location = new System.Drawing.Point(851, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 18);
             this.label6.TabIndex = 26;
@@ -682,9 +697,9 @@
             // 
             // FillFormsMohreB
             // 
-            this.FillFormsMohreB.Location = new System.Drawing.Point(739, 460);
+            this.FillFormsMohreB.Location = new System.Drawing.Point(875, 483);
             this.FillFormsMohreB.Name = "FillFormsMohreB";
-            this.FillFormsMohreB.Size = new System.Drawing.Size(122, 63);
+            this.FillFormsMohreB.Size = new System.Drawing.Size(121, 37);
             this.FillFormsMohreB.Style = MetroFramework.MetroColorStyle.Orange;
             this.FillFormsMohreB.TabIndex = 25;
             this.FillFormsMohreB.Text = "Fill forms";
@@ -694,9 +709,9 @@
             // 
             // ScrapeMohreB
             // 
-            this.ScrapeMohreB.Location = new System.Drawing.Point(873, 457);
+            this.ScrapeMohreB.Location = new System.Drawing.Point(875, 440);
             this.ScrapeMohreB.Name = "ScrapeMohreB";
-            this.ScrapeMohreB.Size = new System.Drawing.Size(122, 63);
+            this.ScrapeMohreB.Size = new System.Drawing.Size(121, 37);
             this.ScrapeMohreB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapeMohreB.TabIndex = 24;
             this.ScrapeMohreB.Text = "Scrape";
@@ -704,37 +719,35 @@
             this.ScrapeMohreB.UseStyleColors = true;
             this.ScrapeMohreB.Click += new System.EventHandler(this.ScrapeMohreB_Click);
             // 
-            // UserNameMohreT
+            // UserNameMohreTI
             // 
             // 
             // 
             // 
-            this.UserNameMohreT.CustomButton.Image = null;
-            this.UserNameMohreT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.UserNameMohreT.CustomButton.Name = "";
-            this.UserNameMohreT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.UserNameMohreT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.UserNameMohreT.CustomButton.TabIndex = 1;
-            this.UserNameMohreT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.UserNameMohreT.CustomButton.UseSelectable = true;
-            this.UserNameMohreT.CustomButton.Visible = false;
-            this.UserNameMohreT.Lines = new string[] {
-        "traininguser1"};
-            this.UserNameMohreT.Location = new System.Drawing.Point(796, 76);
-            this.UserNameMohreT.MaxLength = 32767;
-            this.UserNameMohreT.Name = "UserNameMohreT";
-            this.UserNameMohreT.PasswordChar = '\0';
-            this.UserNameMohreT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.UserNameMohreT.SelectedText = "";
-            this.UserNameMohreT.SelectionLength = 0;
-            this.UserNameMohreT.SelectionStart = 0;
-            this.UserNameMohreT.ShortcutsEnabled = true;
-            this.UserNameMohreT.Size = new System.Drawing.Size(199, 23);
-            this.UserNameMohreT.TabIndex = 8;
-            this.UserNameMohreT.Text = "traininguser1";
-            this.UserNameMohreT.UseSelectable = true;
-            this.UserNameMohreT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.UserNameMohreT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.UserNameMohreTI.CustomButton.Image = null;
+            this.UserNameMohreTI.CustomButton.Location = new System.Drawing.Point(134, 1);
+            this.UserNameMohreTI.CustomButton.Name = "";
+            this.UserNameMohreTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.UserNameMohreTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.UserNameMohreTI.CustomButton.TabIndex = 1;
+            this.UserNameMohreTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.UserNameMohreTI.CustomButton.UseSelectable = true;
+            this.UserNameMohreTI.CustomButton.Visible = false;
+            this.UserNameMohreTI.Lines = new string[0];
+            this.UserNameMohreTI.Location = new System.Drawing.Point(854, 34);
+            this.UserNameMohreTI.MaxLength = 32767;
+            this.UserNameMohreTI.Name = "UserNameMohreTI";
+            this.UserNameMohreTI.PasswordChar = '\0';
+            this.UserNameMohreTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.UserNameMohreTI.SelectedText = "";
+            this.UserNameMohreTI.SelectionLength = 0;
+            this.UserNameMohreTI.SelectionStart = 0;
+            this.UserNameMohreTI.ShortcutsEnabled = true;
+            this.UserNameMohreTI.Size = new System.Drawing.Size(156, 23);
+            this.UserNameMohreTI.TabIndex = 8;
+            this.UserNameMohreTI.UseSelectable = true;
+            this.UserNameMohreTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.UserNameMohreTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // MohreDGV
             // 
@@ -747,7 +760,7 @@
             this.MohreDGV.Location = new System.Drawing.Point(3, 3);
             this.MohreDGV.Name = "MohreDGV";
             this.MohreDGV.RowHeadersVisible = false;
-            this.MohreDGV.Size = new System.Drawing.Size(653, 517);
+            this.MohreDGV.Size = new System.Drawing.Size(836, 517);
             this.MohreDGV.TabIndex = 0;
             this.MohreDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MohreDGV_CellEndEditAsync);
             this.MohreDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MohreDGV_KeyPress);
@@ -794,11 +807,14 @@
             this.MohreEidDGV.Name = "MohreEidDGV";
             this.MohreEidDGV.ReadOnly = true;
             this.MohreEidDGV.RowHeadersVisible = false;
-            this.MohreEidDGV.Size = new System.Drawing.Size(741, 517);
+            this.MohreEidDGV.Size = new System.Drawing.Size(900, 517);
             this.MohreEidDGV.TabIndex = 2;
             // 
             // metroTabPage12
             // 
+            this.metroTabPage12.Controls.Add(this.SaveFromMohrelMOHAPB);
+            this.metroTabPage12.Controls.Add(this.ImgPathForMohreMohapTextBoxI);
+            this.metroTabPage12.Controls.Add(this.UploadImgMohreMohapB);
             this.metroTabPage12.Controls.Add(this.MohreMohreDGV);
             this.metroTabPage12.HorizontalScrollbarBarColor = true;
             this.metroTabPage12.HorizontalScrollbarHighlightOnWheel = false;
@@ -824,7 +840,7 @@
             this.MohreMohreDGV.Name = "MohreMohreDGV";
             this.MohreMohreDGV.ReadOnly = true;
             this.MohreMohreDGV.RowHeadersVisible = false;
-            this.MohreMohreDGV.Size = new System.Drawing.Size(656, 515);
+            this.MohreMohreDGV.Size = new System.Drawing.Size(900, 515);
             this.MohreMohreDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -851,7 +867,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 0;
+            this.metroTabControl3.SelectedIndex = 2;
             this.metroTabControl3.Size = new System.Drawing.Size(1025, 571);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -883,13 +899,13 @@
             this.EChannelP.Controls.Add(this.NormalRadioB);
             this.EChannelP.Controls.Add(this.BetaRadioB);
             this.EChannelP.Controls.Add(this.label4);
-            this.EChannelP.Controls.Add(this.CodeEChannelT);
+            this.EChannelP.Controls.Add(this.CodeEChannelTI);
             this.EChannelP.Controls.Add(this.label3);
-            this.EChannelP.Controls.Add(this.EChannelPasswT);
+            this.EChannelP.Controls.Add(this.EChannelPasswTI);
             this.EChannelP.Controls.Add(this.label2);
             this.EChannelP.Controls.Add(this.FillFormEChannelB);
             this.EChannelP.Controls.Add(this.ScrapeEChannelB);
-            this.EChannelP.Controls.Add(this.EChannelUsernameT);
+            this.EChannelP.Controls.Add(this.EChannelUsernameTI);
             this.EChannelP.Controls.Add(this.EChannelDGV);
             this.EChannelP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EChannelP.Location = new System.Drawing.Point(0, 0);
@@ -901,16 +917,16 @@
             // 
             this.panel4.Controls.Add(this.ResidencyviewRadioB);
             this.panel4.Controls.Add(this.VisaviewRadioB);
-            this.panel4.Location = new System.Drawing.Point(717, 19);
+            this.panel4.Location = new System.Drawing.Point(790, 13);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(144, 74);
+            this.panel4.Size = new System.Drawing.Size(123, 73);
             this.panel4.TabIndex = 35;
             // 
             // ResidencyviewRadioB
             // 
             this.ResidencyviewRadioB.AutoSize = true;
             this.ResidencyviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResidencyviewRadioB.Location = new System.Drawing.Point(22, 21);
+            this.ResidencyviewRadioB.Location = new System.Drawing.Point(3, 23);
             this.ResidencyviewRadioB.Name = "ResidencyviewRadioB";
             this.ResidencyviewRadioB.Size = new System.Drawing.Size(119, 19);
             this.ResidencyviewRadioB.TabIndex = 33;
@@ -922,7 +938,7 @@
             // 
             this.VisaviewRadioB.AutoSize = true;
             this.VisaviewRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VisaviewRadioB.Location = new System.Drawing.Point(23, 46);
+            this.VisaviewRadioB.Location = new System.Drawing.Point(4, 48);
             this.VisaviewRadioB.Name = "VisaviewRadioB";
             this.VisaviewRadioB.Size = new System.Drawing.Size(80, 19);
             this.VisaviewRadioB.TabIndex = 34;
@@ -934,7 +950,7 @@
             // 
             this.NormalRadioB.AutoSize = true;
             this.NormalRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NormalRadioB.Location = new System.Drawing.Point(919, 42);
+            this.NormalRadioB.Location = new System.Drawing.Point(917, 36);
             this.NormalRadioB.Name = "NormalRadioB";
             this.NormalRadioB.Size = new System.Drawing.Size(72, 19);
             this.NormalRadioB.TabIndex = 32;
@@ -946,7 +962,7 @@
             // 
             this.BetaRadioB.AutoSize = true;
             this.BetaRadioB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BetaRadioB.Location = new System.Drawing.Point(919, 65);
+            this.BetaRadioB.Location = new System.Drawing.Point(919, 61);
             this.BetaRadioB.Name = "BetaRadioB";
             this.BetaRadioB.Size = new System.Drawing.Size(53, 19);
             this.BetaRadioB.TabIndex = 31;
@@ -958,91 +974,87 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(689, 238);
+            this.label4.Location = new System.Drawing.Point(812, 220);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 18);
             this.label4.TabIndex = 30;
             this.label4.Text = "Code:";
             // 
-            // CodeEChannelT
+            // CodeEChannelTI
             // 
             // 
             // 
             // 
-            this.CodeEChannelT.CustomButton.Image = null;
-            this.CodeEChannelT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.CodeEChannelT.CustomButton.Name = "";
-            this.CodeEChannelT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.CodeEChannelT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.CodeEChannelT.CustomButton.TabIndex = 1;
-            this.CodeEChannelT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.CodeEChannelT.CustomButton.UseSelectable = true;
-            this.CodeEChannelT.CustomButton.Visible = false;
-            this.CodeEChannelT.Lines = new string[] {
-        "4012019020032428"};
-            this.CodeEChannelT.Location = new System.Drawing.Point(790, 233);
-            this.CodeEChannelT.MaxLength = 32767;
-            this.CodeEChannelT.Name = "CodeEChannelT";
-            this.CodeEChannelT.PasswordChar = '\0';
-            this.CodeEChannelT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.CodeEChannelT.SelectedText = "";
-            this.CodeEChannelT.SelectionLength = 0;
-            this.CodeEChannelT.SelectionStart = 0;
-            this.CodeEChannelT.ShortcutsEnabled = true;
-            this.CodeEChannelT.Size = new System.Drawing.Size(199, 23);
-            this.CodeEChannelT.TabIndex = 29;
-            this.CodeEChannelT.Text = "4012019020032428";
-            this.CodeEChannelT.UseSelectable = true;
-            this.CodeEChannelT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.CodeEChannelT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.CodeEChannelTI.CustomButton.Image = null;
+            this.CodeEChannelTI.CustomButton.Location = new System.Drawing.Point(177, 1);
+            this.CodeEChannelTI.CustomButton.Name = "";
+            this.CodeEChannelTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.CodeEChannelTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.CodeEChannelTI.CustomButton.TabIndex = 1;
+            this.CodeEChannelTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.CodeEChannelTI.CustomButton.UseSelectable = true;
+            this.CodeEChannelTI.CustomButton.Visible = false;
+            this.CodeEChannelTI.Lines = new string[0];
+            this.CodeEChannelTI.Location = new System.Drawing.Point(815, 241);
+            this.CodeEChannelTI.MaxLength = 32767;
+            this.CodeEChannelTI.Name = "CodeEChannelTI";
+            this.CodeEChannelTI.PasswordChar = '\0';
+            this.CodeEChannelTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.CodeEChannelTI.SelectedText = "";
+            this.CodeEChannelTI.SelectionLength = 0;
+            this.CodeEChannelTI.SelectionStart = 0;
+            this.CodeEChannelTI.ShortcutsEnabled = true;
+            this.CodeEChannelTI.Size = new System.Drawing.Size(199, 23);
+            this.CodeEChannelTI.TabIndex = 29;
+            this.CodeEChannelTI.UseSelectable = true;
+            this.CodeEChannelTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.CodeEChannelTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(689, 187);
+            this.label3.Location = new System.Drawing.Point(812, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 18);
             this.label3.TabIndex = 28;
             this.label3.Text = "Password:";
             // 
-            // EChannelPasswT
+            // EChannelPasswTI
             // 
             // 
             // 
             // 
-            this.EChannelPasswT.CustomButton.Image = null;
-            this.EChannelPasswT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.EChannelPasswT.CustomButton.Name = "";
-            this.EChannelPasswT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.EChannelPasswT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.EChannelPasswT.CustomButton.TabIndex = 1;
-            this.EChannelPasswT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.EChannelPasswT.CustomButton.UseSelectable = true;
-            this.EChannelPasswT.CustomButton.Visible = false;
-            this.EChannelPasswT.Lines = new string[] {
-        "Samiha@123"};
-            this.EChannelPasswT.Location = new System.Drawing.Point(790, 182);
-            this.EChannelPasswT.MaxLength = 32767;
-            this.EChannelPasswT.Name = "EChannelPasswT";
-            this.EChannelPasswT.PasswordChar = '\0';
-            this.EChannelPasswT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.EChannelPasswT.SelectedText = "";
-            this.EChannelPasswT.SelectionLength = 0;
-            this.EChannelPasswT.SelectionStart = 0;
-            this.EChannelPasswT.ShortcutsEnabled = true;
-            this.EChannelPasswT.Size = new System.Drawing.Size(199, 23);
-            this.EChannelPasswT.TabIndex = 27;
-            this.EChannelPasswT.Text = "Samiha@123";
-            this.EChannelPasswT.UseSelectable = true;
-            this.EChannelPasswT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.EChannelPasswT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.EChannelPasswTI.CustomButton.Image = null;
+            this.EChannelPasswTI.CustomButton.Location = new System.Drawing.Point(177, 1);
+            this.EChannelPasswTI.CustomButton.Name = "";
+            this.EChannelPasswTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.EChannelPasswTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.EChannelPasswTI.CustomButton.TabIndex = 1;
+            this.EChannelPasswTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.EChannelPasswTI.CustomButton.UseSelectable = true;
+            this.EChannelPasswTI.CustomButton.Visible = false;
+            this.EChannelPasswTI.Lines = new string[0];
+            this.EChannelPasswTI.Location = new System.Drawing.Point(815, 181);
+            this.EChannelPasswTI.MaxLength = 32767;
+            this.EChannelPasswTI.Name = "EChannelPasswTI";
+            this.EChannelPasswTI.PasswordChar = '\0';
+            this.EChannelPasswTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.EChannelPasswTI.SelectedText = "";
+            this.EChannelPasswTI.SelectionLength = 0;
+            this.EChannelPasswTI.SelectionStart = 0;
+            this.EChannelPasswTI.ShortcutsEnabled = true;
+            this.EChannelPasswTI.Size = new System.Drawing.Size(199, 23);
+            this.EChannelPasswTI.TabIndex = 27;
+            this.EChannelPasswTI.UseSelectable = true;
+            this.EChannelPasswTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.EChannelPasswTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(689, 144);
+            this.label2.Location = new System.Drawing.Point(812, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 18);
             this.label2.TabIndex = 26;
@@ -1050,9 +1062,9 @@
             // 
             // FillFormEChannelB
             // 
-            this.FillFormEChannelB.Location = new System.Drawing.Point(739, 460);
+            this.FillFormEChannelB.Location = new System.Drawing.Point(833, 479);
             this.FillFormEChannelB.Name = "FillFormEChannelB";
-            this.FillFormEChannelB.Size = new System.Drawing.Size(122, 63);
+            this.FillFormEChannelB.Size = new System.Drawing.Size(181, 41);
             this.FillFormEChannelB.Style = MetroFramework.MetroColorStyle.Orange;
             this.FillFormEChannelB.TabIndex = 25;
             this.FillFormEChannelB.Text = "Fill forms";
@@ -1062,9 +1074,9 @@
             // 
             // ScrapeEChannelB
             // 
-            this.ScrapeEChannelB.Location = new System.Drawing.Point(892, 460);
+            this.ScrapeEChannelB.Location = new System.Drawing.Point(833, 432);
             this.ScrapeEChannelB.Name = "ScrapeEChannelB";
-            this.ScrapeEChannelB.Size = new System.Drawing.Size(122, 63);
+            this.ScrapeEChannelB.Size = new System.Drawing.Size(181, 41);
             this.ScrapeEChannelB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapeEChannelB.TabIndex = 24;
             this.ScrapeEChannelB.Text = "Scrape";
@@ -1072,37 +1084,35 @@
             this.ScrapeEChannelB.UseStyleColors = true;
             this.ScrapeEChannelB.Click += new System.EventHandler(this.ScrapeEChannelB_ClickAsync);
             // 
-            // EChannelUsernameT
+            // EChannelUsernameTI
             // 
             // 
             // 
             // 
-            this.EChannelUsernameT.CustomButton.Image = null;
-            this.EChannelUsernameT.CustomButton.Location = new System.Drawing.Point(177, 1);
-            this.EChannelUsernameT.CustomButton.Name = "";
-            this.EChannelUsernameT.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.EChannelUsernameT.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.EChannelUsernameT.CustomButton.TabIndex = 1;
-            this.EChannelUsernameT.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.EChannelUsernameT.CustomButton.UseSelectable = true;
-            this.EChannelUsernameT.CustomButton.Visible = false;
-            this.EChannelUsernameT.Lines = new string[] {
-        "samihabeauty5@gmail.com"};
-            this.EChannelUsernameT.Location = new System.Drawing.Point(790, 139);
-            this.EChannelUsernameT.MaxLength = 32767;
-            this.EChannelUsernameT.Name = "EChannelUsernameT";
-            this.EChannelUsernameT.PasswordChar = '\0';
-            this.EChannelUsernameT.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.EChannelUsernameT.SelectedText = "";
-            this.EChannelUsernameT.SelectionLength = 0;
-            this.EChannelUsernameT.SelectionStart = 0;
-            this.EChannelUsernameT.ShortcutsEnabled = true;
-            this.EChannelUsernameT.Size = new System.Drawing.Size(199, 23);
-            this.EChannelUsernameT.TabIndex = 8;
-            this.EChannelUsernameT.Text = "samihabeauty5@gmail.com";
-            this.EChannelUsernameT.UseSelectable = true;
-            this.EChannelUsernameT.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.EChannelUsernameT.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.EChannelUsernameTI.CustomButton.Image = null;
+            this.EChannelUsernameTI.CustomButton.Location = new System.Drawing.Point(177, 1);
+            this.EChannelUsernameTI.CustomButton.Name = "";
+            this.EChannelUsernameTI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.EChannelUsernameTI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.EChannelUsernameTI.CustomButton.TabIndex = 1;
+            this.EChannelUsernameTI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.EChannelUsernameTI.CustomButton.UseSelectable = true;
+            this.EChannelUsernameTI.CustomButton.Visible = false;
+            this.EChannelUsernameTI.Lines = new string[0];
+            this.EChannelUsernameTI.Location = new System.Drawing.Point(815, 121);
+            this.EChannelUsernameTI.MaxLength = 32767;
+            this.EChannelUsernameTI.Name = "EChannelUsernameTI";
+            this.EChannelUsernameTI.PasswordChar = '\0';
+            this.EChannelUsernameTI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.EChannelUsernameTI.SelectedText = "";
+            this.EChannelUsernameTI.SelectionLength = 0;
+            this.EChannelUsernameTI.SelectionStart = 0;
+            this.EChannelUsernameTI.ShortcutsEnabled = true;
+            this.EChannelUsernameTI.Size = new System.Drawing.Size(199, 23);
+            this.EChannelUsernameTI.TabIndex = 8;
+            this.EChannelUsernameTI.UseSelectable = true;
+            this.EChannelUsernameTI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.EChannelUsernameTI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // EChannelDGV
             // 
@@ -1115,7 +1125,7 @@
             this.EChannelDGV.Location = new System.Drawing.Point(3, 3);
             this.EChannelDGV.Name = "EChannelDGV";
             this.EChannelDGV.RowHeadersVisible = false;
-            this.EChannelDGV.Size = new System.Drawing.Size(653, 517);
+            this.EChannelDGV.Size = new System.Drawing.Size(778, 517);
             this.EChannelDGV.TabIndex = 0;
             this.EChannelDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EChannelDGV_CellEndEditAsync);
             this.EChannelDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChannelDGV_KeyPress);
@@ -1137,6 +1147,10 @@
             // 
             // metroPanel3
             // 
+            this.metroPanel3.Controls.Add(this.SaveFromEID);
+            this.metroPanel3.Controls.Add(this.LabelEChannelEID);
+            this.metroPanel3.Controls.Add(this.ImgPathForEChannelEIDTextBoxI);
+            this.metroPanel3.Controls.Add(this.UploadImgEChannelEIDB);
             this.metroPanel3.Controls.Add(this.EChnEIDDgview);
             this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel3.HorizontalScrollbarBarColor = true;
@@ -1150,6 +1164,67 @@
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
             // 
+            // SaveFromEID
+            // 
+            this.SaveFromEID.Location = new System.Drawing.Point(915, 493);
+            this.SaveFromEID.Name = "SaveFromEID";
+            this.SaveFromEID.Size = new System.Drawing.Size(99, 23);
+            this.SaveFromEID.TabIndex = 44;
+            this.SaveFromEID.Text = "Save";
+            this.SaveFromEID.UseVisualStyleBackColor = true;
+            this.SaveFromEID.Visible = false;
+            this.SaveFromEID.Click += new System.EventHandler(this.SaveFromEID_Click);
+            // 
+            // LabelEChannelEID
+            // 
+            this.LabelEChannelEID.AutoSize = true;
+            this.LabelEChannelEID.Location = new System.Drawing.Point(929, 431);
+            this.LabelEChannelEID.Name = "LabelEChannelEID";
+            this.LabelEChannelEID.Size = new System.Drawing.Size(0, 13);
+            this.LabelEChannelEID.TabIndex = 40;
+            // 
+            // ImgPathForEChannelEIDTextBoxI
+            // 
+            // 
+            // 
+            // 
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Image = null;
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Location = new System.Drawing.Point(77, 1);
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Name = "";
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.TabIndex = 1;
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.UseSelectable = true;
+            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Visible = false;
+            this.ImgPathForEChannelEIDTextBoxI.Lines = new string[0];
+            this.ImgPathForEChannelEIDTextBoxI.Location = new System.Drawing.Point(915, 435);
+            this.ImgPathForEChannelEIDTextBoxI.MaxLength = 32767;
+            this.ImgPathForEChannelEIDTextBoxI.Name = "ImgPathForEChannelEIDTextBoxI";
+            this.ImgPathForEChannelEIDTextBoxI.PasswordChar = '\0';
+            this.ImgPathForEChannelEIDTextBoxI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ImgPathForEChannelEIDTextBoxI.SelectedText = "";
+            this.ImgPathForEChannelEIDTextBoxI.SelectionLength = 0;
+            this.ImgPathForEChannelEIDTextBoxI.SelectionStart = 0;
+            this.ImgPathForEChannelEIDTextBoxI.ShortcutsEnabled = true;
+            this.ImgPathForEChannelEIDTextBoxI.Size = new System.Drawing.Size(99, 23);
+            this.ImgPathForEChannelEIDTextBoxI.TabIndex = 39;
+            this.ImgPathForEChannelEIDTextBoxI.UseSelectable = true;
+            this.ImgPathForEChannelEIDTextBoxI.Visible = false;
+            this.ImgPathForEChannelEIDTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ImgPathForEChannelEIDTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // UploadImgEChannelEIDB
+            // 
+            this.UploadImgEChannelEIDB.Location = new System.Drawing.Point(915, 464);
+            this.UploadImgEChannelEIDB.Name = "UploadImgEChannelEIDB";
+            this.UploadImgEChannelEIDB.Size = new System.Drawing.Size(99, 23);
+            this.UploadImgEChannelEIDB.TabIndex = 38;
+            this.UploadImgEChannelEIDB.Text = "upload image";
+            this.UploadImgEChannelEIDB.UseVisualStyleBackColor = true;
+            this.UploadImgEChannelEIDB.Visible = false;
+            this.UploadImgEChannelEIDB.Click += new System.EventHandler(this.UploadImgEChannelEIDB_Click);
+            // 
             // EChnEIDDgview
             // 
             this.EChnEIDDgview.AllowUserToAddRows = false;
@@ -1162,12 +1237,16 @@
             this.EChnEIDDgview.Name = "EChnEIDDgview";
             this.EChnEIDDgview.ReadOnly = true;
             this.EChnEIDDgview.RowHeadersVisible = false;
-            this.EChnEIDDgview.Size = new System.Drawing.Size(741, 517);
+            this.EChnEIDDgview.Size = new System.Drawing.Size(906, 517);
             this.EChnEIDDgview.TabIndex = 2;
             this.EChnEIDDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChnEIDDgview_KeyPress);
             // 
             // metroTabPage9
             // 
+            this.metroTabPage9.Controls.Add(this.SaveFromEChannelMOHAPB);
+            this.metroTabPage9.Controls.Add(this.LabelEChannelMOHAP);
+            this.metroTabPage9.Controls.Add(this.ImgPathForEChannelMohapTextBoxI);
+            this.metroTabPage9.Controls.Add(this.UploadImgEChannelMohapB);
             this.metroTabPage9.Controls.Add(this.EchanMohreDgview);
             this.metroTabPage9.HorizontalScrollbarBarColor = true;
             this.metroTabPage9.HorizontalScrollbarHighlightOnWheel = false;
@@ -1181,6 +1260,64 @@
             this.metroTabPage9.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage9.VerticalScrollbarSize = 10;
             // 
+            // SaveFromEChannelMOHAPB
+            // 
+            this.SaveFromEChannelMOHAPB.Location = new System.Drawing.Point(904, 490);
+            this.SaveFromEChannelMOHAPB.Name = "SaveFromEChannelMOHAPB";
+            this.SaveFromEChannelMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromEChannelMOHAPB.TabIndex = 43;
+            this.SaveFromEChannelMOHAPB.Text = "Save";
+            this.SaveFromEChannelMOHAPB.UseVisualStyleBackColor = true;
+            this.SaveFromEChannelMOHAPB.Click += new System.EventHandler(this.SaveFromEChannelMOHAPB_Click);
+            // 
+            // LabelEChannelMOHAP
+            // 
+            this.LabelEChannelMOHAP.AutoSize = true;
+            this.LabelEChannelMOHAP.Location = new System.Drawing.Point(917, 421);
+            this.LabelEChannelMOHAP.Name = "LabelEChannelMOHAP";
+            this.LabelEChannelMOHAP.Size = new System.Drawing.Size(0, 13);
+            this.LabelEChannelMOHAP.TabIndex = 42;
+            // 
+            // ImgPathForEChannelMohapTextBoxI
+            // 
+            // 
+            // 
+            // 
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Image = null;
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Location = new System.Drawing.Point(88, 1);
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Name = "";
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.TabIndex = 1;
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.UseSelectable = true;
+            this.ImgPathForEChannelMohapTextBoxI.CustomButton.Visible = false;
+            this.ImgPathForEChannelMohapTextBoxI.Lines = new string[0];
+            this.ImgPathForEChannelMohapTextBoxI.Location = new System.Drawing.Point(900, 421);
+            this.ImgPathForEChannelMohapTextBoxI.MaxLength = 32767;
+            this.ImgPathForEChannelMohapTextBoxI.Name = "ImgPathForEChannelMohapTextBoxI";
+            this.ImgPathForEChannelMohapTextBoxI.PasswordChar = '\0';
+            this.ImgPathForEChannelMohapTextBoxI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ImgPathForEChannelMohapTextBoxI.SelectedText = "";
+            this.ImgPathForEChannelMohapTextBoxI.SelectionLength = 0;
+            this.ImgPathForEChannelMohapTextBoxI.SelectionStart = 0;
+            this.ImgPathForEChannelMohapTextBoxI.ShortcutsEnabled = true;
+            this.ImgPathForEChannelMohapTextBoxI.Size = new System.Drawing.Size(110, 23);
+            this.ImgPathForEChannelMohapTextBoxI.TabIndex = 41;
+            this.ImgPathForEChannelMohapTextBoxI.UseSelectable = true;
+            this.ImgPathForEChannelMohapTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ImgPathForEChannelMohapTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // UploadImgEChannelMohapB
+            // 
+            this.UploadImgEChannelMohapB.Location = new System.Drawing.Point(904, 452);
+            this.UploadImgEChannelMohapB.Name = "UploadImgEChannelMohapB";
+            this.UploadImgEChannelMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgEChannelMohapB.TabIndex = 40;
+            this.UploadImgEChannelMohapB.Text = "upload image";
+            this.UploadImgEChannelMohapB.UseVisualStyleBackColor = true;
+            this.UploadImgEChannelMohapB.Click += new System.EventHandler(this.UploadImgEChannelMohapB_Click);
+            // 
             // EchanMohreDgview
             // 
             this.EchanMohreDgview.AllowUserToAddRows = false;
@@ -1193,7 +1330,7 @@
             this.EchanMohreDgview.Name = "EchanMohreDgview";
             this.EchanMohreDgview.ReadOnly = true;
             this.EchanMohreDgview.RowHeadersVisible = false;
-            this.EchanMohreDgview.Size = new System.Drawing.Size(656, 515);
+            this.EchanMohreDgview.Size = new System.Drawing.Size(892, 515);
             this.EchanMohreDgview.TabIndex = 3;
             this.EchanMohreDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
             // 
@@ -1208,6 +1345,106 @@
             this.pictureBox1.Size = new System.Drawing.Size(48, 42);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            // 
+            // SaveFromMohrelMOHAPB
+            // 
+            this.SaveFromMohrelMOHAPB.Location = new System.Drawing.Point(911, 483);
+            this.SaveFromMohrelMOHAPB.Name = "SaveFromMohrelMOHAPB";
+            this.SaveFromMohrelMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromMohrelMOHAPB.TabIndex = 46;
+            this.SaveFromMohrelMOHAPB.Text = "Save";
+            this.SaveFromMohrelMOHAPB.UseVisualStyleBackColor = true;
+            this.SaveFromMohrelMOHAPB.Click += new System.EventHandler(this.SaveFromMohrelMOHAPB_Click);
+            // 
+            // ImgPathForMohreMohapTextBoxI
+            // 
+            // 
+            // 
+            // 
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Image = null;
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Location = new System.Drawing.Point(88, 1);
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Name = "";
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.TabIndex = 1;
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.UseSelectable = true;
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Visible = false;
+            this.ImgPathForMohreMohapTextBoxI.Lines = new string[0];
+            this.ImgPathForMohreMohapTextBoxI.Location = new System.Drawing.Point(907, 414);
+            this.ImgPathForMohreMohapTextBoxI.MaxLength = 32767;
+            this.ImgPathForMohreMohapTextBoxI.Name = "ImgPathForMohreMohapTextBoxI";
+            this.ImgPathForMohreMohapTextBoxI.PasswordChar = '\0';
+            this.ImgPathForMohreMohapTextBoxI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ImgPathForMohreMohapTextBoxI.SelectedText = "";
+            this.ImgPathForMohreMohapTextBoxI.SelectionLength = 0;
+            this.ImgPathForMohreMohapTextBoxI.SelectionStart = 0;
+            this.ImgPathForMohreMohapTextBoxI.ShortcutsEnabled = true;
+            this.ImgPathForMohreMohapTextBoxI.Size = new System.Drawing.Size(110, 23);
+            this.ImgPathForMohreMohapTextBoxI.TabIndex = 45;
+            this.ImgPathForMohreMohapTextBoxI.UseSelectable = true;
+            this.ImgPathForMohreMohapTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ImgPathForMohreMohapTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // UploadImgMohreMohapB
+            // 
+            this.UploadImgMohreMohapB.Location = new System.Drawing.Point(911, 445);
+            this.UploadImgMohreMohapB.Name = "UploadImgMohreMohapB";
+            this.UploadImgMohreMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgMohreMohapB.TabIndex = 44;
+            this.UploadImgMohreMohapB.Text = "upload image";
+            this.UploadImgMohreMohapB.UseVisualStyleBackColor = true;
+            this.UploadImgMohreMohapB.Click += new System.EventHandler(this.UploadImgMohreMohapB_Click);
+            // 
+            // SaveFromPermitMOHAPB
+            // 
+            this.SaveFromPermitMOHAPB.Location = new System.Drawing.Point(908, 462);
+            this.SaveFromPermitMOHAPB.Name = "SaveFromPermitMOHAPB";
+            this.SaveFromPermitMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromPermitMOHAPB.TabIndex = 49;
+            this.SaveFromPermitMOHAPB.Text = "Save";
+            this.SaveFromPermitMOHAPB.UseVisualStyleBackColor = true;
+            this.SaveFromPermitMOHAPB.Click += new System.EventHandler(this.SaveFromPermitMOHAPB_Click);
+            // 
+            // ImgPathForPermitMohapTextBoxI
+            // 
+            // 
+            // 
+            // 
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Image = null;
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Location = new System.Drawing.Point(88, 1);
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Name = "";
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.TabIndex = 1;
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.UseSelectable = true;
+            this.ImgPathForPermitMohapTextBoxI.CustomButton.Visible = false;
+            this.ImgPathForPermitMohapTextBoxI.Lines = new string[0];
+            this.ImgPathForPermitMohapTextBoxI.Location = new System.Drawing.Point(904, 393);
+            this.ImgPathForPermitMohapTextBoxI.MaxLength = 32767;
+            this.ImgPathForPermitMohapTextBoxI.Name = "ImgPathForPermitMohapTextBoxI";
+            this.ImgPathForPermitMohapTextBoxI.PasswordChar = '\0';
+            this.ImgPathForPermitMohapTextBoxI.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.ImgPathForPermitMohapTextBoxI.SelectedText = "";
+            this.ImgPathForPermitMohapTextBoxI.SelectionLength = 0;
+            this.ImgPathForPermitMohapTextBoxI.SelectionStart = 0;
+            this.ImgPathForPermitMohapTextBoxI.ShortcutsEnabled = true;
+            this.ImgPathForPermitMohapTextBoxI.Size = new System.Drawing.Size(110, 23);
+            this.ImgPathForPermitMohapTextBoxI.TabIndex = 48;
+            this.ImgPathForPermitMohapTextBoxI.UseSelectable = true;
+            this.ImgPathForPermitMohapTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.ImgPathForPermitMohapTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // UploadImgPermitMohapB
+            // 
+            this.UploadImgPermitMohapB.Location = new System.Drawing.Point(908, 424);
+            this.UploadImgPermitMohapB.Name = "UploadImgPermitMohapB";
+            this.UploadImgPermitMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgPermitMohapB.TabIndex = 47;
+            this.UploadImgPermitMohapB.Text = "upload image";
+            this.UploadImgPermitMohapB.UseVisualStyleBackColor = true;
+            this.UploadImgPermitMohapB.Click += new System.EventHandler(this.UploadImgPermitMohapB_Click);
             // 
             // MainForm
             // 
@@ -1237,7 +1474,7 @@
             this.metroPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).EndInit();
             this.metroTabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MOHAPDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroTabControl4.ResumeLayout(false);
@@ -1260,8 +1497,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
             this.metroTabPage8.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).EndInit();
             this.metroTabPage9.ResumeLayout(false);
+            this.metroTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohreDgview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -1288,7 +1527,7 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage6;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private System.Windows.Forms.DataGridView EID2DGV;
-        private System.Windows.Forms.DataGridView MOHAPDGV;
+        private System.Windows.Forms.DataGridView PermitMOHAPDGV;
         private MetroFramework.Controls.MetroTextBox CodeT;
         private MetroFramework.Controls.MetroButton FillFormsPermitB;
         private MetroFramework.Controls.MetroButton ScrapePermitB;
@@ -1306,10 +1545,10 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage9;
         private System.Windows.Forms.DataGridView EchanMohreDgview;
         private System.Windows.Forms.Label label4;
-        private MetroFramework.Controls.MetroTextBox CodeEChannelT;
+        private MetroFramework.Controls.MetroTextBox CodeEChannelTI;
         private System.Windows.Forms.Label label3;
-        private MetroFramework.Controls.MetroTextBox EChannelPasswT;
-        private MetroFramework.Controls.MetroTextBox EChannelUsernameT;
+        private MetroFramework.Controls.MetroTextBox EChannelPasswTI;
+        private MetroFramework.Controls.MetroTextBox EChannelUsernameTI;
         private System.Windows.Forms.RadioButton VisaviewRadioB;
         private System.Windows.Forms.RadioButton ResidencyviewRadioB;
         private System.Windows.Forms.RadioButton NormalRadioB;
@@ -1321,7 +1560,7 @@
         private System.Windows.Forms.Label label6;
         private MetroFramework.Controls.MetroButton FillFormsMohreB;
         private MetroFramework.Controls.MetroButton ScrapeMohreB;
-        private MetroFramework.Controls.MetroTextBox UserNameMohreT;
+        private MetroFramework.Controls.MetroTextBox UserNameMohreTI;
         private System.Windows.Forms.DataGridView MohreDGV;
         private MetroFramework.Controls.MetroTabPage metroTabPage11;
         private MetroFramework.Controls.MetroPanel metroPanel4;
@@ -1329,13 +1568,27 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage12;
         private System.Windows.Forms.DataGridView MohreMohreDGV;
         private System.Windows.Forms.Label label5;
-        private MetroFramework.Controls.MetroTextBox PassWordMohreT;
+        private MetroFramework.Controls.MetroTextBox PassWordMohreTI;
         private System.Windows.Forms.Label label10;
-        private MetroFramework.Controls.MetroTextBox PersonCodeT;
+        private MetroFramework.Controls.MetroTextBox PersonCodeTI;
         private System.Windows.Forms.Label label7;
-        private MetroFramework.Controls.MetroTextBox CompanieCodeT;
+        private MetroFramework.Controls.MetroTextBox CompanieCodeTI;
         private System.Windows.Forms.Label label8;
-        private MetroFramework.Controls.MetroTextBox NationalityT;
+        private MetroFramework.Controls.MetroTextBox NationalityTI;
+        private MetroFramework.Controls.MetroTextBox ImgPathForEChannelEIDTextBoxI;
+        private System.Windows.Forms.Button UploadImgEChannelEIDB;
+        private System.Windows.Forms.Label LabelEChannelMOHAP;
+        private MetroFramework.Controls.MetroTextBox ImgPathForEChannelMohapTextBoxI;
+        private System.Windows.Forms.Button UploadImgEChannelMohapB;
+        private System.Windows.Forms.Button SaveFromEChannelMOHAPB;
+        private System.Windows.Forms.Label LabelEChannelEID;
+        private System.Windows.Forms.Button SaveFromEID;
+        private System.Windows.Forms.Button SaveFromMohrelMOHAPB;
+        private MetroFramework.Controls.MetroTextBox ImgPathForMohreMohapTextBoxI;
+        private System.Windows.Forms.Button UploadImgMohreMohapB;
+        private System.Windows.Forms.Button SaveFromPermitMOHAPB;
+        private MetroFramework.Controls.MetroTextBox ImgPathForPermitMohapTextBoxI;
+        private System.Windows.Forms.Button UploadImgPermitMohapB;
     }
 }
 

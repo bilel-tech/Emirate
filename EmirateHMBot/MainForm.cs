@@ -14,6 +14,7 @@ using OfficeOpenXml;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Diagnostics;
 
 namespace EmirateHMBot
 {
@@ -82,12 +83,12 @@ namespace EmirateHMBot
             //allow other threads to modify UI as long as its one thread only
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
-            _=Task.Run(LoginToMohre);
+            _ = Task.Run(LoginToMohre);
 
             PermitDGV.ColumnCount = 2;
 
             PermitDGV.Columns[0].Width = 250;
-            PermitDGV.Columns[1].Width = 400;
+            PermitDGV.Columns[1].Width = 634;
 
             PermitDGV.RowTemplate.Height = 25;
 
@@ -130,7 +131,7 @@ namespace EmirateHMBot
 
             EID2DGV.ColumnCount = 2;
             EID2DGV.Columns[0].Width = 250;
-            EID2DGV.Columns[1].Width = 488;
+            EID2DGV.Columns[1].Width = 649;
             EID2DGV.RowTemplate.Height = 25;
 
             EID2DGV.Rows.Add(20);
@@ -170,47 +171,47 @@ namespace EmirateHMBot
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
-            MOHAPDGV.ColumnCount = 2;
-            MOHAPDGV.Columns[0].Width = 250;
-            MOHAPDGV.Columns[1].Width = 403;
-            MOHAPDGV.RowTemplate.Height = 28;
-            MOHAPDGV.Rows.Add(18);
-            for (int i = 0; i < MOHAPDGV.Rows.Count; i++)
+            PermitMOHAPDGV.ColumnCount = 2;
+            PermitMOHAPDGV.Columns[0].Width = 250;
+            PermitMOHAPDGV.Columns[1].Width = 635;
+            PermitMOHAPDGV.RowTemplate.Height = 28;
+            PermitMOHAPDGV.Rows.Add(18);
+            for (int i = 0; i < PermitMOHAPDGV.Rows.Count; i++)
             {
-                MOHAPDGV.Rows[i].Cells[0].ReadOnly = true;
+                PermitMOHAPDGV.Rows[i].Cells[0].ReadOnly = true;
             }
 
-            MOHAPDGV.Rows[0].Cells[0].Value = "Company Name";
-            MOHAPDGV.Rows[1].Cells[0].Value = "Work Phone";
-            MOHAPDGV.Rows[2].Cells[0].Value = "Name Arabic";
-            MOHAPDGV.Rows[3].Cells[0].Value = "Name English";
-            MOHAPDGV.Rows[4].Cells[0].Value = "EID Number";
-            MOHAPDGV.Rows[5].Cells[0].Value = "UID";
-            MOHAPDGV.Rows[6].Cells[0].Value = "Residency File Number";
-            MOHAPDGV.Rows[7].Cells[0].Value = "Residence Issue Date";
-            MOHAPDGV.Rows[8].Cells[0].Value = "Residence Expiry Date";
-            MOHAPDGV.Rows[9].Cells[0].Value = "Passport Number";
-            MOHAPDGV.Rows[10].Cells[0].Value = "Passport Issue Place";
-            MOHAPDGV.Rows[11].Cells[0].Value = "Passport Issue Date";
-            MOHAPDGV.Rows[12].Cells[0].Value = "Passport Expiry Date";
-            MOHAPDGV.Rows[13].Cells[0].Value = "Nationality";
-            MOHAPDGV.Rows[14].Cells[0].Value = "Gender";
-            MOHAPDGV.Rows[15].Cells[0].Value = "Birth Date";
-            MOHAPDGV.Rows[16].Cells[0].Value = "Profession";
-            MOHAPDGV.Rows[17].Cells[0].Value = "Mobile Number";
+            PermitMOHAPDGV.Rows[0].Cells[0].Value = "Company Name";
+            PermitMOHAPDGV.Rows[1].Cells[0].Value = "Work Phone";
+            PermitMOHAPDGV.Rows[2].Cells[0].Value = "Name Arabic";
+            PermitMOHAPDGV.Rows[3].Cells[0].Value = "Name English";
+            PermitMOHAPDGV.Rows[4].Cells[0].Value = "EID Number";
+            PermitMOHAPDGV.Rows[5].Cells[0].Value = "UID";
+            PermitMOHAPDGV.Rows[6].Cells[0].Value = "Residency File Number";
+            PermitMOHAPDGV.Rows[7].Cells[0].Value = "Residence Issue Date";
+            PermitMOHAPDGV.Rows[8].Cells[0].Value = "Residence Expiry Date";
+            PermitMOHAPDGV.Rows[9].Cells[0].Value = "Passport Number";
+            PermitMOHAPDGV.Rows[10].Cells[0].Value = "Passport Issue Place";
+            PermitMOHAPDGV.Rows[11].Cells[0].Value = "Passport Issue Date";
+            PermitMOHAPDGV.Rows[12].Cells[0].Value = "Passport Expiry Date";
+            PermitMOHAPDGV.Rows[13].Cells[0].Value = "Nationality";
+            PermitMOHAPDGV.Rows[14].Cells[0].Value = "Gender";
+            PermitMOHAPDGV.Rows[15].Cells[0].Value = "Birth Date";
+            PermitMOHAPDGV.Rows[16].Cells[0].Value = "Profession";
+            PermitMOHAPDGV.Rows[17].Cells[0].Value = "Mobile Number";
 
-            foreach (DataGridViewColumn col in MOHAPDGV.Columns)
+            foreach (DataGridViewColumn col in PermitMOHAPDGV.Columns)
             {
                 col.DefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             }
-            foreach (DataGridViewColumn column in MOHAPDGV.Columns)
+            foreach (DataGridViewColumn column in PermitMOHAPDGV.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             //EChannel DGVS
             EChannelDGV.ColumnCount = 2;
             EChannelDGV.Columns[0].Width = 250;
-            EChannelDGV.Columns[1].Width = 400;
+            EChannelDGV.Columns[1].Width = 525;
 
             EChannelDGV.RowTemplate.Height = 25;
 
@@ -253,7 +254,7 @@ namespace EmirateHMBot
             EChnEIDDgview.ColumnCount = 2;
 
             EChnEIDDgview.Columns[0].Width = 250;
-            EChnEIDDgview.Columns[1].Width = 488;
+            EChnEIDDgview.Columns[1].Width = 653;
             EChnEIDDgview.RowTemplate.Height = 25;
 
             EChnEIDDgview.Rows.Add(20);
@@ -296,7 +297,7 @@ namespace EmirateHMBot
             EchanMohreDgview.ColumnCount = 2;
 
             EchanMohreDgview.Columns[0].Width = 250;
-            EchanMohreDgview.Columns[1].Width = 403;
+            EchanMohreDgview.Columns[1].Width = 639;
             EchanMohreDgview.RowTemplate.Height = 28;
 
             EchanMohreDgview.Rows.Add(18);
@@ -336,7 +337,7 @@ namespace EmirateHMBot
             MohreDGV.ColumnCount = 2;
 
             MohreDGV.Columns[0].Width = 250;
-            MohreDGV.Columns[1].Width = 400;
+            MohreDGV.Columns[1].Width = 583;
 
             MohreDGV.RowTemplate.Height = 25;
 
@@ -378,7 +379,7 @@ namespace EmirateHMBot
             }
             MohreEidDGV.ColumnCount = 2;
             MohreEidDGV.Columns[0].Width = 250;
-            MohreEidDGV.Columns[1].Width = 488;
+            MohreEidDGV.Columns[1].Width = 647;
             MohreEidDGV.RowTemplate.Height = 24;
             MohreEidDGV.Rows.Add(21);
             for (int i = 0; i < MohreEidDGV.Rows.Count; i++)
@@ -418,7 +419,7 @@ namespace EmirateHMBot
             }
             MohreMohreDGV.ColumnCount = 2;
             MohreMohreDGV.Columns[0].Width = 250;
-            MohreMohreDGV.Columns[1].Width = 403;
+            MohreMohreDGV.Columns[1].Width = 647;
             MohreMohreDGV.RowTemplate.Height = 28;
             MohreMohreDGV.Rows.Add(18);
             for (int i = 0; i < MohreMohreDGV.Rows.Count; i++)
@@ -515,9 +516,9 @@ namespace EmirateHMBot
                 EID2DGV.Rows[i].Cells[1].Value = "";
             }
 
-            for (int i = 0; i < MOHAPDGV.Rows.Count; i++)
+            for (int i = 0; i < PermitMOHAPDGV.Rows.Count; i++)
             {
-                MOHAPDGV.Rows[i].Cells[1].Value = "";
+                PermitMOHAPDGV.Rows[i].Cells[1].Value = "";
             }
         }
 
@@ -561,8 +562,8 @@ namespace EmirateHMBot
         {
             if (e.KeyChar.GetHashCode().Equals(589833))
             {
-                SelectNextCell(MOHAPDGV);
-                MOHAPDGV.BeginEdit(true);
+                SelectNextCell(PermitMOHAPDGV);
+                PermitMOHAPDGV.BeginEdit(true);
             }
         }
 
@@ -584,8 +585,8 @@ namespace EmirateHMBot
         }
         private async void MOHAPDGV_CellEndEditAsync(object sender, DataGridViewCellEventArgs e)
         {
-            await SetCell(MOHAPDGV);
-            MOHAPDGV.BeginEdit(true);
+            await SetCell(PermitMOHAPDGV);
+            PermitMOHAPDGV.BeginEdit(true);
         }
         //Console.WriteLine("companyName:"+companyName);
         //Console.WriteLine("personalNameArabic: " + personalNameArabic);
@@ -638,7 +639,7 @@ namespace EmirateHMBot
                 {
                     DateTime dateOfBirthResult = DateTime.ParseExact(PermitDGV.Rows[9].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     dateOfBirth = dateOfBirthResult.ToString("yyyy/MM/dd");
-                    MOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;
+                    PermitMOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;
                 }
                 catch (Exception)
                 {
@@ -646,7 +647,7 @@ namespace EmirateHMBot
                     {
                         DateTime dateOfBirthResult = DateTime.ParseExact(PermitDGV.Rows[9].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         dateOfBirth = dateOfBirthResult.ToString("yyyy/MM/dd");
-                        MOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;
+                        PermitMOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;
                     }
                     catch (Exception)
                     {
@@ -660,7 +661,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;  //dateOfBirth;
+                PermitMOHAPDGV.Rows[15].Cells[1].Value = dateOfBirth;  //dateOfBirth;
             }
             var passportIssueDate = "";
             if ((PermitDGV.Rows[11].Cells[1].Value + "").Length > 1)
@@ -669,7 +670,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportIssueDateresult = DateTime.ParseExact(PermitDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportIssueDate = passportIssueDateresult.ToString("yyyy/MM/dd");
-                    MOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                    PermitMOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
                 }
                 catch (Exception)
                 {
@@ -677,7 +678,7 @@ namespace EmirateHMBot
                     {
                         DateTime passportIssueDateresult = DateTime.ParseExact(PermitDGV.Rows[11].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         passportIssueDate = passportIssueDateresult.ToString("yyyy/MM/dd");
-                        MOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                        PermitMOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
                     }
                     catch (Exception)
                     {
@@ -690,7 +691,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                PermitMOHAPDGV.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
             }
             var passportExpiryDate = "";
             if ((PermitDGV.Rows[12].Cells[1].Value + "").Length > 1)
@@ -699,7 +700,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportExpiryDateResult = DateTime.ParseExact(PermitDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportExpiryDate = passportExpiryDateResult.ToString("yyyy/MM/dd");
-                    MOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                    PermitMOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
                 }
                 catch (Exception)
                 {
@@ -707,7 +708,7 @@ namespace EmirateHMBot
                     {
                         DateTime passportExpiryDateResult = DateTime.ParseExact(PermitDGV.Rows[12].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         passportExpiryDate = passportExpiryDateResult.ToString("yyyy/MM/dd");
-                        MOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                        PermitMOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
                     }
                     catch (Exception)
                     {
@@ -719,7 +720,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                PermitMOHAPDGV.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
             }
             var residencIssueDate = "";
             if ((PermitDGV.Rows[15].Cells[1].Value + "").Length > 1)
@@ -728,7 +729,7 @@ namespace EmirateHMBot
                 {
                     DateTime residencIssueDateResult = DateTime.ParseExact(PermitDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     residencIssueDate = residencIssueDateResult.ToString("yyyy/MM/dd");
-                    MOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                    PermitMOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
                 }
                 catch (Exception)
                 {
@@ -736,7 +737,7 @@ namespace EmirateHMBot
                     {
                         DateTime residencIssueDateResult = DateTime.ParseExact(PermitDGV.Rows[15].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         residencIssueDate = residencIssueDateResult.ToString("yyyy/MM/dd");
-                        MOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                        PermitMOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
                     }
                     catch (Exception)
                     {
@@ -748,7 +749,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                PermitMOHAPDGV.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
             }
             var residencExpiryDate = "";
             if ((PermitDGV.Rows[16].Cells[1].Value + "").Length > 1)
@@ -757,7 +758,7 @@ namespace EmirateHMBot
                 {
                     DateTime residencExpiryDateResult = DateTime.ParseExact(PermitDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     residencExpiryDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                    MOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+                    PermitMOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
                 }
                 catch (Exception)
                 {
@@ -765,7 +766,7 @@ namespace EmirateHMBot
                     {
                         DateTime residencExpiryDateResult = DateTime.ParseExact(PermitDGV.Rows[16].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         residencExpiryDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                        MOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+                        PermitMOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
                     }
                     catch (Exception)
                     {
@@ -777,7 +778,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+                PermitMOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
             }
             var worPhone = "";
             if (PermitDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
@@ -788,24 +789,32 @@ namespace EmirateHMBot
             else
                 worPhone = "";
 
-            MOHAPDGV.Rows[0].Cells[1].Value = PermitDGV.Rows[17].Cells[1].Value;
-            MOHAPDGV.Rows[1].Cells[1].Value = worPhone;
-            MOHAPDGV.Rows[2].Cells[1].Value = PermitDGV.Rows[3].Cells[1].Value;
-            MOHAPDGV.Rows[3].Cells[1].Value = PermitDGV.Rows[4].Cells[1].Value;
-            MOHAPDGV.Rows[4].Cells[1].Value = PermitDGV.Rows[0].Cells[1].Value;
-            MOHAPDGV.Rows[5].Cells[1].Value = PermitDGV.Rows[13].Cells[1].Value;
-            MOHAPDGV.Rows[6].Cells[1].Value = PermitDGV.Rows[14].Cells[1].Value;
-            MOHAPDGV.Rows[9].Cells[1].Value = PermitDGV.Rows[10].Cells[1].Value;
-            MOHAPDGV.Rows[10].Cells[1].Value = PermitDGV.Rows[10].Cells[1].Value;
-            MOHAPDGV.Rows[13].Cells[1].Value = PermitDGV.Rows[1].Cells[1].Value;
-            MOHAPDGV.Rows[14].Cells[1].Value = PermitDGV.Rows[2].Cells[1].Value;
-            MOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
-            MOHAPDGV.Rows[17].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
-            MOHAPDGV.Rows[10].Cells[1].Value = MOHAPDGV.Rows[13].Cells[1].Value;
+            PermitMOHAPDGV.Rows[0].Cells[1].Value = PermitDGV.Rows[17].Cells[1].Value;
+            PermitMOHAPDGV.Rows[1].Cells[1].Value = worPhone;
+            PermitMOHAPDGV.Rows[2].Cells[1].Value = PermitDGV.Rows[3].Cells[1].Value;
+            PermitMOHAPDGV.Rows[3].Cells[1].Value = PermitDGV.Rows[4].Cells[1].Value;
+            PermitMOHAPDGV.Rows[4].Cells[1].Value = PermitDGV.Rows[0].Cells[1].Value;
+            PermitMOHAPDGV.Rows[5].Cells[1].Value = PermitDGV.Rows[13].Cells[1].Value;
+            PermitMOHAPDGV.Rows[6].Cells[1].Value = PermitDGV.Rows[14].Cells[1].Value;
+            PermitMOHAPDGV.Rows[9].Cells[1].Value = PermitDGV.Rows[10].Cells[1].Value;
+            PermitMOHAPDGV.Rows[10].Cells[1].Value = PermitDGV.Rows[10].Cells[1].Value;
+            PermitMOHAPDGV.Rows[13].Cells[1].Value = PermitDGV.Rows[1].Cells[1].Value;
+            PermitMOHAPDGV.Rows[14].Cells[1].Value = PermitDGV.Rows[2].Cells[1].Value;
+            PermitMOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
+            PermitMOHAPDGV.Rows[17].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
+            PermitMOHAPDGV.Rows[10].Cells[1].Value = PermitMOHAPDGV.Rows[13].Cells[1].Value;
         }
 
         async Task LoginToMohre()
         {
+            //var vrifie = false;
+            //do
+            //{
+            //    if (UserNameMohreTI.Text != "" && PassWordMohreTI.Text != "")
+            //        vrifie = true;
+            //    if (vrifie)
+            //        break;
+            //} while (true);
             LoggedInToMohre = false;
             var chromeOptions = new ChromeOptions();
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
@@ -817,11 +826,12 @@ namespace EmirateHMBot
             Driver.ExecuteScript("OpenLogin('');");
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             //todo Make the user/pass on config file/db 
-            Driver.FindElementById("txtLoginUserName").SendKeys("traininguser1");
-            Driver.FindElementById("txtLoginPassword").SendKeys("test@12345");
+            Driver.FindElementById("txtLoginUserName").SendKeys(UserNameMohreTI.Text);
+            await Task.Delay(500);
+            Driver.FindElementById("txtLoginPassword").SendKeys(PassWordMohreTI.Text);
             Driver.FindElementById("AcceptTerms").Click();
             Driver.ExecuteScript("GetSecurityQuestions();");
-            await Task.Delay(3000);
+            await Task.Delay(1000);
             var question = "0";
 
             #region Wait for question id
@@ -880,16 +890,16 @@ namespace EmirateHMBot
                 Driver.SwitchTo().Window(popup);
                 Driver.FindElementById("ctrlNationality_txtCode").Click();
                 //todo make the 3 params on UI
-                Driver.FindElementById("ctrlNationality_txtCode").SendKeys(NationalityT.Text);
+                Driver.FindElementById("ctrlNationality_txtCode").SendKeys(NationalityTI.Text);
                 Driver.FindElementById("txtCompanyNumber").Click();
-                Driver.FindElementById("txtCompanyNumber").SendKeys(CompanieCodeT.Text);
+                Driver.FindElementById("txtCompanyNumber").SendKeys(CompanieCodeTI.Text);
                 await Task.Delay(2000);
-                Driver.FindElementById("txtCardNo").SendKeys(PersonCodeT.Text);
+                Driver.FindElementById("txtCardNo").SendKeys(PersonCodeTI.Text);
                 Driver.FindElementById("btnGo").Click();
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);//562889//407
                 var personalNameArabic = FindElementByXPath("//input[@id='txtPER_NAME_ARB']")?.GetAttribute("value");
                 var personalNameEnglish = FindElementByXPath("//input[@id='txtPER_NAME_ENG']")?.GetAttribute("value");
-                var nationality = Driver.FindElementById("txtPASSPORT_PLACE_ENG").GetAttribute("value");
+                var nationality = Driver.FindElementById("ctrlNationality_txtDescription").GetAttribute("value");
                 var gender = FindElementByXPath("//select[@id='drpGENDER']/option[@selected]")?.Text;
                 var birthDate = FindElementByXPath("//input[@id='txtBIRTH_DATE']")?.GetAttribute("value");
                 var birthPlaceArabic = FindElementByXPath("//input[@id='txBIRTH_PLACE_ARB']")?.GetAttribute("value");
@@ -922,10 +932,10 @@ namespace EmirateHMBot
                         Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/arabic/services.aspx?groupid=12");
                         Driver.ExecuteScript("popUp('companyEntryLC.aspx?fCode=72','72')");
                     }
-                    Driver.FindElementById("ctrlNationality_txtCode").SendKeys(NationalityT.Text);
+                    Driver.FindElementById("ctrlNationality_txtCode").SendKeys(NationalityTI.Text);
                     Driver.FindElementById("txtCompanyNumber").Click();
-                    Driver.FindElementById("txtCompanyNumber").SendKeys(CompanieCodeT.Text);
-                    Driver.FindElementById("txtCardNo").SendKeys(PersonCodeT.Text);
+                    Driver.FindElementById("txtCompanyNumber").SendKeys(CompanieCodeTI.Text);
+                    Driver.FindElementById("txtCardNo").SendKeys(PersonCodeTI.Text);
                     await Task.Delay(500);
                     Driver.FindElementById("btnGo").Click();
                     Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
@@ -1191,28 +1201,31 @@ namespace EmirateHMBot
             var Object = new JObject();
             // CodeEChannelT.Text = "4012019020046239";
             CleanECannelDataGridViews();
-            if (EChannelUsernameT.Text == "" || EChannelPasswT.Text == "")
+            if (EChannelUsernameTI.Text == "" || EChannelPasswTI.Text == "")
             {
                 MessageBox.Show("username and/or password are missed ");
                 return;
             }
-            if (CodeEChannelT.Text == "")
+            if (CodeEChannelTI.Text == "")
             {
                 MessageBox.Show("Please put the code wich you will scrape data with");
                 return;
             }
+            Console.WriteLine($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelTI.Text}");
+
             Object = JObject.Parse(File.ReadAllText("ECHannel headers.txt"));
             var refreshToken = (string)Object.SelectToken("RefreshToken");
             var userToken = (string)Object.SelectToken("UserToken");
-            var EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelT.Text}", refreshToken, userToken);
+            var EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelTI.Text}", refreshToken, userToken);
             if (EchannelData.error != null)
             {
                 MessageBox.Show(EchannelData.error);
                 return;
             }
-            if (EchannelData.html == "")
+            if (EchannelData.html == "" || EchannelData.html == "null")
             {
-                var logInResponse = await HttpCaller.PostJson("https://echannels.moi.gov.ae/echannels/api/api/user/login", "{\"userName\":" + "\"" + EChannelUsernameT.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswT.Text + "\"}");
+                Console.WriteLine("{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}");
+                var logInResponse = await HttpCaller.PostJson("https://echannels.moi.gov.ae/echannels/api/api/user/login", "{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}");
                 if (logInResponse.error != null)
                 {
                     MessageBox.Show(logInResponse.error);
@@ -1241,7 +1254,7 @@ namespace EmirateHMBot
                     headers.RefreshToken = (string)Object.SelectToken("refreshToken");
                     var jsonHeaders = JsonConvert.SerializeObject(headers, Formatting.Indented);
                     File.WriteAllText("ECHannel headers.txt", jsonHeaders);
-                    EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelT.Text}", headers.RefreshToken, headers.UserToken);
+                    EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelTI.Text}", headers.RefreshToken, headers.UserToken);
                     if (EchannelData.error != null)
                     {
                         MessageBox.Show(EchannelData.error);
@@ -1258,52 +1271,52 @@ namespace EmirateHMBot
                 MessageBox.Show("This code is not available");
                 return;
             }
-            var visafilenbr = (string)Object.SelectToken("departmentCode") + "/" + (string)Object.SelectToken("serviceYear") + "/" + (string)Object.SelectToken("serviceCode") + "/" + (string)Object.SelectToken("sequenceNumber");
+            var visafilenbr = (string)Object?.SelectToken("departmentCode") + "/" + (string)Object?.SelectToken("serviceYear") + "/" + (string)Object?.SelectToken("serviceCode") + "/" + (string)Object?.SelectToken("sequenceNumber") ?? "";
             //visafilenbr=(departmentCode+serviceYear+maritalStatusId+sequenceNumber)
-            var UnifiedNo = (string)Object.SelectToken("personUnifiedNumber");
+            var UnifiedNo = ((string)Object?.SelectToken("personUnifiedNumber"))?.Trim() ?? "";
             //UnifiedNo= personUnifiedNumber
             var FullENgname = (string)Object.SelectToken("englishName");
             //FullENgname= englishName
-            var currentnationality = (string)Object.SelectToken("abroadAddressDescription");
+            var currentnationality = (string)Object.SelectToken("currentNationality.text");
             //currentnationality currentNationality/text
-            var gender = (string)Object.SelectToken("gender.text");
+            var gender = ((string)Object.SelectToken("gender.text")).Trim() ?? "";
             if (gender == "انثى")
                 gender = "FEMALE";
             else
                 gender = "MALE";
             //gender =gender/text
-            var motherEnglishName = (string)Object.SelectToken("motherEnglishName");
+            var motherEnglishName = ((string)Object?.SelectToken("motherEnglishName"))?.Trim() ?? "";
             //motherEnglish Name=motherEnglishName
-            var FullNameArb = (string)Object.SelectToken("arabicName");
+            var FullNameArb = ((string)Object.SelectToken("arabicName")).Trim() ?? "";
             //FullNameArb =arabicName
-            var dateOfBirth = ((string)Object.SelectToken("dateOfBirth")).Trim();
+            var dateOfBirth = ((string)Object.SelectToken("dateOfBirth")).Trim() ?? "";
             dateOfBirth = dateOfBirth.Substring(0, 10);
             DateTime dateOfBirthResult = DateTime.ParseExact(dateOfBirth, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             dateOfBirth = dateOfBirthResult.ToString("dd/MM/yyy");
             //dateOfBirth=dateOfBirth
-            var motherArabicName = (string)Object.SelectToken("motherArabicName");
+            var motherArabicName = ((string)Object.SelectToken("motherArabicName"))?.Trim() ?? "";
             //motherArabicName motherArabicName
-            var passportIssueDate = ((string)Object.SelectToken("passportIssueDate")).Trim();
+            var passportIssueDate = ((string)Object?.SelectToken("passportIssueDate"))?.Trim() ?? "";
             passportIssueDate = passportIssueDate.Substring(0, 10);
             DateTime passportIssueDateResult = DateTime.ParseExact(passportIssueDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             passportIssueDate = passportIssueDateResult.ToString("dd/MM/yyyy");
             //passportIssueDate= passportIssueDate
-            var passportExpiryDate = ((string)Object.SelectToken("passportExpiryDate")).Trim();
+            var passportExpiryDate = ((string)Object?.SelectToken("passportExpiryDate"))?.Trim() ?? "";
             passportExpiryDate = passportExpiryDate.Substring(0, 10);
             DateTime passportExpiryDateResult = DateTime.ParseExact(passportExpiryDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             passportExpiryDate = passportExpiryDateResult.ToString("dd/MM/yyyy");
             //passportExpiryDate=passportExpiryDate
-            var passportNumber = (string)Object.SelectToken("passportNumber");
+            var passportNumber = ((string)Object.SelectToken("passportNumber")).Trim() ?? "";
             //passportNumber= passportNumber
             Console.WriteLine(passportIssueDate);
             if (ResidencyviewRadioB.Checked)
             {//foreignResidenceExpiryDate residencyExpireDate
-                var residencyIssueDate = ((string)Object.SelectToken("foreignResidenceIssueDate")).Trim();
+                var residencyIssueDate = ((string)Object.SelectToken("foreignResidenceIssueDate"))?.Trim() ?? "";
                 residencyIssueDate = residencyIssueDate.Substring(0, 10);
                 DateTime residencyIssueDateResult = DateTime.ParseExact(residencyIssueDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 residencyIssueDate = residencyIssueDateResult.ToString("dd/MM/yyyy");
 
-                var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Trim();
+                var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Trim() ?? "";
                 residencyExpireDate = residencyExpireDate.Substring(0, 10);
                 DateTime residencyExpireDateResult = DateTime.ParseExact(residencyExpireDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 residencyExpireDate = residencyExpireDateResult.ToString("dd/MM/yyyy");
@@ -1350,7 +1363,7 @@ namespace EmirateHMBot
                 var firstpartNbr = EChannelDGV.Rows[18].Cells[1].Value.ToString().Substring(0, 3);
                 var secondepartNbr = EChannelDGV.Rows[18].Cells[1].Value.ToString().Substring(3);
                 EChnEIDDgview.Rows[16].Cells[1].Value = firstpartNbr + "-" + secondepartNbr;
-                /// add"-"after the third digit in phone number       
+                /// add "-" after the third digit in phone number       
             }
             else
                 EChnEIDDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
@@ -1469,7 +1482,7 @@ namespace EmirateHMBot
             {
                 try
                 {
-                    DateTime passportIssueDateresult = DateTime.ParseExact(EChannelDGV.Rows[11].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime passportIssueDateresult = DateTime.ParseExact(EChannelDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportIssueDate = passportIssueDateresult.ToString("yyyy/MM/dd");
                     EchanMohreDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
                 }
@@ -1499,7 +1512,7 @@ namespace EmirateHMBot
             {
                 try
                 {
-                    DateTime passportExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[12].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime passportExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportExpiryDate = passportExpiryDateResult.ToString("yyyy/MM/dd");
                     EchanMohreDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
                 }
@@ -1649,28 +1662,34 @@ namespace EmirateHMBot
 
         private async void ScrapeMohreB_Click(object sender, EventArgs e)
         {
-            if (UserNameMohreT.Text == "" || PassWordMohreT.Text == "")
+            ScrapeMohreB.Enabled = false;
+            if (UserNameMohreTI.Text == "" || PassWordMohreTI.Text == "")
             {
                 MessageBox.Show("username and/or password are missed ");
+                ScrapeMohreB.Enabled = true;
                 return;
             }
-            if (NationalityT.Text == "")
+            if (NationalityTI.Text == "")
             {
                 MessageBox.Show("Please fill Nationality field ");
+                ScrapeMohreB.Enabled = true;
                 return;
             }
-            if (CompanieCodeT.Text == "")
+            if (CompanieCodeTI.Text == "")
             {
                 MessageBox.Show("Please fill Companie code field ");
+                ScrapeMohreB.Enabled = true;
                 return;
             }
-            if (PersonCodeT.Text == "")
+            if (PersonCodeTI.Text == "")
             {
                 MessageBox.Show("Please fill Person code field ");
+                ScrapeMohreB.Enabled = true;
                 return;
             }
             CleanMohreDataGridViews();
             await Task.Run(ScrapeMohre);
+            ScrapeMohreB.Enabled = true;
         }
         private void CleanMohreDataGridViews()
         {
@@ -1700,6 +1719,207 @@ namespace EmirateHMBot
                 SelectNextCell(MohreDGV);
                 MohreDGV.BeginEdit(true);
             }
+        }
+
+        
+
+        private void UploadImgEChannelEIDB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog { Filter = @"png|*.png", InitialDirectory = _path };
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                ImgPathForEChannelEIDTextBoxI.Text = o.FileName;
+               
+            }
+        }
+
+        private void UploadImgEChannelMohapB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog { Filter = @"|*", InitialDirectory = _path };
+            if (o.ShowDialog() == DialogResult.OK)
+            {//|*.jpg;*.jpeg;*.png
+                ImgPathForEChannelMohapTextBoxI.Text = o.FileName;
+               
+            }
+        }
+
+        private void SaveFromEChannelMOHAPB_Click(object sender, EventArgs e)
+        {
+
+            if (EchanMohreDgview.Rows[2].Cells[1].Value + "" == "")
+            {
+                MessageBox.Show("please fill the MOHAP format before saving data");
+                return;
+            }
+            if (ImgPathForEChannelMohapTextBoxI.Text == "")
+            {
+                MessageBox.Show("please add the required image");
+                return;
+            }
+            foreach (var process in Process.GetProcessesByName("chromedriver"))
+            {
+                process.Kill();
+            }
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.CloseMainWindow();
+            }
+            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+            var op = new ChromeOptions();
+            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
+            op.AddArguments("--no-sandbox");
+            op.AddArguments("--disable-dev-shm-usage");
+            op.AddArguments("--disable-setuid-sandbox");
+            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
+
+
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(EchanMohreDgview.Rows[2].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(EchanMohreDgview.Rows[3].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(EchanMohreDgview.Rows[5].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(EchanMohreDgview.Rows[6].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(EchanMohreDgview.Rows[7].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(EchanMohreDgview.Rows[8].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(EchanMohreDgview.Rows[9].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(EchanMohreDgview.Rows[10].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(EchanMohreDgview.Rows[11].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(EchanMohreDgview.Rows[12].Cells[1].Value + "");
+            if (EchanMohreDgview.Rows[14].Cells[1].Value + "" == "FEMALE")
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
+            else
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(EchanMohreDgview.Rows[15].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(EchanMohreDgview.Rows[1].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
+        }
+
+        private void SaveFromEID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UploadImgMohreMohapB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog { Filter = @"|*", InitialDirectory = _path };
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                ImgPathForMohreMohapTextBoxI.Text = o.FileName;
+
+            }
+        }
+
+        private void SaveFromMohrelMOHAPB_Click(object sender, EventArgs e)
+        {
+            if (MohreMohreDGV.Rows[2].Cells[1].Value + "" == "")
+            {
+                MessageBox.Show("please fill the MOHAP format before saving data");
+                return;
+            }
+            if (ImgPathForMohreMohapTextBoxI.Text == "")
+            {
+                MessageBox.Show("please add the required image");
+                return;
+            }
+            foreach (var process in Process.GetProcessesByName("chromedriver"))
+            {
+                process.Kill();
+            }
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.CloseMainWindow();
+            }
+            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+            var op = new ChromeOptions();
+            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
+            op.AddArguments("--no-sandbox");
+            op.AddArguments("--disable-dev-shm-usage");
+            op.AddArguments("--disable-setuid-sandbox");
+            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
+
+
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohreMohreDGV.Rows[2].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohreMohreDGV.Rows[3].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohreMohreDGV.Rows[5].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(MohreMohreDGV.Rows[6].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(MohreMohreDGV.Rows[7].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(MohreMohreDGV.Rows[8].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(MohreMohreDGV.Rows[9].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(MohreMohreDGV.Rows[10].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(MohreMohreDGV.Rows[11].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(MohreMohreDGV.Rows[12].Cells[1].Value + "");
+            if (MohreMohreDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
+            else
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohreMohreDGV.Rows[15].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohreMohreDGV.Rows[1].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
+        }
+
+        private void UploadImgPermitMohapB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog { Filter = @"|*", InitialDirectory = _path };
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                ImgPathForPermitMohapTextBoxI.Text = o.FileName;
+
+            }
+        }
+
+        private void SaveFromPermitMOHAPB_Click(object sender, EventArgs e)
+        {
+            if (PermitMOHAPDGV.Rows[2].Cells[1].Value + "" == "")
+            {
+                MessageBox.Show("please fill the MOHAP format before saving data");
+                return;
+            }
+            if (ImgPathForPermitMohapTextBoxI.Text=="")
+            {
+                MessageBox.Show("please add the required image");
+                return;
+            }
+            foreach (var process in Process.GetProcessesByName("chromedriver"))
+            {
+                process.Kill();
+            }
+            foreach (var process in Process.GetProcessesByName("chrome"))
+            {
+                process.CloseMainWindow();
+            }
+            var chromeDriverService = ChromeDriverService.CreateDefaultService();
+            chromeDriverService.HideCommandPromptWindow = true;
+            var op = new ChromeOptions();
+            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
+            op.AddArguments("--no-sandbox");
+            op.AddArguments("--disable-dev-shm-usage");
+            op.AddArguments("--disable-setuid-sandbox");
+            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
+
+
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(PermitMOHAPDGV.Rows[2].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(PermitMOHAPDGV.Rows[3].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(PermitMOHAPDGV.Rows[5].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(PermitMOHAPDGV.Rows[6].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(PermitMOHAPDGV.Rows[7].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(PermitMOHAPDGV.Rows[8].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(PermitMOHAPDGV.Rows[9].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(PermitMOHAPDGV.Rows[10].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(PermitMOHAPDGV.Rows[11].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(PermitMOHAPDGV.Rows[12].Cells[1].Value + "");
+            if (MohreMohreDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
+            else
+                driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(PermitMOHAPDGV.Rows[15].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(PermitMOHAPDGV.Rows[1].Cells[1].Value + "");
+            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
