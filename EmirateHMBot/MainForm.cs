@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
+using OpenQA.Selenium.Firefox;
 
 namespace EmirateHMBot
 {
@@ -32,6 +33,7 @@ namespace EmirateHMBot
         private int _maxConcurrency;
         public HttpCaller HttpCaller = new HttpCaller();
         public ChromeDriver Driver;
+        IWebDriver driver;
         public bool LoggedInToMohre = false;
         public MainForm()
         {
@@ -83,14 +85,7 @@ namespace EmirateHMBot
             //allow other threads to modify UI as long as its one thread only
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
-            foreach (var process in Process.GetProcessesByName("chromedriver"))
-            {
-                process.Kill();
-            }
-            foreach (var process in Process.GetProcessesByName("chrome"))
-            {
-                process.CloseMainWindow();
-            }
+
             _ = Task.Run(LoginToMohre);
 
             PermitDGV.ColumnCount = 2;
@@ -183,7 +178,7 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Columns[0].Width = 250;
             PermitMOHAPDGV.Columns[1].Width = 635;
             PermitMOHAPDGV.RowTemplate.Height = 28;
-            PermitMOHAPDGV.Rows.Add(18);
+            PermitMOHAPDGV.Rows.Add(26);
             for (int i = 0; i < PermitMOHAPDGV.Rows.Count; i++)
             {
                 PermitMOHAPDGV.Rows[i].Cells[0].ReadOnly = true;
@@ -207,6 +202,14 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Rows[15].Cells[0].Value = "Birth Date";
             PermitMOHAPDGV.Rows[16].Cells[0].Value = "Profession";
             PermitMOHAPDGV.Rows[17].Cells[0].Value = "Mobile Number";
+            PermitMOHAPDGV.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
+            PermitMOHAPDGV.Rows[19].Cells[0].Value = "The Emirate";
+            PermitMOHAPDGV.Rows[20].Cells[0].Value = "City";
+            PermitMOHAPDGV.Rows[21].Cells[0].Value = "mail box";
+            PermitMOHAPDGV.Rows[22].Cells[0].Value = "Adress";
+            PermitMOHAPDGV.Rows[23].Cells[0].Value = "Region";
+            PermitMOHAPDGV.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
+            PermitMOHAPDGV.Rows[25].Cells[0].Value = "Preventive medicine center";
 
             foreach (DataGridViewColumn col in PermitMOHAPDGV.Columns)
             {
@@ -302,43 +305,50 @@ namespace EmirateHMBot
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
 
-            EchanMohreDgview.ColumnCount = 2;
+            EchanMohapDgview.ColumnCount = 2;
 
-            EchanMohreDgview.Columns[0].Width = 250;
-            EchanMohreDgview.Columns[1].Width = 639;
-            EchanMohreDgview.RowTemplate.Height = 28;
+            EchanMohapDgview.Columns[0].Width = 250;
+            EchanMohapDgview.Columns[1].Width = 639;
+            EchanMohapDgview.RowTemplate.Height = 28;
 
-            EchanMohreDgview.Rows.Add(18);
-
-            for (int i = 0; i < EchanMohreDgview.Rows.Count; i++)
+            EchanMohapDgview.Rows.Add(26);
+            for (int i = 0; i < EchanMohapDgview.Rows.Count; i++)
             {
-                EchanMohreDgview.Rows[i].Cells[0].ReadOnly = true;
+                EchanMohapDgview.Rows[i].Cells[0].ReadOnly = true;
             }
 
-            EchanMohreDgview.Rows[0].Cells[0].Value = "Company Name";
-            EchanMohreDgview.Rows[1].Cells[0].Value = "Work Phone";
-            EchanMohreDgview.Rows[2].Cells[0].Value = "Name Arabic";
-            EchanMohreDgview.Rows[3].Cells[0].Value = "Name English";
-            EchanMohreDgview.Rows[4].Cells[0].Value = "EID Number";
-            EchanMohreDgview.Rows[5].Cells[0].Value = "UID";
-            EchanMohreDgview.Rows[6].Cells[0].Value = "Residency File Number";
-            EchanMohreDgview.Rows[7].Cells[0].Value = "Residence Issue Date";
-            EchanMohreDgview.Rows[8].Cells[0].Value = "Residence Expiry Date";
-            EchanMohreDgview.Rows[9].Cells[0].Value = "Passport Number";
-            EchanMohreDgview.Rows[10].Cells[0].Value = "Passport Issue Place";
-            EchanMohreDgview.Rows[11].Cells[0].Value = "Passport Issue Date";
-            EchanMohreDgview.Rows[12].Cells[0].Value = "Passport Expiry Date";
-            EchanMohreDgview.Rows[13].Cells[0].Value = "Nationality";
-            EchanMohreDgview.Rows[14].Cells[0].Value = "Gender";
-            EchanMohreDgview.Rows[15].Cells[0].Value = "Birth Date";
-            EchanMohreDgview.Rows[16].Cells[0].Value = "Profession";
-            EchanMohreDgview.Rows[17].Cells[0].Value = "Mobile Number";
+            EchanMohapDgview.Rows[0].Cells[0].Value = "Company Name";
+            EchanMohapDgview.Rows[1].Cells[0].Value = "Work Phone";
+            EchanMohapDgview.Rows[2].Cells[0].Value = "Name Arabic";
+            EchanMohapDgview.Rows[3].Cells[0].Value = "Name English";
+            EchanMohapDgview.Rows[4].Cells[0].Value = "EID Number";
+            EchanMohapDgview.Rows[5].Cells[0].Value = "UID";
+            EchanMohapDgview.Rows[6].Cells[0].Value = "Residency File Number";
+            EchanMohapDgview.Rows[7].Cells[0].Value = "Residence Issue Date";
+            EchanMohapDgview.Rows[8].Cells[0].Value = "Residence Expiry Date";
+            EchanMohapDgview.Rows[9].Cells[0].Value = "Passport Number";
+            EchanMohapDgview.Rows[10].Cells[0].Value = "Passport Issue Place";
+            EchanMohapDgview.Rows[11].Cells[0].Value = "Passport Issue Date";
+            EchanMohapDgview.Rows[12].Cells[0].Value = "Passport Expiry Date";
+            EchanMohapDgview.Rows[13].Cells[0].Value = "Nationality";
+            EchanMohapDgview.Rows[14].Cells[0].Value = "Gender";
+            EchanMohapDgview.Rows[15].Cells[0].Value = "Birth Date";
+            EchanMohapDgview.Rows[16].Cells[0].Value = "Profession";
+            EchanMohapDgview.Rows[17].Cells[0].Value = "Mobile Number";
+            EchanMohapDgview.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
+            EchanMohapDgview.Rows[19].Cells[0].Value = "The Emirate";
+            EchanMohapDgview.Rows[20].Cells[0].Value = "City";
+            EchanMohapDgview.Rows[21].Cells[0].Value = "mail box";
+            EchanMohapDgview.Rows[22].Cells[0].Value = "Adress";
+            EchanMohapDgview.Rows[23].Cells[0].Value = "Region";
+            EchanMohapDgview.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
+            EchanMohapDgview.Rows[25].Cells[0].Value = "Preventive medicine center";
 
-            foreach (DataGridViewColumn col in EchanMohreDgview.Columns)
+            foreach (DataGridViewColumn col in EchanMohapDgview.Columns)
             {
                 col.DefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             }
-            foreach (DataGridViewColumn column in EchanMohreDgview.Columns)
+            foreach (DataGridViewColumn column in EchanMohapDgview.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
@@ -425,45 +435,90 @@ namespace EmirateHMBot
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
-            MohreMohreDGV.ColumnCount = 2;
-            MohreMohreDGV.Columns[0].Width = 250;
-            MohreMohreDGV.Columns[1].Width = 647;
-            MohreMohreDGV.RowTemplate.Height = 28;
-            MohreMohreDGV.Rows.Add(18);
-            for (int i = 0; i < MohreMohreDGV.Rows.Count; i++)
+            MohreMohapDGV.ColumnCount = 2;
+            MohreMohapDGV.Columns[0].Width = 250;
+            MohreMohapDGV.Columns[1].Width = 647;
+            MohreMohapDGV.RowTemplate.Height = 28;
+            MohreMohapDGV.Rows.Add(26);
+            for (int i = 0; i < MohreMohapDGV.Rows.Count; i++)
             {
-                MohreMohreDGV.Rows[i].Cells[0].ReadOnly = true;
+                MohreMohapDGV.Rows[i].Cells[0].ReadOnly = true;
             }
 
-            MohreMohreDGV.Rows[0].Cells[0].Value = "Company Name";
-            MohreMohreDGV.Rows[1].Cells[0].Value = "Work Phone";
-            MohreMohreDGV.Rows[2].Cells[0].Value = "Name Arabic";
-            MohreMohreDGV.Rows[3].Cells[0].Value = "Name English";
-            MohreMohreDGV.Rows[4].Cells[0].Value = "EID Number";
-            MohreMohreDGV.Rows[5].Cells[0].Value = "UID";
-            MohreMohreDGV.Rows[6].Cells[0].Value = "Residency File Number";
-            MohreMohreDGV.Rows[7].Cells[0].Value = "Residence Issue Date";
-            MohreMohreDGV.Rows[8].Cells[0].Value = "Residence Expiry Date";
-            MohreMohreDGV.Rows[9].Cells[0].Value = "Passport Number";
-            MohreMohreDGV.Rows[10].Cells[0].Value = "Passport Issue Place";
-            MohreMohreDGV.Rows[11].Cells[0].Value = "Passport Issue Date";
-            MohreMohreDGV.Rows[12].Cells[0].Value = "Passport Expiry Date";
-            MohreMohreDGV.Rows[13].Cells[0].Value = "Nationality";
-            MohreMohreDGV.Rows[14].Cells[0].Value = "Gender";
-            MohreMohreDGV.Rows[15].Cells[0].Value = "Birth Date";
-            MohreMohreDGV.Rows[16].Cells[0].Value = "Profession";
-            MohreMohreDGV.Rows[17].Cells[0].Value = "Mobile Number";
+            MohreMohapDGV.Rows[0].Cells[0].Value = "Company Name";
+            MohreMohapDGV.Rows[1].Cells[0].Value = "Work Phone";
+            MohreMohapDGV.Rows[2].Cells[0].Value = "Name Arabic";
+            MohreMohapDGV.Rows[3].Cells[0].Value = "Name English";
+            MohreMohapDGV.Rows[4].Cells[0].Value = "EID Number";
+            MohreMohapDGV.Rows[5].Cells[0].Value = "UID";
+            MohreMohapDGV.Rows[6].Cells[0].Value = "Residency File Number";
+            MohreMohapDGV.Rows[7].Cells[0].Value = "Residence Issue Date";
+            MohreMohapDGV.Rows[8].Cells[0].Value = "Residence Expiry Date";
+            MohreMohapDGV.Rows[9].Cells[0].Value = "Passport Number";
+            MohreMohapDGV.Rows[10].Cells[0].Value = "Passport Issue Place";
+            MohreMohapDGV.Rows[11].Cells[0].Value = "Passport Issue Date";
+            MohreMohapDGV.Rows[12].Cells[0].Value = "Passport Expiry Date";
+            MohreMohapDGV.Rows[13].Cells[0].Value = "Nationality";
+            MohreMohapDGV.Rows[14].Cells[0].Value = "Gender";
+            MohreMohapDGV.Rows[15].Cells[0].Value = "Birth Date";
+            MohreMohapDGV.Rows[16].Cells[0].Value = "Profession";
+            MohreMohapDGV.Rows[17].Cells[0].Value = "Mobile Number";
+            MohreMohapDGV.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
+            MohreMohapDGV.Rows[19].Cells[0].Value = "The Emirate";
+            MohreMohapDGV.Rows[20].Cells[0].Value = "City";
+            MohreMohapDGV.Rows[21].Cells[0].Value = "mail box";
+            MohreMohapDGV.Rows[22].Cells[0].Value = "Adress";
+            MohreMohapDGV.Rows[23].Cells[0].Value = "Region";
+            MohreMohapDGV.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
+            MohreMohapDGV.Rows[25].Cells[0].Value = "Preventive medicine center";
 
-            foreach (DataGridViewColumn col in MohreMohreDGV.Columns)
+            foreach (DataGridViewColumn col in MohreMohapDGV.Columns)
             {
                 col.DefaultCellStyle.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             }
-            foreach (DataGridViewColumn column in MohreMohreDGV.Columns)
+            foreach (DataGridViewColumn column in MohreMohapDGV.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             metroTabControl1.SelectTab(0);
             metroTabControl2.SelectTab(0);
+        }
+
+        EID GetEIDFromGrid(DataGridView dataGridView)
+        {
+            var EID = new EID();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                var name = row.Cells[0].Value.ToString();
+                var value = row.Cells[1].Value.ToString();
+                foreach (var propertyInfo in EID.GetType().GetProperties())
+                {
+                    if (propertyInfo.Name.Equals(name.Replace(" ", "")))
+                    {
+                        propertyInfo.SetValue(EID, value);
+                        break;
+                    }
+                }
+            }
+            return EID;
+        }
+        MOHAP GetMOHAPFromGrid(DataGridView dataGridView)
+        {
+            var MOHAP = new MOHAP();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                var name = row.Cells[0].Value.ToString();
+                var value = row.Cells[1].Value.ToString();
+                foreach (var propertyInfo in MOHAP.GetType().GetProperties())
+                {
+                    if (propertyInfo.Name.Equals(name.Replace(" ", "")))
+                    {
+                        propertyInfo.SetValue(MOHAP, value);
+                        break;
+                    }
+                }
+            }
+            return MOHAP;
         }
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
@@ -485,7 +540,7 @@ namespace EmirateHMBot
             }
             if ((x <= 100))
             {
-                ProgressB.Value = x;
+                //ProgressB.Value = x;
             }
         }
         public delegate void DisplayD(string s);
@@ -496,7 +551,7 @@ namespace EmirateHMBot
                 Invoke(new DisplayD(Display), s);
                 return;
             }
-            displayT.Text = s;
+            //displayT.Text = s;
         }
 
         #endregion
@@ -506,6 +561,7 @@ namespace EmirateHMBot
             Utility.SaveCntrl(this);
             Utility.SaveConfig();
             Driver?.Quit();
+            driver?.Quit();
             Application.Exit();
         }
 
@@ -638,8 +694,8 @@ namespace EmirateHMBot
             EID2DGV.Rows[15].Cells[1].Value = PermitDGV.Rows[16].Cells[1].Value;
             EID2DGV.Rows[18].Cells[1].Value = PermitDGV.Rows[17].Cells[1].Value;
             EID2DGV.Rows[19].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
-            var x = PermitDGV.Rows[9].Cells[1].Value;
-            Console.WriteLine(x);
+
+            #region Fill date Fields
             var dateOfBirth = "";
             if ((PermitDGV.Rows[9].Cells[1].Value + "").Length > 1)
             {
@@ -787,7 +843,8 @@ namespace EmirateHMBot
             else
             {
                 PermitMOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
-            }
+            } 
+            #endregion
             var worPhone = "";
             if (PermitDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
             {
@@ -811,23 +868,33 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
             PermitMOHAPDGV.Rows[17].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
             PermitMOHAPDGV.Rows[10].Cells[1].Value = PermitMOHAPDGV.Rows[13].Cells[1].Value;
+            PermitMOHAPDGV.Rows[18].Cells[1].Value = PermitMOHAPDGV.Rows[0].Cells[1].Value;//name sponsore arabic
+            PermitMOHAPDGV.Rows[19].Cells[1].Value = "عجمان";//emirat
+            PermitMOHAPDGV.Rows[20].Cells[1].Value = "عجمان";//city
+            PermitMOHAPDGV.Rows[21].Cells[1].Value = "123";//mail box
+            PermitMOHAPDGV.Rows[22].Cells[1].Value = "عجمان";//adress
+            PermitMOHAPDGV.Rows[23].Cells[1].Value = "عجمان";//region
+            PermitMOHAPDGV.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            PermitMOHAPDGV.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
+
+            var currentEidData = GetEIDFromGrid(EID2DGV);
         }
 
         async Task LoginToMohre()
         {
-            //var vrifie = false;
-            //do
-            //{
-            //    if (UserNameMohreTI.Text != "" && PassWordMohreTI.Text != "")
-            //        vrifie = true;
-            //    if (vrifie)
-            //        break;
-            //} while (true);
+            var vrifie = false;
+            do
+            {
+                if (UserNameMohreTI.Text != "" && PassWordMohreTI.Text != "")
+                    vrifie = true;
+                if (vrifie)
+                    break;
+            } while (true);
             LoggedInToMohre = false;
             var chromeOptions = new ChromeOptions();
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
-            //chromeOptions.AddArguments("headless");
+            chromeOptions.AddArguments("headless");
             Driver = new ChromeDriver(chromeDriverService, chromeOptions);
             Driver.Navigate().GoToUrl(" https://eservices.mohre.gov.ae/SmartTasheel/home/index?lang=en-gb#");
             Driver.ExecuteScript("CloseMessagePopUp();");
@@ -1014,7 +1081,7 @@ namespace EmirateHMBot
                 {
                     DateTime residenceIssueDate = DateTime.ParseExact(MohreDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     var issuDate = residenceIssueDate.ToString("yyyy/MM/dd");//done
-                    MohreMohreDGV.Rows[7].Cells[1].Value = issuDate;//residenceIssuedate
+                    MohreMohapDGV.Rows[7].Cells[1].Value = issuDate;//residenceIssuedate
                 }
                 catch (Exception)
                 {
@@ -1025,7 +1092,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MohreMohreDGV.Rows[7].Cells[1].Value = "";
+                MohreMohapDGV.Rows[7].Cells[1].Value = "";
             }
             if ((MohreDGV.Rows[16].Cells[1].Value + "").ToString().Length > 1)
             {
@@ -1034,7 +1101,7 @@ namespace EmirateHMBot
                 {
                     DateTime EXPDate = DateTime.ParseExact(MohreDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     var expDate = EXPDate.ToString("yyyy/MM/dd");//done
-                    MohreMohreDGV.Rows[8].Cells[1].Value = expDate;//residenceIssueDate
+                    MohreMohapDGV.Rows[8].Cells[1].Value = expDate;//residenceIssueDate
                 }
                 catch (Exception)
                 {
@@ -1045,7 +1112,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MohreMohreDGV.Rows[8].Cells[1].Value = "";
+                MohreMohapDGV.Rows[8].Cells[1].Value = "";
             }
             if ((MohreDGV.Rows[9].Cells[1].Value + "").ToString().Length > 1)
             {
@@ -1054,7 +1121,7 @@ namespace EmirateHMBot
                 {
                     DateTime dateOfBirthResult = DateTime.ParseExact(MohreDGV.Rows[9].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     var dateOfB = dateOfBirthResult.ToString("yyyy/MM/dd");
-                    MohreMohreDGV.Rows[15].Cells[1].Value = dateOfB;
+                    MohreMohapDGV.Rows[15].Cells[1].Value = dateOfB;
                 }
                 catch (Exception)
                 {
@@ -1065,7 +1132,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MohreMohreDGV.Rows[15].Cells[1].Value = "";
+                MohreMohapDGV.Rows[15].Cells[1].Value = "";
             }
             if ((MohreDGV.Rows[11].Cells[1].Value + "").ToString().Length > 1)
             {
@@ -1074,7 +1141,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportIssueDate = DateTime.ParseExact(MohreDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     var passpoetIssueD = passportIssueDate.ToString("yyyy/MM/dd");
-                    MohreMohreDGV.Rows[11].Cells[1].Value = passpoetIssueD;
+                    MohreMohapDGV.Rows[11].Cells[1].Value = passpoetIssueD;
                 }
                 catch (Exception)
                 {
@@ -1085,7 +1152,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MohreMohreDGV.Rows[11].Cells[1].Value = "";
+                MohreMohapDGV.Rows[11].Cells[1].Value = "";
             }
             if ((MohreDGV.Rows[12].Cells[1].Value + "").ToString().Length > 1)
             {
@@ -1094,7 +1161,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportIssueDate = DateTime.ParseExact(MohreDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     var passpoetIssueD = passportIssueDate.ToString("yyyy/MM/dd");
-                    MohreMohreDGV.Rows[12].Cells[1].Value = passpoetIssueD;
+                    MohreMohapDGV.Rows[12].Cells[1].Value = passpoetIssueD;
                 }
                 catch (Exception)
                 {
@@ -1105,7 +1172,7 @@ namespace EmirateHMBot
             }
             else
             {
-                MohreMohreDGV.Rows[12].Cells[1].Value = "";
+                MohreMohapDGV.Rows[12].Cells[1].Value = "";
             }
             #endregion
             MohreEidDGV.Rows[0].Cells[1].Value = MohreDGV.Rows[0].Cells[1].Value;//EID
@@ -1143,25 +1210,29 @@ namespace EmirateHMBot
             }
             else
                 worPhone = "";
-            MohreMohreDGV.Rows[1].Cells[1].Value = worPhone;
-            MohreMohreDGV.Rows[13].Cells[1].Value = MohreDGV.Rows[1].Cells[1].Value;
-            MohreMohreDGV.Rows[14].Cells[1].Value = MohreDGV.Rows[2].Cells[1].Value;
-            MohreMohreDGV.Rows[2].Cells[1].Value = MohreDGV.Rows[3].Cells[1].Value;
-            MohreMohreDGV.Rows[3].Cells[1].Value = MohreDGV.Rows[4].Cells[1].Value;
-            MohreMohreDGV.Rows[4].Cells[1].Value = MohreDGV.Rows[0].Cells[1].Value;
-            MohreMohreDGV.Rows[5].Cells[1].Value = MohreDGV.Rows[13].Cells[1].Value;
-            MohreMohreDGV.Rows[6].Cells[1].Value = MohreDGV.Rows[14].Cells[1].Value;
-            MohreMohreDGV.Rows[9].Cells[1].Value = MohreDGV.Rows[10].Cells[1].Value;
-            //MohreMohreDGV.Rows[11].Cells[1].Value = MohreDGV.Rows[11].Cells[1].Value;
-            //MohreMohreDGV.Rows[12].Cells[1].Value = MohreDGV.Rows[12].Cells[1].Value;
-            //MohreMohreDGV.Rows[15].Cells[1].Value = MohreDGV.Rows[9].Cells[1].Value;
-            MohreMohreDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[7].Cells[1].Value;
-            MohreMohreDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[8].Cells[1].Value;
-            MohreMohreDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[19].Cells[1].Value;
-            MohreMohreDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;
-            MohreMohreDGV.Rows[10].Cells[1].Value = MohreMohreDGV.Rows[13].Cells[1].Value;
-            MohreMohreDGV.Rows[0].Cells[1].Value = MohreDGV.Rows[17].Cells[1].Value;
-
+            MohreMohapDGV.Rows[1].Cells[1].Value = worPhone;
+            MohreMohapDGV.Rows[13].Cells[1].Value = MohreDGV.Rows[1].Cells[1].Value;
+            MohreMohapDGV.Rows[14].Cells[1].Value = MohreDGV.Rows[2].Cells[1].Value;
+            MohreMohapDGV.Rows[2].Cells[1].Value = MohreDGV.Rows[3].Cells[1].Value;
+            MohreMohapDGV.Rows[3].Cells[1].Value = MohreDGV.Rows[4].Cells[1].Value;
+            MohreMohapDGV.Rows[4].Cells[1].Value = MohreDGV.Rows[0].Cells[1].Value;
+            MohreMohapDGV.Rows[5].Cells[1].Value = MohreDGV.Rows[13].Cells[1].Value;
+            MohreMohapDGV.Rows[6].Cells[1].Value = MohreDGV.Rows[14].Cells[1].Value;
+            MohreMohapDGV.Rows[9].Cells[1].Value = MohreDGV.Rows[10].Cells[1].Value;
+            MohreMohapDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[7].Cells[1].Value;
+            MohreMohapDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[8].Cells[1].Value;
+            MohreMohapDGV.Rows[16].Cells[1].Value = MohreDGV.Rows[19].Cells[1].Value;
+            MohreMohapDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;
+            MohreMohapDGV.Rows[10].Cells[1].Value = MohreMohapDGV.Rows[13].Cells[1].Value;
+            MohreMohapDGV.Rows[0].Cells[1].Value = MohreDGV.Rows[17].Cells[1].Value;
+            MohreMohapDGV.Rows[18].Cells[1].Value = MohreMohapDGV.Rows[0].Cells[1].Value;//name sponsore arabic
+            MohreMohapDGV.Rows[19].Cells[1].Value = "عجمان";//emirat
+            MohreMohapDGV.Rows[20].Cells[1].Value = "عجمان";//city
+            MohreMohapDGV.Rows[21].Cells[1].Value = "123";//mail box
+            MohreMohapDGV.Rows[22].Cells[1].Value = "عجمان";//adress
+            MohreMohapDGV.Rows[23].Cells[1].Value = "عجمان";//region
+            MohreMohapDGV.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            MohreMohapDGV.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
         }
 
         IWebElement FindElementByXPath(string xpath)
@@ -1358,9 +1429,9 @@ namespace EmirateHMBot
             {
                 EChnEIDDgview.Rows[i].Cells[1].Value = "";
             }
-            for (int i = 0; i < EchanMohreDgview.Rows.Count; i++)
+            for (int i = 0; i < EchanMohapDgview.Rows.Count; i++)
             {
-                EchanMohreDgview.Rows[i].Cells[1].Value = "";
+                EchanMohapDgview.Rows[i].Cells[1].Value = "";
             }
         }
 
@@ -1393,6 +1464,7 @@ namespace EmirateHMBot
             EChnEIDDgview.Rows[18].Cells[1].Value = EChannelDGV.Rows[17].Cells[1].Value;
             EChnEIDDgview.Rows[19].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
             EChnEIDDgview.Rows[15].Cells[1].Value = EChannelDGV.Rows[16].Cells[1].Value;
+            #region Fill date fields
             if (ResidencyviewRadioB.Checked)
             {
                 var residencyIssueDate = "";
@@ -1432,7 +1504,7 @@ namespace EmirateHMBot
                     {
                         DateTime residencExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         residencyExpireDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[15].Cells[1].Value = residencyExpireDate;//residencExpiryDate
+                        EchanMohapDgview.Rows[15].Cells[1].Value = residencyExpireDate;//residencExpiryDate
                     }
                     catch (Exception)
                     {
@@ -1440,7 +1512,7 @@ namespace EmirateHMBot
                         {
                             DateTime residencExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[16].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                             residencyExpireDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                            EchanMohreDgview.Rows[15].Cells[1].Value = residencyExpireDate;//residencExpiryDate
+                            EchanMohapDgview.Rows[15].Cells[1].Value = residencyExpireDate;//residencExpiryDate
                         }
                         catch (Exception)
                         {
@@ -1462,7 +1534,7 @@ namespace EmirateHMBot
                 {
                     DateTime dateOfBirthResult = DateTime.ParseExact(EChannelDGV.Rows[9].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     dateOfBirth = dateOfBirthResult.ToString("yyyy/MM/dd");
-                    EchanMohreDgview.Rows[15].Cells[1].Value = dateOfBirth;
+                    EchanMohapDgview.Rows[15].Cells[1].Value = dateOfBirth;
                 }
                 catch (Exception)
                 {
@@ -1470,7 +1542,7 @@ namespace EmirateHMBot
                     {
                         DateTime dateOfBirthResult = DateTime.ParseExact(EChannelDGV.Rows[9].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         dateOfBirth = dateOfBirthResult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[15].Cells[1].Value = dateOfBirth;
+                        EchanMohapDgview.Rows[15].Cells[1].Value = dateOfBirth;
                     }
                     catch (Exception)
                     {
@@ -1483,7 +1555,7 @@ namespace EmirateHMBot
             }
             else
             {
-                EchanMohreDgview.Rows[15].Cells[1].Value = dateOfBirth;  //dateOfBirth;
+                EchanMohapDgview.Rows[15].Cells[1].Value = dateOfBirth;  //dateOfBirth;
             }
             var passportIssueDate = "";
             if ((EChannelDGV.Rows[11].Cells[1].Value + "").Length > 1)
@@ -1492,7 +1564,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportIssueDateresult = DateTime.ParseExact(EChannelDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportIssueDate = passportIssueDateresult.ToString("yyyy/MM/dd");
-                    EchanMohreDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                    EchanMohapDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
                 }
                 catch (Exception)
                 {
@@ -1500,7 +1572,7 @@ namespace EmirateHMBot
                     {
                         DateTime passportIssueDateresult = DateTime.ParseExact(EChannelDGV.Rows[11].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         passportIssueDate = passportIssueDateresult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                        EchanMohapDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
                     }
                     catch (Exception)
                     {
@@ -1513,7 +1585,7 @@ namespace EmirateHMBot
             }
             else
             {
-                EchanMohreDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
+                EchanMohapDgview.Rows[11].Cells[1].Value = passportIssueDate;//passportIssueDate
             }
             var passportExpiryDate = "";
             if ((EChannelDGV.Rows[12].Cells[1].Value + "").Length > 1)
@@ -1522,7 +1594,7 @@ namespace EmirateHMBot
                 {
                     DateTime passportExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     passportExpiryDate = passportExpiryDateResult.ToString("yyyy/MM/dd");
-                    EchanMohreDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                    EchanMohapDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
                 }
                 catch (Exception)
                 {
@@ -1532,7 +1604,7 @@ namespace EmirateHMBot
                     {
                         DateTime passportExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[12].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         passportExpiryDate = passportExpiryDateResult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                        EchanMohapDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
                     }
                     catch (Exception)
                     {
@@ -1545,7 +1617,7 @@ namespace EmirateHMBot
             }
             else
             {
-                EchanMohreDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
+                EchanMohapDgview.Rows[12].Cells[1].Value = passportExpiryDate;//passportExpiryDate
             }
             if (EChannelDGV?.Rows[15]?.Cells[1]?.Value?.ToString().Length > 1)
             {
@@ -1556,7 +1628,7 @@ namespace EmirateHMBot
                     {
                         DateTime residencIssueDateResult = DateTime.ParseExact(EChannelDGV.Rows[15].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         residencIssueDate = residencIssueDateResult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                        EchanMohapDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
                     }
                     catch (Exception)
                     {
@@ -1564,7 +1636,7 @@ namespace EmirateHMBot
                         {
                             DateTime residencIssueDateResult = DateTime.ParseExact(EChannelDGV.Rows[15].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                             residencIssueDate = residencIssueDateResult.ToString("yyyy/MM/dd");
-                            EchanMohreDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                            EchanMohapDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
                         }
                         catch (Exception)
                         {
@@ -1576,12 +1648,12 @@ namespace EmirateHMBot
                 }
                 else
                 {
-                    EchanMohreDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
+                    EchanMohapDgview.Rows[7].Cells[1].Value = residencIssueDate;//residencIssueDate
                 }
             }
             else
             {
-                EchanMohreDgview.Rows[7].Cells[1].Value = EChannelDGV.Rows[15].Cells[1].Value;
+                EchanMohapDgview.Rows[7].Cells[1].Value = EChannelDGV.Rows[15].Cells[1].Value;
             }
             var residencExpiryDate = "";
             if ((EChannelDGV.Rows[16].Cells[1].Value + "").Length > 1)
@@ -1590,7 +1662,7 @@ namespace EmirateHMBot
                 {
                     DateTime residencExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[16].Cells[1].Value + "", @"dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     residencExpiryDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                    EchanMohreDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+                    EchanMohapDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
                 }
                 catch (Exception)
                 {
@@ -1598,7 +1670,7 @@ namespace EmirateHMBot
                     {
                         DateTime residencExpiryDateResult = DateTime.ParseExact(EChannelDGV.Rows[16].Cells[1].Value + "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         residencExpiryDate = residencExpiryDateResult.ToString("yyyy/MM/dd");
-                        EchanMohreDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+                        EchanMohapDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
                     }
                     catch (Exception)
                     {
@@ -1610,8 +1682,9 @@ namespace EmirateHMBot
             }
             else
             {
-                EchanMohreDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
-            }
+                EchanMohapDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
+            } 
+            #endregion
 
             var worPhone = "";
             if (EChannelDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
@@ -1621,19 +1694,27 @@ namespace EmirateHMBot
             }
             else
                 worPhone = "";
-            EchanMohreDgview.Rows[0].Cells[1].Value = EChannelDGV.Rows[17].Cells[1].Value;
-            EchanMohreDgview.Rows[1].Cells[1].Value = worPhone;
-            EchanMohreDgview.Rows[2].Cells[1].Value = EChannelDGV.Rows[3].Cells[1].Value;
-            EchanMohreDgview.Rows[3].Cells[1].Value = EChannelDGV.Rows[4].Cells[1].Value;
-            EchanMohreDgview.Rows[4].Cells[1].Value = EChannelDGV.Rows[0].Cells[1].Value;
-            EchanMohreDgview.Rows[5].Cells[1].Value = EChannelDGV.Rows[13].Cells[1].Value;
-            EchanMohreDgview.Rows[6].Cells[1].Value = EChannelDGV.Rows[14].Cells[1].Value;
-            EchanMohreDgview.Rows[9].Cells[1].Value = EChannelDGV.Rows[10].Cells[1].Value;
-            EchanMohreDgview.Rows[13].Cells[1].Value = EChannelDGV.Rows[1].Cells[1].Value;
-            EchanMohreDgview.Rows[14].Cells[1].Value = EChannelDGV.Rows[2].Cells[1].Value;
-            EchanMohreDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
-            EchanMohreDgview.Rows[17].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
-            EchanMohreDgview.Rows[10].Cells[1].Value = EchanMohreDgview.Rows[13].Cells[1].Value;
+            EchanMohapDgview.Rows[0].Cells[1].Value = EChannelDGV.Rows[17].Cells[1].Value;
+            EchanMohapDgview.Rows[1].Cells[1].Value = worPhone;
+            EchanMohapDgview.Rows[2].Cells[1].Value = EChannelDGV.Rows[3].Cells[1].Value;
+            EchanMohapDgview.Rows[3].Cells[1].Value = EChannelDGV.Rows[4].Cells[1].Value;
+            EchanMohapDgview.Rows[4].Cells[1].Value = EChannelDGV.Rows[0].Cells[1].Value;
+            EchanMohapDgview.Rows[5].Cells[1].Value = EChannelDGV.Rows[13].Cells[1].Value;
+            EchanMohapDgview.Rows[6].Cells[1].Value = EChannelDGV.Rows[14].Cells[1].Value;
+            EchanMohapDgview.Rows[9].Cells[1].Value = EChannelDGV.Rows[10].Cells[1].Value;
+            EchanMohapDgview.Rows[13].Cells[1].Value = EChannelDGV.Rows[1].Cells[1].Value;
+            EchanMohapDgview.Rows[14].Cells[1].Value = EChannelDGV.Rows[2].Cells[1].Value;
+            EchanMohapDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
+            EchanMohapDgview.Rows[17].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
+            EchanMohapDgview.Rows[10].Cells[1].Value = EchanMohapDgview.Rows[13].Cells[1].Value;
+            EchanMohapDgview.Rows[18].Cells[1].Value = EchanMohapDgview.Rows[0].Cells[1].Value;//name sponsore arabic
+            EchanMohapDgview.Rows[19].Cells[1].Value = "عجمان";//emirat
+            EchanMohapDgview.Rows[20].Cells[1].Value = "عجمان";//city
+            EchanMohapDgview.Rows[21].Cells[1].Value = "123";//mail box
+            EchanMohapDgview.Rows[22].Cells[1].Value = "عجمان";//adress
+            EchanMohapDgview.Rows[23].Cells[1].Value = "عجمان";//region
+            EchanMohapDgview.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            EchanMohapDgview.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
         }
 
         private void EChannelDGV_KeyPress(object sender, KeyPressEventArgs e)
@@ -1658,8 +1739,8 @@ namespace EmirateHMBot
         {
             if (e.KeyChar.GetHashCode().Equals(589833))
             {
-                SelectNextCell(EchanMohreDgview);
-                EchanMohreDgview.BeginEdit(true);
+                SelectNextCell(EchanMohapDgview);
+                EchanMohapDgview.BeginEdit(true);
             }
         }
 
@@ -1709,9 +1790,9 @@ namespace EmirateHMBot
             {
                 MohreEidDGV.Rows[i].Cells[1].Value = "";
             }
-            for (int i = 0; i < MohreMohreDGV.Rows.Count; i++)
+            for (int i = 0; i < MohreMohapDGV.Rows.Count; i++)
             {
-                MohreMohreDGV.Rows[i].Cells[1].Value = "";
+                MohreMohapDGV.Rows[i].Cells[1].Value = "";
             }
         }
 
@@ -1729,7 +1810,7 @@ namespace EmirateHMBot
             }
         }
 
-        
+
 
         private void UploadImgEChannelEIDB_Click(object sender, EventArgs e)
         {
@@ -1737,7 +1818,7 @@ namespace EmirateHMBot
             if (o.ShowDialog() == DialogResult.OK)
             {
                 ImgPathForEChannelEIDTextBoxI.Text = o.FileName;
-               
+
             }
         }
 
@@ -1747,14 +1828,24 @@ namespace EmirateHMBot
             if (o.ShowDialog() == DialogResult.OK)
             {//|*.jpg;*.jpeg;*.png
                 ImgPathForEChannelMohapTextBoxI.Text = o.FileName;
-               
+
             }
         }
 
         private void SaveFromEChannelMOHAPB_Click(object sender, EventArgs e)
         {
 
-            if (EchanMohreDgview.Rows[2].Cells[1].Value + "" == "")
+            if (EchannellMohapUserNameTextBoxI.Text == "")
+            {
+                MessageBox.Show("please enter the username");
+                return;
+            }
+            if (EchannellMohapPwTextBoxI.Text == "")
+            {
+                MessageBox.Show("please enter the the password");
+                return;
+            }
+            if (EchanMohapDgview.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
                 return;
@@ -1767,32 +1858,44 @@ namespace EmirateHMBot
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
-            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
-            op.AddArguments("--no-sandbox");
-            op.AddArguments("--disable-dev-shm-usage");
-            op.AddArguments("--disable-setuid-sandbox");
-            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
+
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+
+            var MohapData = GetMOHAPFromGrid(EchanMohapDgview);
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
-
-
-            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(EchanMohreDgview.Rows[2].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(EchanMohreDgview.Rows[3].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(EchanMohreDgview.Rows[5].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(EchanMohreDgview.Rows[6].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(EchanMohreDgview.Rows[7].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(EchanMohreDgview.Rows[8].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(EchanMohreDgview.Rows[9].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(EchanMohreDgview.Rows[10].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(EchanMohreDgview.Rows[11].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(EchanMohreDgview.Rows[12].Cells[1].Value + "");
-            if (EchanMohreDgview.Rows[14].Cells[1].Value + "" == "FEMALE")
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohapData.NameArabic);
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohapData.NameEnglish);
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohapData.UID);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(MohapData.ResidencyFileNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(MohapData.ResidenceIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(MohapData.ResidenceExpiryDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(MohapData.PassportNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(MohapData.PassportIssuePlace);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(MohapData.PassportIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(MohapData.PassportExpiryDate);
+            if (MohreMohapDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
-            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(EchanMohreDgview.Rows[15].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(EchanMohreDgview.Rows[1].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForEChannelMohapTextBoxI.Text);//image
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
+            Thread.Sleep(1000);
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
+            //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
 
         private void SaveFromEID_Click(object sender, EventArgs e)
@@ -1812,7 +1915,17 @@ namespace EmirateHMBot
 
         private void SaveFromMohrelMOHAPB_Click(object sender, EventArgs e)
         {
-            if (MohreMohreDGV.Rows[2].Cells[1].Value + "" == "")
+            if (MohreMohapUsernameTextBoxI.Text == "")
+            {
+                MessageBox.Show("please enter the username");
+                return;
+            }
+            if (MohreMohapPwTextBoxI.Text == "")
+            {
+                MessageBox.Show("please enter the the password");
+                return;
+            }
+            if (MohreMohapDGV.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
                 return;
@@ -1825,32 +1938,43 @@ namespace EmirateHMBot
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
-            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
-            op.AddArguments("--no-sandbox");
-            op.AddArguments("--disable-dev-shm-usage");
-            op.AddArguments("--disable-setuid-sandbox");
-            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
+
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+
+            var MohapData = GetMOHAPFromGrid(MohreMohapDGV);
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
-
-
-            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohreMohreDGV.Rows[2].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohreMohreDGV.Rows[3].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohreMohreDGV.Rows[5].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(MohreMohreDGV.Rows[6].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(MohreMohreDGV.Rows[7].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(MohreMohreDGV.Rows[8].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(MohreMohreDGV.Rows[9].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(MohreMohreDGV.Rows[10].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(MohreMohreDGV.Rows[11].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(MohreMohreDGV.Rows[12].Cells[1].Value + "");
-            if (MohreMohreDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohapData.NameArabic);
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohapData.NameEnglish);
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohapData.UID);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(MohapData.ResidencyFileNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(MohapData.ResidenceIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(MohapData.ResidenceExpiryDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(MohapData.PassportNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(MohapData.PassportIssuePlace);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(MohapData.PassportIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(MohapData.PassportExpiryDate);
+            if (MohreMohapDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
-            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohreMohreDGV.Rows[15].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohreMohreDGV.Rows[1].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForMohreMohapTextBoxI.Text);//image
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
+            //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
 
         private void UploadImgPermitMohapB_Click(object sender, EventArgs e)
@@ -1865,47 +1989,66 @@ namespace EmirateHMBot
 
         private void SaveFromPermitMOHAPB_Click(object sender, EventArgs e)
         {
+            if (PermitMohapTextBoxUsernameI.Text == "")
+            {
+                MessageBox.Show("please enter the username");
+                return;
+            }
+            if (PermitMohapTextBoxPwI.Text == "")
+            {
+                MessageBox.Show("please enter the the password");
+                return;
+            }
             if (PermitMOHAPDGV.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
                 return;
             }
-            if (ImgPathForPermitMohapTextBoxI.Text=="")
+            if (ImgPathForPermitMohapTextBoxI.Text == "")
             {
                 MessageBox.Show("please add the required image");
                 return;
             }
-          
             var chromeDriverService = ChromeDriverService.CreateDefaultService();
             chromeDriverService.HideCommandPromptWindow = true;
             var op = new ChromeOptions();
-            op.AddArguments("--user-data-dir=" + Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/AppData/Local/Google/Chrome/User Data");//C://Users/Riadh/
-            op.AddArguments("--no-sandbox");
-            op.AddArguments("--disable-dev-shm-usage");
-            op.AddArguments("--disable-setuid-sandbox");
-            var driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
+            driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
 
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+
+            var MohapData = GetMOHAPFromGrid(PermitMOHAPDGV);
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
-
-
-            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(PermitMOHAPDGV.Rows[2].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(PermitMOHAPDGV.Rows[3].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(PermitMOHAPDGV.Rows[5].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(PermitMOHAPDGV.Rows[6].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(PermitMOHAPDGV.Rows[7].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(PermitMOHAPDGV.Rows[8].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(PermitMOHAPDGV.Rows[9].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(PermitMOHAPDGV.Rows[10].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(PermitMOHAPDGV.Rows[11].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(PermitMOHAPDGV.Rows[12].Cells[1].Value + "");
-            if (MohreMohreDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
+            driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohapData.NameArabic);
+            driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohapData.NameEnglish);
+            driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohapData.UID);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceNumber')] ")).SendKeys(MohapData.ResidencyFileNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceIssueDate')] ")).SendKeys(MohapData.ResidenceIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_ResidenceExpiryDate')]")).SendKeys(MohapData.ResidenceExpiryDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportNumber')] ")).SendKeys(MohapData.PassportNumber);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssuePlace')]")).SendKeys(MohapData.PassportIssuePlace);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportIssueDate')]")).SendKeys(MohapData.PassportIssueDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_PassportExpiryDate')]")).SendKeys(MohapData.PassportExpiryDate);
+            if (MohreMohapDGV.Rows[14].Cells[1].Value + "" == "FEMALE")
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
-            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(PermitMOHAPDGV.Rows[15].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(PermitMOHAPDGV.Rows[1].Cells[1].Value + "");
-            driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
+            driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
+            //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
