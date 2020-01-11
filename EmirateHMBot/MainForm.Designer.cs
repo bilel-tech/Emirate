@@ -51,6 +51,7 @@
             this.SaveFromPermitMOHAPB = new System.Windows.Forms.Button();
             this.ImgPathForPermitMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
             this.UploadImgPermitMohapB = new System.Windows.Forms.Button();
+            this.PermitMOHAPDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.metroTabControl4 = new MetroFramework.Controls.MetroTabControl();
@@ -85,6 +86,7 @@
             this.metroTabControl3 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage7 = new MetroFramework.Controls.MetroTabPage();
             this.EChannelP = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ResidencyviewRadioB = new System.Windows.Forms.RadioButton();
             this.VisaviewRadioB = new System.Windows.Forms.RadioButton();
@@ -116,8 +118,7 @@
             this.ImgPathForEChannelMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchanMohapDgview = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.PermitMOHAPDGV = new System.Windows.Forms.DataGridView();
+            this.label16 = new System.Windows.Forms.Label();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -129,6 +130,7 @@
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).BeginInit();
             this.metroTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             this.metroTabControl4.SuspendLayout();
@@ -144,6 +146,7 @@
             this.metroTabControl3.SuspendLayout();
             this.metroTabPage7.SuspendLayout();
             this.EChannelP.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).BeginInit();
             this.metroTabPage8.SuspendLayout();
@@ -151,8 +154,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).BeginInit();
             this.metroTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -164,8 +165,8 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(1048, 842);
+            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.Size = new System.Drawing.Size(1048, 745);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -182,7 +183,7 @@
             this.metroTabPage1.HorizontalScrollbarSize = 0;
             this.metroTabPage1.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabPage1.Size = new System.Drawing.Size(1040, 700);
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "Permit";
             this.metroTabPage1.VerticalScrollbarBarColor = true;
@@ -196,7 +197,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1040, 797);
+            this.panel2.Size = new System.Drawing.Size(1040, 700);
             this.panel2.TabIndex = 14;
             // 
             // metroTabControl2
@@ -209,7 +210,7 @@
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
             this.metroTabControl2.SelectedIndex = 2;
-            this.metroTabControl2.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabControl2.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
             this.metroTabControl2.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -226,7 +227,7 @@
             this.metroTabPage4.HorizontalScrollbarSize = 0;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage4.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage4.TabIndex = 0;
             this.metroTabPage4.Text = "Scraped data";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -244,7 +245,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1032, 752);
+            this.panel1.Size = new System.Drawing.Size(1032, 655);
             this.panel1.TabIndex = 14;
             // 
             // label1
@@ -337,7 +338,7 @@
             this.metroTabPage5.HorizontalScrollbarSize = 0;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage5.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage5.TabIndex = 1;
             this.metroTabPage5.Text = "EID 2";
             this.metroTabPage5.VerticalScrollbarBarColor = false;
@@ -353,7 +354,7 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(0, 0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1032, 752);
+            this.metroPanel1.Size = new System.Drawing.Size(1032, 655);
             this.metroPanel1.TabIndex = 2;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -391,7 +392,7 @@
             this.metroTabPage6.HorizontalScrollbarSize = 10;
             this.metroTabPage6.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage6.Name = "metroTabPage6";
-            this.metroTabPage6.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage6.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage6.TabIndex = 2;
             this.metroTabPage6.Text = "MOHAP";
             this.metroTabPage6.VerticalScrollbarBarColor = true;
@@ -407,6 +408,7 @@
             this.label11.Size = new System.Drawing.Size(73, 15);
             this.label11.TabIndex = 53;
             this.label11.Text = "Password:";
+            this.label11.Visible = false;
             // 
             // label9
             // 
@@ -417,6 +419,7 @@
             this.label9.Size = new System.Drawing.Size(77, 15);
             this.label9.TabIndex = 52;
             this.label9.Text = "Username:";
+            this.label9.Visible = false;
             // 
             // PermitMohapTextBoxPwI
             // 
@@ -445,6 +448,7 @@
             this.PermitMohapTextBoxPwI.Size = new System.Drawing.Size(110, 23);
             this.PermitMohapTextBoxPwI.TabIndex = 51;
             this.PermitMohapTextBoxPwI.UseSelectable = true;
+            this.PermitMohapTextBoxPwI.Visible = false;
             this.PermitMohapTextBoxPwI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PermitMohapTextBoxPwI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -475,14 +479,15 @@
             this.PermitMohapTextBoxUsernameI.Size = new System.Drawing.Size(110, 23);
             this.PermitMohapTextBoxUsernameI.TabIndex = 50;
             this.PermitMohapTextBoxUsernameI.UseSelectable = true;
+            this.PermitMohapTextBoxUsernameI.Visible = false;
             this.PermitMohapTextBoxUsernameI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.PermitMohapTextBoxUsernameI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // SaveFromPermitMOHAPB
             // 
-            this.SaveFromPermitMOHAPB.Location = new System.Drawing.Point(914, 693);
+            this.SaveFromPermitMOHAPB.Location = new System.Drawing.Point(918, 512);
             this.SaveFromPermitMOHAPB.Name = "SaveFromPermitMOHAPB";
-            this.SaveFromPermitMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromPermitMOHAPB.Size = new System.Drawing.Size(109, 23);
             this.SaveFromPermitMOHAPB.TabIndex = 49;
             this.SaveFromPermitMOHAPB.Text = "Save";
             this.SaveFromPermitMOHAPB.UseVisualStyleBackColor = true;
@@ -503,7 +508,7 @@
             this.ImgPathForPermitMohapTextBoxI.CustomButton.UseSelectable = true;
             this.ImgPathForPermitMohapTextBoxI.CustomButton.Visible = false;
             this.ImgPathForPermitMohapTextBoxI.Lines = new string[0];
-            this.ImgPathForPermitMohapTextBoxI.Location = new System.Drawing.Point(910, 624);
+            this.ImgPathForPermitMohapTextBoxI.Location = new System.Drawing.Point(917, 452);
             this.ImgPathForPermitMohapTextBoxI.MaxLength = 32767;
             this.ImgPathForPermitMohapTextBoxI.Name = "ImgPathForPermitMohapTextBoxI";
             this.ImgPathForPermitMohapTextBoxI.PasswordChar = '\0';
@@ -520,13 +525,30 @@
             // 
             // UploadImgPermitMohapB
             // 
-            this.UploadImgPermitMohapB.Location = new System.Drawing.Point(914, 655);
+            this.UploadImgPermitMohapB.Location = new System.Drawing.Point(917, 483);
             this.UploadImgPermitMohapB.Name = "UploadImgPermitMohapB";
-            this.UploadImgPermitMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgPermitMohapB.Size = new System.Drawing.Size(110, 23);
             this.UploadImgPermitMohapB.TabIndex = 47;
             this.UploadImgPermitMohapB.Text = "upload image";
             this.UploadImgPermitMohapB.UseVisualStyleBackColor = true;
             this.UploadImgPermitMohapB.Click += new System.EventHandler(this.UploadImgPermitMohapB_Click);
+            // 
+            // PermitMOHAPDGV
+            // 
+            this.PermitMOHAPDGV.AllowUserToAddRows = false;
+            this.PermitMOHAPDGV.AllowUserToDeleteRows = false;
+            this.PermitMOHAPDGV.AllowUserToResizeColumns = false;
+            this.PermitMOHAPDGV.AllowUserToResizeRows = false;
+            this.PermitMOHAPDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PermitMOHAPDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PermitMOHAPDGV.Location = new System.Drawing.Point(3, 51);
+            this.PermitMOHAPDGV.Name = "PermitMOHAPDGV";
+            this.PermitMOHAPDGV.ReadOnly = true;
+            this.PermitMOHAPDGV.RowHeadersVisible = false;
+            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 571);
+            this.PermitMOHAPDGV.TabIndex = 3;
+            this.PermitMOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
+            this.PermitMOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
             // 
             // metroTabPage2
             // 
@@ -536,7 +558,7 @@
             this.metroTabPage2.HorizontalScrollbarSize = 0;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabPage2.Size = new System.Drawing.Size(1040, 700);
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "MOHRE";
             this.metroTabPage2.VerticalScrollbarBarColor = false;
@@ -552,7 +574,7 @@
             this.metroPanel2.HorizontalScrollbarSize = 10;
             this.metroPanel2.Location = new System.Drawing.Point(0, 0);
             this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(1040, 797);
+            this.metroPanel2.Size = new System.Drawing.Size(1040, 700);
             this.metroPanel2.TabIndex = 2;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -568,7 +590,7 @@
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
             this.metroTabControl4.SelectedIndex = 2;
-            this.metroTabControl4.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabControl4.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
             this.metroTabControl4.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -585,7 +607,7 @@
             this.metroTabPage10.HorizontalScrollbarSize = 0;
             this.metroTabPage10.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage10.Name = "metroTabPage10";
-            this.metroTabPage10.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage10.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage10.TabIndex = 0;
             this.metroTabPage10.Text = "Scraped data";
             this.metroTabPage10.VerticalScrollbarBarColor = true;
@@ -611,7 +633,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1032, 752);
+            this.panel5.Size = new System.Drawing.Size(1032, 655);
             this.panel5.TabIndex = 14;
             // 
             // label10
@@ -868,7 +890,7 @@
             this.metroTabPage11.HorizontalScrollbarSize = 0;
             this.metroTabPage11.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage11.Name = "metroTabPage11";
-            this.metroTabPage11.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage11.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage11.TabIndex = 1;
             this.metroTabPage11.Text = "EID 2";
             this.metroTabPage11.VerticalScrollbarBarColor = false;
@@ -884,7 +906,7 @@
             this.metroPanel4.HorizontalScrollbarSize = 10;
             this.metroPanel4.Location = new System.Drawing.Point(0, 0);
             this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(1032, 752);
+            this.metroPanel4.Size = new System.Drawing.Size(1032, 655);
             this.metroPanel4.TabIndex = 2;
             this.metroPanel4.VerticalScrollbarBarColor = true;
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
@@ -920,7 +942,7 @@
             this.metroTabPage12.HorizontalScrollbarSize = 10;
             this.metroTabPage12.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage12.Name = "metroTabPage12";
-            this.metroTabPage12.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage12.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage12.TabIndex = 2;
             this.metroTabPage12.Text = "MOHAP";
             this.metroTabPage12.VerticalScrollbarBarColor = true;
@@ -931,21 +953,23 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(913, 89);
+            this.label12.Location = new System.Drawing.Point(920, 150);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(73, 15);
             this.label12.TabIndex = 57;
             this.label12.Text = "Password:";
+            this.label12.Visible = false;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(913, 26);
+            this.label13.Location = new System.Drawing.Point(920, 87);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 15);
             this.label13.TabIndex = 56;
             this.label13.Text = "Username:";
+            this.label13.Visible = false;
             // 
             // MohreMohapPwTextBoxI
             // 
@@ -962,7 +986,7 @@
             this.MohreMohapPwTextBoxI.CustomButton.UseSelectable = true;
             this.MohreMohapPwTextBoxI.CustomButton.Visible = false;
             this.MohreMohapPwTextBoxI.Lines = new string[0];
-            this.MohreMohapPwTextBoxI.Location = new System.Drawing.Point(909, 107);
+            this.MohreMohapPwTextBoxI.Location = new System.Drawing.Point(916, 168);
             this.MohreMohapPwTextBoxI.MaxLength = 32767;
             this.MohreMohapPwTextBoxI.Name = "MohreMohapPwTextBoxI";
             this.MohreMohapPwTextBoxI.PasswordChar = '\0';
@@ -974,6 +998,7 @@
             this.MohreMohapPwTextBoxI.Size = new System.Drawing.Size(110, 23);
             this.MohreMohapPwTextBoxI.TabIndex = 55;
             this.MohreMohapPwTextBoxI.UseSelectable = true;
+            this.MohreMohapPwTextBoxI.Visible = false;
             this.MohreMohapPwTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.MohreMohapPwTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -992,7 +1017,7 @@
             this.MohreMohapUsernameTextBoxI.CustomButton.UseSelectable = true;
             this.MohreMohapUsernameTextBoxI.CustomButton.Visible = false;
             this.MohreMohapUsernameTextBoxI.Lines = new string[0];
-            this.MohreMohapUsernameTextBoxI.Location = new System.Drawing.Point(909, 51);
+            this.MohreMohapUsernameTextBoxI.Location = new System.Drawing.Point(916, 112);
             this.MohreMohapUsernameTextBoxI.MaxLength = 32767;
             this.MohreMohapUsernameTextBoxI.Name = "MohreMohapUsernameTextBoxI";
             this.MohreMohapUsernameTextBoxI.PasswordChar = '\0';
@@ -1004,14 +1029,15 @@
             this.MohreMohapUsernameTextBoxI.Size = new System.Drawing.Size(110, 23);
             this.MohreMohapUsernameTextBoxI.TabIndex = 54;
             this.MohreMohapUsernameTextBoxI.UseSelectable = true;
+            this.MohreMohapUsernameTextBoxI.Visible = false;
             this.MohreMohapUsernameTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.MohreMohapUsernameTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // SaveFromMohrelMOHAPB
             // 
-            this.SaveFromMohrelMOHAPB.Location = new System.Drawing.Point(926, 704);
+            this.SaveFromMohrelMOHAPB.Location = new System.Drawing.Point(916, 477);
             this.SaveFromMohrelMOHAPB.Name = "SaveFromMohrelMOHAPB";
-            this.SaveFromMohrelMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromMohrelMOHAPB.Size = new System.Drawing.Size(113, 23);
             this.SaveFromMohrelMOHAPB.TabIndex = 46;
             this.SaveFromMohrelMOHAPB.Text = "Save";
             this.SaveFromMohrelMOHAPB.UseVisualStyleBackColor = true;
@@ -1023,7 +1049,7 @@
             // 
             // 
             this.ImgPathForMohreMohapTextBoxI.CustomButton.Image = null;
-            this.ImgPathForMohreMohapTextBoxI.CustomButton.Location = new System.Drawing.Point(88, 1);
+            this.ImgPathForMohreMohapTextBoxI.CustomButton.Location = new System.Drawing.Point(91, 1);
             this.ImgPathForMohreMohapTextBoxI.CustomButton.Name = "";
             this.ImgPathForMohreMohapTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.ImgPathForMohreMohapTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -1032,7 +1058,7 @@
             this.ImgPathForMohreMohapTextBoxI.CustomButton.UseSelectable = true;
             this.ImgPathForMohreMohapTextBoxI.CustomButton.Visible = false;
             this.ImgPathForMohreMohapTextBoxI.Lines = new string[0];
-            this.ImgPathForMohreMohapTextBoxI.Location = new System.Drawing.Point(922, 635);
+            this.ImgPathForMohreMohapTextBoxI.Location = new System.Drawing.Point(916, 417);
             this.ImgPathForMohreMohapTextBoxI.MaxLength = 32767;
             this.ImgPathForMohreMohapTextBoxI.Name = "ImgPathForMohreMohapTextBoxI";
             this.ImgPathForMohreMohapTextBoxI.PasswordChar = '\0';
@@ -1041,7 +1067,7 @@
             this.ImgPathForMohreMohapTextBoxI.SelectionLength = 0;
             this.ImgPathForMohreMohapTextBoxI.SelectionStart = 0;
             this.ImgPathForMohreMohapTextBoxI.ShortcutsEnabled = true;
-            this.ImgPathForMohreMohapTextBoxI.Size = new System.Drawing.Size(110, 23);
+            this.ImgPathForMohreMohapTextBoxI.Size = new System.Drawing.Size(113, 23);
             this.ImgPathForMohreMohapTextBoxI.TabIndex = 45;
             this.ImgPathForMohreMohapTextBoxI.UseSelectable = true;
             this.ImgPathForMohreMohapTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -1049,9 +1075,9 @@
             // 
             // UploadImgMohreMohapB
             // 
-            this.UploadImgMohreMohapB.Location = new System.Drawing.Point(926, 666);
+            this.UploadImgMohreMohapB.Location = new System.Drawing.Point(916, 448);
             this.UploadImgMohreMohapB.Name = "UploadImgMohreMohapB";
-            this.UploadImgMohreMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgMohreMohapB.Size = new System.Drawing.Size(113, 23);
             this.UploadImgMohreMohapB.TabIndex = 44;
             this.UploadImgMohreMohapB.Text = "upload image";
             this.UploadImgMohreMohapB.UseVisualStyleBackColor = true;
@@ -1065,11 +1091,11 @@
             this.MohreMohapDGV.AllowUserToResizeRows = false;
             this.MohreMohapDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.MohreMohapDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MohreMohapDGV.Location = new System.Drawing.Point(3, 0);
+            this.MohreMohapDGV.Location = new System.Drawing.Point(3, 40);
             this.MohreMohapDGV.Name = "MohreMohapDGV";
             this.MohreMohapDGV.ReadOnly = true;
             this.MohreMohapDGV.RowHeadersVisible = false;
-            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 739);
+            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 571);
             this.MohreMohapDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -1080,7 +1106,7 @@
             this.metroTabPage3.HorizontalScrollbarSize = 0;
             this.metroTabPage3.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage3.Name = "metroTabPage3";
-            this.metroTabPage3.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabPage3.Size = new System.Drawing.Size(1040, 700);
             this.metroTabPage3.TabIndex = 2;
             this.metroTabPage3.Text = "EChannels";
             this.metroTabPage3.VerticalScrollbarBarColor = true;
@@ -1097,7 +1123,7 @@
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
             this.metroTabControl3.SelectedIndex = 2;
-            this.metroTabControl3.Size = new System.Drawing.Size(1040, 797);
+            this.metroTabControl3.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
             this.metroTabControl3.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -1114,7 +1140,7 @@
             this.metroTabPage7.HorizontalScrollbarSize = 0;
             this.metroTabPage7.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage7.Name = "metroTabPage7";
-            this.metroTabPage7.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage7.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage7.TabIndex = 0;
             this.metroTabPage7.Text = "Scraped data";
             this.metroTabPage7.VerticalScrollbarBarColor = true;
@@ -1139,8 +1165,18 @@
             this.EChannelP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EChannelP.Location = new System.Drawing.Point(0, 0);
             this.EChannelP.Name = "EChannelP";
-            this.EChannelP.Size = new System.Drawing.Size(1032, 752);
+            this.EChannelP.Size = new System.Drawing.Size(1032, 655);
             this.EChannelP.TabIndex = 14;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.panel3.Location = new System.Drawing.Point(31, 15);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(82, 48);
+            this.panel3.TabIndex = 36;
             // 
             // panel4
             // 
@@ -1367,7 +1403,7 @@
             this.metroTabPage8.HorizontalScrollbarSize = 0;
             this.metroTabPage8.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage8.Name = "metroTabPage8";
-            this.metroTabPage8.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage8.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage8.TabIndex = 1;
             this.metroTabPage8.Text = "EID 2";
             this.metroTabPage8.VerticalScrollbarBarColor = false;
@@ -1387,7 +1423,7 @@
             this.metroPanel3.HorizontalScrollbarSize = 10;
             this.metroPanel3.Location = new System.Drawing.Point(0, 0);
             this.metroPanel3.Name = "metroPanel3";
-            this.metroPanel3.Size = new System.Drawing.Size(1032, 752);
+            this.metroPanel3.Size = new System.Drawing.Size(1032, 655);
             this.metroPanel3.TabIndex = 2;
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
@@ -1486,7 +1522,7 @@
             this.metroTabPage9.HorizontalScrollbarSize = 10;
             this.metroTabPage9.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage9.Name = "metroTabPage9";
-            this.metroTabPage9.Size = new System.Drawing.Size(1032, 752);
+            this.metroTabPage9.Size = new System.Drawing.Size(1032, 655);
             this.metroTabPage9.TabIndex = 2;
             this.metroTabPage9.Text = "MOHAP";
             this.metroTabPage9.VerticalScrollbarBarColor = true;
@@ -1497,21 +1533,23 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(908, 89);
+            this.label14.Location = new System.Drawing.Point(915, 170);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 15);
             this.label14.TabIndex = 61;
             this.label14.Text = "Password:";
+            this.label14.Visible = false;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(908, 26);
+            this.label15.Location = new System.Drawing.Point(915, 107);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(77, 15);
             this.label15.TabIndex = 60;
             this.label15.Text = "Username:";
+            this.label15.Visible = false;
             // 
             // EchannellMohapPwTextBoxI
             // 
@@ -1528,7 +1566,7 @@
             this.EchannellMohapPwTextBoxI.CustomButton.UseSelectable = true;
             this.EchannellMohapPwTextBoxI.CustomButton.Visible = false;
             this.EchannellMohapPwTextBoxI.Lines = new string[0];
-            this.EchannellMohapPwTextBoxI.Location = new System.Drawing.Point(904, 107);
+            this.EchannellMohapPwTextBoxI.Location = new System.Drawing.Point(911, 188);
             this.EchannellMohapPwTextBoxI.MaxLength = 32767;
             this.EchannellMohapPwTextBoxI.Name = "EchannellMohapPwTextBoxI";
             this.EchannellMohapPwTextBoxI.PasswordChar = '\0';
@@ -1540,6 +1578,7 @@
             this.EchannellMohapPwTextBoxI.Size = new System.Drawing.Size(110, 23);
             this.EchannellMohapPwTextBoxI.TabIndex = 59;
             this.EchannellMohapPwTextBoxI.UseSelectable = true;
+            this.EchannellMohapPwTextBoxI.Visible = false;
             this.EchannellMohapPwTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.EchannellMohapPwTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -1558,7 +1597,7 @@
             this.EchannellMohapUserNameTextBoxI.CustomButton.UseSelectable = true;
             this.EchannellMohapUserNameTextBoxI.CustomButton.Visible = false;
             this.EchannellMohapUserNameTextBoxI.Lines = new string[0];
-            this.EchannellMohapUserNameTextBoxI.Location = new System.Drawing.Point(904, 51);
+            this.EchannellMohapUserNameTextBoxI.Location = new System.Drawing.Point(911, 132);
             this.EchannellMohapUserNameTextBoxI.MaxLength = 32767;
             this.EchannellMohapUserNameTextBoxI.Name = "EchannellMohapUserNameTextBoxI";
             this.EchannellMohapUserNameTextBoxI.PasswordChar = '\0';
@@ -1570,14 +1609,15 @@
             this.EchannellMohapUserNameTextBoxI.Size = new System.Drawing.Size(110, 23);
             this.EchannellMohapUserNameTextBoxI.TabIndex = 58;
             this.EchannellMohapUserNameTextBoxI.UseSelectable = true;
+            this.EchannellMohapUserNameTextBoxI.Visible = false;
             this.EchannellMohapUserNameTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.EchannellMohapUserNameTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // SaveFromEChannelMOHAPB
             // 
-            this.SaveFromEChannelMOHAPB.Location = new System.Drawing.Point(908, 716);
+            this.SaveFromEChannelMOHAPB.Location = new System.Drawing.Point(911, 499);
             this.SaveFromEChannelMOHAPB.Name = "SaveFromEChannelMOHAPB";
-            this.SaveFromEChannelMOHAPB.Size = new System.Drawing.Size(106, 23);
+            this.SaveFromEChannelMOHAPB.Size = new System.Drawing.Size(110, 23);
             this.SaveFromEChannelMOHAPB.TabIndex = 43;
             this.SaveFromEChannelMOHAPB.Text = "Save";
             this.SaveFromEChannelMOHAPB.UseVisualStyleBackColor = true;
@@ -1606,7 +1646,7 @@
             this.ImgPathForEChannelMohapTextBoxI.CustomButton.UseSelectable = true;
             this.ImgPathForEChannelMohapTextBoxI.CustomButton.Visible = false;
             this.ImgPathForEChannelMohapTextBoxI.Lines = new string[0];
-            this.ImgPathForEChannelMohapTextBoxI.Location = new System.Drawing.Point(904, 647);
+            this.ImgPathForEChannelMohapTextBoxI.Location = new System.Drawing.Point(911, 439);
             this.ImgPathForEChannelMohapTextBoxI.MaxLength = 32767;
             this.ImgPathForEChannelMohapTextBoxI.Name = "ImgPathForEChannelMohapTextBoxI";
             this.ImgPathForEChannelMohapTextBoxI.PasswordChar = '\0';
@@ -1623,9 +1663,9 @@
             // 
             // UploadImgEChannelMohapB
             // 
-            this.UploadImgEChannelMohapB.Location = new System.Drawing.Point(908, 678);
+            this.UploadImgEChannelMohapB.Location = new System.Drawing.Point(911, 470);
             this.UploadImgEChannelMohapB.Name = "UploadImgEChannelMohapB";
-            this.UploadImgEChannelMohapB.Size = new System.Drawing.Size(106, 23);
+            this.UploadImgEChannelMohapB.Size = new System.Drawing.Size(110, 23);
             this.UploadImgEChannelMohapB.TabIndex = 40;
             this.UploadImgEChannelMohapB.Text = "upload image";
             this.UploadImgEChannelMohapB.UseVisualStyleBackColor = true;
@@ -1639,54 +1679,36 @@
             this.EchanMohapDgview.AllowUserToResizeRows = false;
             this.EchanMohapDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.EchanMohapDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EchanMohapDgview.Location = new System.Drawing.Point(3, 0);
+            this.EchanMohapDgview.Location = new System.Drawing.Point(13, 45);
             this.EchanMohapDgview.Name = "EchanMohapDgview";
             this.EchanMohapDgview.ReadOnly = true;
             this.EchanMohapDgview.RowHeadersVisible = false;
-            this.EchanMohapDgview.Size = new System.Drawing.Size(892, 739);
+            this.EchanMohapDgview.Size = new System.Drawing.Size(892, 571);
             this.EchanMohapDgview.TabIndex = 3;
             this.EchanMohapDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
             // 
-            // pictureBox1
+            // label16
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = global::EmirateHMBot.Properties.Resources.clipart196740;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(48, 42);
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
-            // 
-            // PermitMOHAPDGV
-            // 
-            this.PermitMOHAPDGV.AllowUserToAddRows = false;
-            this.PermitMOHAPDGV.AllowUserToDeleteRows = false;
-            this.PermitMOHAPDGV.AllowUserToResizeColumns = false;
-            this.PermitMOHAPDGV.AllowUserToResizeRows = false;
-            this.PermitMOHAPDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.PermitMOHAPDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PermitMOHAPDGV.Location = new System.Drawing.Point(3, 0);
-            this.PermitMOHAPDGV.Name = "PermitMOHAPDGV";
-            this.PermitMOHAPDGV.ReadOnly = true;
-            this.PermitMOHAPDGV.RowHeadersVisible = false;
-            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 739);
-            this.PermitMOHAPDGV.TabIndex = 3;
-            this.PermitMOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
-            this.PermitMOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkOrange;
+            this.label16.Location = new System.Drawing.Point(16, 16);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 24);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Ilyas";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 922);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1088, 825);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.metroTabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "         Emirate Human resources Bot 1.03";
+            this.Text = "                Emirate Human resources Bot 1.05";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroTabControl1.ResumeLayout(false);
@@ -1702,6 +1724,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).EndInit();
             this.metroTabPage6.ResumeLayout(false);
             this.metroTabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroTabControl4.ResumeLayout(false);
@@ -1720,6 +1743,8 @@
             this.metroTabPage7.ResumeLayout(false);
             this.EChannelP.ResumeLayout(false);
             this.EChannelP.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
@@ -1730,8 +1755,6 @@
             this.metroTabPage9.ResumeLayout(false);
             this.metroTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1742,7 +1765,6 @@
         private System.Windows.Forms.Panel panel2;
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTabControl metroTabControl2;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
         private System.Windows.Forms.Panel panel1;
@@ -1826,6 +1848,8 @@
         private MetroFramework.Controls.MetroTextBox EchannellMohapPwTextBoxI;
         private MetroFramework.Controls.MetroTextBox EchannellMohapUserNameTextBoxI;
         private System.Windows.Forms.DataGridView PermitMOHAPDGV;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label16;
     }
 }
 

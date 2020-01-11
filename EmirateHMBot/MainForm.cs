@@ -16,6 +16,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
 using OpenQA.Selenium.Firefox;
+using EmirateHMBot.Services;
 
 namespace EmirateHMBot
 {
@@ -82,6 +83,10 @@ namespace EmirateHMBot
             Utility.CreateDb();
             Utility.LoadConfig();
             Utility.InitCntrl(this);
+
+            //await EservicesMohreService.Authenticate();
+            //await EservicesMohreService.GetEmplyeesIds();
+            //return;
             //allow other threads to modify UI as long as its one thread only
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
@@ -178,7 +183,7 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Columns[0].Width = 250;
             PermitMOHAPDGV.Columns[1].Width = 635;
             PermitMOHAPDGV.RowTemplate.Height = 28;
-            PermitMOHAPDGV.Rows.Add(26);
+            PermitMOHAPDGV.Rows.Add(20);
             for (int i = 0; i < PermitMOHAPDGV.Rows.Count; i++)
             {
                 PermitMOHAPDGV.Rows[i].Cells[0].ReadOnly = true;
@@ -202,14 +207,8 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Rows[15].Cells[0].Value = "Birth Date";
             PermitMOHAPDGV.Rows[16].Cells[0].Value = "Profession";
             PermitMOHAPDGV.Rows[17].Cells[0].Value = "Mobile Number";
-            PermitMOHAPDGV.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
-            PermitMOHAPDGV.Rows[19].Cells[0].Value = "The Emirate";
-            PermitMOHAPDGV.Rows[20].Cells[0].Value = "City";
-            PermitMOHAPDGV.Rows[21].Cells[0].Value = "mail box";
-            PermitMOHAPDGV.Rows[22].Cells[0].Value = "Adress";
-            PermitMOHAPDGV.Rows[23].Cells[0].Value = "Region";
-            PermitMOHAPDGV.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
-            PermitMOHAPDGV.Rows[25].Cells[0].Value = "Preventive medicine center";
+            PermitMOHAPDGV.Rows[18].Cells[0].Value = "Place of residence and visa issuance";
+            PermitMOHAPDGV.Rows[19].Cells[0].Value = "Preventive medicine center";
 
             foreach (DataGridViewColumn col in PermitMOHAPDGV.Columns)
             {
@@ -311,7 +310,7 @@ namespace EmirateHMBot
             EchanMohapDgview.Columns[1].Width = 639;
             EchanMohapDgview.RowTemplate.Height = 28;
 
-            EchanMohapDgview.Rows.Add(26);
+            EchanMohapDgview.Rows.Add(20);
             for (int i = 0; i < EchanMohapDgview.Rows.Count; i++)
             {
                 EchanMohapDgview.Rows[i].Cells[0].ReadOnly = true;
@@ -335,14 +334,8 @@ namespace EmirateHMBot
             EchanMohapDgview.Rows[15].Cells[0].Value = "Birth Date";
             EchanMohapDgview.Rows[16].Cells[0].Value = "Profession";
             EchanMohapDgview.Rows[17].Cells[0].Value = "Mobile Number";
-            EchanMohapDgview.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
-            EchanMohapDgview.Rows[19].Cells[0].Value = "The Emirate";
-            EchanMohapDgview.Rows[20].Cells[0].Value = "City";
-            EchanMohapDgview.Rows[21].Cells[0].Value = "mail box";
-            EchanMohapDgview.Rows[22].Cells[0].Value = "Adress";
-            EchanMohapDgview.Rows[23].Cells[0].Value = "Region";
-            EchanMohapDgview.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
-            EchanMohapDgview.Rows[25].Cells[0].Value = "Preventive medicine center";
+            EchanMohapDgview.Rows[18].Cells[0].Value = "Place of residence and visa issuance";
+            EchanMohapDgview.Rows[19].Cells[0].Value = "Preventive medicine center";
 
             foreach (DataGridViewColumn col in EchanMohapDgview.Columns)
             {
@@ -439,7 +432,7 @@ namespace EmirateHMBot
             MohreMohapDGV.Columns[0].Width = 250;
             MohreMohapDGV.Columns[1].Width = 647;
             MohreMohapDGV.RowTemplate.Height = 28;
-            MohreMohapDGV.Rows.Add(26);
+            MohreMohapDGV.Rows.Add(20);
             for (int i = 0; i < MohreMohapDGV.Rows.Count; i++)
             {
                 MohreMohapDGV.Rows[i].Cells[0].ReadOnly = true;
@@ -463,14 +456,8 @@ namespace EmirateHMBot
             MohreMohapDGV.Rows[15].Cells[0].Value = "Birth Date";
             MohreMohapDGV.Rows[16].Cells[0].Value = "Profession";
             MohreMohapDGV.Rows[17].Cells[0].Value = "Mobile Number";
-            MohreMohapDGV.Rows[18].Cells[0].Value = "The sponsors name in Arabic";
-            MohreMohapDGV.Rows[19].Cells[0].Value = "The Emirate";
-            MohreMohapDGV.Rows[20].Cells[0].Value = "City";
-            MohreMohapDGV.Rows[21].Cells[0].Value = "mail box";
-            MohreMohapDGV.Rows[22].Cells[0].Value = "Adress";
-            MohreMohapDGV.Rows[23].Cells[0].Value = "Region";
-            MohreMohapDGV.Rows[24].Cells[0].Value = "Place of residence and visa issuance";
-            MohreMohapDGV.Rows[25].Cells[0].Value = "Preventive medicine center";
+            MohreMohapDGV.Rows[18].Cells[0].Value = "Place of residence and visa issuance";
+            MohreMohapDGV.Rows[19].Cells[0].Value = "Preventive medicine center";
 
             foreach (DataGridViewColumn col in MohreMohapDGV.Columns)
             {
@@ -843,7 +830,7 @@ namespace EmirateHMBot
             else
             {
                 PermitMOHAPDGV.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
-            } 
+            }
             #endregion
             var worPhone = "";
             if (PermitDGV.Rows[18]?.Cells[1]?.Value?.ToString()?.Length >= 10)
@@ -868,14 +855,8 @@ namespace EmirateHMBot
             PermitMOHAPDGV.Rows[16].Cells[1].Value = PermitDGV.Rows[19].Cells[1].Value;
             PermitMOHAPDGV.Rows[17].Cells[1].Value = PermitDGV.Rows[18].Cells[1].Value;
             PermitMOHAPDGV.Rows[10].Cells[1].Value = PermitMOHAPDGV.Rows[13].Cells[1].Value;
-            PermitMOHAPDGV.Rows[18].Cells[1].Value = PermitMOHAPDGV.Rows[0].Cells[1].Value;//name sponsore arabic
-            PermitMOHAPDGV.Rows[19].Cells[1].Value = "عجمان";//emirat
-            PermitMOHAPDGV.Rows[20].Cells[1].Value = "عجمان";//city
-            PermitMOHAPDGV.Rows[21].Cells[1].Value = "123";//mail box
-            PermitMOHAPDGV.Rows[22].Cells[1].Value = "عجمان";//adress
-            PermitMOHAPDGV.Rows[23].Cells[1].Value = "عجمان";//region
-            PermitMOHAPDGV.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
-            PermitMOHAPDGV.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
+            PermitMOHAPDGV.Rows[18].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            PermitMOHAPDGV.Rows[19].Cells[1].Value = "عجمان";//Preventive medicine center
 
             var currentEidData = GetEIDFromGrid(EID2DGV);
         }
@@ -896,7 +877,7 @@ namespace EmirateHMBot
             chromeDriverService.HideCommandPromptWindow = true;
             chromeOptions.AddArguments("headless");
             Driver = new ChromeDriver(chromeDriverService, chromeOptions);
-            Driver.Navigate().GoToUrl(" https://eservices.mohre.gov.ae/SmartTasheel/home/index?lang=en-gb#");
+            Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/SmartTasheel/home/index?lang=en-gb#");
             Driver.ExecuteScript("CloseMessagePopUp();");
             Driver.ExecuteScript("OpenLogin('');");
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -1225,14 +1206,8 @@ namespace EmirateHMBot
             MohreMohapDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;
             MohreMohapDGV.Rows[10].Cells[1].Value = MohreMohapDGV.Rows[13].Cells[1].Value;
             MohreMohapDGV.Rows[0].Cells[1].Value = MohreDGV.Rows[17].Cells[1].Value;
-            MohreMohapDGV.Rows[18].Cells[1].Value = MohreMohapDGV.Rows[0].Cells[1].Value;//name sponsore arabic
-            MohreMohapDGV.Rows[19].Cells[1].Value = "عجمان";//emirat
-            MohreMohapDGV.Rows[20].Cells[1].Value = "عجمان";//city
-            MohreMohapDGV.Rows[21].Cells[1].Value = "123";//mail box
-            MohreMohapDGV.Rows[22].Cells[1].Value = "عجمان";//adress
-            MohreMohapDGV.Rows[23].Cells[1].Value = "عجمان";//region
-            MohreMohapDGV.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
-            MohreMohapDGV.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
+            MohreMohapDGV.Rows[18].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            MohreMohapDGV.Rows[19].Cells[1].Value = "عجمان";//Preventive medicine center
         }
 
         IWebElement FindElementByXPath(string xpath)
@@ -1683,7 +1658,7 @@ namespace EmirateHMBot
             else
             {
                 EchanMohapDgview.Rows[8].Cells[1].Value = residencExpiryDate;//residencExpiryDate
-            } 
+            }
             #endregion
 
             var worPhone = "";
@@ -1707,14 +1682,8 @@ namespace EmirateHMBot
             EchanMohapDgview.Rows[16].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
             EchanMohapDgview.Rows[17].Cells[1].Value = EChannelDGV.Rows[18].Cells[1].Value;
             EchanMohapDgview.Rows[10].Cells[1].Value = EchanMohapDgview.Rows[13].Cells[1].Value;
-            EchanMohapDgview.Rows[18].Cells[1].Value = EchanMohapDgview.Rows[0].Cells[1].Value;//name sponsore arabic
-            EchanMohapDgview.Rows[19].Cells[1].Value = "عجمان";//emirat
-            EchanMohapDgview.Rows[20].Cells[1].Value = "عجمان";//city
-            EchanMohapDgview.Rows[21].Cells[1].Value = "123";//mail box
-            EchanMohapDgview.Rows[22].Cells[1].Value = "عجمان";//adress
-            EchanMohapDgview.Rows[23].Cells[1].Value = "عجمان";//region
-            EchanMohapDgview.Rows[24].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
-            EchanMohapDgview.Rows[25].Cells[1].Value = "عجمان";//Preventive medicine center
+            EchanMohapDgview.Rows[18].Cells[1].Value = "إمارة أخرى";//Place of residence and visa issuance
+            EchanMohapDgview.Rows[19].Cells[1].Value = "عجمان";//Preventive medicine center
         }
 
         private void EChannelDGV_KeyPress(object sender, KeyPressEventArgs e)
@@ -1835,16 +1804,16 @@ namespace EmirateHMBot
         private void SaveFromEChannelMOHAPB_Click(object sender, EventArgs e)
         {
 
-            if (EchannellMohapUserNameTextBoxI.Text == "")
-            {
-                MessageBox.Show("please enter the username");
-                return;
-            }
-            if (EchannellMohapPwTextBoxI.Text == "")
-            {
-                MessageBox.Show("please enter the the password");
-                return;
-            }
+            //if (EchannellMohapUserNameTextBoxI.Text == "")
+            //{
+            //    MessageBox.Show("please enter the username");
+            //    return;
+            //}
+            //if (EchannellMohapPwTextBoxI.Text == "")
+            //{
+            //    MessageBox.Show("please enter the the password");
+            //    return;
+            //}
             if (EchanMohapDgview.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
@@ -1861,13 +1830,28 @@ namespace EmirateHMBot
             driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
 
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+            driver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/مقدم الطلب.html");
+            do
+            {
+                try
+                {
+                    driver.FindElement(By.XPath("//li[@class='clsBreadCrumbAr']"));
+                    break;
+                }
+                catch (Exception)
+                {
 
+                    continue;
+                }
+
+            } while (true);
             var MohapData = GetMOHAPFromGrid(EchanMohapDgview);
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
+            //driver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
             driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohapData.NameArabic);
             driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohapData.NameEnglish);
             driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohapData.UID);
@@ -1883,17 +1867,22 @@ namespace EmirateHMBot
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
             driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
+
+            var ProviderCode = MohapData.MobileNumber;
+            ProviderCode = ProviderCode.Substring(0, 3);
+
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(ProviderCode);
             driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForEChannelMohapTextBoxI.Text);//image
-            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys("عجمان");//emirat
             Thread.Sleep(1000);
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys("عجمان");//city
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
-            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys("عجمان");//adress
             driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys("عجمان");// region
             driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
             //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
@@ -1913,18 +1902,8 @@ namespace EmirateHMBot
             }
         }
 
-        private void SaveFromMohrelMOHAPB_Click(object sender, EventArgs e)
+        private async void SaveFromMohrelMOHAPB_Click(object sender, EventArgs e)
         {
-            if (MohreMohapUsernameTextBoxI.Text == "")
-            {
-                MessageBox.Show("please enter the username");
-                return;
-            }
-            if (MohreMohapPwTextBoxI.Text == "")
-            {
-                MessageBox.Show("please enter the the password");
-                return;
-            }
             if (MohreMohapDGV.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
@@ -1941,10 +1920,23 @@ namespace EmirateHMBot
             driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
 
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
+            //driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+            do
+            {
+                try
+                {
+                    driver.FindElement(By.XPath("//li[@class='clsBreadCrumbAr']"));
+                    break;
+                }
+                catch (Exception)
+                {
 
+                    continue;
+                }
+
+            } while (true);
             var MohapData = GetMOHAPFromGrid(MohreMohapDGV);
 
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
@@ -1962,17 +1954,20 @@ namespace EmirateHMBot
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
+            var ProviderCode = MohapData.MobileNumber;
+            ProviderCode = ProviderCode.Substring(0, 3);
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(ProviderCode);
             driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
             driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForMohreMohapTextBoxI.Text);//image
-            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys("عجمان");//emirat
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys("عجمان");//city
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
-            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys("عجمان");//adress
             driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys("عجمان");// region
             driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
             //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
@@ -1987,18 +1982,18 @@ namespace EmirateHMBot
             }
         }
 
-        private void SaveFromPermitMOHAPB_Click(object sender, EventArgs e)
+        private async void SaveFromPermitMOHAPB_Click(object sender, EventArgs e)
         {
-            if (PermitMohapTextBoxUsernameI.Text == "")
-            {
-                MessageBox.Show("please enter the username");
-                return;
-            }
-            if (PermitMohapTextBoxPwI.Text == "")
-            {
-                MessageBox.Show("please enter the the password");
-                return;
-            }
+            //if (PermitMohapTextBoxUsernameI.Text == "")
+            //{
+            //    MessageBox.Show("please enter the username");
+            //    return;
+            //}
+            //if (PermitMohapTextBoxPwI.Text == "")
+            //{
+            //    MessageBox.Show("please enter the the password");
+            //    return;
+            //}
             if (PermitMOHAPDGV.Rows[2].Cells[1].Value + "" == "")
             {
                 MessageBox.Show("please fill the MOHAP format before saving data");
@@ -2015,13 +2010,25 @@ namespace EmirateHMBot
             driver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/Login.aspx");
 
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtUserNameInput')]")).SendKeys(PermitMohapTextBoxUsernameI.Text);//username
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtPasswordInput')]")).SendKeys(PermitMohapTextBoxPwI.Text);//password
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtLoginButton')]")).Click();//click login
+            do
+            {
+                try
+                {
+                    driver.FindElement(By.XPath("//li[@class='clsBreadCrumbAr']"));
+                    break;
+                }
+                catch (Exception)
+                {
 
+                    continue;
+                }
+
+            } while (true);
             var MohapData = GetMOHAPFromGrid(PermitMOHAPDGV);
-
+            await Task.Delay(2000);
             driver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
+            //driver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
+
             driver.FindElement(By.XPath("//input[@id='txtNameAr']")).SendKeys(MohapData.NameArabic);
             driver.FindElement(By.XPath("//input[@id='txtNameEn']")).SendKeys(MohapData.NameEnglish);
             driver.FindElement(By.XPath("//input[contains(@id,'_UnifiedNumber')]")).SendKeys(MohapData.UID);
@@ -2036,20 +2043,25 @@ namespace EmirateHMBot
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("أنثى");
             else
                 driver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
+            var ProviderCode = MohapData.MobileNumber;
+            ProviderCode = ProviderCode.Substring(0, 3);
+            driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(ProviderCode);
             driver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
             driver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
-            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.ThesponsorsnameinArabic);//sponser name arabic
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys(MohapData.TheEmirate);//emirat
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys(MohapData.City);//city
+            driver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys("عجمان");//emirat
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys("عجمان");//city
             driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
-            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys(MohapData.mailbox);//mail box
-            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys(MohapData.Adress);//adress
+            driver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
+            driver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys("عجمان");//adress
             driver.FindElement(By.XPath("//select[contains(@id,'_wtApplicants_LocationId')]")).SendKeys(MohapData.Preventivemedicinecenter);// Preventive medicine center
-            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys(MohapData.Region);// region
+            driver.FindElement(By.XPath("//select[contains(@id,'_wtColumn2_wtApplicant_EmirateId')]")).SendKeys("عجمان");// region
             driver.FindElement(By.XPath("//select[contains(@id,'_ResidenceVisaIssuedPlaceId')]")).SendKeys(MohapData.Placeofresidenceandvisaissuance);// Place of residence/visa issuance
             //driver.FindElement(By.XPath("//input[contains(@id,'_block_wtColumn4_wt224')]")).Click();
         }
+
+       
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
         {

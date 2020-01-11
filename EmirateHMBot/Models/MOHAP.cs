@@ -26,12 +26,6 @@ namespace EmirateHMBot.Models
         public string BirthDate { get; set; }
         public string Profession { get; set; }
         public string MobileNumber { get; set; }
-        public string ThesponsorsnameinArabic { get; set; }
-        public string TheEmirate { get; set; }
-        public string City { get; set; }
-        public string mailbox { get; set; }
-        public string Adress { get; set; }
-        public string Region { get; set; }
         public string Placeofresidenceandvisaissuance { get; set; }
         public string Preventivemedicinecenter { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmirateHMBot.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,11 +20,19 @@ namespace EmirateHMBot
             InitializeComponent();
         }
         
-        private void CredentialForm_Load(object sender, EventArgs e)
+        private async void CredentialForm_Load(object sender, EventArgs e)
         {
-             DateTime result = DateTime.ParseExact("02/13/2019"+ "", @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            var dateOfBirth = result.ToString("yyyy/MM/dd");
-            Console.WriteLine(dateOfBirth);
+
+            try
+            {
+                await EservicesMohreService.Authenticate();
+                await EservicesMohreService.GetEmplyeesIds();
+            }
+            finally
+            {
+                EservicesMohreService.Driver?.Quit();
+            }
+
 
         }
 
