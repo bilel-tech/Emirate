@@ -23,15 +23,15 @@ namespace EmirateHMBot
         private async void CredentialForm_Load(object sender, EventArgs e)
         {
 
-            try
-            {
-                await EservicesMohreService.Authenticate();
-                await EservicesMohreService.GetEmplyeesIds();
-            }
-            finally
-            {
-                EservicesMohreService.Driver?.Quit();
-            }
+            //try
+            //{
+            //    await EservicesMohreService.Authenticate();
+            //    await EservicesMohreService.GetEmplyeesIds();
+            //}
+            //finally
+            //{
+            //    EservicesMohreService.Driver?.Quit();
+            //}
 
 
         }

@@ -44,6 +44,8 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.EID2DGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
+            this.LastSevenDigitPermitMohapTextBox = new System.Windows.Forms.TextBox();
+            this.FirstThreeDigitPermitMohapTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.PermitMohapTextBoxPwI = new MetroFramework.Controls.MetroTextBox();
@@ -74,6 +76,8 @@
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
             this.MohreEidDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage12 = new MetroFramework.Controls.MetroTabPage();
+            this.LastSevenDigitMoreMohapTextBox = new System.Windows.Forms.TextBox();
+            this.FirstThreeDigitMohreMohapTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.MohreMohapPwTextBoxI = new MetroFramework.Controls.MetroTextBox();
@@ -86,7 +90,6 @@
             this.metroTabControl3 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage7 = new MetroFramework.Controls.MetroTabPage();
             this.EChannelP = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ResidencyviewRadioB = new System.Windows.Forms.RadioButton();
             this.VisaviewRadioB = new System.Windows.Forms.RadioButton();
@@ -109,6 +112,8 @@
             this.UploadImgEChannelEIDB = new System.Windows.Forms.Button();
             this.EChnEIDDgview = new System.Windows.Forms.DataGridView();
             this.metroTabPage9 = new MetroFramework.Controls.MetroTabPage();
+            this.LastSevenDigitEchannelMohapTextBox = new System.Windows.Forms.TextBox();
+            this.FirstThreeDigitEchannelMohapTextBox = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.EchannellMohapPwTextBoxI = new MetroFramework.Controls.MetroTextBox();
@@ -118,6 +123,7 @@
             this.ImgPathForEChannelMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchanMohapDgview = new System.Windows.Forms.DataGridView();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -146,7 +152,6 @@
             this.metroTabControl3.SuspendLayout();
             this.metroTabPage7.SuspendLayout();
             this.EChannelP.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).BeginInit();
             this.metroTabPage8.SuspendLayout();
@@ -154,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).BeginInit();
             this.metroTabPage9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -165,7 +171,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1048, 745);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -379,6 +385,8 @@
             // 
             // metroTabPage6
             // 
+            this.metroTabPage6.Controls.Add(this.LastSevenDigitPermitMohapTextBox);
+            this.metroTabPage6.Controls.Add(this.FirstThreeDigitPermitMohapTextBox);
             this.metroTabPage6.Controls.Add(this.label11);
             this.metroTabPage6.Controls.Add(this.label9);
             this.metroTabPage6.Controls.Add(this.PermitMohapTextBoxPwI);
@@ -398,6 +406,20 @@
             this.metroTabPage6.VerticalScrollbarBarColor = true;
             this.metroTabPage6.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage6.VerticalScrollbarSize = 10;
+            // 
+            // LastSevenDigitPermitMohapTextBox
+            // 
+            this.LastSevenDigitPermitMohapTextBox.Location = new System.Drawing.Point(536, 556);
+            this.LastSevenDigitPermitMohapTextBox.Name = "LastSevenDigitPermitMohapTextBox";
+            this.LastSevenDigitPermitMohapTextBox.Size = new System.Drawing.Size(201, 20);
+            this.LastSevenDigitPermitMohapTextBox.TabIndex = 57;
+            // 
+            // FirstThreeDigitPermitMohapTextBox
+            // 
+            this.FirstThreeDigitPermitMohapTextBox.Location = new System.Drawing.Point(271, 556);
+            this.FirstThreeDigitPermitMohapTextBox.Name = "FirstThreeDigitPermitMohapTextBox";
+            this.FirstThreeDigitPermitMohapTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FirstThreeDigitPermitMohapTextBox.TabIndex = 56;
             // 
             // label11
             // 
@@ -545,7 +567,7 @@
             this.PermitMOHAPDGV.Name = "PermitMOHAPDGV";
             this.PermitMOHAPDGV.ReadOnly = true;
             this.PermitMOHAPDGV.RowHeadersVisible = false;
-            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 571);
+            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 533);
             this.PermitMOHAPDGV.TabIndex = 3;
             this.PermitMOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
             this.PermitMOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
@@ -589,7 +611,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 2;
+            this.metroTabControl4.SelectedIndex = 0;
             this.metroTabControl4.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -929,6 +951,8 @@
             // 
             // metroTabPage12
             // 
+            this.metroTabPage12.Controls.Add(this.LastSevenDigitMoreMohapTextBox);
+            this.metroTabPage12.Controls.Add(this.FirstThreeDigitMohreMohapTextBox);
             this.metroTabPage12.Controls.Add(this.label12);
             this.metroTabPage12.Controls.Add(this.label13);
             this.metroTabPage12.Controls.Add(this.MohreMohapPwTextBoxI);
@@ -948,6 +972,20 @@
             this.metroTabPage12.VerticalScrollbarBarColor = true;
             this.metroTabPage12.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage12.VerticalScrollbarSize = 10;
+            // 
+            // LastSevenDigitMoreMohapTextBox
+            // 
+            this.LastSevenDigitMoreMohapTextBox.Location = new System.Drawing.Point(559, 545);
+            this.LastSevenDigitMoreMohapTextBox.Name = "LastSevenDigitMoreMohapTextBox";
+            this.LastSevenDigitMoreMohapTextBox.Size = new System.Drawing.Size(201, 20);
+            this.LastSevenDigitMoreMohapTextBox.TabIndex = 61;
+            // 
+            // FirstThreeDigitMohreMohapTextBox
+            // 
+            this.FirstThreeDigitMohreMohapTextBox.Location = new System.Drawing.Point(306, 545);
+            this.FirstThreeDigitMohreMohapTextBox.Name = "FirstThreeDigitMohreMohapTextBox";
+            this.FirstThreeDigitMohreMohapTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FirstThreeDigitMohreMohapTextBox.TabIndex = 60;
             // 
             // label12
             // 
@@ -1095,7 +1133,7 @@
             this.MohreMohapDGV.Name = "MohreMohapDGV";
             this.MohreMohapDGV.ReadOnly = true;
             this.MohreMohapDGV.RowHeadersVisible = false;
-            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 571);
+            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 533);
             this.MohreMohapDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -1167,16 +1205,6 @@
             this.EChannelP.Name = "EChannelP";
             this.EChannelP.Size = new System.Drawing.Size(1032, 655);
             this.EChannelP.TabIndex = 14;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.panel3.Location = new System.Drawing.Point(31, 15);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(82, 48);
-            this.panel3.TabIndex = 36;
             // 
             // panel4
             // 
@@ -1508,6 +1536,8 @@
             // 
             // metroTabPage9
             // 
+            this.metroTabPage9.Controls.Add(this.LastSevenDigitEchannelMohapTextBox);
+            this.metroTabPage9.Controls.Add(this.FirstThreeDigitEchannelMohapTextBox);
             this.metroTabPage9.Controls.Add(this.label14);
             this.metroTabPage9.Controls.Add(this.label15);
             this.metroTabPage9.Controls.Add(this.EchannellMohapPwTextBoxI);
@@ -1528,6 +1558,20 @@
             this.metroTabPage9.VerticalScrollbarBarColor = true;
             this.metroTabPage9.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage9.VerticalScrollbarSize = 10;
+            // 
+            // LastSevenDigitEchannelMohapTextBox
+            // 
+            this.LastSevenDigitEchannelMohapTextBox.Location = new System.Drawing.Point(592, 549);
+            this.LastSevenDigitEchannelMohapTextBox.Name = "LastSevenDigitEchannelMohapTextBox";
+            this.LastSevenDigitEchannelMohapTextBox.Size = new System.Drawing.Size(201, 20);
+            this.LastSevenDigitEchannelMohapTextBox.TabIndex = 65;
+            // 
+            // FirstThreeDigitEchannelMohapTextBox
+            // 
+            this.FirstThreeDigitEchannelMohapTextBox.Location = new System.Drawing.Point(336, 549);
+            this.FirstThreeDigitEchannelMohapTextBox.Name = "FirstThreeDigitEchannelMohapTextBox";
+            this.FirstThreeDigitEchannelMohapTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FirstThreeDigitEchannelMohapTextBox.TabIndex = 64;
             // 
             // label14
             // 
@@ -1683,9 +1727,19 @@
             this.EchanMohapDgview.Name = "EchanMohapDgview";
             this.EchanMohapDgview.ReadOnly = true;
             this.EchanMohapDgview.RowHeadersVisible = false;
-            this.EchanMohapDgview.Size = new System.Drawing.Size(892, 571);
+            this.EchanMohapDgview.Size = new System.Drawing.Size(892, 533);
             this.EchanMohapDgview.TabIndex = 3;
             this.EchanMohapDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.panel3.Location = new System.Drawing.Point(31, 15);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(82, 48);
+            this.panel3.TabIndex = 36;
             // 
             // label16
             // 
@@ -1708,7 +1762,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "                Emirate Human resources Bot 1.05";
+            this.Text = "                Emirate Human resources Bot 1.06";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroTabControl1.ResumeLayout(false);
@@ -1743,8 +1797,6 @@
             this.metroTabPage7.ResumeLayout(false);
             this.EChannelP.ResumeLayout(false);
             this.EChannelP.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
@@ -1755,6 +1807,8 @@
             this.metroTabPage9.ResumeLayout(false);
             this.metroTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1850,6 +1904,12 @@
         private System.Windows.Forms.DataGridView PermitMOHAPDGV;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox LastSevenDigitPermitMohapTextBox;
+        private System.Windows.Forms.TextBox FirstThreeDigitPermitMohapTextBox;
+        private System.Windows.Forms.TextBox LastSevenDigitMoreMohapTextBox;
+        private System.Windows.Forms.TextBox FirstThreeDigitMohreMohapTextBox;
+        private System.Windows.Forms.TextBox LastSevenDigitEchannelMohapTextBox;
+        private System.Windows.Forms.TextBox FirstThreeDigitEchannelMohapTextBox;
     }
 }
 
