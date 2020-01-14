@@ -122,7 +122,7 @@
             this.LabelEChannelMOHAP = new System.Windows.Forms.Label();
             this.ImgPathForEChannelMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
-            this.EchanMohapDgview = new System.Windows.Forms.DataGridView();
+            this.EchannellMohapDgview = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.metroTabControl1.SuspendLayout();
@@ -158,7 +158,7 @@
             this.metroPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).BeginInit();
             this.metroTabPage9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDgview)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,7 +171,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(1048, 745);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -215,7 +215,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 2;
+            this.metroTabControl2.SelectedIndex = 0;
             this.metroTabControl2.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -258,7 +258,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(896, 135);
+            this.label1.Location = new System.Drawing.Point(896, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 18);
             this.label1.TabIndex = 26;
@@ -266,7 +266,7 @@
             // 
             // FillFormsPermitB
             // 
-            this.FillFormsPermitB.Location = new System.Drawing.Point(896, 603);
+            this.FillFormsPermitB.Location = new System.Drawing.Point(896, 543);
             this.FillFormsPermitB.Name = "FillFormsPermitB";
             this.FillFormsPermitB.Size = new System.Drawing.Size(118, 45);
             this.FillFormsPermitB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -278,7 +278,7 @@
             // 
             // ScrapePermitB
             // 
-            this.ScrapePermitB.Location = new System.Drawing.Point(896, 543);
+            this.ScrapePermitB.Location = new System.Drawing.Point(896, 483);
             this.ScrapePermitB.Name = "ScrapePermitB";
             this.ScrapePermitB.Size = new System.Drawing.Size(118, 45);
             this.ScrapePermitB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -304,7 +304,7 @@
             this.CodeT.CustomButton.Visible = false;
             this.CodeT.Lines = new string[] {
         "84906512"};
-            this.CodeT.Location = new System.Drawing.Point(896, 156);
+            this.CodeT.Location = new System.Drawing.Point(896, 101);
             this.CodeT.MaxLength = 32767;
             this.CodeT.Name = "CodeT";
             this.CodeT.PasswordChar = '\0';
@@ -328,10 +328,10 @@
             this.PermitDGV.AllowUserToResizeRows = false;
             this.PermitDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.PermitDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PermitDGV.Location = new System.Drawing.Point(3, 133);
+            this.PermitDGV.Location = new System.Drawing.Point(3, 73);
             this.PermitDGV.Name = "PermitDGV";
             this.PermitDGV.RowHeadersVisible = false;
-            this.PermitDGV.Size = new System.Drawing.Size(887, 515);
+            this.PermitDGV.Size = new System.Drawing.Size(887, 536);
             this.PermitDGV.TabIndex = 0;
             this.PermitDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.PermitDGV_CellEndEditAsync);
             this.PermitDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitDGV_KeyPress);
@@ -567,7 +567,7 @@
             this.PermitMOHAPDGV.Name = "PermitMOHAPDGV";
             this.PermitMOHAPDGV.ReadOnly = true;
             this.PermitMOHAPDGV.RowHeadersVisible = false;
-            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 533);
+            this.PermitMOHAPDGV.Size = new System.Drawing.Size(888, 562);
             this.PermitMOHAPDGV.TabIndex = 3;
             this.PermitMOHAPDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MOHAPDGV_CellEndEditAsync);
             this.PermitMOHAPDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MOHAPDGV_KeyPress);
@@ -899,7 +899,7 @@
             this.MohreDGV.Location = new System.Drawing.Point(3, 93);
             this.MohreDGV.Name = "MohreDGV";
             this.MohreDGV.RowHeadersVisible = false;
-            this.MohreDGV.Size = new System.Drawing.Size(836, 517);
+            this.MohreDGV.Size = new System.Drawing.Size(836, 536);
             this.MohreDGV.TabIndex = 0;
             this.MohreDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MohreDGV_CellEndEditAsync);
             this.MohreDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MohreDGV_KeyPress);
@@ -1133,7 +1133,7 @@
             this.MohreMohapDGV.Name = "MohreMohapDGV";
             this.MohreMohapDGV.ReadOnly = true;
             this.MohreMohapDGV.RowHeadersVisible = false;
-            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 533);
+            this.MohreMohapDGV.Size = new System.Drawing.Size(900, 562);
             this.MohreMohapDGV.TabIndex = 3;
             // 
             // metroTabPage3
@@ -1160,7 +1160,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 2;
+            this.metroTabControl3.SelectedIndex = 0;
             this.metroTabControl3.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -1418,7 +1418,7 @@
             this.EChannelDGV.Location = new System.Drawing.Point(3, 100);
             this.EChannelDGV.Name = "EChannelDGV";
             this.EChannelDGV.RowHeadersVisible = false;
-            this.EChannelDGV.Size = new System.Drawing.Size(778, 517);
+            this.EChannelDGV.Size = new System.Drawing.Size(778, 536);
             this.EChannelDGV.TabIndex = 0;
             this.EChannelDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EChannelDGV_CellEndEditAsync);
             this.EChannelDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChannelDGV_KeyPress);
@@ -1546,7 +1546,7 @@
             this.metroTabPage9.Controls.Add(this.LabelEChannelMOHAP);
             this.metroTabPage9.Controls.Add(this.ImgPathForEChannelMohapTextBoxI);
             this.metroTabPage9.Controls.Add(this.UploadImgEChannelMohapB);
-            this.metroTabPage9.Controls.Add(this.EchanMohapDgview);
+            this.metroTabPage9.Controls.Add(this.EchannellMohapDgview);
             this.metroTabPage9.HorizontalScrollbarBarColor = true;
             this.metroTabPage9.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage9.HorizontalScrollbarSize = 10;
@@ -1715,21 +1715,21 @@
             this.UploadImgEChannelMohapB.UseVisualStyleBackColor = true;
             this.UploadImgEChannelMohapB.Click += new System.EventHandler(this.UploadImgEChannelMohapB_Click);
             // 
-            // EchanMohapDgview
+            // EchannellMohapDgview
             // 
-            this.EchanMohapDgview.AllowUserToAddRows = false;
-            this.EchanMohapDgview.AllowUserToDeleteRows = false;
-            this.EchanMohapDgview.AllowUserToResizeColumns = false;
-            this.EchanMohapDgview.AllowUserToResizeRows = false;
-            this.EchanMohapDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EchanMohapDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EchanMohapDgview.Location = new System.Drawing.Point(13, 45);
-            this.EchanMohapDgview.Name = "EchanMohapDgview";
-            this.EchanMohapDgview.ReadOnly = true;
-            this.EchanMohapDgview.RowHeadersVisible = false;
-            this.EchanMohapDgview.Size = new System.Drawing.Size(892, 533);
-            this.EchanMohapDgview.TabIndex = 3;
-            this.EchanMohapDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
+            this.EchannellMohapDgview.AllowUserToAddRows = false;
+            this.EchannellMohapDgview.AllowUserToDeleteRows = false;
+            this.EchannellMohapDgview.AllowUserToResizeColumns = false;
+            this.EchannellMohapDgview.AllowUserToResizeRows = false;
+            this.EchannellMohapDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EchannellMohapDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EchannellMohapDgview.Location = new System.Drawing.Point(13, 45);
+            this.EchannellMohapDgview.Name = "EchannellMohapDgview";
+            this.EchannellMohapDgview.ReadOnly = true;
+            this.EchannellMohapDgview.RowHeadersVisible = false;
+            this.EchannellMohapDgview.Size = new System.Drawing.Size(892, 562);
+            this.EchannellMohapDgview.TabIndex = 3;
+            this.EchannellMohapDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
             // 
             // panel3
             // 
@@ -1806,7 +1806,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).EndInit();
             this.metroTabPage9.ResumeLayout(false);
             this.metroTabPage9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EchanMohapDgview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDgview)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -1843,7 +1843,7 @@
         private MetroFramework.Controls.MetroPanel metroPanel3;
         private System.Windows.Forms.DataGridView EChnEIDDgview;
         private MetroFramework.Controls.MetroTabPage metroTabPage9;
-        private System.Windows.Forms.DataGridView EchanMohapDgview;
+        private System.Windows.Forms.DataGridView EchannellMohapDgview;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroTextBox CodeEChannelTI;
         private System.Windows.Forms.Label label3;
