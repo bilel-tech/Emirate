@@ -101,6 +101,8 @@
     <Compile Include="Models\EID.cs" />
     <Compile Include="Models\HttpCaller.cs" />
     <Compile Include="Models\MOHAP.cs" />
+    <Compile Include="Models\SaveFromPermitNewEid.cs" />
+    <Compile Include="Models\SaveFromPermitRenewEid.cs" />
     <Compile Include="Models\Search.cs" />
     <Compile Include="Models\Utility.cs" />
     <Compile Include="Program.cs" />

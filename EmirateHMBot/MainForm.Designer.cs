@@ -42,7 +42,9 @@
             this.PermitDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.EID2DGV = new System.Windows.Forms.DataGridView();
+            this.SaveEidFromPermitRenewEidB = new MetroFramework.Controls.MetroButton();
+            this.SaveFromPermitNewEidB = new MetroFramework.Controls.MetroButton();
+            this.PermitEID2DGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
             this.LastSevenDigitPermitMohapTextBox = new System.Windows.Forms.TextBox();
             this.FirstThreeDigitPermitMohapTextBox = new System.Windows.Forms.TextBox();
@@ -74,6 +76,8 @@
             this.MohreDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage11 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.SaveEidFromMohreRenewEidB = new MetroFramework.Controls.MetroButton();
+            this.SaveFromMohreNewEidB = new MetroFramework.Controls.MetroButton();
             this.MohreEidDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage12 = new MetroFramework.Controls.MetroTabPage();
             this.LastSevenDigitMoreMohapTextBox = new System.Windows.Forms.TextBox();
@@ -106,11 +110,9 @@
             this.EChannelDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage8 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
-            this.SaveFromEID = new System.Windows.Forms.Button();
-            this.LabelEChannelEID = new System.Windows.Forms.Label();
-            this.ImgPathForEChannelEIDTextBoxI = new MetroFramework.Controls.MetroTextBox();
-            this.UploadImgEChannelEIDB = new System.Windows.Forms.Button();
-            this.EChnEIDDgview = new System.Windows.Forms.DataGridView();
+            this.SaveEidFromEChannelRenewEidB = new MetroFramework.Controls.MetroButton();
+            this.SaveFromEChannelNewEidB = new MetroFramework.Controls.MetroButton();
+            this.EChannellEidDgview = new System.Windows.Forms.DataGridView();
             this.metroTabPage9 = new MetroFramework.Controls.MetroTabPage();
             this.LastSevenDigitEchannelMohapTextBox = new System.Windows.Forms.TextBox();
             this.FirstThreeDigitEchannelMohapTextBox = new System.Windows.Forms.TextBox();
@@ -122,7 +124,7 @@
             this.LabelEChannelMOHAP = new System.Windows.Forms.Label();
             this.ImgPathForEChannelMohapTextBoxI = new MetroFramework.Controls.MetroTextBox();
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
-            this.EchannellMohapDgview = new System.Windows.Forms.DataGridView();
+            this.EchannellMohapDGV = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.metroTabControl1.SuspendLayout();
@@ -134,7 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PermitDGV)).BeginInit();
             this.metroTabPage5.SuspendLayout();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitEID2DGV)).BeginInit();
             this.metroTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).BeginInit();
             this.metroTabPage2.SuspendLayout();
@@ -156,9 +158,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).BeginInit();
             this.metroTabPage8.SuspendLayout();
             this.metroPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EChannellEidDgview)).BeginInit();
             this.metroTabPage9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDgview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDGV)).BeginInit();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,7 +217,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 1;
             this.metroTabControl2.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -353,7 +355,9 @@
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Controls.Add(this.EID2DGV);
+            this.metroPanel1.Controls.Add(this.SaveEidFromPermitRenewEidB);
+            this.metroPanel1.Controls.Add(this.SaveFromPermitNewEidB);
+            this.metroPanel1.Controls.Add(this.PermitEID2DGV);
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -366,22 +370,46 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // EID2DGV
+            // SaveEidFromPermitRenewEidB
             // 
-            this.EID2DGV.AllowUserToAddRows = false;
-            this.EID2DGV.AllowUserToDeleteRows = false;
-            this.EID2DGV.AllowUserToResizeColumns = false;
-            this.EID2DGV.AllowUserToResizeRows = false;
-            this.EID2DGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EID2DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EID2DGV.Location = new System.Drawing.Point(3, 111);
-            this.EID2DGV.Name = "EID2DGV";
-            this.EID2DGV.ReadOnly = true;
-            this.EID2DGV.RowHeadersVisible = false;
-            this.EID2DGV.Size = new System.Drawing.Size(902, 517);
-            this.EID2DGV.TabIndex = 2;
-            this.EID2DGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EID2DGV_CellEndEditAsync);
-            this.EID2DGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EID2DGV_KeyPress);
+            this.SaveEidFromPermitRenewEidB.Location = new System.Drawing.Point(911, 583);
+            this.SaveEidFromPermitRenewEidB.Name = "SaveEidFromPermitRenewEidB";
+            this.SaveEidFromPermitRenewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveEidFromPermitRenewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveEidFromPermitRenewEidB.TabIndex = 26;
+            this.SaveEidFromPermitRenewEidB.Text = "Renew EID";
+            this.SaveEidFromPermitRenewEidB.UseSelectable = true;
+            this.SaveEidFromPermitRenewEidB.UseStyleColors = true;
+            this.SaveEidFromPermitRenewEidB.Click += new System.EventHandler(this.SaveEidFromPermitRenewEidB_Click);
+            // 
+            // SaveFromPermitNewEidB
+            // 
+            this.SaveFromPermitNewEidB.Location = new System.Drawing.Point(911, 523);
+            this.SaveFromPermitNewEidB.Name = "SaveFromPermitNewEidB";
+            this.SaveFromPermitNewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveFromPermitNewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveFromPermitNewEidB.TabIndex = 25;
+            this.SaveFromPermitNewEidB.Text = "Save new EID";
+            this.SaveFromPermitNewEidB.UseSelectable = true;
+            this.SaveFromPermitNewEidB.UseStyleColors = true;
+            this.SaveFromPermitNewEidB.Click += new System.EventHandler(this.SaveFromPermitNewEidB_Click);
+            // 
+            // PermitEID2DGV
+            // 
+            this.PermitEID2DGV.AllowUserToAddRows = false;
+            this.PermitEID2DGV.AllowUserToDeleteRows = false;
+            this.PermitEID2DGV.AllowUserToResizeColumns = false;
+            this.PermitEID2DGV.AllowUserToResizeRows = false;
+            this.PermitEID2DGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.PermitEID2DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PermitEID2DGV.Location = new System.Drawing.Point(3, 111);
+            this.PermitEID2DGV.Name = "PermitEID2DGV";
+            this.PermitEID2DGV.ReadOnly = true;
+            this.PermitEID2DGV.RowHeadersVisible = false;
+            this.PermitEID2DGV.Size = new System.Drawing.Size(902, 517);
+            this.PermitEID2DGV.TabIndex = 2;
+            this.PermitEID2DGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EID2DGV_CellEndEditAsync);
+            this.PermitEID2DGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EID2DGV_KeyPress);
             // 
             // metroTabPage6
             // 
@@ -611,7 +639,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 0;
+            this.metroTabControl4.SelectedIndex = 1;
             this.metroTabControl4.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -921,6 +949,8 @@
             // 
             // metroPanel4
             // 
+            this.metroPanel4.Controls.Add(this.SaveEidFromMohreRenewEidB);
+            this.metroPanel4.Controls.Add(this.SaveFromMohreNewEidB);
             this.metroPanel4.Controls.Add(this.MohreEidDGV);
             this.metroPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel4.HorizontalScrollbarBarColor = true;
@@ -933,6 +963,30 @@
             this.metroPanel4.VerticalScrollbarBarColor = true;
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // SaveEidFromMohreRenewEidB
+            // 
+            this.SaveEidFromMohreRenewEidB.Location = new System.Drawing.Point(909, 579);
+            this.SaveEidFromMohreRenewEidB.Name = "SaveEidFromMohreRenewEidB";
+            this.SaveEidFromMohreRenewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveEidFromMohreRenewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveEidFromMohreRenewEidB.TabIndex = 28;
+            this.SaveEidFromMohreRenewEidB.Text = "Renew EID";
+            this.SaveEidFromMohreRenewEidB.UseSelectable = true;
+            this.SaveEidFromMohreRenewEidB.UseStyleColors = true;
+            this.SaveEidFromMohreRenewEidB.Click += new System.EventHandler(this.SaveEidFromMohreRenewEidB_Click);
+            // 
+            // SaveFromMohreNewEidB
+            // 
+            this.SaveFromMohreNewEidB.Location = new System.Drawing.Point(909, 519);
+            this.SaveFromMohreNewEidB.Name = "SaveFromMohreNewEidB";
+            this.SaveFromMohreNewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveFromMohreNewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveFromMohreNewEidB.TabIndex = 27;
+            this.SaveFromMohreNewEidB.Text = "Save new EID";
+            this.SaveFromMohreNewEidB.UseSelectable = true;
+            this.SaveFromMohreNewEidB.UseStyleColors = true;
+            this.SaveFromMohreNewEidB.Click += new System.EventHandler(this.SaveFromMohreNewEidB_Click);
             // 
             // MohreEidDGV
             // 
@@ -1160,7 +1214,7 @@
             this.metroTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl3.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 0;
+            this.metroTabControl3.SelectedIndex = 1;
             this.metroTabControl3.Size = new System.Drawing.Size(1040, 700);
             this.metroTabControl3.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl3.TabIndex = 18;
@@ -1440,11 +1494,9 @@
             // 
             // metroPanel3
             // 
-            this.metroPanel3.Controls.Add(this.SaveFromEID);
-            this.metroPanel3.Controls.Add(this.LabelEChannelEID);
-            this.metroPanel3.Controls.Add(this.ImgPathForEChannelEIDTextBoxI);
-            this.metroPanel3.Controls.Add(this.UploadImgEChannelEIDB);
-            this.metroPanel3.Controls.Add(this.EChnEIDDgview);
+            this.metroPanel3.Controls.Add(this.SaveEidFromEChannelRenewEidB);
+            this.metroPanel3.Controls.Add(this.SaveFromEChannelNewEidB);
+            this.metroPanel3.Controls.Add(this.EChannellEidDgview);
             this.metroPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel3.HorizontalScrollbarBarColor = true;
             this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
@@ -1457,82 +1509,45 @@
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
             // 
-            // SaveFromEID
+            // SaveEidFromEChannelRenewEidB
             // 
-            this.SaveFromEID.Location = new System.Drawing.Point(915, 598);
-            this.SaveFromEID.Name = "SaveFromEID";
-            this.SaveFromEID.Size = new System.Drawing.Size(99, 23);
-            this.SaveFromEID.TabIndex = 44;
-            this.SaveFromEID.Text = "Save";
-            this.SaveFromEID.UseVisualStyleBackColor = true;
-            this.SaveFromEID.Visible = false;
-            this.SaveFromEID.Click += new System.EventHandler(this.SaveFromEID_Click);
+            this.SaveEidFromEChannelRenewEidB.Location = new System.Drawing.Point(911, 576);
+            this.SaveEidFromEChannelRenewEidB.Name = "SaveEidFromEChannelRenewEidB";
+            this.SaveEidFromEChannelRenewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveEidFromEChannelRenewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveEidFromEChannelRenewEidB.TabIndex = 30;
+            this.SaveEidFromEChannelRenewEidB.Text = "Renew EID";
+            this.SaveEidFromEChannelRenewEidB.UseSelectable = true;
+            this.SaveEidFromEChannelRenewEidB.UseStyleColors = true;
+            this.SaveEidFromEChannelRenewEidB.Click += new System.EventHandler(this.SaveEidFromEChannelRenewEidB_Click);
             // 
-            // LabelEChannelEID
+            // SaveFromEChannelNewEidB
             // 
-            this.LabelEChannelEID.AutoSize = true;
-            this.LabelEChannelEID.Location = new System.Drawing.Point(929, 431);
-            this.LabelEChannelEID.Name = "LabelEChannelEID";
-            this.LabelEChannelEID.Size = new System.Drawing.Size(0, 13);
-            this.LabelEChannelEID.TabIndex = 40;
+            this.SaveFromEChannelNewEidB.Location = new System.Drawing.Point(911, 516);
+            this.SaveFromEChannelNewEidB.Name = "SaveFromEChannelNewEidB";
+            this.SaveFromEChannelNewEidB.Size = new System.Drawing.Size(118, 45);
+            this.SaveFromEChannelNewEidB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SaveFromEChannelNewEidB.TabIndex = 29;
+            this.SaveFromEChannelNewEidB.Text = "Save new EID";
+            this.SaveFromEChannelNewEidB.UseSelectable = true;
+            this.SaveFromEChannelNewEidB.UseStyleColors = true;
+            this.SaveFromEChannelNewEidB.Click += new System.EventHandler(this.SaveFromEChannelNewEidB_Click);
             // 
-            // ImgPathForEChannelEIDTextBoxI
+            // EChannellEidDgview
             // 
-            // 
-            // 
-            // 
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Image = null;
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Location = new System.Drawing.Point(77, 1);
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Name = "";
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.TabIndex = 1;
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.UseSelectable = true;
-            this.ImgPathForEChannelEIDTextBoxI.CustomButton.Visible = false;
-            this.ImgPathForEChannelEIDTextBoxI.Lines = new string[0];
-            this.ImgPathForEChannelEIDTextBoxI.Location = new System.Drawing.Point(915, 540);
-            this.ImgPathForEChannelEIDTextBoxI.MaxLength = 32767;
-            this.ImgPathForEChannelEIDTextBoxI.Name = "ImgPathForEChannelEIDTextBoxI";
-            this.ImgPathForEChannelEIDTextBoxI.PasswordChar = '\0';
-            this.ImgPathForEChannelEIDTextBoxI.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ImgPathForEChannelEIDTextBoxI.SelectedText = "";
-            this.ImgPathForEChannelEIDTextBoxI.SelectionLength = 0;
-            this.ImgPathForEChannelEIDTextBoxI.SelectionStart = 0;
-            this.ImgPathForEChannelEIDTextBoxI.ShortcutsEnabled = true;
-            this.ImgPathForEChannelEIDTextBoxI.Size = new System.Drawing.Size(99, 23);
-            this.ImgPathForEChannelEIDTextBoxI.TabIndex = 39;
-            this.ImgPathForEChannelEIDTextBoxI.UseSelectable = true;
-            this.ImgPathForEChannelEIDTextBoxI.Visible = false;
-            this.ImgPathForEChannelEIDTextBoxI.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ImgPathForEChannelEIDTextBoxI.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // UploadImgEChannelEIDB
-            // 
-            this.UploadImgEChannelEIDB.Location = new System.Drawing.Point(915, 569);
-            this.UploadImgEChannelEIDB.Name = "UploadImgEChannelEIDB";
-            this.UploadImgEChannelEIDB.Size = new System.Drawing.Size(99, 23);
-            this.UploadImgEChannelEIDB.TabIndex = 38;
-            this.UploadImgEChannelEIDB.Text = "upload image";
-            this.UploadImgEChannelEIDB.UseVisualStyleBackColor = true;
-            this.UploadImgEChannelEIDB.Visible = false;
-            this.UploadImgEChannelEIDB.Click += new System.EventHandler(this.UploadImgEChannelEIDB_Click);
-            // 
-            // EChnEIDDgview
-            // 
-            this.EChnEIDDgview.AllowUserToAddRows = false;
-            this.EChnEIDDgview.AllowUserToDeleteRows = false;
-            this.EChnEIDDgview.AllowUserToResizeColumns = false;
-            this.EChnEIDDgview.AllowUserToResizeRows = false;
-            this.EChnEIDDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EChnEIDDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EChnEIDDgview.Location = new System.Drawing.Point(3, 104);
-            this.EChnEIDDgview.Name = "EChnEIDDgview";
-            this.EChnEIDDgview.ReadOnly = true;
-            this.EChnEIDDgview.RowHeadersVisible = false;
-            this.EChnEIDDgview.Size = new System.Drawing.Size(906, 517);
-            this.EChnEIDDgview.TabIndex = 2;
-            this.EChnEIDDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChnEIDDgview_KeyPress);
+            this.EChannellEidDgview.AllowUserToAddRows = false;
+            this.EChannellEidDgview.AllowUserToDeleteRows = false;
+            this.EChannellEidDgview.AllowUserToResizeColumns = false;
+            this.EChannellEidDgview.AllowUserToResizeRows = false;
+            this.EChannellEidDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EChannellEidDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EChannellEidDgview.Location = new System.Drawing.Point(3, 104);
+            this.EChannellEidDgview.Name = "EChannellEidDgview";
+            this.EChannellEidDgview.ReadOnly = true;
+            this.EChannellEidDgview.RowHeadersVisible = false;
+            this.EChannellEidDgview.Size = new System.Drawing.Size(906, 517);
+            this.EChannellEidDgview.TabIndex = 2;
+            this.EChannellEidDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChnEIDDgview_KeyPress);
             // 
             // metroTabPage9
             // 
@@ -1546,7 +1561,7 @@
             this.metroTabPage9.Controls.Add(this.LabelEChannelMOHAP);
             this.metroTabPage9.Controls.Add(this.ImgPathForEChannelMohapTextBoxI);
             this.metroTabPage9.Controls.Add(this.UploadImgEChannelMohapB);
-            this.metroTabPage9.Controls.Add(this.EchannellMohapDgview);
+            this.metroTabPage9.Controls.Add(this.EchannellMohapDGV);
             this.metroTabPage9.HorizontalScrollbarBarColor = true;
             this.metroTabPage9.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage9.HorizontalScrollbarSize = 10;
@@ -1715,21 +1730,21 @@
             this.UploadImgEChannelMohapB.UseVisualStyleBackColor = true;
             this.UploadImgEChannelMohapB.Click += new System.EventHandler(this.UploadImgEChannelMohapB_Click);
             // 
-            // EchannellMohapDgview
+            // EchannellMohapDGV
             // 
-            this.EchannellMohapDgview.AllowUserToAddRows = false;
-            this.EchannellMohapDgview.AllowUserToDeleteRows = false;
-            this.EchannellMohapDgview.AllowUserToResizeColumns = false;
-            this.EchannellMohapDgview.AllowUserToResizeRows = false;
-            this.EchannellMohapDgview.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.EchannellMohapDgview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EchannellMohapDgview.Location = new System.Drawing.Point(13, 45);
-            this.EchannellMohapDgview.Name = "EchannellMohapDgview";
-            this.EchannellMohapDgview.ReadOnly = true;
-            this.EchannellMohapDgview.RowHeadersVisible = false;
-            this.EchannellMohapDgview.Size = new System.Drawing.Size(892, 562);
-            this.EchannellMohapDgview.TabIndex = 3;
-            this.EchannellMohapDgview.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
+            this.EchannellMohapDGV.AllowUserToAddRows = false;
+            this.EchannellMohapDGV.AllowUserToDeleteRows = false;
+            this.EchannellMohapDGV.AllowUserToResizeColumns = false;
+            this.EchannellMohapDGV.AllowUserToResizeRows = false;
+            this.EchannellMohapDGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.EchannellMohapDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EchannellMohapDGV.Location = new System.Drawing.Point(13, 45);
+            this.EchannellMohapDGV.Name = "EchannellMohapDGV";
+            this.EchannellMohapDGV.ReadOnly = true;
+            this.EchannellMohapDGV.RowHeadersVisible = false;
+            this.EchannellMohapDGV.Size = new System.Drawing.Size(892, 562);
+            this.EchannellMohapDGV.TabIndex = 3;
+            this.EchannellMohapDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EchanMohreDgview_KeyPress);
             // 
             // panel3
             // 
@@ -1762,7 +1777,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Style = MetroFramework.MetroColorStyle.Orange;
-            this.Text = "                Emirate Human resources Bot 1.06";
+            this.Text = "                Emirate Human resources Bot 1.08";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroTabControl1.ResumeLayout(false);
@@ -1775,7 +1790,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PermitDGV)).EndInit();
             this.metroTabPage5.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.EID2DGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PermitEID2DGV)).EndInit();
             this.metroTabPage6.ResumeLayout(false);
             this.metroTabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PermitMOHAPDGV)).EndInit();
@@ -1802,11 +1817,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
             this.metroTabPage8.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
-            this.metroPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EChnEIDDgview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EChannellEidDgview)).EndInit();
             this.metroTabPage9.ResumeLayout(false);
             this.metroTabPage9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDgview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDGV)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -1827,7 +1841,7 @@
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTabPage metroTabPage6;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
-        private System.Windows.Forms.DataGridView EID2DGV;
+        private System.Windows.Forms.DataGridView PermitEID2DGV;
         private MetroFramework.Controls.MetroTextBox CodeT;
         private MetroFramework.Controls.MetroButton FillFormsPermitB;
         private MetroFramework.Controls.MetroButton ScrapePermitB;
@@ -1841,9 +1855,9 @@
         private System.Windows.Forms.DataGridView EChannelDGV;
         private MetroFramework.Controls.MetroTabPage metroTabPage8;
         private MetroFramework.Controls.MetroPanel metroPanel3;
-        private System.Windows.Forms.DataGridView EChnEIDDgview;
+        private System.Windows.Forms.DataGridView EChannellEidDgview;
         private MetroFramework.Controls.MetroTabPage metroTabPage9;
-        private System.Windows.Forms.DataGridView EchannellMohapDgview;
+        private System.Windows.Forms.DataGridView EchannellMohapDGV;
         private System.Windows.Forms.Label label4;
         private MetroFramework.Controls.MetroTextBox CodeEChannelTI;
         private System.Windows.Forms.Label label3;
@@ -1875,14 +1889,10 @@
         private MetroFramework.Controls.MetroTextBox CompanieCodeTI;
         private System.Windows.Forms.Label label8;
         private MetroFramework.Controls.MetroTextBox NationalityTI;
-        private MetroFramework.Controls.MetroTextBox ImgPathForEChannelEIDTextBoxI;
-        private System.Windows.Forms.Button UploadImgEChannelEIDB;
         private System.Windows.Forms.Label LabelEChannelMOHAP;
         private MetroFramework.Controls.MetroTextBox ImgPathForEChannelMohapTextBoxI;
         private System.Windows.Forms.Button UploadImgEChannelMohapB;
         private System.Windows.Forms.Button SaveFromEChannelMOHAPB;
-        private System.Windows.Forms.Label LabelEChannelEID;
-        private System.Windows.Forms.Button SaveFromEID;
         private System.Windows.Forms.Button SaveFromMohrelMOHAPB;
         private MetroFramework.Controls.MetroTextBox ImgPathForMohreMohapTextBoxI;
         private System.Windows.Forms.Button UploadImgMohreMohapB;
@@ -1910,6 +1920,12 @@
         private System.Windows.Forms.TextBox FirstThreeDigitMohreMohapTextBox;
         private System.Windows.Forms.TextBox LastSevenDigitEchannelMohapTextBox;
         private System.Windows.Forms.TextBox FirstThreeDigitEchannelMohapTextBox;
+        private MetroFramework.Controls.MetroButton SaveFromPermitNewEidB;
+        private MetroFramework.Controls.MetroButton SaveEidFromPermitRenewEidB;
+        private MetroFramework.Controls.MetroButton SaveEidFromMohreRenewEidB;
+        private MetroFramework.Controls.MetroButton SaveFromMohreNewEidB;
+        private MetroFramework.Controls.MetroButton SaveEidFromEChannelRenewEidB;
+        private MetroFramework.Controls.MetroButton SaveFromEChannelNewEidB;
     }
 }
 
