@@ -26,7 +26,7 @@ namespace EmirateHMBot
             //try
             //{
             //    await EservicesMohreService.Authenticate();
-            //    await EservicesMohreService.GetEmplyeesIds();
+            //    await EservicesMohreService.GetEmplyeesIds(); 
             //}
             //finally
             //{
