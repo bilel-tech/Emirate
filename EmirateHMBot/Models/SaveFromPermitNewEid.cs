@@ -112,17 +112,15 @@ namespace EmirateHMBot.Models
         public static void saveNewEidStep2()
         {
             //EidDriver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\ICA Registration System1.html");
-            EidDriver.FindElement(By.XPath("//input[@id='dijit_form_ComboBox_3']")).SendKeys(Eid.Nationality);
+            EidDriver.FindElement(By.XPath("//input[@id='dijit_form_ComboBox_14']")).SendKeys(Eid.Nationality);
             EidDriver.FindElement(By.XPath("//input[@name='eForm.Person/FirstNameEN']")).SendKeys(Eid.NameEnglish);
             EidDriver.FindElement(By.XPath("//select[@name='eForm.Person/Gender']")).SendKeys(Eid.Gender);
-            EidDriver.FindElement(By.XPath("//input[@name='eForm.Person/MotherFirstNameEN'] ")).SendKeys(Eid.MotherNameArabic);
+            EidDriver.FindElement(By.XPath("//input[@name='eForm.Person/MotherFirstNameEN']")).SendKeys(Eid.MotherNameArabic);
         }
         public static void saveNewEidStep3()
         {
             //EidDriver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\new\step3.html");
-            EidDriver.FindElement(By.XPath("//input[@id='dijit_form_ComboBox_5']")).SendKeys(Eid.PlaceofBirth);
-            EidDriver.FindElement(By.XPath("//label[text()='Place of Birth - English']/../following-sibling::td//input")).SendKeys("unspecified");
-            EidDriver.FindElement(By.XPath("//input[@class='mendixFormDatePicker_dateInput']")).SendKeys(Eid.DateofBirth);
+            EidDriver.FindElement(By.XPath("//input[@name='eForm.Person/FirstNameAR']")).SendKeys(Eid.NameEnglish);
         }
         public static void saveNewEidStep4()
         {

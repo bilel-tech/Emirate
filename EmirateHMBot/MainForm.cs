@@ -17,6 +17,7 @@ using OpenQA.Selenium.Chrome;
 using System.Diagnostics;
 using OpenQA.Selenium.Firefox;
 using EmirateHMBot.Services;
+using System.Globalization;
 
 namespace EmirateHMBot
 {
@@ -985,7 +986,7 @@ namespace EmirateHMBot
                 await Task.Delay(2000);
                 Driver.FindElementById("txtCardNo").SendKeys(PersonCodeTI.Text);
                 Driver.FindElementById("btnGo").Click();
-                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);//562889//407
+                Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(3);//562889//407
                 var personalNameArabic = FindElementByXPath("//input[@id='txtPER_NAME_ARB']")?.GetAttribute("value");
                 var personalNameEnglish = FindElementByXPath("//input[@id='txtPER_NAME_ENG']")?.GetAttribute("value");
                 var nationality = Driver.FindElementById("ctrlNationality_txtDescription").GetAttribute("value");
@@ -1005,7 +1006,16 @@ namespace EmirateHMBot
                 MohreDGV.Rows[9].Cells[1].Value = birthDate;
                 MohreDGV.Rows[10].Cells[1].Value = passportNumber;
                 MohreDGV.Rows[11].Cells[1].Value = passportIssueDate;
-                MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+                var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var today = DateTime.Now;
+                if (today.Date > expiryDate.Date)
+                {
+                    MohreDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                    MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+                }
+                else
+                    MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+
                 try
                 {
                     Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/MOLForms/arabic/services.aspx?groupid=12");
@@ -1300,7 +1310,7 @@ namespace EmirateHMBot
                 MessageBox.Show("Please put the code wich you will scrape data with");
                 return;
             }
-            Console.WriteLine($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelTI.Text}");
+            var headers = new ECHannelHeaders();
 
             Object = JObject.Parse(File.ReadAllText("ECHannel headers.txt"));
             var refreshToken = (string)Object.SelectToken("RefreshToken");
@@ -1337,13 +1347,13 @@ namespace EmirateHMBot
                 }
                 catch (Exception)
                 {
-                    var headers = new ECHannelHeaders();
                     Object = JObject.Parse(logInResponse.json);
                     headers.UserToken = (string)Object.SelectToken("userToken");
                     headers.RefreshToken = (string)Object.SelectToken("refreshToken");
                     var jsonHeaders = JsonConvert.SerializeObject(headers, Formatting.Indented);
                     File.WriteAllText("ECHannel headers.txt", jsonHeaders);
                     EchannelData = await HttpCaller.GetEchannelHtml($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/establishment/{ResidencyviewOrVisaviewRB}/{CodeEChannelTI.Text}", headers.RefreshToken, headers.UserToken);
+
                     if (EchannelData.error != null)
                     {
                         MessageBox.Show(EchannelData.error);
@@ -1380,19 +1390,19 @@ namespace EmirateHMBot
             //FullNameArb =arabicName
             var dateOfBirth = ((string)Object.SelectToken("dateOfBirth")).Trim() ?? "";
             dateOfBirth = dateOfBirth.Substring(0, 10);
-            DateTime dateOfBirthResult = DateTime.ParseExact(dateOfBirth, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime dateOfBirthResult = DateTime.ParseExact(dateOfBirth, @"MM/dd/yyyy", CultureInfo.InvariantCulture);
             dateOfBirth = dateOfBirthResult.ToString("dd/MM/yyy");
             //dateOfBirth=dateOfBirth
             var motherArabicName = ((string)Object.SelectToken("motherArabicName"))?.Trim() ?? "";
             //motherArabicName motherArabicName
             var passportIssueDate = ((string)Object?.SelectToken("passportIssueDate"))?.Trim() ?? "";
             passportIssueDate = passportIssueDate.Substring(0, 10);
-            DateTime passportIssueDateResult = DateTime.ParseExact(passportIssueDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime passportIssueDateResult = DateTime.ParseExact(passportIssueDate, @"MM/dd/yyyy", CultureInfo.InvariantCulture);
             passportIssueDate = passportIssueDateResult.ToString("dd/MM/yyyy");
             //passportIssueDate= passportIssueDate
             var passportExpiryDate = ((string)Object?.SelectToken("passportExpiryDate"))?.Trim() ?? "";
             passportExpiryDate = passportExpiryDate.Substring(0, 10);
-            DateTime passportExpiryDateResult = DateTime.ParseExact(passportExpiryDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime passportExpiryDateResult = DateTime.ParseExact(passportExpiryDate, @"MM/dd/yyyy", CultureInfo.InvariantCulture);
             passportExpiryDate = passportExpiryDateResult.ToString("dd/MM/yyyy");
             //passportExpiryDate=passportExpiryDate
             var passportNumber = ((string)Object.SelectToken("passportNumber")).Trim() ?? "";
@@ -1402,17 +1412,17 @@ namespace EmirateHMBot
             {//foreignResidenceExpiryDate residencyExpireDate
                 var residencyIssueDate = ((string)Object.SelectToken("foreignResidenceIssueDate"))?.Trim() ?? "";
                 residencyIssueDate = residencyIssueDate.Substring(0, 10);
-                DateTime residencyIssueDateResult = DateTime.ParseExact(residencyIssueDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime residencyIssueDateResult = DateTime.ParseExact(residencyIssueDate, @"MM/dd/yyyy", CultureInfo.InvariantCulture);
                 residencyIssueDate = residencyIssueDateResult.ToString("dd/MM/yyyy");
 
                 var residencyExpireDate = ((string)Object.SelectToken("foreignResidenceExpiryDate")).Trim() ?? "";
                 residencyExpireDate = residencyExpireDate.Substring(0, 10);
-                DateTime residencyExpireDateResult = DateTime.ParseExact(residencyExpireDate, @"MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                DateTime residencyExpireDateResult = DateTime.ParseExact(residencyExpireDate, @"MM/dd/yyyy", CultureInfo.InvariantCulture);
                 residencyExpireDate = residencyExpireDateResult.ToString("dd/MM/yyyy");
                 EChannelDGV.Rows[15].Cells[1].Value = residencyIssueDate;
                 EChannelDGV.Rows[16].Cells[1].Value = residencyExpireDate;
-                Console.WriteLine(residencyIssueDate);
-                Console.WriteLine(residencyExpireDate);
+                //Console.WriteLine(residencyIssueDate);
+                //Console.WriteLine(residencyExpireDate);
             }
 
             EChannelDGV.Rows[13].Cells[1].Value = UnifiedNo;
@@ -1425,8 +1435,29 @@ namespace EmirateHMBot
             EChannelDGV.Rows[9].Cells[1].Value = dateOfBirth;
             EChannelDGV.Rows[10].Cells[1].Value = passportNumber;
             EChannelDGV.Rows[11].Cells[1].Value = passportIssueDate;
-            EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+            //EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
             EChannelDGV.Rows[14].Cells[1].Value = visafilenbr;
+
+            var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var today = DateTime.Now;
+            if (today.Date > expiryDate.Date)
+            {
+                EChannelDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+            }
+            else
+                EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+
+            Object = JObject.Parse(File.ReadAllText("ECHannel headers.txt"));
+            refreshToken = (string)Object.SelectToken("RefreshToken");
+            userToken = (string)Object.SelectToken("UserToken");
+
+            var getCompanyNameResponse = await HttpCaller.GetEchannelHtml("https://echannels.moi.gov.ae/echannels/api/api/establishment/getEstablishmentInfoByEstabCardNumberFromUDB/undefined?v=trsm01yde", refreshToken, userToken);
+            if (getCompanyNameResponse.error != null)
+                return;
+            Object = JObject.Parse(getCompanyNameResponse.html);
+            var companyName = ((string)Object?.SelectToken("arabicName"))?.Trim() ?? "";
+            EChannelDGV.Rows[17].Cells[1].Value = companyName;
         }
 
         private void CleanECannelDataGridViews()
@@ -2293,6 +2324,7 @@ namespace EmirateHMBot
 
         private async void SaveFromPermitNewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
@@ -2306,22 +2338,6 @@ namespace EmirateHMBot
 
                 EidDriver.Navigate().GoToUrl("https://eform.emiratesid.ae/");
                 //EidDriver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\main page.html");
-                do
-                {
-                    try
-                    {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] ")).Click();
-                        break;
-                    }
-                    catch (Exception)
-                    {
-                        await Task.Delay(500);
-                        continue;
-                    }
-
-                } while (true);
-                await Task.Delay(2000);
-                SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
 
             }
             else
@@ -2331,7 +2347,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']"));
                         break;
                     }
                     catch (Exception)
@@ -2342,12 +2358,33 @@ namespace EmirateHMBot
 
                 } while (true);
                 await Task.Delay(2000);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+                //return;
                 SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
+            do
+            {
+                try
+                {
+                    EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] "));
+                    break;
+                }
+                catch (Exception)
+                {
+                    await Task.Delay(500);
+                    continue;
+                }
+
+            } while (true);
+            EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] ")).Click();
+            //return;
+            await Task.Delay(2000);
+            SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
 
         }
         private async void SaveEidFromPermitRenewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
@@ -2366,7 +2403,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] ")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']"));
                         break;
                     }
                     catch (Exception)
@@ -2376,6 +2413,8 @@ namespace EmirateHMBot
                     }
 
                 } while (true);
+                //return;
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
@@ -2386,7 +2425,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] ")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] "));
                         break;
                     }
                     catch (Exception)
@@ -2396,6 +2435,8 @@ namespace EmirateHMBot
                     }
 
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] ")).Click();
+                //return;
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
@@ -2403,45 +2444,24 @@ namespace EmirateHMBot
 
         private async void SaveFromMohreNewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
-
                 ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService();
                 chromeDriverService.HideCommandPromptWindow = true;
                 ChromeOptions op = new ChromeOptions();
                 EidDriver = new ChromeDriver(chromeDriverService, op, TimeSpan.FromSeconds(120));
                 CheckEidPageOpened = true;
-
-
                 EidDriver.Navigate().GoToUrl("https://eform.emiratesid.ae/");
-                //EidDriver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\main page.html");
-                do
-                {
-                    try
-                    {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] ")).Click();
-                        break;
-                    }
-                    catch (Exception)
-                    {
-                        await Task.Delay(500);
-                        continue;
-                    }
-
-                } while (true);
-                await Task.Delay(2000);
-                SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
-
             }
             else
             {
-                EidDriver.Navigate().Refresh();
                 do
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']"));
                         break;
                     }
                     catch (Exception)
@@ -2451,14 +2471,32 @@ namespace EmirateHMBot
                     }
 
                 } while (true);
-                await Task.Delay(2000);
-                SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+                EidDriver.Navigate().Refresh();
             }
+            do
+            {
+                try
+                {
+                    EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']"));
+                    break;
+                }
+                catch (Exception)
+                {
+                    await Task.Delay(500);
+                    continue;
+                }
+
+            } while (true);
+            EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+            await Task.Delay(2000);
+            SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
 
         }
 
         private async void SaveEidFromMohreRenewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
@@ -2476,7 +2514,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] ")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']"));
                         break;
                     }
                     catch (Exception)
@@ -2486,6 +2524,7 @@ namespace EmirateHMBot
                     }
 
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
 
@@ -2497,7 +2536,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']"));
                         break;
                     }
                     catch (Exception)
@@ -2507,13 +2546,15 @@ namespace EmirateHMBot
                     }
 
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
                 await Task.Delay(2000);
-                SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
+                SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
         }
 
         private async void SaveFromEChannelNewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
@@ -2531,7 +2572,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] ")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20'] "));
                         break;
                     }
                     catch (Exception)
@@ -2539,8 +2580,8 @@ namespace EmirateHMBot
                         await Task.Delay(500);
                         continue;
                     }
-
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
 
@@ -2552,7 +2593,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']"));
                         break;
                     }
                     catch (Exception)
@@ -2560,8 +2601,8 @@ namespace EmirateHMBot
                         await Task.Delay(500);
                         continue;
                     }
-
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_20']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitNewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
@@ -2569,6 +2610,7 @@ namespace EmirateHMBot
 
         private async void SaveEidFromEChannelRenewEidB_Click(object sender, EventArgs e)
         {
+            EidDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             var eid = GetEIDFromGrid(PermitEID2DGV);
             if (!CheckEidPageOpened)
             {
@@ -2586,7 +2628,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] ")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22'] "));
                         break;
                     }
                     catch (Exception)
@@ -2594,8 +2636,8 @@ namespace EmirateHMBot
                         await Task.Delay(500);
                         continue;
                     }
-
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
 
@@ -2607,7 +2649,7 @@ namespace EmirateHMBot
                 {
                     try
                     {
-                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
+                        EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']"));
                         break;
                     }
                     catch (Exception)
@@ -2615,8 +2657,8 @@ namespace EmirateHMBot
                         await Task.Delay(500);
                         continue;
                     }
-
                 } while (true);
+                EidDriver.FindElement(By.XPath("//div[@id='mxui_widget_ViewButton_22']")).Click();
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
@@ -2681,7 +2723,19 @@ namespace EmirateHMBot
             PermitDGV.Rows[9].Cells[1].Value = datas["Date of Birth"];
             PermitDGV.Rows[10].Cells[1].Value = datas["Passport Number"];
             PermitDGV.Rows[11].Cells[1].Value = datas["Passport Issue Date"];
-            PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
+            //PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
+            var passportExpiryDate = (PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"]).ToString();
+            var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var toDay = DateTime.Now;
+            if (toDay.Date > expiryDate.Date)
+            {
+                PermitDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
+            }
+            else
+            {
+                PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
+            }
             PermitDGV.Rows[17].Cells[1].Value = datas["Sponsor Name (Arabic)"];
 
             datas = new Dictionary<string, string>();
