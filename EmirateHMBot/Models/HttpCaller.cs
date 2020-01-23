@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,7 +12,7 @@ namespace EmirateHMBot.Models
 {
     public class HttpCaller
     {
-        HttpClient _httpClient;
+      static  HttpClient _httpClient;
        public HttpClient _EChannelhttpClient;
         string userToken;
         string refreshToken;
@@ -111,7 +112,34 @@ namespace EmirateHMBot.Models
             } while (true);
 
         }
-        public async Task<(string html, string error)> PostFormData(string url, List<KeyValuePair<string, string>> formData, int maxAttempts = 1)
+        public static async Task<(Stream html, string error)> PostFormData(string url, List<KeyValuePair<string, string>> formData, int maxAttempts = 1)
+        {
+            var formContent = new FormUrlEncodedContent(formData);
+            int tries = 0;
+            do
+            {
+                try
+                {
+
+                    var response = await _httpClient.PostAsync(url, formContent);
+                    HttpContent Content = response.Content;
+                    var html = await Content.ReadAsStreamAsync();
+
+                    return (html, null);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    tries++;
+                    if (tries == maxAttempts)
+                    {
+                        return (null, ex.ToString());
+                    }
+                    await Task.Delay(2000);
+                }
+            } while (true);
+        }
+        public async Task<(string html, string error)> PostFormDataForLogIn(string url, List<KeyValuePair<string, string>> formData, int maxAttempts = 1)
         {
             var formContent = new FormUrlEncodedContent(formData);
             int tries = 0;

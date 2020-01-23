@@ -14,10 +14,10 @@ using OfficeOpenXml;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Diagnostics;
-using OpenQA.Selenium.Firefox;
-using EmirateHMBot.Services;
 using System.Globalization;
+using EmirateHMBot.Services;
+using System.Threading.Tasks.Dataflow;
+using CsvHelper;
 
 namespace EmirateHMBot
 {
@@ -101,7 +101,7 @@ namespace EmirateHMBot
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
 
-            _ = Task.Run(LoginToMohre);
+            //_ = Task.Run(LoginToMohre);
 
             PermitDGV.ColumnCount = 2;
 
@@ -232,7 +232,7 @@ namespace EmirateHMBot
             //EChannel DGVS
             EChannelDGV.ColumnCount = 2;
             EChannelDGV.Columns[0].Width = 250;
-            EChannelDGV.Columns[1].Width = 525;
+            EChannelDGV.Columns[1].Width = 628;
 
             EChannelDGV.RowTemplate.Height = 25;
 
@@ -578,6 +578,7 @@ namespace EmirateHMBot
             Driver?.Quit();
             MohreDriver?.Quit();
             EidDriver?.Quit();
+            EservicesMohreService.Driver?.Quit();
             Application.Exit();
         }
 
@@ -610,7 +611,7 @@ namespace EmirateHMBot
                 new KeyValuePair<string, string>("email",user),
                 new KeyValuePair<string, string>("password",pass),
             };
-            var response = await HttpCaller.PostFormData("https://www.merchantwords.com/login", formData);
+            var response = await HttpCaller.PostFormDataForLogIn("https://www.merchantwords.com/login", formData);
             if (response.error != null)
             {
                 return response.error;
@@ -1887,6 +1888,7 @@ namespace EmirateHMBot
 
             if (!CheckMohapLogInPageOpened)
             {
+                CheckMohapLogInPageOpened = true;
                 var chromeDriverService = ChromeDriverService.CreateDefaultService();
                 chromeDriverService.HideCommandPromptWindow = true;
                 var op = new ChromeOptions();
@@ -1907,15 +1909,14 @@ namespace EmirateHMBot
 
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
-                //driver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
+                //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
             }
             try
             {
                 if (CheckMohapLogInPageOpened)
                 {
-                    MohreDriver.Navigate().Refresh();
+                    MohreDriver.Navigate().Refresh(); 
                 }
-                CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -1936,11 +1937,11 @@ namespace EmirateHMBot
                 else
                     MohreDriver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
 
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitEchannelMohapTextBox.Text);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_EmailAddress')]")).SendKeys(MohapData.Email);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForEChannelMohapTextBoxI.Text);//image
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
                 MohreDriver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys("عجمان");//adress
@@ -1973,10 +1974,6 @@ namespace EmirateHMBot
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
                 //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
-                if (CheckMohapLogInPageOpened)
-                {
-                    MohreDriver.Navigate().Refresh();
-                }
                 CheckMohapLogInPageOpened = true;
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -1997,11 +1994,11 @@ namespace EmirateHMBot
                 else
                     MohreDriver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
 
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitEchannelMohapTextBox.Text);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_EmailAddress')]")).SendKeys(MohapData.Email);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForEChannelMohapTextBoxI.Text);//image
                 MohreDriver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys("عجمان");//city
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
@@ -2043,6 +2040,7 @@ namespace EmirateHMBot
 
             if (!CheckMohapLogInPageOpened)
             {
+                CheckMohapLogInPageOpened = true;
                 var chromeDriverService = ChromeDriverService.CreateDefaultService();
                 chromeDriverService.HideCommandPromptWindow = true;
                 var op = new ChromeOptions();
@@ -2071,7 +2069,6 @@ namespace EmirateHMBot
                 {
                     MohreDriver.Navigate().Refresh();
                 }
-                CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -2092,11 +2089,11 @@ namespace EmirateHMBot
                 else
                     MohreDriver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
 
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitMohreMohapTextBox.Text);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_EmailAddress')]")).SendKeys(MohapData.Email);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForMohreMohapTextBoxI.Text);//image
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
                 MohreDriver.FindElement(By.XPath(" //textarea[contains(@id,'_wtApplicants_MailAddress')]")).SendKeys("عجمان");//adress
@@ -2129,11 +2126,9 @@ namespace EmirateHMBot
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
                 //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
-                if (CheckMohapLogInPageOpened)
-                {
-                    MohreDriver.Navigate().Refresh();
-                }
+               
                 CheckMohapLogInPageOpened = true;
+
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
                 MohreDriver.FindElement(By.XPath("//select[contains(@id,'_wtEmirates_block_wtColumn2')] ")).SendKeys("عجمان");//emirat
@@ -2153,11 +2148,11 @@ namespace EmirateHMBot
                 else
                     MohreDriver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
 
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitMohreMohapTextBox.Text);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_EmailAddress')]")).SendKeys(MohapData.Email);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForPermitMohapTextBoxI.Text);//image
+                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtpicUpload')]")).SendKeys(ImgPathForMohreMohapTextBoxI.Text);//image
                 MohreDriver.FindElement(By.XPath("//select[contains(@id,'_wtCity_block_wtColumn2')]")).SendKeys("عجمان");//city
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_ContactNo')]")).SendKeys(MohapData.WorkPhone);//Phone number
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_wtColumn2_wtSponsor_PO_Box')]")).SendKeys("123");//mail box
@@ -2195,6 +2190,7 @@ namespace EmirateHMBot
 
             if (!CheckMohapLogInPageOpened)
             {
+                CheckMohapLogInPageOpened = true;
                 var chromeDriverService = ChromeDriverService.CreateDefaultService();
                 chromeDriverService.HideCommandPromptWindow = true;
                 var op = new ChromeOptions();
@@ -2245,7 +2241,7 @@ namespace EmirateHMBot
                 else
                     MohreDriver.FindElement(By.XPath("//select[contains(@id,'txtGender')]")).SendKeys("ذكر");
 
-                MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]/..//select")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
+                MohreDriver.FindElement(By.XPath("//select[contains(@id,'_wtapplicantMobileNumber_wtProviderCode')]")).SendKeys(FirstThreeDigitPermitMohapTextBox.Text);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_BirthDate')]")).SendKeys(MohapData.BirthDate);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_EmailAddress')]")).SendKeys(MohapData.Email);
                 MohreDriver.FindElement(By.XPath("//input[contains(@id,'_MobileNumber')]")).SendKeys(MohapData.WorkPhone);
@@ -2282,10 +2278,7 @@ namespace EmirateHMBot
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
                 //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
-                if (CheckMohapLogInPageOpened)
-                {
-                    MohreDriver.Navigate().Refresh();
-                }
+                
                 CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
@@ -2662,6 +2655,124 @@ namespace EmirateHMBot
                 await Task.Delay(2000);
                 SaveFromPermitRenewEid.NaviagetToEIDAsync(EidDriver, eid);
             }
+        }
+
+        private async void LogInB_Click(object sender, EventArgs e)
+        {
+            await EservicesMohreService.Authenticate();
+        }
+        private async void ScrapeLabordListB_Click(object sender, EventArgs e)
+        {
+            var employees = new List<Employee>();
+
+            try
+            {
+
+                employees = await EservicesMohreService.GetEmplyeesInfo();
+            }
+            finally
+            {
+                //EservicesMohreService.Driver?.Quit();
+            }
+            if (employees.Count == 0)
+            {
+                MessageBox.Show("this company have no employees");
+                return;
+            }
+            foreach (var employee in employees)
+            {
+                EmployeesChechBox.Items.Add(employee.PersonName, true);
+
+            }
+        }
+        private async void ScraprLabordImgB_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists("labord cards"))
+            {
+                Directory.CreateDirectory("labord cards");
+            }
+
+            var choosenEmployees = GetChoosenEmployees();
+           
+            var tpl = new TransformBlock<Employee, string>
+               (async x => await MohreSrviceDowloadImgAndContract.DownloadImage(x.CardNbr).ConfigureAwait(false),
+               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
+            foreach (var choosenEmployee in choosenEmployees)
+                tpl.Post(choosenEmployee);
+
+            foreach (var choosenEmployee in choosenEmployees)
+            {
+                var response = await tpl.ReceiveAsync().ConfigureAwait(false);
+                if (response != "")
+                    continue;
+            }
+        }
+
+        private async void ScrapeLabordContractsB_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists("labord contracts"))
+            {
+                Directory.CreateDirectory("labord contracts");
+            }
+            EservicesMohreService.Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/employeeCredential.aspx?emprequestType=2");
+            await Task.Delay(2000);
+            EservicesMohreService.Driver.FindElementById("rdLabourYes").Click();
+            EservicesMohreService.Driver.FindElementById("btnNext").Click();
+            var doc = new HtmlAgilityPack.HtmlDocument();
+
+            doc.LoadHtml(EservicesMohreService.Driver.PageSource);
+
+            var VIEWSTATE  = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATE']").GetAttributeValue("value", "");
+            var VIEWSTATEGENERATOR  = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATEGENERATOR']").GetAttributeValue("value", "");
+            var EVENTVALIDATION = doc.DocumentNode.SelectSingleNode("//input[@id='__EVENTVALIDATION']").GetAttributeValue("value", "");
+
+
+
+            var choosenEmployees = GetChoosenEmployees();
+            foreach (var choosenEmployee in choosenEmployees)
+            {
+                choosenEmployee.__VIEWSTATE = VIEWSTATE;
+                choosenEmployee.__VIEWSTATEGENERATOR = VIEWSTATEGENERATOR;
+                choosenEmployee.__EVENTVALIDATION = EVENTVALIDATION;
+            }
+            var tpl = new TransformBlock<Employee, string>
+               (async x => await MohreSrviceDowloadImgAndContract.DownloadContract(x).ConfigureAwait(false),
+               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
+            foreach (var choosenEmployee in choosenEmployees)
+                tpl.Post(choosenEmployee);
+            foreach (var choosenEmploye in choosenEmployees)
+            {
+                var response = await tpl.ReceiveAsync();
+                if (response!="")
+                {
+                    Console.WriteLine(response);
+                }
+            }
+            MessageBox.Show("done");
+        }
+
+        private void DawnloadLabordListB_Click(object sender, EventArgs e)
+        {
+
+            var choosenEmployees = GetChoosenEmployees();
+            using (var writer = new StreamWriter("labord list.csv"))
+            using (var csv = new CsvWriter(writer))
+            {
+                csv.WriteRecords(choosenEmployees);
+            }
+        }
+        List<Employee> GetChoosenEmployees()
+        {
+            var employees = EservicesMohreService.employees;
+            var choosenEmployees = new List<Employee>();
+            foreach (var Employee in EmployeesChechBox.CheckedItems)
+            {
+                if (employees.Any(i => i.PersonName == Employee.ToString()))
+                {
+                    choosenEmployees.Add(employees.FirstOrDefault(o => o.PersonName != null && o.PersonName == Employee.ToString()));
+                }
+            }
+            return choosenEmployees;
         }
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
