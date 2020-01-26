@@ -42,6 +42,10 @@
             this.PermitDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage5 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.prmitEidtextB4 = new System.Windows.Forms.TextBox();
+            this.prmitEidtextB3 = new System.Windows.Forms.TextBox();
+            this.prmitEidtextB2 = new System.Windows.Forms.TextBox();
+            this.prmitEidtextB1 = new System.Windows.Forms.TextBox();
             this.SaveEidFromPermitRenewEidB = new MetroFramework.Controls.MetroButton();
             this.SaveFromPermitNewEidB = new MetroFramework.Controls.MetroButton();
             this.PermitEID2DGV = new System.Windows.Forms.DataGridView();
@@ -76,6 +80,10 @@
             this.MohreDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage11 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.MohrEidtextB4 = new System.Windows.Forms.TextBox();
+            this.MohrEidtextB3 = new System.Windows.Forms.TextBox();
+            this.MohrEidtextB2 = new System.Windows.Forms.TextBox();
+            this.MohrEidtextB1 = new System.Windows.Forms.TextBox();
             this.SaveEidFromMohreRenewEidB = new MetroFramework.Controls.MetroButton();
             this.SaveFromMohreNewEidB = new MetroFramework.Controls.MetroButton();
             this.MohreEidDGV = new System.Windows.Forms.DataGridView();
@@ -110,6 +118,10 @@
             this.EChannelDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage8 = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
+            this.EchannellEidTextB4 = new System.Windows.Forms.TextBox();
+            this.EchannellEidTextB3 = new System.Windows.Forms.TextBox();
+            this.EchannellEidTextB2 = new System.Windows.Forms.TextBox();
+            this.EchannellEidTextB1 = new System.Windows.Forms.TextBox();
             this.SaveEidFromEChannelRenewEidB = new MetroFramework.Controls.MetroButton();
             this.SaveFromEChannelNewEidB = new MetroFramework.Controls.MetroButton();
             this.EChannellEidDgview = new System.Windows.Forms.DataGridView();
@@ -126,6 +138,12 @@
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchannellMohapDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage13 = new MetroFramework.Controls.MetroTabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.Label();
+            this.CompanyCodeTextBI = new System.Windows.Forms.TextBox();
+            this.PassWLabordTextBI = new System.Windows.Forms.TextBox();
+            this.UseNLabordTextBI = new System.Windows.Forms.TextBox();
             this.DawnloadLabordListB = new MetroFramework.Controls.MetroButton();
             this.ScrapeLabordListB = new MetroFramework.Controls.MetroButton();
             this.EmployeesChechBox = new System.Windows.Forms.CheckedListBox();
@@ -226,7 +244,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 2;
+            this.metroTabControl2.SelectedIndex = 1;
             this.metroTabControl2.Size = new System.Drawing.Size(1103, 700);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -244,7 +262,7 @@
             this.metroTabPage4.HorizontalScrollbarSize = 0;
             this.metroTabPage4.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage4.Name = "metroTabPage4";
-            this.metroTabPage4.Size = new System.Drawing.Size(1032, 655);
+            this.metroTabPage4.Size = new System.Drawing.Size(1095, 655);
             this.metroTabPage4.TabIndex = 0;
             this.metroTabPage4.Text = "Scraped data";
             this.metroTabPage4.VerticalScrollbarBarColor = true;
@@ -262,7 +280,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1032, 655);
+            this.panel1.Size = new System.Drawing.Size(1095, 655);
             this.panel1.TabIndex = 14;
             // 
             // label1
@@ -355,7 +373,7 @@
             this.metroTabPage5.HorizontalScrollbarSize = 0;
             this.metroTabPage5.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage5.Name = "metroTabPage5";
-            this.metroTabPage5.Size = new System.Drawing.Size(1032, 655);
+            this.metroTabPage5.Size = new System.Drawing.Size(1095, 655);
             this.metroTabPage5.TabIndex = 1;
             this.metroTabPage5.Text = "EID 2";
             this.metroTabPage5.VerticalScrollbarBarColor = false;
@@ -364,6 +382,10 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.prmitEidtextB4);
+            this.metroPanel1.Controls.Add(this.prmitEidtextB3);
+            this.metroPanel1.Controls.Add(this.prmitEidtextB2);
+            this.metroPanel1.Controls.Add(this.prmitEidtextB1);
             this.metroPanel1.Controls.Add(this.SaveEidFromPermitRenewEidB);
             this.metroPanel1.Controls.Add(this.SaveFromPermitNewEidB);
             this.metroPanel1.Controls.Add(this.PermitEID2DGV);
@@ -373,11 +395,39 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(0, 0);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(1032, 655);
+            this.metroPanel1.Size = new System.Drawing.Size(1095, 655);
             this.metroPanel1.TabIndex = 2;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // prmitEidtextB4
+            // 
+            this.prmitEidtextB4.Location = new System.Drawing.Point(659, 445);
+            this.prmitEidtextB4.Name = "prmitEidtextB4";
+            this.prmitEidtextB4.Size = new System.Drawing.Size(86, 20);
+            this.prmitEidtextB4.TabIndex = 60;
+            // 
+            // prmitEidtextB3
+            // 
+            this.prmitEidtextB3.Location = new System.Drawing.Point(546, 445);
+            this.prmitEidtextB3.Name = "prmitEidtextB3";
+            this.prmitEidtextB3.Size = new System.Drawing.Size(86, 20);
+            this.prmitEidtextB3.TabIndex = 59;
+            // 
+            // prmitEidtextB2
+            // 
+            this.prmitEidtextB2.Location = new System.Drawing.Point(424, 445);
+            this.prmitEidtextB2.Name = "prmitEidtextB2";
+            this.prmitEidtextB2.Size = new System.Drawing.Size(86, 20);
+            this.prmitEidtextB2.TabIndex = 58;
+            // 
+            // prmitEidtextB1
+            // 
+            this.prmitEidtextB1.Location = new System.Drawing.Point(307, 445);
+            this.prmitEidtextB1.Name = "prmitEidtextB1";
+            this.prmitEidtextB1.Size = new System.Drawing.Size(86, 20);
+            this.prmitEidtextB1.TabIndex = 57;
             // 
             // SaveEidFromPermitRenewEidB
             // 
@@ -648,7 +698,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 2;
+            this.metroTabControl4.SelectedIndex = 1;
             this.metroTabControl4.Size = new System.Drawing.Size(1103, 700);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -666,7 +716,7 @@
             this.metroTabPage10.HorizontalScrollbarSize = 0;
             this.metroTabPage10.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage10.Name = "metroTabPage10";
-            this.metroTabPage10.Size = new System.Drawing.Size(1032, 655);
+            this.metroTabPage10.Size = new System.Drawing.Size(1095, 655);
             this.metroTabPage10.TabIndex = 0;
             this.metroTabPage10.Text = "Scraped data";
             this.metroTabPage10.VerticalScrollbarBarColor = true;
@@ -692,7 +742,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1032, 655);
+            this.panel5.Size = new System.Drawing.Size(1095, 655);
             this.panel5.TabIndex = 14;
             // 
             // label10
@@ -949,7 +999,7 @@
             this.metroTabPage11.HorizontalScrollbarSize = 0;
             this.metroTabPage11.Location = new System.Drawing.Point(4, 41);
             this.metroTabPage11.Name = "metroTabPage11";
-            this.metroTabPage11.Size = new System.Drawing.Size(1032, 655);
+            this.metroTabPage11.Size = new System.Drawing.Size(1095, 655);
             this.metroTabPage11.TabIndex = 1;
             this.metroTabPage11.Text = "EID 2";
             this.metroTabPage11.VerticalScrollbarBarColor = false;
@@ -958,6 +1008,10 @@
             // 
             // metroPanel4
             // 
+            this.metroPanel4.Controls.Add(this.MohrEidtextB4);
+            this.metroPanel4.Controls.Add(this.MohrEidtextB3);
+            this.metroPanel4.Controls.Add(this.MohrEidtextB2);
+            this.metroPanel4.Controls.Add(this.MohrEidtextB1);
             this.metroPanel4.Controls.Add(this.SaveEidFromMohreRenewEidB);
             this.metroPanel4.Controls.Add(this.SaveFromMohreNewEidB);
             this.metroPanel4.Controls.Add(this.MohreEidDGV);
@@ -967,11 +1021,39 @@
             this.metroPanel4.HorizontalScrollbarSize = 10;
             this.metroPanel4.Location = new System.Drawing.Point(0, 0);
             this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(1032, 655);
+            this.metroPanel4.Size = new System.Drawing.Size(1095, 655);
             this.metroPanel4.TabIndex = 2;
             this.metroPanel4.VerticalScrollbarBarColor = true;
             this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // MohrEidtextB4
+            // 
+            this.MohrEidtextB4.Location = new System.Drawing.Point(656, 453);
+            this.MohrEidtextB4.Name = "MohrEidtextB4";
+            this.MohrEidtextB4.Size = new System.Drawing.Size(86, 20);
+            this.MohrEidtextB4.TabIndex = 72;
+            // 
+            // MohrEidtextB3
+            // 
+            this.MohrEidtextB3.Location = new System.Drawing.Point(543, 453);
+            this.MohrEidtextB3.Name = "MohrEidtextB3";
+            this.MohrEidtextB3.Size = new System.Drawing.Size(86, 20);
+            this.MohrEidtextB3.TabIndex = 71;
+            // 
+            // MohrEidtextB2
+            // 
+            this.MohrEidtextB2.Location = new System.Drawing.Point(421, 453);
+            this.MohrEidtextB2.Name = "MohrEidtextB2";
+            this.MohrEidtextB2.Size = new System.Drawing.Size(86, 20);
+            this.MohrEidtextB2.TabIndex = 70;
+            // 
+            // MohrEidtextB1
+            // 
+            this.MohrEidtextB1.Location = new System.Drawing.Point(304, 453);
+            this.MohrEidtextB1.Name = "MohrEidtextB1";
+            this.MohrEidtextB1.Size = new System.Drawing.Size(86, 20);
+            this.MohrEidtextB1.TabIndex = 69;
             // 
             // SaveEidFromMohreRenewEidB
             // 
@@ -1503,6 +1585,10 @@
             // 
             // metroPanel3
             // 
+            this.metroPanel3.Controls.Add(this.EchannellEidTextB4);
+            this.metroPanel3.Controls.Add(this.EchannellEidTextB3);
+            this.metroPanel3.Controls.Add(this.EchannellEidTextB2);
+            this.metroPanel3.Controls.Add(this.EchannellEidTextB1);
             this.metroPanel3.Controls.Add(this.SaveEidFromEChannelRenewEidB);
             this.metroPanel3.Controls.Add(this.SaveFromEChannelNewEidB);
             this.metroPanel3.Controls.Add(this.EChannellEidDgview);
@@ -1517,6 +1603,34 @@
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // EchannellEidTextB4
+            // 
+            this.EchannellEidTextB4.Location = new System.Drawing.Point(671, 440);
+            this.EchannellEidTextB4.Name = "EchannellEidTextB4";
+            this.EchannellEidTextB4.Size = new System.Drawing.Size(86, 20);
+            this.EchannellEidTextB4.TabIndex = 76;
+            // 
+            // EchannellEidTextB3
+            // 
+            this.EchannellEidTextB3.Location = new System.Drawing.Point(558, 440);
+            this.EchannellEidTextB3.Name = "EchannellEidTextB3";
+            this.EchannellEidTextB3.Size = new System.Drawing.Size(86, 20);
+            this.EchannellEidTextB3.TabIndex = 75;
+            // 
+            // EchannellEidTextB2
+            // 
+            this.EchannellEidTextB2.Location = new System.Drawing.Point(436, 440);
+            this.EchannellEidTextB2.Name = "EchannellEidTextB2";
+            this.EchannellEidTextB2.Size = new System.Drawing.Size(86, 20);
+            this.EchannellEidTextB2.TabIndex = 74;
+            // 
+            // EchannellEidTextB1
+            // 
+            this.EchannellEidTextB1.Location = new System.Drawing.Point(319, 440);
+            this.EchannellEidTextB1.Name = "EchannellEidTextB1";
+            this.EchannellEidTextB1.Size = new System.Drawing.Size(86, 20);
+            this.EchannellEidTextB1.TabIndex = 73;
             // 
             // SaveEidFromEChannelRenewEidB
             // 
@@ -1757,6 +1871,12 @@
             // 
             // metroTabPage13
             // 
+            this.metroTabPage13.Controls.Add(this.label19);
+            this.metroTabPage13.Controls.Add(this.label18);
+            this.metroTabPage13.Controls.Add(this.username);
+            this.metroTabPage13.Controls.Add(this.CompanyCodeTextBI);
+            this.metroTabPage13.Controls.Add(this.PassWLabordTextBI);
+            this.metroTabPage13.Controls.Add(this.UseNLabordTextBI);
             this.metroTabPage13.Controls.Add(this.DawnloadLabordListB);
             this.metroTabPage13.Controls.Add(this.ScrapeLabordListB);
             this.metroTabPage13.Controls.Add(this.EmployeesChechBox);
@@ -1774,6 +1894,57 @@
             this.metroTabPage13.VerticalScrollbarBarColor = true;
             this.metroTabPage13.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage13.VerticalScrollbarSize = 10;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(785, 208);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(114, 16);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "company code:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(816, 142);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 16);
+            this.label18.TabIndex = 35;
+            this.label18.Text = "Password:";
+            // 
+            // username
+            // 
+            this.username.AutoSize = true;
+            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.Location = new System.Drawing.Point(816, 97);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(83, 16);
+            this.username.TabIndex = 34;
+            this.username.Text = "Username:";
+            // 
+            // CompanyCodeTextBI
+            // 
+            this.CompanyCodeTextBI.Location = new System.Drawing.Point(923, 204);
+            this.CompanyCodeTextBI.Name = "CompanyCodeTextBI";
+            this.CompanyCodeTextBI.Size = new System.Drawing.Size(145, 20);
+            this.CompanyCodeTextBI.TabIndex = 33;
+            // 
+            // PassWLabordTextBI
+            // 
+            this.PassWLabordTextBI.Location = new System.Drawing.Point(923, 142);
+            this.PassWLabordTextBI.Name = "PassWLabordTextBI";
+            this.PassWLabordTextBI.Size = new System.Drawing.Size(145, 20);
+            this.PassWLabordTextBI.TabIndex = 32;
+            // 
+            // UseNLabordTextBI
+            // 
+            this.UseNLabordTextBI.Location = new System.Drawing.Point(923, 90);
+            this.UseNLabordTextBI.Name = "UseNLabordTextBI";
+            this.UseNLabordTextBI.Size = new System.Drawing.Size(145, 20);
+            this.UseNLabordTextBI.TabIndex = 31;
             // 
             // DawnloadLabordListB
             // 
@@ -1887,6 +2058,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PermitDGV)).EndInit();
             this.metroTabPage5.ResumeLayout(false);
             this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PermitEID2DGV)).EndInit();
             this.metroTabPage6.ResumeLayout(false);
             this.metroTabPage6.PerformLayout();
@@ -1900,6 +2072,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MohreDGV)).EndInit();
             this.metroTabPage11.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
+            this.metroPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MohreEidDGV)).EndInit();
             this.metroTabPage12.ResumeLayout(false);
             this.metroTabPage12.PerformLayout();
@@ -1914,11 +2087,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.EChannelDGV)).EndInit();
             this.metroTabPage8.ResumeLayout(false);
             this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EChannellEidDgview)).EndInit();
             this.metroTabPage9.ResumeLayout(false);
             this.metroTabPage9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EchannellMohapDGV)).EndInit();
             this.metroTabPage13.ResumeLayout(false);
+            this.metroTabPage13.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.ResumeLayout(false);
@@ -2031,6 +2206,24 @@
         private System.Windows.Forms.CheckedListBox EmployeesChechBox;
         private MetroFramework.Controls.MetroButton ScrapeLabordListB;
         private MetroFramework.Controls.MetroButton DawnloadLabordListB;
+        private System.Windows.Forms.TextBox prmitEidtextB1;
+        private System.Windows.Forms.TextBox prmitEidtextB4;
+        private System.Windows.Forms.TextBox prmitEidtextB3;
+        private System.Windows.Forms.TextBox prmitEidtextB2;
+        private System.Windows.Forms.TextBox MohrEidtextB4;
+        private System.Windows.Forms.TextBox MohrEidtextB3;
+        private System.Windows.Forms.TextBox MohrEidtextB2;
+        private System.Windows.Forms.TextBox MohrEidtextB1;
+        private System.Windows.Forms.TextBox EchannellEidTextB4;
+        private System.Windows.Forms.TextBox EchannellEidTextB3;
+        private System.Windows.Forms.TextBox EchannellEidTextB2;
+        private System.Windows.Forms.TextBox EchannellEidTextB1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label username;
+        private System.Windows.Forms.TextBox CompanyCodeTextBI;
+        private System.Windows.Forms.TextBox PassWLabordTextBI;
+        private System.Windows.Forms.TextBox UseNLabordTextBI;
     }
 }
 

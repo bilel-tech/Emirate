@@ -18,6 +18,10 @@ using System.Globalization;
 using EmirateHMBot.Services;
 using System.Threading.Tasks.Dataflow;
 using CsvHelper;
+using IronPdf;
+using System.Text;
+using HtmlAgilityPack;
+using System.Web.UI.WebControls;
 
 namespace EmirateHMBot
 {
@@ -40,6 +44,7 @@ namespace EmirateHMBot
         public bool LoggedInToMohre = false;
         public bool CheckMohapLogInPageOpened = false;
         public bool CheckEidPageOpened = false;
+        public bool labordPageIsOpen = false;
         public MainForm()
         {
             InitializeComponent();
@@ -93,6 +98,18 @@ namespace EmirateHMBot
             LastSevenDigitMoreMohapTextBox.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             FirstThreeDigitEchannelMohapTextBox.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             LastSevenDigitEchannelMohapTextBox.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            prmitEidtextB1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            prmitEidtextB2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            prmitEidtextB3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            prmitEidtextB4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            MohrEidtextB1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            MohrEidtextB2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            MohrEidtextB3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            MohrEidtextB4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            EchannellEidTextB1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            EchannellEidTextB2.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            EchannellEidTextB3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            EchannellEidTextB4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
 
             //await EservicesMohreService.Authenticate();
             //await EservicesMohreService.GetEmplyeesIds();
@@ -706,11 +723,25 @@ namespace EmirateHMBot
             PermitEID2DGV.Rows[10].Cells[1].Value = PermitDGV.Rows[11].Cells[1].Value;
             PermitEID2DGV.Rows[11].Cells[1].Value = PermitDGV.Rows[12].Cells[1].Value;
             PermitEID2DGV.Rows[12].Cells[1].Value = PermitDGV.Rows[13].Cells[1].Value;
-            PermitEID2DGV.Rows[13].Cells[1].Value = PermitDGV.Rows[14].Cells[1].Value;
+            //PermitEID2DGV.Rows[13].Cells[1].Value = PermitDGV.Rows[14].Cells[1].Value;
             PermitEID2DGV.Rows[14].Cells[1].Value = PermitDGV.Rows[15].Cells[1].Value;
             PermitEID2DGV.Rows[15].Cells[1].Value = PermitDGV.Rows[16].Cells[1].Value;
             PermitEID2DGV.Rows[18].Cells[1].Value = PermitDGV.Rows[17].Cells[1].Value;
             PermitEID2DGV.Rows[19].Cells[1].Value = PermitDGV.Rows[20].Cells[1].Value;
+            var fileNbr = PermitDGV.Rows[14].Cells[1].Value.ToString();
+            try
+            {
+                var nbrs = fileNbr.Split('/');
+                prmitEidtextB1.Text = nbrs[0];
+                prmitEidtextB2.Text = nbrs[1];
+                prmitEidtextB3.Text = nbrs[2];
+                prmitEidtextB4.Text = nbrs[3];
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Input Residency Number not with correct format");
+            }
+
 
             #region Fill date Fields
             var dateOfBirth = "";
@@ -1212,10 +1243,24 @@ namespace EmirateHMBot
             MohreEidDGV.Rows[11].Cells[1].Value = MohreDGV.Rows[11].Cells[1].Value;//passportIssueDate
             MohreEidDGV.Rows[12].Cells[1].Value = MohreDGV.Rows[12].Cells[1].Value;//passportExpiryDate
             MohreEidDGV.Rows[13].Cells[1].Value = MohreDGV.Rows[13].Cells[1].Value;//UID
-            MohreEidDGV.Rows[14].Cells[1].Value = MohreDGV.Rows[14].Cells[1].Value;//file nbr
+            //MohreEidDGV.Rows[14].Cells[1].Value = MohreDGV.Rows[14].Cells[1].Value;//file nbr
             MohreEidDGV.Rows[19].Cells[1].Value = MohreDGV.Rows[17].Cells[1].Value;//companie name ARB
             MohreEidDGV.Rows[17].Cells[1].Value = MohreDGV.Rows[18].Cells[1].Value;//mobile nbr
             MohreEidDGV.Rows[20].Cells[1].Value = MohreDGV.Rows[19].Cells[1].Value;//profession 
+            var fileNbr = MohreDGV.Rows[14].Cells[1].Value.ToString();
+            try
+            {
+                var nbrs = fileNbr.Split('/');
+                MohrEidtextB1.Text = nbrs[0];
+                MohrEidtextB2.Text = nbrs[1];
+                MohrEidtextB3.Text = nbrs[2];
+                MohrEidtextB4.Text = nbrs[3];
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Input Residency Number not with correct format");
+            }
             if (MohreDGV.Rows[18].Cells[1].Value?.ToString()?.Length > 4)
             {
                 var firstpartNbr = MohreDGV.Rows[18].Cells[1].Value.ToString().Substring(0, 3);
@@ -1502,10 +1547,24 @@ namespace EmirateHMBot
             EChannellEidDgview.Rows[10].Cells[1].Value = EChannelDGV.Rows[11].Cells[1].Value;
             EChannellEidDgview.Rows[11].Cells[1].Value = EChannelDGV.Rows[12].Cells[1].Value;
             EChannellEidDgview.Rows[12].Cells[1].Value = EChannelDGV.Rows[13].Cells[1].Value;
-            EChannellEidDgview.Rows[13].Cells[1].Value = EChannelDGV.Rows[14].Cells[1].Value;
+            //EChannellEidDgview.Rows[13].Cells[1].Value = EChannelDGV.Rows[14].Cells[1].Value;
             EChannellEidDgview.Rows[18].Cells[1].Value = EChannelDGV.Rows[17].Cells[1].Value;
             EChannellEidDgview.Rows[19].Cells[1].Value = EChannelDGV.Rows[19].Cells[1].Value;
             EChannellEidDgview.Rows[15].Cells[1].Value = EChannelDGV.Rows[16].Cells[1].Value;
+            var fileNbr = EChannelDGV.Rows[14].Cells[1].Value.ToString();
+            try
+            {
+                var nbrs = fileNbr.Split('/');
+                EchannellEidTextB1.Text = nbrs[0];
+                EchannellEidTextB2.Text = nbrs[1];
+                EchannellEidTextB3.Text = nbrs[2];
+                EchannellEidTextB4.Text = nbrs[3];
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Input Residency Number not with correct format");
+            }
             #region Fill date fields
             if (ResidencyviewRadioB.Checked)
             {
@@ -1915,7 +1974,7 @@ namespace EmirateHMBot
             {
                 if (CheckMohapLogInPageOpened)
                 {
-                    MohreDriver.Navigate().Refresh(); 
+                    MohreDriver.Navigate().Refresh();
                 }
 
                 await Task.Delay(2000);
@@ -2126,7 +2185,7 @@ namespace EmirateHMBot
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
                 //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
-               
+
                 CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
@@ -2278,7 +2337,7 @@ namespace EmirateHMBot
                 } while (true);
                 MohreDriver.Navigate().GoToUrl("https://smartform.mohap.gov.ae/MOHOnlinePortal/FitnessDetail.aspx");
                 //MohreDriver.Navigate().GoToUrl("C:/Users/MonsterComputer/Desktop/طلب جديد.html");
-                
+
                 CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
@@ -2659,16 +2718,27 @@ namespace EmirateHMBot
 
         private async void LogInB_Click(object sender, EventArgs e)
         {
-            await EservicesMohreService.Authenticate();
+            if (UseNLabordTextBI.Text==""|| PassWLabordTextBI.Text == "")
+            {
+                MessageBox.Show("username and/or password are missed ");
+                return;
+            }
+           
+            await EservicesMohreService.Authenticate(UseNLabordTextBI.Text, PassWLabordTextBI.Text);
         }
         private async void ScrapeLabordListB_Click(object sender, EventArgs e)
         {
+            if (CompanyCodeTextBI.Text=="")
+            {
+                MessageBox.Show("Please enter the company code");
+                return;
+            }
+            EmployeesChechBox.Items.Clear();
             var employees = new List<Employee>();
-
             try
             {
 
-                employees = await EservicesMohreService.GetEmplyeesInfo();
+                employees = await EservicesMohreService.GetEmplyeesInfo(CompanyCodeTextBI.Text);
             }
             finally
             {
@@ -2684,6 +2754,8 @@ namespace EmirateHMBot
                 EmployeesChechBox.Items.Add(employee.PersonName, true);
 
             }
+
+
         }
         private async void ScraprLabordImgB_Click(object sender, EventArgs e)
         {
@@ -2693,7 +2765,7 @@ namespace EmirateHMBot
             }
 
             var choosenEmployees = GetChoosenEmployees();
-           
+
             var tpl = new TransformBlock<Employee, string>
                (async x => await MohreSrviceDowloadImgAndContract.DownloadImage(x.CardNbr).ConfigureAwait(false),
                new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
@@ -2722,8 +2794,8 @@ namespace EmirateHMBot
 
             doc.LoadHtml(EservicesMohreService.Driver.PageSource);
 
-            var VIEWSTATE  = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATE']").GetAttributeValue("value", "");
-            var VIEWSTATEGENERATOR  = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATEGENERATOR']").GetAttributeValue("value", "");
+            var VIEWSTATE = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATE']").GetAttributeValue("value", "");
+            var VIEWSTATEGENERATOR = doc.DocumentNode.SelectSingleNode("//input[@id='__VIEWSTATEGENERATOR']").GetAttributeValue("value", "");
             var EVENTVALIDATION = doc.DocumentNode.SelectSingleNode("//input[@id='__EVENTVALIDATION']").GetAttributeValue("value", "");
 
 
@@ -2743,7 +2815,7 @@ namespace EmirateHMBot
             foreach (var choosenEmploye in choosenEmployees)
             {
                 var response = await tpl.ReceiveAsync();
-                if (response!="")
+                if (response != "")
                 {
                     Console.WriteLine(response);
                 }
@@ -2755,11 +2827,38 @@ namespace EmirateHMBot
         {
 
             var choosenEmployees = GetChoosenEmployees();
-            using (var writer = new StreamWriter("labord list.csv"))
-            using (var csv = new CsvWriter(writer))
+            List<string> names = new List<string>();
+            foreach (var choosenEmployee in choosenEmployees)
             {
-                csv.WriteRecords(choosenEmployees);
+                names.Add(choosenEmployee.PersonName);
             }
+            if (EservicesMohreService.doc == null)
+                EservicesMohreService.doc = new HtmlAgilityPack.HtmlDocument();
+            EservicesMohreService.doc.Load("x.html");
+            EservicesMohreService.doc.DocumentNode.SelectSingleNode("/html/body/script").Remove();
+            EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]/table").Remove();
+            EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]").Remove();
+
+
+            var idx = 1;
+            //remove the unkcheked employees
+            foreach (var node in EservicesMohreService.doc.DocumentNode.SelectNodes("//td[@width='100']"))
+            {
+                if (!choosenEmployees.Any(i => i.PersonCode == node.InnerText))
+                    node.ParentNode.Remove();
+                else
+                {
+                    node.PreviousSibling.InnerHtml = idx + "";
+                    idx++;
+                }
+            }
+            //EservicesMohreService.doc.DocumentNode.SelectSingleNode("//td[text()='مجموع عدد العمال']/following-sibling::td").InnerHtml= choosenEmployees.Count+"";//put nbr of employees in total employees node
+            EservicesMohreService.doc.Save("y.html");
+            // EservicesMohreService.doc.DocumentNode.SelectSingleNode("//table[@cellpadding='2'][2]/preceding-sibling::text()[1]").Remove();
+            var htmlToPdf = new HtmlToPdf();
+            htmlToPdf.PrintOptions.CssMediaType = PdfPrintOptions.PdfCssMediaType.Screen;
+            var pdf = htmlToPdf.RenderHTMLFileAsPdf("y.html");
+            pdf.SaveAs(Path.Combine("HtmlToPdf.Pdf"));
         }
         List<Employee> GetChoosenEmployees()
         {
@@ -2774,6 +2873,18 @@ namespace EmirateHMBot
             }
             return choosenEmployees;
         }
+
+        private void textBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
         {
