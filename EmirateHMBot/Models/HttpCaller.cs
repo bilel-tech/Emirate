@@ -12,13 +12,16 @@ namespace EmirateHMBot.Models
 {
     public class HttpCaller
     {
-      static  HttpClient _httpClient;
-       public HttpClient _EChannelhttpClient;
+        static HttpClient _httpClient;
+        public HttpClient _EChannelhttpClient;
         string userToken;
         string refreshToken;
+        public string cookies = "";
+
         readonly HttpClientHandler _httpClientHandler = new HttpClientHandler()
         {
             CookieContainer = new CookieContainer(),
+            UseCookies = false,
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
         };
         public HttpCaller()
@@ -59,7 +62,39 @@ namespace EmirateHMBot.Models
                 }
             } while (true);
         }
-        public async Task<(string html, string error)> GetEchannelHtml(string url,string refreshToken,string userToken, int maxAttempts = 1)
+        public async Task<(HtmlDocument doc, string error)> GetDoc1(string url, int maxAttempts = 1)
+        {
+            var resp = await GetHtml1(url, maxAttempts);
+            if (resp.error != null) return (null, resp.error);
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(resp.html);
+            return (doc, null);
+        }
+        public async Task<(string html, string error)> GetHtml1(string url, int maxAttempts = 3)
+        {
+            _httpClient.DefaultRequestHeaders.Add("Cookie", cookies);
+            int tries = 0;
+            do
+            {
+                try
+                {
+                    var response = await _httpClient.GetAsync(url);
+                    string html = await response.Content.ReadAsStringAsync();
+                    return (html, null);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    tries++;
+                    if (tries == maxAttempts)
+                    {
+                        return (null, ex.ToString());
+                    }
+                    await Task.Delay(2000);
+                }
+            } while (true);
+        }
+        public async Task<(string html, string error)> GetEchannelHtml(string url, string refreshToken, string userToken, int maxAttempts = 1)
         {
             _EChannelhttpClient.DefaultRequestHeaders.Clear();
             _EChannelhttpClient.DefaultRequestHeaders.Add("refreshToken", refreshToken);

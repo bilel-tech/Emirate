@@ -138,6 +138,7 @@
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchannellMohapDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage13 = new MetroFramework.Controls.MetroTabPage();
+            this.ScrapeCompaniesStatusB = new MetroFramework.Controls.MetroButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.Label();
@@ -152,6 +153,11 @@
             this.ScraprLabordImgB = new MetroFramework.Controls.MetroButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.MoreThanTextBI = new System.Windows.Forms.TextBox();
+            this.LessThanTextBI = new System.Windows.Forms.TextBox();
+            this.SelectCompanyRequiredB = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -200,7 +206,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 3;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1111, 745);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -244,7 +250,7 @@
             this.metroTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl2.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 1;
+            this.metroTabControl2.SelectedIndex = 0;
             this.metroTabControl2.Size = new System.Drawing.Size(1103, 700);
             this.metroTabControl2.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl2.TabIndex = 17;
@@ -1871,6 +1877,12 @@
             // 
             // metroTabPage13
             // 
+            this.metroTabPage13.Controls.Add(this.SelectCompanyRequiredB);
+            this.metroTabPage13.Controls.Add(this.LessThanTextBI);
+            this.metroTabPage13.Controls.Add(this.MoreThanTextBI);
+            this.metroTabPage13.Controls.Add(this.label20);
+            this.metroTabPage13.Controls.Add(this.label17);
+            this.metroTabPage13.Controls.Add(this.ScrapeCompaniesStatusB);
             this.metroTabPage13.Controls.Add(this.label19);
             this.metroTabPage13.Controls.Add(this.label18);
             this.metroTabPage13.Controls.Add(this.username);
@@ -1894,6 +1906,18 @@
             this.metroTabPage13.VerticalScrollbarBarColor = true;
             this.metroTabPage13.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage13.VerticalScrollbarSize = 10;
+            // 
+            // ScrapeCompaniesStatusB
+            // 
+            this.ScrapeCompaniesStatusB.Location = new System.Drawing.Point(639, 578);
+            this.ScrapeCompaniesStatusB.Name = "ScrapeCompaniesStatusB";
+            this.ScrapeCompaniesStatusB.Size = new System.Drawing.Size(181, 41);
+            this.ScrapeCompaniesStatusB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.ScrapeCompaniesStatusB.TabIndex = 37;
+            this.ScrapeCompaniesStatusB.Text = "Scrape companies status";
+            this.ScrapeCompaniesStatusB.UseSelectable = true;
+            this.ScrapeCompaniesStatusB.UseStyleColors = true;
+            this.ScrapeCompaniesStatusB.Click += new System.EventHandler(this.ScrapeCompaniesStatusB_Click);
             // 
             // label19
             // 
@@ -1948,7 +1972,7 @@
             // 
             // DawnloadLabordListB
             // 
-            this.DawnloadLabordListB.Location = new System.Drawing.Point(639, 410);
+            this.DawnloadLabordListB.Location = new System.Drawing.Point(639, 446);
             this.DawnloadLabordListB.Name = "DawnloadLabordListB";
             this.DawnloadLabordListB.Size = new System.Drawing.Size(181, 41);
             this.DawnloadLabordListB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -1960,7 +1984,7 @@
             // 
             // ScrapeLabordListB
             // 
-            this.ScrapeLabordListB.Location = new System.Drawing.Point(856, 410);
+            this.ScrapeLabordListB.Location = new System.Drawing.Point(856, 446);
             this.ScrapeLabordListB.Name = "ScrapeLabordListB";
             this.ScrapeLabordListB.Size = new System.Drawing.Size(181, 41);
             this.ScrapeLabordListB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -1980,7 +2004,7 @@
             // 
             // LogInB
             // 
-            this.LogInB.Location = new System.Drawing.Point(856, 329);
+            this.LogInB.Location = new System.Drawing.Point(856, 384);
             this.LogInB.Name = "LogInB";
             this.LogInB.Size = new System.Drawing.Size(181, 41);
             this.LogInB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -2004,7 +2028,7 @@
             // 
             // ScraprLabordImgB
             // 
-            this.ScraprLabordImgB.Location = new System.Drawing.Point(856, 498);
+            this.ScraprLabordImgB.Location = new System.Drawing.Point(856, 512);
             this.ScraprLabordImgB.Name = "ScraprLabordImgB";
             this.ScraprLabordImgB.Size = new System.Drawing.Size(181, 41);
             this.ScraprLabordImgB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -2034,6 +2058,52 @@
             this.label16.Size = new System.Drawing.Size(51, 24);
             this.label16.TabIndex = 36;
             this.label16.Text = "Ilyas";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(575, 94);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 16);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "More than:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(581, 142);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(74, 16);
+            this.label20.TabIndex = 39;
+            this.label20.Text = "less than:";
+            // 
+            // MoreThanTextBI
+            // 
+            this.MoreThanTextBI.Location = new System.Drawing.Point(661, 93);
+            this.MoreThanTextBI.Name = "MoreThanTextBI";
+            this.MoreThanTextBI.Size = new System.Drawing.Size(61, 20);
+            this.MoreThanTextBI.TabIndex = 40;
+            // 
+            // LessThanTextBI
+            // 
+            this.LessThanTextBI.Location = new System.Drawing.Point(661, 142);
+            this.LessThanTextBI.Name = "LessThanTextBI";
+            this.LessThanTextBI.Size = new System.Drawing.Size(61, 20);
+            this.LessThanTextBI.TabIndex = 41;
+            // 
+            // SelectCompanyRequiredB
+            // 
+            this.SelectCompanyRequiredB.Location = new System.Drawing.Point(578, 194);
+            this.SelectCompanyRequiredB.Name = "SelectCompanyRequiredB";
+            this.SelectCompanyRequiredB.Size = new System.Drawing.Size(156, 41);
+            this.SelectCompanyRequiredB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SelectCompanyRequiredB.TabIndex = 42;
+            this.SelectCompanyRequiredB.Text = "Select required companies ";
+            this.SelectCompanyRequiredB.UseSelectable = true;
+            this.SelectCompanyRequiredB.UseStyleColors = true;
+            this.SelectCompanyRequiredB.Click += new System.EventHandler(this.SelectCompanyRequiredB_Click);
             // 
             // MainForm
             // 
@@ -2224,6 +2294,12 @@
         private System.Windows.Forms.TextBox CompanyCodeTextBI;
         private System.Windows.Forms.TextBox PassWLabordTextBI;
         private System.Windows.Forms.TextBox UseNLabordTextBI;
+        private MetroFramework.Controls.MetroButton ScrapeCompaniesStatusB;
+        private System.Windows.Forms.TextBox LessThanTextBI;
+        private System.Windows.Forms.TextBox MoreThanTextBI;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label17;
+        private MetroFramework.Controls.MetroButton SelectCompanyRequiredB;
     }
 }
 

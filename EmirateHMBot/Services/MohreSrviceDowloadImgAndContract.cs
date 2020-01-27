@@ -12,7 +12,7 @@ namespace EmirateHMBot.Services
     public static class MohreSrviceDowloadImgAndContract
 
     {
-        public static async Task<string> DownloadImage(string code)
+        public static async Task<string> DownloadImage(Employee employee)
         {
             string error = "";
             var client = new WebClient();
@@ -21,7 +21,7 @@ namespace EmirateHMBot.Services
             {
                 using (client)
                 {
-                    client.DownloadFileAsync(new Uri("http://eservices.mohre.gov.ae/NewMolGateway/LabourCardPrint.aspx?cardNo=" + code), $@"labord cards\{code}.jpg");
+                    client.DownloadFileAsync(new Uri("http://eservices.mohre.gov.ae/NewMolGateway/LabourCardPrint.aspx?cardNo=" + employee.PersonCode), $@"labord cards\{employee.PersonName}-{employee.PersonCode}.jpg");
                 }
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace EmirateHMBot.Services
             {
                 return error;
             }
-            using (var x = File.Create("labord contracts/"+Employee.CardNbr+".pdf"))
+            using (var x = File.Create("labord contracts/"+ Employee.PersonName +"-"+ Employee.CardNbr+".pdf"))
             {
                 await response.html.CopyToAsync(x);
             }

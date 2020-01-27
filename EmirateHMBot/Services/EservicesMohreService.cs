@@ -7,14 +7,15 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
+using System.Threading.Tasks.Dataflow;
 
 namespace EmirateHMBot.Services
 {
     public static class EservicesMohreService
     {
-
+        public static HttpCaller httpCaller = new HttpCaller();
         public static ChromeDriver Driver;
-        public static List<Employee> employees ;
+        public static List<Employee> employees;
         public static HtmlAgilityPack.HtmlDocument doc;
         static string allCookies;
         private static object HtmlWorker;
@@ -53,19 +54,19 @@ namespace EmirateHMBot.Services
             {
                 Console.WriteLine("the first answer worked");
             }
-            var cookies = Driver.Manage().Cookies.AllCookies;
-            foreach (var cookie in cookies)
-            {
-                allCookies = allCookies + cookie.Name + "=" + cookie.Value + ";";
-            }
-            allCookies.Remove(allCookies.LastIndexOf(";"));
+            //var cookies = Driver.Manage().Cookies.AllCookies;
+            //foreach (var cookie in cookies)
+            //{
+            //    allCookies = allCookies + cookie.Name + "=" + cookie.Value + ";";
+            //}
+            //allCookies.Remove(allCookies.LastIndexOf(";"));
             MessageBox.Show("login succes");
 
         }
         public static async Task<List<Employee>> GetEmplyeesInfo(string companyCode)
         {
             await Task.Delay(2000);
-            Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno="+ companyCode);//352128 151518 948292
+            Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno=" + companyCode);//352128 151518 948292
             //Driver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\EmirateHMBot\EmirateHMBot\bin\Debug\x.html");
             do
             {
@@ -91,12 +92,6 @@ namespace EmirateHMBot.Services
             {
                 Console.WriteLine(ex.ToString());
             }
-            //WebClient client = new WebClient();
-            //client.Headers.Add(HttpRequestHeader.Cookie, "cookies:" + allCookies);
-            //using (client)
-            //{
-            //    client.DownloadFile("https://eservices.mohre.gov.ae/enetwasal/images/mollogo_small.jpg", "images/mollogo_small.jpg");
-            //}
 
             doc = new HtmlAgilityPack.HtmlDocument();
             var arabic = Encoding.UTF8;
@@ -122,6 +117,51 @@ namespace EmirateHMBot.Services
 
             return employees;
         }
+        public static async Task<List<RequiredCompany>> GetRequiredCompanies (List<string> companiesCode,int moreThen,int lessThen)
+        {
+            await Task.Delay(2000);
+            Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/home.aspx");
+            var cookies = Driver.Manage().Cookies.AllCookies;
+            foreach (var cookie in cookies)
+            {
+                allCookies = allCookies + cookie.Name + "=" + cookie.Value + ";";
+            }
+            allCookies.Remove(allCookies.LastIndexOf(";"));
 
+            httpCaller.cookies = allCookies;
+
+            var requiredCompanies = new List<RequiredCompany>();
+            var tpl = new TransformBlock<string, (RequiredCompany companyEmployees, string error)>
+              (async x => await GetcompanyEmployees(x).ConfigureAwait(false),
+              new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 1 });
+            foreach (var companyCode in companiesCode)
+                tpl.Post(companyCode);
+            var listCompaniesStatut = new List<CompanyStatut>();
+            foreach (var companyCode in companiesCode)
+            {
+                var response = await tpl.ReceiveAsync();
+                if (response.error != null)
+                    continue;
+                if (response.companyEmployees.EmployeesNbr> moreThen&& response.companyEmployees.EmployeesNbr < lessThen)
+                {
+                    requiredCompanies.Add(response.companyEmployees);
+                }
+
+            }
+
+            return requiredCompanies;
+        }
+
+        private static async Task<(RequiredCompany companyEmployees, string error)> GetcompanyEmployees(string cmpanyCode)
+        {
+            var company = new RequiredCompany();
+            var response = await httpCaller.GetDoc1("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno="+ cmpanyCode);
+            if (response.error!=null)
+                return (null, response.error);
+            response.doc.Save("company.html");
+            company.CompanyCode = cmpanyCode;
+            company.EmployeesNbr =int.Parse(response.doc.DocumentNode.SelectSingleNode("//td[text()='مجموع عدد العمال']/following-sibling::td").InnerText.Trim());
+            return (company,null);
+        }
     }
 }

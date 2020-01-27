@@ -2718,17 +2718,23 @@ namespace EmirateHMBot
 
         private async void LogInB_Click(object sender, EventArgs e)
         {
-            if (UseNLabordTextBI.Text==""|| PassWLabordTextBI.Text == "")
+            labordPageIsOpen = true;
+            if (UseNLabordTextBI.Text == "" || PassWLabordTextBI.Text == "")
             {
                 MessageBox.Show("username and/or password are missed ");
                 return;
             }
-           
+
             await EservicesMohreService.Authenticate(UseNLabordTextBI.Text, PassWLabordTextBI.Text);
         }
         private async void ScrapeLabordListB_Click(object sender, EventArgs e)
         {
-            if (CompanyCodeTextBI.Text=="")
+            if (!labordPageIsOpen)
+            {
+                MessageBox.Show("Please login first");
+                return;
+            }
+            if (CompanyCodeTextBI.Text == "")
             {
                 MessageBox.Show("Please enter the company code");
                 return;
@@ -2764,10 +2770,14 @@ namespace EmirateHMBot
                 Directory.CreateDirectory("labord cards");
             }
 
-            var choosenEmployees = GetChoosenEmployees();
-
+            var choosenEmployees = EservicesMohreService.employees;
+            if (choosenEmployees == null)
+            {
+                MessageBox.Show("Please scrape labord list before");
+                return;
+            }
             var tpl = new TransformBlock<Employee, string>
-               (async x => await MohreSrviceDowloadImgAndContract.DownloadImage(x.CardNbr).ConfigureAwait(false),
+               (async x => await MohreSrviceDowloadImgAndContract.DownloadImage(x).ConfigureAwait(false),
                new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
             foreach (var choosenEmployee in choosenEmployees)
                 tpl.Post(choosenEmployee);
@@ -2782,6 +2792,12 @@ namespace EmirateHMBot
 
         private async void ScrapeLabordContractsB_Click(object sender, EventArgs e)
         {
+            var choosenEmployees = EservicesMohreService.employees;
+            if (choosenEmployees == null)
+            {
+                MessageBox.Show("Please scrape labord list before");
+                return;
+            }
             if (!Directory.Exists("labord contracts"))
             {
                 Directory.CreateDirectory("labord contracts");
@@ -2799,8 +2815,6 @@ namespace EmirateHMBot
             var EVENTVALIDATION = doc.DocumentNode.SelectSingleNode("//input[@id='__EVENTVALIDATION']").GetAttributeValue("value", "");
 
 
-
-            var choosenEmployees = GetChoosenEmployees();
             foreach (var choosenEmployee in choosenEmployees)
             {
                 choosenEmployee.__VIEWSTATE = VIEWSTATE;
@@ -2809,7 +2823,7 @@ namespace EmirateHMBot
             }
             var tpl = new TransformBlock<Employee, string>
                (async x => await MohreSrviceDowloadImgAndContract.DownloadContract(x).ConfigureAwait(false),
-               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
+               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 1 });
             foreach (var choosenEmployee in choosenEmployees)
                 tpl.Post(choosenEmployee);
             foreach (var choosenEmploye in choosenEmployees)
@@ -2825,13 +2839,13 @@ namespace EmirateHMBot
 
         private void DawnloadLabordListB_Click(object sender, EventArgs e)
         {
-
-            var choosenEmployees = GetChoosenEmployees();
-            List<string> names = new List<string>();
-            foreach (var choosenEmployee in choosenEmployees)
+            if (EservicesMohreService.employees == null)
             {
-                names.Add(choosenEmployee.PersonName);
+                MessageBox.Show("please scarpe the required copmpany first");
+                return;
             }
+            var choosenEmployees = GetChoosenEmployees();
+
             if (EservicesMohreService.doc == null)
                 EservicesMohreService.doc = new HtmlAgilityPack.HtmlDocument();
             EservicesMohreService.doc.Load("x.html");
@@ -2884,7 +2898,64 @@ namespace EmirateHMBot
 
         }
 
+        private async void ScrapeCompaniesStatusB_Click(object sender, EventArgs e)
+        {
+            //Console.WriteLine("{\"languageId\":\"1\",\"languageCode\":\"en - GB\",\"keywords\":\"" + 55 + "\",\"method\":\"CI\"}");
+            //return;
+            await StatusCompaniesService.GetCompaniesStaus();
+        }
 
+        private async void SelectCompanyRequiredB_Click(object sender, EventArgs e)
+        {
+            if (!labordPageIsOpen)
+            {
+                MessageBox.Show("Please login first");
+                return;
+            }
+            if (MoreThanTextBI.Text == "" || LessThanTextBI.Text == "")
+            {
+                MessageBox.Show("please fill the employees number fields \"More then\and\"less then\"");
+            }
+            var companies = new List<string>();
+            try
+            {
+                using (var reader = new StreamReader("Comapnies code.csv"))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(';');
+
+                        companies.Add(values[0]);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No such file \"Comapnies code.csv file\" or it is not closed");
+                return;
+            }
+            try
+            {
+                int.Parse(MoreThanTextBI.Text);
+                int.Parse(LessThanTextBI.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("the inputs should be numbers");
+                return;
+            }
+            var moreThan = int.Parse(MoreThanTextBI.Text);
+            var lessThan = int.Parse(LessThanTextBI.Text);
+
+            var requiredCompanies = await EservicesMohreService.GetRequiredCompanies(companies, moreThan, lessThan);
+
+            using (var writer = new StreamWriter("Required companies.csv"))
+            using (var csv = new CsvWriter(writer))
+            {
+                csv.WriteRecords(requiredCompanies);
+            }
+        }
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
         {

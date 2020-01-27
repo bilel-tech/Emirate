@@ -116,11 +116,13 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyStatut.cs" />
     <Compile Include="Models\ECHannelHeaders.cs" />
     <Compile Include="Models\EID.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\HttpCaller.cs" />
     <Compile Include="Models\MOHAP.cs" />
+    <Compile Include="Models\RequiredCompany.cs" />
     <Compile Include="Models\SaveFromPermitNewEid.cs" />
     <Compile Include="Models\SaveFromPermitRenewEid.cs" />
     <Compile Include="Models\Search.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EservicesMohreService.cs" />
     <Compile Include="Services\MohreSrviceDowloadImgAndContract.cs" />
+    <Compile Include="Services\StatusCompaniesService.cs" />
     <EmbeddedResource Include="CredentialForm.resx">
       <DependentUpon>CredentialForm.cs</DependentUpon>
     </EmbeddedResource>
