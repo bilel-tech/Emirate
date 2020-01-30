@@ -21,7 +21,7 @@ namespace EmirateHMBot.Services
             {
                 using (client)
                 {
-                    client.DownloadFileAsync(new Uri("http://eservices.mohre.gov.ae/NewMolGateway/LabourCardPrint.aspx?cardNo=" + employee.PersonCode), $@"labord cards\{employee.PersonName}-{employee.PersonCode}.jpg");
+                    client.DownloadFileAsync(new Uri("http://eservices.mohre.gov.ae/NewMolGateway/LabourCardPrint.aspx?cardNo=" + employee.CardNbr), $@"labord cards\{employee.PersonName}-{employee.CardNbr}.jpg");
                 }
             }
             catch (Exception ex)

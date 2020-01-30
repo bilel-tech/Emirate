@@ -13,6 +13,7 @@ namespace EmirateHMBot.Models
     public class HttpCaller
     {
         static HttpClient _httpClient;
+        static HttpClient _httpClient1;
         public HttpClient _EChannelhttpClient;
         string userToken;
         string refreshToken;
@@ -21,12 +22,20 @@ namespace EmirateHMBot.Models
         readonly HttpClientHandler _httpClientHandler = new HttpClientHandler()
         {
             CookieContainer = new CookieContainer(),
+            //UseCookies = false,
+            AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+        };
+        readonly HttpClientHandler _httpClientHandler1 = new HttpClientHandler()
+        {
+            CookieContainer = new CookieContainer(),
             UseCookies = false,
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
         };
         public HttpCaller()
         {
             _httpClient = new HttpClient(_httpClientHandler);
+            _httpClient.Timeout = TimeSpan.FromMinutes(3);
+
             _EChannelhttpClient = new HttpClient(_httpClientHandler);
             //_EChannelhttpClient.DefaultRequestHeaders.Add("userToken", userToken);
             //_EChannelhttpClient.DefaultRequestHeaders.Add("refreshToken", refreshToken);
@@ -65,6 +74,7 @@ namespace EmirateHMBot.Models
         public async Task<(HtmlDocument doc, string error)> GetDoc1(string url, int maxAttempts = 1)
         {
             var resp = await GetHtml1(url, maxAttempts);
+           
             if (resp.error != null) return (null, resp.error);
             HtmlDocument doc = new HtmlDocument();
             doc.LoadHtml(resp.html);
@@ -72,13 +82,15 @@ namespace EmirateHMBot.Models
         }
         public async Task<(string html, string error)> GetHtml1(string url, int maxAttempts = 3)
         {
-            _httpClient.DefaultRequestHeaders.Add("Cookie", cookies);
+            _httpClient1 = new HttpClient(_httpClientHandler1);
+            _httpClient1.Timeout = TimeSpan.FromMinutes(3);
+            _httpClient1.DefaultRequestHeaders.Add("Cookie", cookies);
             int tries = 0;
             do
             {
                 try
                 {
-                    var response = await _httpClient.GetAsync(url);
+                    var response = await _httpClient1.GetAsync(url);
                     string html = await response.Content.ReadAsStringAsync();
                     return (html, null);
                 }
@@ -150,6 +162,7 @@ namespace EmirateHMBot.Models
         public static async Task<(Stream html, string error)> PostFormData(string url, List<KeyValuePair<string, string>> formData, int maxAttempts = 1)
         {
             var formContent = new FormUrlEncodedContent(formData);
+            _httpClient = new HttpClient();
             int tries = 0;
             do
             {

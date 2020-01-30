@@ -17,11 +17,10 @@ using OpenQA.Selenium.Chrome;
 using System.Globalization;
 using EmirateHMBot.Services;
 using System.Threading.Tasks.Dataflow;
-using CsvHelper;
-using IronPdf;
 using System.Text;
-using HtmlAgilityPack;
-using System.Web.UI.WebControls;
+using OfficeOpenXml.Style;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace EmirateHMBot
 {
@@ -84,6 +83,7 @@ namespace EmirateHMBot
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            Console.WriteLine(Path.GetFullPath("wkhtmltopdf.exe"));
             ServicePointManager.DefaultConnectionLimit = 65000;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Directory.CreateDirectory("data");
@@ -111,10 +111,7 @@ namespace EmirateHMBot
             EchannellEidTextB3.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
             EchannellEidTextB4.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
 
-            //await EservicesMohreService.Authenticate();
-            //await EservicesMohreService.GetEmplyeesIds();
-            //return;
-            //allow other threads to modify UI as long as its one thread only
+
             CheckForIllegalCrossThreadCalls = false;
             //start the navigator on a separate task to gain some time
 
@@ -377,7 +374,7 @@ namespace EmirateHMBot
             MohreDGV.ColumnCount = 2;
 
             MohreDGV.Columns[0].Width = 250;
-            MohreDGV.Columns[1].Width = 583;
+            MohreDGV.Columns[1].Width = 628;
 
             MohreDGV.RowTemplate.Height = 25;
 
@@ -1046,7 +1043,11 @@ namespace EmirateHMBot
                     MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
                 }
                 else
+                {
+                    MohreDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
                     MohreDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+                }
+
 
                 try
                 {
@@ -1369,8 +1370,8 @@ namespace EmirateHMBot
             }
             if (EchannelData.html == "" || EchannelData.html == "null")
             {
-                Console.WriteLine("{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}");
-                var logInResponse = await HttpCaller.PostJson("https://echannels.moi.gov.ae/echannels/api/api/user/login", "{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}");
+                Console.WriteLine($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/user/login"/*"{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}"*/);
+                var logInResponse = await HttpCaller.PostJson($"https://{normalOrbetaRB}.moi.gov.ae/echannels/api/api/user/login", "{\"userName\":" + "\"" + EChannelUsernameTI.Text + "\"" + ",\"password\":" + "\"" + EChannelPasswTI.Text + "\"}");
                 if (logInResponse.error != null)
                 {
                     MessageBox.Show(logInResponse.error);
@@ -1492,7 +1493,10 @@ namespace EmirateHMBot
                 EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
             }
             else
+            {
+                EChannelDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
                 EChannelDGV.Rows[12].Cells[1].Value = passportExpiryDate;
+            }
 
             Object = JObject.Parse(File.ReadAllText("ECHannel headers.txt"));
             refreshToken = (string)Object.SelectToken("RefreshToken");
@@ -1973,9 +1977,7 @@ namespace EmirateHMBot
             try
             {
                 if (CheckMohapLogInPageOpened)
-                {
                     MohreDriver.Navigate().Refresh();
-                }
 
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -2125,9 +2127,7 @@ namespace EmirateHMBot
             try
             {
                 if (CheckMohapLogInPageOpened)
-                {
                     MohreDriver.Navigate().Refresh();
-                }
 
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -2276,10 +2276,7 @@ namespace EmirateHMBot
             try
             {
                 if (CheckMohapLogInPageOpened)
-                {
                     MohreDriver.Navigate().Refresh();
-                }
-                CheckMohapLogInPageOpened = true;
 
                 await Task.Delay(2000);
                 MohreDriver.FindElement(By.XPath("//input[@id='txtSponsorName']")).SendKeys(MohapData.CompanyName);//sponser name arabic
@@ -2724,8 +2721,7 @@ namespace EmirateHMBot
                 MessageBox.Show("username and/or password are missed ");
                 return;
             }
-
-            await EservicesMohreService.Authenticate(UseNLabordTextBI.Text, PassWLabordTextBI.Text);
+            await Task.Run(() => EservicesMohreService.Authenticate(UseNLabordTextBI.Text, PassWLabordTextBI.Text));
         }
         private async void ScrapeLabordListB_Click(object sender, EventArgs e)
         {
@@ -2734,7 +2730,7 @@ namespace EmirateHMBot
                 MessageBox.Show("Please login first");
                 return;
             }
-            if (CompanyCodeTextBI.Text == "")
+            if (CompanyCodeTextBoxI.Text == "")
             {
                 MessageBox.Show("Please enter the company code");
                 return;
@@ -2744,7 +2740,7 @@ namespace EmirateHMBot
             try
             {
 
-                employees = await EservicesMohreService.GetEmplyeesInfo(CompanyCodeTextBI.Text);
+                employees = await Task.Run(()=> EservicesMohreService.GetEmplyeesInfo(CompanyCodeTextBoxI.Text));
             }
             finally
             {
@@ -2758,9 +2754,8 @@ namespace EmirateHMBot
             foreach (var employee in employees)
             {
                 EmployeesChechBox.Items.Add(employee.PersonName, true);
-
             }
-
+            Console.WriteLine("chBox cout: "+EmployeesChechBox.Items.Count);
 
         }
         private async void ScraprLabordImgB_Click(object sender, EventArgs e)
@@ -2788,6 +2783,7 @@ namespace EmirateHMBot
                 if (response != "")
                     continue;
             }
+            MessageBox.Show("Scraping labord cards is done");
         }
 
         private async void ScrapeLabordContractsB_Click(object sender, EventArgs e)
@@ -2823,7 +2819,7 @@ namespace EmirateHMBot
             }
             var tpl = new TransformBlock<Employee, string>
                (async x => await MohreSrviceDowloadImgAndContract.DownloadContract(x).ConfigureAwait(false),
-               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 1 });
+               new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
             foreach (var choosenEmployee in choosenEmployees)
                 tpl.Post(choosenEmployee);
             foreach (var choosenEmploye in choosenEmployees)
@@ -2834,10 +2830,10 @@ namespace EmirateHMBot
                     Console.WriteLine(response);
                 }
             }
-            MessageBox.Show("done");
+            MessageBox.Show("Scarping labord contracts is done");
         }
 
-        private void DawnloadLabordListB_Click(object sender, EventArgs e)
+        private async void DawnloadLabordListB_Click(object sender, EventArgs e)
         {
             if (EservicesMohreService.employees == null)
             {
@@ -2849,16 +2845,14 @@ namespace EmirateHMBot
             if (EservicesMohreService.doc == null)
                 EservicesMohreService.doc = new HtmlAgilityPack.HtmlDocument();
             EservicesMohreService.doc.Load("x.html");
-            EservicesMohreService.doc.DocumentNode.SelectSingleNode("/html/body/script").Remove();
+            //EservicesMohreService.doc.DocumentNode.SelectSingleNode("/html/body/script").Remove();
             EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]/table").Remove();
             EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]").Remove();
-
-
             var idx = 1;
             //remove the unkcheked employees
             foreach (var node in EservicesMohreService.doc.DocumentNode.SelectNodes("//td[@width='100']"))
             {
-                if (!choosenEmployees.Any(i => i.PersonCode == node.InnerText))
+                if (!choosenEmployees.Any(i => i.PersonCode == node.InnerHtml))
                     node.ParentNode.Remove();
                 else
                 {
@@ -2866,14 +2860,18 @@ namespace EmirateHMBot
                     idx++;
                 }
             }
-            //EservicesMohreService.doc.DocumentNode.SelectSingleNode("//td[text()='مجموع عدد العمال']/following-sibling::td").InnerHtml= choosenEmployees.Count+"";//put nbr of employees in total employees node
             EservicesMohreService.doc.Save("y.html");
-            // EservicesMohreService.doc.DocumentNode.SelectSingleNode("//table[@cellpadding='2'][2]/preceding-sibling::text()[1]").Remove();
-            var htmlToPdf = new HtmlToPdf();
-            htmlToPdf.PrintOptions.CssMediaType = PdfPrintOptions.PdfCssMediaType.Screen;
-            var pdf = htmlToPdf.RenderHTMLFileAsPdf("y.html");
-            pdf.SaveAs(Path.Combine("HtmlToPdf.Pdf"));
+            //File.WriteAllText("y.html", EservicesMohreService.doc.DocumentNode.OuterHtml);
+
+
+            var companyCode = CompanyCodeTextBoxI.Text;
+            var htmlPath = Path.GetFullPath("y.html");
+            var pdfPath = Path.GetFullPath(companyCode + ".pdf");
+            var exePath = Path.GetFullPath("wkhtmltopdf.exe");
+            await Utility.WritePDF(htmlPath, pdfPath, exePath);
+            Process.Start(pdfPath);
         }
+
         List<Employee> GetChoosenEmployees()
         {
             var employees = EservicesMohreService.employees;
@@ -2887,22 +2885,99 @@ namespace EmirateHMBot
             }
             return choosenEmployees;
         }
-
-        private void textBox8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private async void ScrapeCompaniesStatusB_Click(object sender, EventArgs e)
         {
             //Console.WriteLine("{\"languageId\":\"1\",\"languageCode\":\"en - GB\",\"keywords\":\"" + 55 + "\",\"method\":\"CI\"}");
             //return;
-            await StatusCompaniesService.GetCompaniesStaus();
+            ScrapeCompaniesStatusB.Enabled = false;
+            int CompaniesStatusRowCount = 2;
+            if (!File.Exists(@"Companies status.xlsx"))
+            {
+                ExcelPackage ExcelPkg = new ExcelPackage();
+                ExcelWorksheet wsSheet1 = ExcelPkg.Workbook.Worksheets.Add("Sheet1");
+                wsSheet1.Protection.IsProtected = false;
+                wsSheet1.Protection.AllowSelectLockedCells = false;
+                wsSheet1.Row(1).Height = 20;
+                wsSheet1.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                wsSheet1.Row(1).Style.Font.Bold = true;
+                wsSheet1.Column(1).AutoFit();
+                wsSheet1.Column(2).AutoFit();
+                wsSheet1.Cells[1, 1].Value = "Company name";
+                wsSheet1.Cells[1, 2].Value = "Company code";
+                wsSheet1.Cells[1, 3].Value = "Company statut";
+                //wsSheet1.Cells[1, 3].Value = "Name";
+                ExcelPkg.SaveAs(new FileInfo("Companies status.xlsx"));
+            }
+            else
+            {
+                FileInfo existingFile = new FileInfo("Companies status.xlsx");
+                using (ExcelPackage package = new ExcelPackage(existingFile))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                    CompaniesStatusRowCount = worksheet.Dimension.End.Row + 1;     //get row count
+                }
+            }
+            Console.WriteLine(CompaniesStatusRowCount);
+            //return;
+            var companies = new List<string>();
+            try
+            {
+                FileInfo existingFile = new FileInfo(InputExcelFileTextBoxI.Text);
+                using (ExcelPackage package = new ExcelPackage(existingFile))
+                {
+                    //get the first worksheet in the workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                    int colCount = worksheet.Dimension.End.Column;  //get Column Count
+                    int rowCount = worksheet.Dimension.End.Row;     //get row count
+                    for (int row = 1; row <= rowCount; row++)
+                    {
+                        try
+                        {
+                            companies.Add(worksheet.Cells[row, 1].Value.ToString().Trim());
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please close the Excel input file");
+                ScrapeCompaniesStatusB.Enabled = true; ;
+                return;
+            }
+            var companiesStatuts = await StatusCompaniesService.GetCompaniesStaus(companies);
+            FileInfo file = new FileInfo(@"Companies status.xlsx");
+            using (ExcelPackage excelPackage = new ExcelPackage(file))
+            {
+                ExcelWorkbook excelWorkBook = excelPackage.Workbook;
+                ExcelWorksheet excelWorksheet = excelWorkBook.Worksheets.First();
+                for (int i = 0; i < companiesStatuts.Count; i++)
+                {
+                    excelWorksheet.Cells[i + CompaniesStatusRowCount, 1].Value = companiesStatuts[i].CompanyName;
+                    excelWorksheet.Cells[i + CompaniesStatusRowCount, 2].Value = companiesStatuts[i].CompanyCode + "";
+                    excelWorksheet.Cells[i + CompaniesStatusRowCount, 3].Value = companiesStatuts[i].CompanyStatus + "";
+
+                }
+                excelWorksheet.Column(1).AutoFit();
+                excelWorksheet.Column(2).AutoFit();
+                excelWorksheet.Column(3).AutoFit();
+                try
+                {
+                    excelPackage.Save();
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Please close the Companies status.xlsx file ");
+                    ScrapeCompaniesStatusB.Enabled = true;
+                    return;
+                }
+                MessageBox.Show("scraping companies status is done");
+                ScrapeCompaniesStatusB.Enabled = true;
+            }
         }
 
         private async void SelectCompanyRequiredB_Click(object sender, EventArgs e)
@@ -2912,27 +2987,72 @@ namespace EmirateHMBot
                 MessageBox.Show("Please login first");
                 return;
             }
+            SelectCompanyRequiredB.Enabled = false;
             if (MoreThanTextBI.Text == "" || LessThanTextBI.Text == "")
             {
                 MessageBox.Show("please fill the employees number fields \"More then\and\"less then\"");
+                SelectCompanyRequiredB.Enabled = true;
+                return;
             }
+            if (InputExcelFileTextBoxI.Text == "")
+            {
+                MessageBox.Show("Please select the input excel file");
+                SelectCompanyRequiredB.Enabled = true;
+                return;
+            }
+            int requiredCompaniesRowCount = 2;
+            if (!File.Exists("Required companies.xlsx"))
+            {
+                ExcelPackage ExcelPkg = new ExcelPackage();
+                ExcelWorksheet wsSheet1 = ExcelPkg.Workbook.Worksheets.Add("Sheet1");
+                wsSheet1.Protection.IsProtected = false;
+                wsSheet1.Protection.AllowSelectLockedCells = false;
+                wsSheet1.Row(1).Height = 20;
+                wsSheet1.Row(1).Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                wsSheet1.Row(1).Style.Font.Bold = true;
+                wsSheet1.Column(1).AutoFit();
+                wsSheet1.Column(2).AutoFit();
+                wsSheet1.Cells[1, 1].Value = "Company code";
+                wsSheet1.Cells[1, 2].Value = "Employees";
+                //wsSheet1.Cells[1, 3].Value = "Name";
+                ExcelPkg.SaveAs(new FileInfo(@"Required companies.xlsx"));
+            }
+            else
+            {
+                FileInfo existingFile = new FileInfo("Required companies.xlsx");
+                using (ExcelPackage package = new ExcelPackage(existingFile))
+                {
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                    requiredCompaniesRowCount = worksheet.Dimension.End.Row + 1;     //get row count
+                }
+            }
+            Console.WriteLine(requiredCompaniesRowCount);
+            //return;
             var companies = new List<string>();
             try
             {
-                using (var reader = new StreamReader("Comapnies code.csv"))
+                FileInfo existingFile = new FileInfo(InputExcelFileTextBoxI.Text);
+                using (ExcelPackage package = new ExcelPackage(existingFile))
                 {
-                    while (!reader.EndOfStream)
+                    //get the first worksheet in the workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                    int rowCount = worksheet.Dimension.End.Row;
+                    for (int row = 1; row <= rowCount; row++)
                     {
-                        var line = reader.ReadLine();
-                        var values = line.Split(';');
-
-                        companies.Add(values[0]);
+                        try
+                        {
+                            companies.Add(worksheet.Cells[row, 1].Value.ToString().Trim());
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
                     }
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("No such file \"Comapnies code.csv file\" or it is not closed");
+                MessageBox.Show("Please close the Excel input file");
                 return;
             }
             try
@@ -2948,12 +3068,108 @@ namespace EmirateHMBot
             var moreThan = int.Parse(MoreThanTextBI.Text);
             var lessThan = int.Parse(LessThanTextBI.Text);
 
-            var requiredCompanies = await EservicesMohreService.GetRequiredCompanies(companies, moreThan, lessThan);
+            var requiredCompanies = await Task.Run(()=> EservicesMohreService.GetRequiredCompanies(companies, moreThan, lessThan));
 
-            using (var writer = new StreamWriter("Required companies.csv"))
-            using (var csv = new CsvWriter(writer))
+            FileInfo file = new FileInfo("Required companies.xlsx");
+            using (ExcelPackage excelPackage = new ExcelPackage(file))
             {
-                csv.WriteRecords(requiredCompanies);
+                ExcelWorkbook excelWorkBook = excelPackage.Workbook;
+                ExcelWorksheet excelWorksheet = excelWorkBook.Worksheets.First();
+                for (int i = 0; i < requiredCompanies.Count; i++)
+                {
+                    excelWorksheet.Cells[i + requiredCompaniesRowCount, 1].Value = requiredCompanies[i].CompanyCode;
+                    excelWorksheet.Cells[i + requiredCompaniesRowCount, 2].Value = requiredCompanies[i].EmployeesNbr + "";
+
+                }
+                excelWorksheet.Column(1).AutoFit();
+                excelWorksheet.Column(2).AutoFit();
+                try
+                {
+                    excelPackage.Save();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please close the Required companies.xlsx file ");
+                    SelectCompanyRequiredB.Enabled = true;
+                    return;
+                }
+            }
+            MessageBox.Show("scraping the rquired companies is done");
+            SelectCompanyRequiredB.Enabled = true;
+        }
+
+        private void InputExcelFileB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog o = new OpenFileDialog { Filter = "Excel |*.xlsx", InitialDirectory = _path };
+            if (o.ShowDialog() == DialogResult.OK)
+            {
+                InputExcelFileTextBoxI.Text = o.FileName;
+            }
+        }
+
+        private void PermitDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var passportExpiryDate = PermitDGV.Rows[12].Cells[1].Value.ToString();
+                var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var toDay = DateTime.Now;
+                if (toDay.Date < expiryDate.Date)
+                {
+                    PermitDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    PermitDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void MohreDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var passportExpiryDate = MohreDGV.Rows[12].Cells[1].Value.ToString();
+                var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var toDay = DateTime.Now;
+                if (toDay.Date < expiryDate.Date)
+                {
+                    MohreDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    MohreDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void EChannelDGV_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                var passportExpiryDate = EChannelDGV.Rows[12].Cells[1].Value.ToString();
+                var expiryDate = DateTime.ParseExact(passportExpiryDate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                var toDay = DateTime.Now;
+                if (toDay.Date < expiryDate.Date)
+                {
+                    EChannelDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    EChannelDGV.Rows[12].Cells[1].Style.BackColor = Color.Red;
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
@@ -3004,7 +3220,6 @@ namespace EmirateHMBot
                     index++;
                 }
             }
-            Console.WriteLine(datas["Passport Issue Date"]);
             //return;
             PermitDGV.Rows[1].Cells[1].Value = datas["Current Nationality"];
             PermitDGV.Rows[2].Cells[1].Value = datas["Gender"];
@@ -3027,6 +3242,7 @@ namespace EmirateHMBot
             }
             else
             {
+                PermitDGV.Rows[12].Cells[1].Style.BackColor = Color.White;
                 PermitDGV.Rows[12].Cells[1].Value = datas["Passport Expiry Date"];
             }
             PermitDGV.Rows[17].Cells[1].Value = datas["Sponsor Name (Arabic)"];

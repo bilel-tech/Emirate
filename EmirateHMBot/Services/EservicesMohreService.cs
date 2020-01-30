@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks.Dataflow;
+using System.Reflection;
 
 namespace EmirateHMBot.Services
 {
@@ -94,9 +95,11 @@ namespace EmirateHMBot.Services
             }
 
             doc = new HtmlAgilityPack.HtmlDocument();
-            var arabic = Encoding.UTF8;
-            var bytes = arabic.GetBytes(Driver.PageSource);
-            var html = arabic.GetString(bytes).Replace("../images/", "").Replace("../include/", "");
+            var bytes = Encoding.UTF8.GetBytes(Driver.PageSource);
+            var html = Encoding.UTF8.GetString(bytes)
+                .Replace("../images", Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
+                .Replace("../include", Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
+                .Replace("</form>", "</form> <div style=\"display: none\"> <br/> <br/>  </ div > <div style=\"display: none\"> <br/> <br/>  </ div >");
             File.WriteAllText("x.html", html);
             //var html = File.ReadAllText("x.html");
             doc.LoadHtml(html);
@@ -117,7 +120,7 @@ namespace EmirateHMBot.Services
 
             return employees;
         }
-        public static async Task<List<RequiredCompany>> GetRequiredCompanies (List<string> companiesCode,int moreThen,int lessThen)
+        public static async Task<List<RequiredCompany>> GetRequiredCompanies(List<string> companiesCode, int moreThen, int lessThen)
         {
             await Task.Delay(2000);
             Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/home.aspx");
@@ -133,7 +136,7 @@ namespace EmirateHMBot.Services
             var requiredCompanies = new List<RequiredCompany>();
             var tpl = new TransformBlock<string, (RequiredCompany companyEmployees, string error)>
               (async x => await GetcompanyEmployees(x).ConfigureAwait(false),
-              new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 1 });
+              new ExecutionDataflowBlockOptions { MaxDegreeOfParallelism = 20 });
             foreach (var companyCode in companiesCode)
                 tpl.Post(companyCode);
             var listCompaniesStatut = new List<CompanyStatut>();
@@ -142,26 +145,32 @@ namespace EmirateHMBot.Services
                 var response = await tpl.ReceiveAsync();
                 if (response.error != null)
                     continue;
-                if (response.companyEmployees.EmployeesNbr> moreThen&& response.companyEmployees.EmployeesNbr < lessThen)
+                if (response.companyEmployees.EmployeesNbr > moreThen && response.companyEmployees.EmployeesNbr < lessThen)
                 {
                     requiredCompanies.Add(response.companyEmployees);
                 }
 
             }
-
+            Console.WriteLine(requiredCompanies.Count);
             return requiredCompanies;
         }
 
         private static async Task<(RequiredCompany companyEmployees, string error)> GetcompanyEmployees(string cmpanyCode)
         {
             var company = new RequiredCompany();
-            var response = await httpCaller.GetDoc1("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno="+ cmpanyCode);
-            if (response.error!=null)
+            var response = await httpCaller.GetDoc1("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno=" + cmpanyCode);
+            if (response.error != null)
                 return (null, response.error);
-            response.doc.Save("company.html");
             company.CompanyCode = cmpanyCode;
-            company.EmployeesNbr =int.Parse(response.doc.DocumentNode.SelectSingleNode("//td[text()='مجموع عدد العمال']/following-sibling::td").InnerText.Trim());
-            return (company,null);
+            try
+            {
+                company.EmployeesNbr = int.Parse(response.doc.DocumentNode.SelectSingleNode("//td[text()='مجموع عدد العمال']/following-sibling::td").InnerText.Trim());
+            }
+            catch (Exception)
+            {
+                return (null, "invalid code");
+            }
+            return (company, null);
         }
     }
 }

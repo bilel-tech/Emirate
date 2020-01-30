@@ -138,11 +138,18 @@
             this.UploadImgEChannelMohapB = new System.Windows.Forms.Button();
             this.EchannellMohapDGV = new System.Windows.Forms.DataGridView();
             this.metroTabPage13 = new MetroFramework.Controls.MetroTabPage();
+            this.InputExcelFileTextBoxI = new System.Windows.Forms.TextBox();
+            this.InputExcelFileB = new MetroFramework.Controls.MetroButton();
+            this.SelectCompanyRequiredB = new MetroFramework.Controls.MetroButton();
+            this.LessThanTextBI = new System.Windows.Forms.TextBox();
+            this.MoreThanTextBI = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.ScrapeCompaniesStatusB = new MetroFramework.Controls.MetroButton();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.Label();
-            this.CompanyCodeTextBI = new System.Windows.Forms.TextBox();
+            this.CompanyCodeTextBoxI = new System.Windows.Forms.TextBox();
             this.PassWLabordTextBI = new System.Windows.Forms.TextBox();
             this.UseNLabordTextBI = new System.Windows.Forms.TextBox();
             this.DawnloadLabordListB = new MetroFramework.Controls.MetroButton();
@@ -153,11 +160,6 @@
             this.ScraprLabordImgB = new MetroFramework.Controls.MetroButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.MoreThanTextBI = new System.Windows.Forms.TextBox();
-            this.LessThanTextBI = new System.Windows.Forms.TextBox();
-            this.SelectCompanyRequiredB = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -206,7 +208,7 @@
             this.metroTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(1111, 745);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl1.TabIndex = 16;
@@ -301,7 +303,7 @@
             // 
             // FillFormsPermitB
             // 
-            this.FillFormsPermitB.Location = new System.Drawing.Point(896, 543);
+            this.FillFormsPermitB.Location = new System.Drawing.Point(896, 564);
             this.FillFormsPermitB.Name = "FillFormsPermitB";
             this.FillFormsPermitB.Size = new System.Drawing.Size(118, 45);
             this.FillFormsPermitB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -313,7 +315,7 @@
             // 
             // ScrapePermitB
             // 
-            this.ScrapePermitB.Location = new System.Drawing.Point(896, 483);
+            this.ScrapePermitB.Location = new System.Drawing.Point(896, 504);
             this.ScrapePermitB.Name = "ScrapePermitB";
             this.ScrapePermitB.Size = new System.Drawing.Size(118, 45);
             this.ScrapePermitB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -369,6 +371,7 @@
             this.PermitDGV.Size = new System.Drawing.Size(887, 536);
             this.PermitDGV.TabIndex = 0;
             this.PermitDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.PermitDGV_CellEndEditAsync);
+            this.PermitDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.PermitDGV_CellValueChanged);
             this.PermitDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PermitDGV_KeyPress);
             // 
             // metroTabPage5
@@ -704,7 +707,7 @@
             this.metroTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroTabControl4.Location = new System.Drawing.Point(0, 0);
             this.metroTabControl4.Name = "metroTabControl4";
-            this.metroTabControl4.SelectedIndex = 1;
+            this.metroTabControl4.SelectedIndex = 0;
             this.metroTabControl4.Size = new System.Drawing.Size(1103, 700);
             this.metroTabControl4.Style = MetroFramework.MetroColorStyle.Orange;
             this.metroTabControl4.TabIndex = 32;
@@ -755,7 +758,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(850, 311);
+            this.label10.Location = new System.Drawing.Point(915, 352);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(109, 18);
             this.label10.TabIndex = 34;
@@ -777,7 +780,7 @@
             this.PersonCodeTI.CustomButton.Visible = false;
             this.PersonCodeTI.Lines = new string[] {
         "01428078436189"};
-            this.PersonCodeTI.Location = new System.Drawing.Point(853, 332);
+            this.PersonCodeTI.Location = new System.Drawing.Point(918, 373);
             this.PersonCodeTI.MaxLength = 32767;
             this.PersonCodeTI.Name = "PersonCodeTI";
             this.PersonCodeTI.PasswordChar = '\0';
@@ -797,7 +800,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(852, 258);
+            this.label7.Location = new System.Drawing.Point(917, 299);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(126, 18);
             this.label7.TabIndex = 32;
@@ -819,7 +822,7 @@
             this.CompanieCodeTI.CustomButton.Visible = false;
             this.CompanieCodeTI.Lines = new string[] {
         "893387"};
-            this.CompanieCodeTI.Location = new System.Drawing.Point(855, 279);
+            this.CompanieCodeTI.Location = new System.Drawing.Point(920, 320);
             this.CompanieCodeTI.MaxLength = 32767;
             this.CompanieCodeTI.Name = "CompanieCodeTI";
             this.CompanieCodeTI.PasswordChar = '\0';
@@ -839,7 +842,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(850, 204);
+            this.label8.Location = new System.Drawing.Point(915, 245);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 18);
             this.label8.TabIndex = 30;
@@ -861,7 +864,7 @@
             this.NationalityTI.CustomButton.Visible = false;
             this.NationalityTI.Lines = new string[] {
         "14"};
-            this.NationalityTI.Location = new System.Drawing.Point(855, 225);
+            this.NationalityTI.Location = new System.Drawing.Point(920, 266);
             this.NationalityTI.MaxLength = 32767;
             this.NationalityTI.Name = "NationalityTI";
             this.NationalityTI.PasswordChar = '\0';
@@ -881,7 +884,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(854, 154);
+            this.label5.Location = new System.Drawing.Point(919, 195);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(92, 18);
             this.label5.TabIndex = 28;
@@ -902,7 +905,7 @@
             this.PassWordMohreTI.CustomButton.UseSelectable = true;
             this.PassWordMohreTI.CustomButton.Visible = false;
             this.PassWordMohreTI.Lines = new string[0];
-            this.PassWordMohreTI.Location = new System.Drawing.Point(855, 175);
+            this.PassWordMohreTI.Location = new System.Drawing.Point(920, 216);
             this.PassWordMohreTI.MaxLength = 32767;
             this.PassWordMohreTI.Name = "PassWordMohreTI";
             this.PassWordMohreTI.PasswordChar = '\0';
@@ -921,7 +924,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(852, 107);
+            this.label6.Location = new System.Drawing.Point(917, 148);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(93, 18);
             this.label6.TabIndex = 26;
@@ -929,7 +932,7 @@
             // 
             // FillFormsMohreB
             // 
-            this.FillFormsMohreB.Location = new System.Drawing.Point(867, 573);
+            this.FillFormsMohreB.Location = new System.Drawing.Point(918, 592);
             this.FillFormsMohreB.Name = "FillFormsMohreB";
             this.FillFormsMohreB.Size = new System.Drawing.Size(121, 37);
             this.FillFormsMohreB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -941,7 +944,7 @@
             // 
             // ScrapeMohreB
             // 
-            this.ScrapeMohreB.Location = new System.Drawing.Point(867, 530);
+            this.ScrapeMohreB.Location = new System.Drawing.Point(918, 549);
             this.ScrapeMohreB.Name = "ScrapeMohreB";
             this.ScrapeMohreB.Size = new System.Drawing.Size(121, 37);
             this.ScrapeMohreB.Style = MetroFramework.MetroColorStyle.Orange;
@@ -966,7 +969,7 @@
             this.UserNameMohreTI.CustomButton.UseSelectable = true;
             this.UserNameMohreTI.CustomButton.Visible = false;
             this.UserNameMohreTI.Lines = new string[0];
-            this.UserNameMohreTI.Location = new System.Drawing.Point(855, 128);
+            this.UserNameMohreTI.Location = new System.Drawing.Point(920, 169);
             this.UserNameMohreTI.MaxLength = 32767;
             this.UserNameMohreTI.Name = "UserNameMohreTI";
             this.UserNameMohreTI.PasswordChar = '\0';
@@ -992,9 +995,10 @@
             this.MohreDGV.Location = new System.Drawing.Point(3, 93);
             this.MohreDGV.Name = "MohreDGV";
             this.MohreDGV.RowHeadersVisible = false;
-            this.MohreDGV.Size = new System.Drawing.Size(836, 536);
+            this.MohreDGV.Size = new System.Drawing.Size(881, 536);
             this.MohreDGV.TabIndex = 0;
             this.MohreDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.MohreDGV_CellEndEditAsync);
+            this.MohreDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.MohreDGV_CellValueChanged);
             this.MohreDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MohreDGV_KeyPress);
             // 
             // metroTabPage11
@@ -1572,6 +1576,7 @@
             this.EChannelDGV.Size = new System.Drawing.Size(881, 536);
             this.EChannelDGV.TabIndex = 0;
             this.EChannelDGV.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.EChannelDGV_CellEndEditAsync);
+            this.EChannelDGV.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.EChannelDGV_CellValueChanged);
             this.EChannelDGV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EChannelDGV_KeyPress);
             // 
             // metroTabPage8
@@ -1877,6 +1882,8 @@
             // 
             // metroTabPage13
             // 
+            this.metroTabPage13.Controls.Add(this.InputExcelFileTextBoxI);
+            this.metroTabPage13.Controls.Add(this.InputExcelFileB);
             this.metroTabPage13.Controls.Add(this.SelectCompanyRequiredB);
             this.metroTabPage13.Controls.Add(this.LessThanTextBI);
             this.metroTabPage13.Controls.Add(this.MoreThanTextBI);
@@ -1886,7 +1893,7 @@
             this.metroTabPage13.Controls.Add(this.label19);
             this.metroTabPage13.Controls.Add(this.label18);
             this.metroTabPage13.Controls.Add(this.username);
-            this.metroTabPage13.Controls.Add(this.CompanyCodeTextBI);
+            this.metroTabPage13.Controls.Add(this.CompanyCodeTextBoxI);
             this.metroTabPage13.Controls.Add(this.PassWLabordTextBI);
             this.metroTabPage13.Controls.Add(this.UseNLabordTextBI);
             this.metroTabPage13.Controls.Add(this.DawnloadLabordListB);
@@ -1907,11 +1914,76 @@
             this.metroTabPage13.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage13.VerticalScrollbarSize = 10;
             // 
+            // InputExcelFileTextBoxI
+            // 
+            this.InputExcelFileTextBoxI.Location = new System.Drawing.Point(697, 124);
+            this.InputExcelFileTextBoxI.Name = "InputExcelFileTextBoxI";
+            this.InputExcelFileTextBoxI.Size = new System.Drawing.Size(145, 20);
+            this.InputExcelFileTextBoxI.TabIndex = 44;
+            // 
+            // InputExcelFileB
+            // 
+            this.InputExcelFileB.Location = new System.Drawing.Point(574, 116);
+            this.InputExcelFileB.Name = "InputExcelFileB";
+            this.InputExcelFileB.Size = new System.Drawing.Size(117, 28);
+            this.InputExcelFileB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.InputExcelFileB.TabIndex = 43;
+            this.InputExcelFileB.Text = "Select input excel file";
+            this.InputExcelFileB.UseSelectable = true;
+            this.InputExcelFileB.UseStyleColors = true;
+            this.InputExcelFileB.Click += new System.EventHandler(this.InputExcelFileB_Click);
+            // 
+            // SelectCompanyRequiredB
+            // 
+            this.SelectCompanyRequiredB.Location = new System.Drawing.Point(574, 275);
+            this.SelectCompanyRequiredB.Name = "SelectCompanyRequiredB";
+            this.SelectCompanyRequiredB.Size = new System.Drawing.Size(156, 41);
+            this.SelectCompanyRequiredB.Style = MetroFramework.MetroColorStyle.Orange;
+            this.SelectCompanyRequiredB.TabIndex = 42;
+            this.SelectCompanyRequiredB.Text = "Select required companies ";
+            this.SelectCompanyRequiredB.UseSelectable = true;
+            this.SelectCompanyRequiredB.UseStyleColors = true;
+            this.SelectCompanyRequiredB.Click += new System.EventHandler(this.SelectCompanyRequiredB_Click);
+            // 
+            // LessThanTextBI
+            // 
+            this.LessThanTextBI.Location = new System.Drawing.Point(657, 223);
+            this.LessThanTextBI.Name = "LessThanTextBI";
+            this.LessThanTextBI.Size = new System.Drawing.Size(61, 20);
+            this.LessThanTextBI.TabIndex = 41;
+            // 
+            // MoreThanTextBI
+            // 
+            this.MoreThanTextBI.Location = new System.Drawing.Point(657, 174);
+            this.MoreThanTextBI.Name = "MoreThanTextBI";
+            this.MoreThanTextBI.Size = new System.Drawing.Size(61, 20);
+            this.MoreThanTextBI.TabIndex = 40;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(577, 223);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(74, 16);
+            this.label20.TabIndex = 39;
+            this.label20.Text = "less than:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(571, 175);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(80, 16);
+            this.label17.TabIndex = 38;
+            this.label17.Text = "More than:";
+            // 
             // ScrapeCompaniesStatusB
             // 
-            this.ScrapeCompaniesStatusB.Location = new System.Drawing.Point(639, 578);
+            this.ScrapeCompaniesStatusB.Location = new System.Drawing.Point(574, 334);
             this.ScrapeCompaniesStatusB.Name = "ScrapeCompaniesStatusB";
-            this.ScrapeCompaniesStatusB.Size = new System.Drawing.Size(181, 41);
+            this.ScrapeCompaniesStatusB.Size = new System.Drawing.Size(156, 41);
             this.ScrapeCompaniesStatusB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapeCompaniesStatusB.TabIndex = 37;
             this.ScrapeCompaniesStatusB.Text = "Scrape companies status";
@@ -1923,7 +1995,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(785, 208);
+            this.label19.Location = new System.Drawing.Point(817, 359);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(114, 16);
             this.label19.TabIndex = 36;
@@ -1933,7 +2005,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(816, 142);
+            this.label18.Location = new System.Drawing.Point(848, 293);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(80, 16);
             this.label18.TabIndex = 35;
@@ -1943,38 +2015,38 @@
             // 
             this.username.AutoSize = true;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(816, 97);
+            this.username.Location = new System.Drawing.Point(848, 248);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(83, 16);
             this.username.TabIndex = 34;
             this.username.Text = "Username:";
             // 
-            // CompanyCodeTextBI
+            // CompanyCodeTextBoxI
             // 
-            this.CompanyCodeTextBI.Location = new System.Drawing.Point(923, 204);
-            this.CompanyCodeTextBI.Name = "CompanyCodeTextBI";
-            this.CompanyCodeTextBI.Size = new System.Drawing.Size(145, 20);
-            this.CompanyCodeTextBI.TabIndex = 33;
+            this.CompanyCodeTextBoxI.Location = new System.Drawing.Point(955, 355);
+            this.CompanyCodeTextBoxI.Name = "CompanyCodeTextBoxI";
+            this.CompanyCodeTextBoxI.Size = new System.Drawing.Size(145, 20);
+            this.CompanyCodeTextBoxI.TabIndex = 33;
             // 
             // PassWLabordTextBI
             // 
-            this.PassWLabordTextBI.Location = new System.Drawing.Point(923, 142);
+            this.PassWLabordTextBI.Location = new System.Drawing.Point(955, 293);
             this.PassWLabordTextBI.Name = "PassWLabordTextBI";
             this.PassWLabordTextBI.Size = new System.Drawing.Size(145, 20);
             this.PassWLabordTextBI.TabIndex = 32;
             // 
             // UseNLabordTextBI
             // 
-            this.UseNLabordTextBI.Location = new System.Drawing.Point(923, 90);
+            this.UseNLabordTextBI.Location = new System.Drawing.Point(955, 241);
             this.UseNLabordTextBI.Name = "UseNLabordTextBI";
             this.UseNLabordTextBI.Size = new System.Drawing.Size(145, 20);
             this.UseNLabordTextBI.TabIndex = 31;
             // 
             // DawnloadLabordListB
             // 
-            this.DawnloadLabordListB.Location = new System.Drawing.Point(639, 446);
+            this.DawnloadLabordListB.Location = new System.Drawing.Point(804, 505);
             this.DawnloadLabordListB.Name = "DawnloadLabordListB";
-            this.DawnloadLabordListB.Size = new System.Drawing.Size(181, 41);
+            this.DawnloadLabordListB.Size = new System.Drawing.Size(145, 41);
             this.DawnloadLabordListB.Style = MetroFramework.MetroColorStyle.Orange;
             this.DawnloadLabordListB.TabIndex = 30;
             this.DawnloadLabordListB.Text = "Download labord List";
@@ -1984,9 +2056,9 @@
             // 
             // ScrapeLabordListB
             // 
-            this.ScrapeLabordListB.Location = new System.Drawing.Point(856, 446);
+            this.ScrapeLabordListB.Location = new System.Drawing.Point(955, 505);
             this.ScrapeLabordListB.Name = "ScrapeLabordListB";
-            this.ScrapeLabordListB.Size = new System.Drawing.Size(181, 41);
+            this.ScrapeLabordListB.Size = new System.Drawing.Size(145, 41);
             this.ScrapeLabordListB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapeLabordListB.TabIndex = 29;
             this.ScrapeLabordListB.Text = "Scrape labord List";
@@ -1997,16 +2069,16 @@
             // EmployeesChechBox
             // 
             this.EmployeesChechBox.FormattingEnabled = true;
-            this.EmployeesChechBox.Location = new System.Drawing.Point(7, 45);
+            this.EmployeesChechBox.Location = new System.Drawing.Point(7, 104);
             this.EmployeesChechBox.Name = "EmployeesChechBox";
             this.EmployeesChechBox.Size = new System.Drawing.Size(552, 574);
             this.EmployeesChechBox.TabIndex = 28;
             // 
             // LogInB
             // 
-            this.LogInB.Location = new System.Drawing.Point(856, 384);
+            this.LogInB.Location = new System.Drawing.Point(955, 443);
             this.LogInB.Name = "LogInB";
-            this.LogInB.Size = new System.Drawing.Size(181, 41);
+            this.LogInB.Size = new System.Drawing.Size(145, 41);
             this.LogInB.Style = MetroFramework.MetroColorStyle.Orange;
             this.LogInB.TabIndex = 27;
             this.LogInB.Text = "Login";
@@ -2016,9 +2088,9 @@
             // 
             // ScrapeLabordContractsB
             // 
-            this.ScrapeLabordContractsB.Location = new System.Drawing.Point(856, 578);
+            this.ScrapeLabordContractsB.Location = new System.Drawing.Point(955, 637);
             this.ScrapeLabordContractsB.Name = "ScrapeLabordContractsB";
-            this.ScrapeLabordContractsB.Size = new System.Drawing.Size(181, 41);
+            this.ScrapeLabordContractsB.Size = new System.Drawing.Size(145, 41);
             this.ScrapeLabordContractsB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScrapeLabordContractsB.TabIndex = 26;
             this.ScrapeLabordContractsB.Text = "Scrape labord contracts";
@@ -2028,9 +2100,9 @@
             // 
             // ScraprLabordImgB
             // 
-            this.ScraprLabordImgB.Location = new System.Drawing.Point(856, 512);
+            this.ScraprLabordImgB.Location = new System.Drawing.Point(955, 571);
             this.ScraprLabordImgB.Name = "ScraprLabordImgB";
-            this.ScraprLabordImgB.Size = new System.Drawing.Size(181, 41);
+            this.ScraprLabordImgB.Size = new System.Drawing.Size(145, 41);
             this.ScraprLabordImgB.Style = MetroFramework.MetroColorStyle.Orange;
             this.ScraprLabordImgB.TabIndex = 25;
             this.ScraprLabordImgB.Text = "Scrape labord cards";
@@ -2058,52 +2130,6 @@
             this.label16.Size = new System.Drawing.Size(51, 24);
             this.label16.TabIndex = 36;
             this.label16.Text = "Ilyas";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(575, 94);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(80, 16);
-            this.label17.TabIndex = 38;
-            this.label17.Text = "More than:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(581, 142);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(74, 16);
-            this.label20.TabIndex = 39;
-            this.label20.Text = "less than:";
-            // 
-            // MoreThanTextBI
-            // 
-            this.MoreThanTextBI.Location = new System.Drawing.Point(661, 93);
-            this.MoreThanTextBI.Name = "MoreThanTextBI";
-            this.MoreThanTextBI.Size = new System.Drawing.Size(61, 20);
-            this.MoreThanTextBI.TabIndex = 40;
-            // 
-            // LessThanTextBI
-            // 
-            this.LessThanTextBI.Location = new System.Drawing.Point(661, 142);
-            this.LessThanTextBI.Name = "LessThanTextBI";
-            this.LessThanTextBI.Size = new System.Drawing.Size(61, 20);
-            this.LessThanTextBI.TabIndex = 41;
-            // 
-            // SelectCompanyRequiredB
-            // 
-            this.SelectCompanyRequiredB.Location = new System.Drawing.Point(578, 194);
-            this.SelectCompanyRequiredB.Name = "SelectCompanyRequiredB";
-            this.SelectCompanyRequiredB.Size = new System.Drawing.Size(156, 41);
-            this.SelectCompanyRequiredB.Style = MetroFramework.MetroColorStyle.Orange;
-            this.SelectCompanyRequiredB.TabIndex = 42;
-            this.SelectCompanyRequiredB.Text = "Select required companies ";
-            this.SelectCompanyRequiredB.UseSelectable = true;
-            this.SelectCompanyRequiredB.UseStyleColors = true;
-            this.SelectCompanyRequiredB.Click += new System.EventHandler(this.SelectCompanyRequiredB_Click);
             // 
             // MainForm
             // 
@@ -2291,7 +2317,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label username;
-        private System.Windows.Forms.TextBox CompanyCodeTextBI;
+        private System.Windows.Forms.TextBox CompanyCodeTextBoxI;
         private System.Windows.Forms.TextBox PassWLabordTextBI;
         private System.Windows.Forms.TextBox UseNLabordTextBI;
         private MetroFramework.Controls.MetroButton ScrapeCompaniesStatusB;
@@ -2300,6 +2326,8 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label17;
         private MetroFramework.Controls.MetroButton SelectCompanyRequiredB;
+        private MetroFramework.Controls.MetroButton InputExcelFileB;
+        private System.Windows.Forms.TextBox InputExcelFileTextBoxI;
     }
 }
 

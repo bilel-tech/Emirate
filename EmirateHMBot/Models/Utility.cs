@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -182,6 +184,56 @@ namespace EmirateHMBot.Models
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public static async Task WritePDF(string htmlPath, string pdfPath, string pdfConverterExe)
+        {
+            await Task.Delay(100);
+            try
+            {
+                Process p;
+                System.IO.StreamWriter stdin;
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.UseShellExecute = false;
+                psi.FileName = pdfConverterExe;
+                psi.CreateNoWindow = true;
+                psi.RedirectStandardInput = true;
+                psi.RedirectStandardOutput = true;
+                psi.RedirectStandardError = true;
+                //psi.Arguments = "";
+                //psi.Arguments += "--page-size A1";
+                ////psi.Arguments += "--disable-smart-shrinking";
+                //psi.Arguments += "--print-media-type";
+                //psi.Arguments += "--margin-top 5mm --margin-bottom 5mm --margin-right 10mm --margin-left 30mm";
+                psi.Arguments = "-q  -n - \"" + pdfPath+ "\" ";
+               
+
+                p = Process.Start(psi);
+
+                try
+                {
+                    stdin = p.StandardInput;
+                    stdin.AutoFlush = true;
+                    var html = File.ReadAllText(htmlPath, Encoding.UTF8);
+                    StreamWriter utf8Writer = new StreamWriter(p.StandardInput.BaseStream, Encoding.UTF8);
+                    utf8Writer.Write(html);
+                    stdin.Close();
+
+                    if (p.WaitForExit(15000))
+                    {
+                    }
+                }
+                finally
+                {
+                    p.Close();
+                    p.Dispose();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
