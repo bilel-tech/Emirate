@@ -11,6 +11,11 @@ namespace EmirateHMBot.Models
         public string PersonName { get; set; }
         public string PersonCode { get; set; }
         public string CardNbr { get; set; }
+        public string Job { get; set; }
+        public string PassportNumber { get; set; }
+        public string PassportCountry { get; set; }
+        public string CardStatut { get; set; }
+        public string CardDate { get; set; }
         public string __VIEWSTATE { get; set; }
         public string __VIEWSTATEGENERATOR { get; set; }
         public string __EVENTVALIDATION { get; set; }

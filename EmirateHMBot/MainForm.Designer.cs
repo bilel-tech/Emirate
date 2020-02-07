@@ -160,6 +160,8 @@
             this.ScraprLabordImgB = new MetroFramework.Controls.MetroButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
+            this.CheckAllEmaployeesRadioButton = new System.Windows.Forms.RadioButton();
+            this.UnCheckAllEmaployeesRadioButton = new System.Windows.Forms.RadioButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1882,6 +1884,8 @@
             // 
             // metroTabPage13
             // 
+            this.metroTabPage13.Controls.Add(this.CheckAllEmaployeesRadioButton);
+            this.metroTabPage13.Controls.Add(this.UnCheckAllEmaployeesRadioButton);
             this.metroTabPage13.Controls.Add(this.InputExcelFileTextBoxI);
             this.metroTabPage13.Controls.Add(this.InputExcelFileB);
             this.metroTabPage13.Controls.Add(this.SelectCompanyRequiredB);
@@ -2131,6 +2135,32 @@
             this.label16.TabIndex = 36;
             this.label16.Text = "Ilyas";
             // 
+            // CheckAllEmaployeesRadioButton
+            // 
+            this.CheckAllEmaployeesRadioButton.AutoSize = true;
+            this.CheckAllEmaployeesRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckAllEmaployeesRadioButton.Location = new System.Drawing.Point(60, 70);
+            this.CheckAllEmaployeesRadioButton.Name = "CheckAllEmaployeesRadioButton";
+            this.CheckAllEmaployeesRadioButton.Size = new System.Drawing.Size(84, 19);
+            this.CheckAllEmaployeesRadioButton.TabIndex = 46;
+            this.CheckAllEmaployeesRadioButton.TabStop = true;
+            this.CheckAllEmaployeesRadioButton.Text = "Check all";
+            this.CheckAllEmaployeesRadioButton.UseVisualStyleBackColor = true;
+            this.CheckAllEmaployeesRadioButton.CheckedChanged += new System.EventHandler(this.CheckAllEmaployeesRadioButton_CheckedChanged);
+            // 
+            // UnCheckAllEmaployeesRadioButton
+            // 
+            this.UnCheckAllEmaployeesRadioButton.AutoSize = true;
+            this.UnCheckAllEmaployeesRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UnCheckAllEmaployeesRadioButton.Location = new System.Drawing.Point(206, 70);
+            this.UnCheckAllEmaployeesRadioButton.Name = "UnCheckAllEmaployeesRadioButton";
+            this.UnCheckAllEmaployeesRadioButton.Size = new System.Drawing.Size(100, 19);
+            this.UnCheckAllEmaployeesRadioButton.TabIndex = 45;
+            this.UnCheckAllEmaployeesRadioButton.TabStop = true;
+            this.UnCheckAllEmaployeesRadioButton.Text = "Uncheck all";
+            this.UnCheckAllEmaployeesRadioButton.UseVisualStyleBackColor = true;
+            this.UnCheckAllEmaployeesRadioButton.CheckedChanged += new System.EventHandler(this.UnCheckAllEmaployeesRadioButton_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2328,6 +2358,8 @@
         private MetroFramework.Controls.MetroButton SelectCompanyRequiredB;
         private MetroFramework.Controls.MetroButton InputExcelFileB;
         private System.Windows.Forms.TextBox InputExcelFileTextBoxI;
+        private System.Windows.Forms.RadioButton CheckAllEmaployeesRadioButton;
+        private System.Windows.Forms.RadioButton UnCheckAllEmaployeesRadioButton;
     }
 }
 

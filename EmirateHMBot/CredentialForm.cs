@@ -1,6 +1,9 @@
 ﻿using EmirateHMBot.Models;
+using EmirateHMBot.Services;
 using IronPdf;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Printing;
 using System.IO;
@@ -23,20 +26,16 @@ namespace EmirateHMBot
 
         private async  void CredentialForm_Load(object sender, EventArgs e)
         {
-            //var htmlPath = Path.GetFullPath("y.html");
-            //var pdfPath = Path.GetFullPath("151518.pdf");
-            //var exePath = Path.GetFullPath("wkhtmltopdf.exe");
-            ////MessageBox.Show(htmlPath);
-            //await Utility.WritePDF(htmlPath, pdfPath, exePath);
-            //Process.Start(pdfPath);
-
-            //var companyCode = 1;
-            //var htmlPath = Path.GetFullPath("y.html");
-            //var pdfPath = Path.GetFullPath(companyCode + ".pdf");
-            //var exePath = Path.GetFullPath("wkhtmltopdf.exe");
-            //MessageBox.Show(exePath);
-            //await Utility.WritePDF(htmlPath, pdfPath, exePath);
-            //Process.Start(pdfPath);
+            var employees = JsonConvert.DeserializeObject<List<Employee>>(File.ReadAllText("employes.txt"));
+            var companyInfo = new CompanyInfo()
+            {
+                CompanyCategory = "D",
+                CompanyCode= "352128",
+                CompanyName= "الامارات للرخام",
+                DateOfImprimate= "00:31:28 02/02/202",
+                NbrOfEmployees= "292"
+            };
+            EservicesMohreService.SaveBrutHtml(employees, companyInfo);
         }
 
         private void ScrapePermitB_Click(object sender, EventArgs e)

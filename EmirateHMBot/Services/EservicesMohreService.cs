@@ -9,13 +9,16 @@ using System.Windows.Forms;
 using System.Text;
 using System.Threading.Tasks.Dataflow;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace EmirateHMBot.Services
 {
     public static class EservicesMohreService
     {
+        //8KNAT0KH save code for payoneer
         public static HttpCaller httpCaller = new HttpCaller();
         public static ChromeDriver Driver;
+        public static CompanyInfo companyInfo;
         public static List<Employee> employees;
         public static HtmlAgilityPack.HtmlDocument doc;
         static string allCookies;
@@ -68,7 +71,8 @@ namespace EmirateHMBot.Services
         {
             await Task.Delay(2000);
             Driver.Navigate().GoToUrl("https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno=" + companyCode);//352128 151518 948292
-            //Driver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\EmirateHMBot\EmirateHMBot\bin\Debug\x.html");
+                                                                                                                                 //Driver.Navigate().GoToUrl(@"C:\Users\MonsterComputer\Desktop\EmirateHMBot\EmirateHMBot\bin\Debug\x.html");
+            employees = new List<Employee>();
             do
             {
                 try
@@ -95,31 +99,144 @@ namespace EmirateHMBot.Services
             }
 
             doc = new HtmlAgilityPack.HtmlDocument();
+
             var bytes = Encoding.UTF8.GetBytes(Driver.PageSource);
-            var html = Encoding.UTF8.GetString(bytes)
-                .Replace("../images", Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
-                .Replace("../include", Path.GetDirectoryName(Assembly.GetEntryAssembly().Location))
-                .Replace("</form>", "</form> <div style=\"display: none\"> <br/> <br/>  </ div > <div style=\"display: none\"> <br/> <br/>  </ div >");
+            var html = Encoding.UTF8.GetString(bytes);
+
             File.WriteAllText("x.html", html);
-            //var html = File.ReadAllText("x.html");
-            doc.LoadHtml(html);
-
-            employees = new List<Employee>();
-            var nodesNamesAndCodes = doc.DocumentNode.SelectNodes("//tr[@height='20']/following-sibling::tr");
-            //var namesAndCodes = new Dictionary<string, string>();
-
-            for (int i = 0; i < nodesNamesAndCodes.Count; i++)
+            var nbrOfEmployees = int.Parse(Driver.FindElement(By.XPath("//td[text()='مجموع عدد العمال']/following-sibling::td")).Text.Trim());
+            if (nbrOfEmployees > 250)
             {
+                var companyName = Driver.FindElement(By.XPath("//td[text()='إسم الشركة']/following-sibling::td")).Text.Trim();
+                var companyCategory = Driver.FindElement(By.XPath("//td[text()='الفئة']/following-sibling::td")).Text.Trim();
+                var dateOfImprimate = Driver.FindElement(By.XPath("//td[contains(text(),'طبعت في')]")).Text.Trim().Split(':');
+                var date = dateOfImprimate[1];
+                int index = 0;
+                do
+                {
+                    doc.LoadHtml(Driver.PageSource);
 
-                var name = nodesNamesAndCodes[i].SelectSingleNode("./td[@width='250']/text()").InnerText;
-                var cardCode = nodesNamesAndCodes[i].SelectSingleNode("./td[@width='195']/text()").InnerText;
-                var personalCode = nodesNamesAndCodes[i].SelectSingleNode("./td[@width='100']/text()").InnerText;
+                    var employeesNodes = doc.DocumentNode.SelectNodes("//tr[@height='20']/following-sibling::tr");
+                    for (int i = 0; i < employeesNodes.Count; i++)
+                    {
+                        index++;
+                        var name = employeesNodes[i].SelectSingleNode("./td[@width='250']/text()").InnerText;
+                        var cardCode = employeesNodes[i].SelectSingleNode("./td[@width='195']/text()").InnerText;
+                        var cardStatut = employeesNodes[i].SelectSingleNode("./td[@width='195']/text()[2]").InnerText;
+                        var cardDate = employeesNodes[i].SelectSingleNode("./td[@width='195']/text()[3]").InnerText;
+                        var personalCode = employeesNodes[i].SelectSingleNode("./td[@width='100']/text()").InnerText;
+                        var job = employeesNodes[i].SelectSingleNode("./td[@width='150']/text()").InnerText;
+                        var passportNbr = employeesNodes[i].SelectSingleNode("./td[@width='90']/text()").InnerText;
+                        var passporCountry = employeesNodes[i].SelectSingleNode("./td[@width='90']/text()[2]").InnerText;
 
-                employees.Add(new Employee { PersonName = name, CardNbr = cardCode, PersonCode = personalCode });
+                        employees.Add(new Employee
+                        {
+                            PersonName = name,
+                            CardNbr = cardCode,
+                            PersonCode = personalCode,
+                            Job = job,
+                            PassportNumber = passportNbr,
+                            PassportCountry = passporCountry,
+                            CardStatut = cardStatut,
+                            CardDate = cardDate
+                        });
+                    }
+                    if (index == nbrOfEmployees)
+                    {
+                        break;
+                    }
+
+                    Driver.FindElement(By.XPath("//input[@value='بعد']")).Click();
+                    do
+                    {
+                        try
+                        {
+                            Driver.FindElement(By.XPath("//tr[@height='20']/following-sibling::tr"));
+                            break;
+                        }
+                        catch (Exception)
+                        {
+
+                            await Task.Delay(500);
+                        }
+                    } while (true);
+
+                } while (true);
+
+                //SaveBrutHtml(companyCategory, nbrOfEmployees, companyName, date, companyCode);
+                return employees;
+            }
+
+
+            else
+            {
+                html = html/*.Replace("../include/stylesArb.css", Path.GetFullPath("stylesArb.css"))*/.Replace("../images/mollogo_small.jpg", Path.GetFullPath("mollogo_small.jpg"));
+                doc.LoadHtml(html);
+                var employeesNodes1 = doc.DocumentNode.SelectNodes("//tr[@height='20']/following-sibling::tr");
+                //var namesAndCodes = new Dictionary<string, string>();
+
+                for (int i = 0; i < employeesNodes1.Count; i++)
+                {
+
+                    var name = employeesNodes1[i].SelectSingleNode("./td[@width='250']/text()").InnerText;
+                    var cardCode = employeesNodes1[i].SelectSingleNode("./td[@width='195']/text()").InnerText;
+                    var personalCode = employeesNodes1[i].SelectSingleNode("./td[@width='100']/text()").InnerText;
+
+                    employees.Add(new Employee { PersonName = name, CardNbr = cardCode, PersonCode = personalCode });
+                }
+                doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]/table").Remove();
+                doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]").Remove();
+                File.WriteAllText("x.html", doc.DocumentNode.OuterHtml);
             }
 
             return employees;
         }
+
+        public static void SaveBrutHtml(List<Employee> employees, CompanyInfo companyInfo)
+        {
+            var newTr = false;
+            var firstpageformat = File.ReadAllText("firstpageformat.txt").Replace("DateImp", companyInfo.DateOfImprimate).Replace("DateTimeImp", companyInfo.DateOfImprimate).Replace("category", companyInfo.CompanyCategory).Replace("companyCode", companyInfo.CompanyCode).Replace("nbrEmployees", companyInfo.NbrOfEmployees);
+            //var secondeTab = "<table dir=\"rtl\" border=\"0\" cellpadding=\"2\" width=\"675\"><tbody><tr height=\"20\"><td width=\"30\" align=\"center\" class=\"head22\">رقم</td><td width=\"90\" align=\"center\" class=\"head22\">الرقم الشخصي</td><td width=\"275\" align=\"center\" class=\"head22\">اسم الشخص</td><td width=\"150\" align=\"center\" class=\"head22\">المسمى الوظيفي</td><td width=\"80\" align=\"center\" class=\"head22\">بيانات جواز السفر</td><td width=\"200\" align=\"center\" class=\"head22\">بيانات بطاقة العمل</td>";
+            var employeeNodeFormat = File.ReadAllText("employeeNodeFormat.txt")/*.Replace("", "").Replace("", "").Replace("", "").Replace("", "").Replace("", "").Replace("", "").Replace("", "").Replace("", "")*/;
+            var elements ="";
+            StringBuilder nodes = new StringBuilder(firstpageformat);
+            var index = 1;
+            for (int i = 0; i < employees.Count; i++)
+            {
+                elements =  employeeNodeFormat.Replace("CardNbr", employees[i].CardNbr).Replace("PassportNumber", employees[i].PassportNumber).Replace("CardStatut", employees[i].CardStatut).Replace("job", employees[i].Job).Replace("employeeName", employees[i].PersonName).Replace("employeeCode", employees[i].PersonCode).Replace("rowNbr", (i+1)+"").Replace("PassportCountry", employees[i].PassportCountry).Replace("CardDate", employees[i].CardDate);
+                nodes.Append(elements);
+                if (newTr)
+                {
+                    index++;
+                    if (index == 17)
+                    {
+                        //elements = elements + "</tr></tbody></table><h3></h3>";
+                        //nodes = nodes + elements;
+                        //elements = firstTab;
+                        index = 0;
+                    }
+
+                }
+                if ((i + 1) == 13)
+                {
+                    nodes.Append( $"<div style=\"position: absolute; left: 26.45px; top: 767.00px\" class=\"cls_002\"><span class=\"cls_002\"> </span><a >https://eservices.mohre.gov.ae/enetwasal/arabic/rptComEmpList.aspx?comno={companyInfo.CompanyCode}</a> </div>< div style = \"position:absolute;left:569.95px;top:767.00px\" class=\"cls_002\"><span class=\"cls_002\">1/15</span></div></div>");
+                    //nodes = nodes + elements;
+                    //newTr = true;
+                    //elements = firstTab;
+                    index = 0;
+                }
+
+            }
+            //nodes = nodes + firstTab + elements;
+            //doc.LoadHtml(File.ReadAllText("htmlTemplate.html"));
+            //var htmlTemplateString = doc.DocumentNode.OuterHtml.Replace("30/01/2020 01:41:24", date);
+            //htmlTemplateString = htmlTemplateString.Replace("bilel", nodes);
+            //var bytes1 = Encoding.UTF8.GetBytes(htmlTemplateString);
+            //htmlTemplateString = Encoding.UTF8.GetString(bytes1);
+            //File.WriteAllText("x.html", htmlTemplateString);
+
+        }
+
         public static async Task<List<RequiredCompany>> GetRequiredCompanies(List<string> companiesCode, int moreThen, int lessThen)
         {
             await Task.Delay(2000);

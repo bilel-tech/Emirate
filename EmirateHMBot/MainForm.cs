@@ -2846,8 +2846,8 @@ namespace EmirateHMBot
                 EservicesMohreService.doc = new HtmlAgilityPack.HtmlDocument();
             EservicesMohreService.doc.Load("x.html");
             //EservicesMohreService.doc.DocumentNode.SelectSingleNode("/html/body/script").Remove();
-            EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]/table").Remove();
-            EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]").Remove();
+            //EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]/table").Remove();
+            //EservicesMohreService.doc.DocumentNode.SelectSingleNode("//*[@id='ContentDiv']/table/tbody/tr/td/table[2]/tbody/tr/td[1]").Remove();
             var idx = 1;
             //remove the unkcheked employees
             foreach (var node in EservicesMohreService.doc.DocumentNode.SelectNodes("//td[@width='100']"))
@@ -2860,6 +2860,7 @@ namespace EmirateHMBot
                     idx++;
                 }
             }
+            EservicesMohreService.doc.DocumentNode.SelectSingleNode("/html/head/link").Remove();
             EservicesMohreService.doc.Save("y.html");
             //File.WriteAllText("y.html", EservicesMohreService.doc.DocumentNode.OuterHtml);
 
@@ -3171,6 +3172,32 @@ namespace EmirateHMBot
             {
 
             }
+        }
+
+        private void CheckAllEmaployeesRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckAllEmaployeesRadioButton.Checked)
+            {
+                
+                for (int i = 0; i < EmployeesChechBox.Items.Count; i++)
+                {
+                    EmployeesChechBox.SetItemChecked(i, true);
+                }
+            }
+           
+        }
+
+        private void UnCheckAllEmaployeesRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (UnCheckAllEmaployeesRadioButton.Checked)
+            {
+
+                for (int i = 0; i < EmployeesChechBox.Items.Count; i++)
+                {
+                    EmployeesChechBox.SetItemChecked(i, false);
+                }
+            }
+            
         }
 
         private async void ScrapePermitB_ClickAsync(object sender, EventArgs e)
